@@ -38,8 +38,6 @@ jobs:
 
       - name: Fetch jobs from employers
         if: github.event_name != 'push'
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python -m fetcher.run
 
       - name: Save job data

@@ -46,11 +46,18 @@ British Airways, Lufthansa, Cathay Pacific, Air New Zealand.
 
 1. **Honeywell and RTX post many non-aviation jobs** (building tech, defence). Keep, drop Honeywell, or
    filter both to aerospace units only?
-2. **AI sorting for unclear job titles**: needs an Anthropic API key with a $5 monthly limit, added as the
-   GitHub secret `ANTHROPIC_API_KEY`. Would move most of the 33% "unclear" jobs into the right group.
-3. **Cloudflare Web Analytics**: keep it, or switch it off if Google Analytics will be used (clears the
+2. **Cloudflare Web Analytics**: keep it, or switch it off if Google Analytics will be used (clears the
    Safari console item).
-4. **More airlines**: build SuccessFactors and Taleo readers (JetBlue, Ryanair, Qatar Airways, easyJet)?
+3. **More airlines**: build SuccessFactors and Taleo readers (JetBlue, Ryanair, Qatar Airways, easyJet)?
+
+## Role sorting (5 Oct 2026)
+
+There is no AI sorting of job titles into role groups, and there never has been - the option was removed
+from the code. Titles are sorted only by free word-matching rules in `fetcher/roles.py` (English, German
+and French). A title the rules can't place falls into "Corporate", which was about 33% of jobs on 5 Oct
+2026; rules were widened the same day (production/warehouse roles, EHS, more German/French supervisor
+terms) to lower that share. If "Corporate" keeps catching jobs that belong elsewhere, send a few example
+titles and ask for the rules to be widened again - that's free and has no limit.
 
 Also open: Dependabot pull request #4 (Markdown 3.10.3 → 3.11). Safe to merge after tests pass.
 

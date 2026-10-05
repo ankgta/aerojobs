@@ -45,7 +45,6 @@ Cloudflare hosts the website for free and will later hold your domain.
 3. On the **Secrets** tab, click **New repository secret** and add:
    - Name `CLOUDFLARE_API_TOKEN`, value: the token from Step 3.
    - Name `CLOUDFLARE_ACCOUNT_ID`, value: the Account ID from Step 3.
-   - Optional, for AI sorting of unclear job titles: name `ANTHROPIC_API_KEY`, value: a key from **console.anthropic.com** (set a monthly spending limit of $5 there first).
 4. On the **Variables** tab, click **New repository variable**: name `CLOUDFLARE_PROJECT`, value `aviation-jobs` (or your site name in lowercase with dashes).
 
 ## Step 5. Run it for the first time

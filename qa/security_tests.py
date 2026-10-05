@@ -107,7 +107,7 @@ def main():
     # ---- exposed files
     def exposed():
         paths = ["/.git/config", "/.git/HEAD", "/.env", "/config/site.yaml", "/config/employers.yaml", "/fetcher/run.py",
-                 "/requirements.txt", "/.github/workflows/update.yml", "/data/jobs.json", "/data/role_cache.json",
+                 "/requirements.txt", "/.github/workflows/update.yml", "/data/jobs.json",
                  "/README.md", "/SETUP-GUIDE.md", "/tests/test_site.py", "/wrangler.toml", "/_headers"]
         found = []
         for p in paths:

@@ -1,11 +1,7 @@
 """Sort job titles into role categories, and detect remote / hybrid / on-site."""
 from __future__ import annotations
 
-import json
-import os
 import re
-
-import requests
 
 ROLES = {
     "pilots": "Pilots",
@@ -40,17 +36,22 @@ _RULES: list[tuple[str, list[str]]] = [
     ("corporate", [r"software", r"developer", r"\w*(?:entwickler|developpeur|développeur|informatik)\w*", r"it support", r"it technician", r"service desk",
                    r"help ?desk", r"cyber ?security", r"data (scientist|engineer|analyst)",
                    r"network engineer", r"cloud engineer", r"devops", r"facilities maintenance"]),
-    ("engineering-maintenance", [r"\w*(?:techniker|tekniker|mechaniker|mecanicien|mécanicien|technicien|ingenieur|ingénieur|ingeniero|tecnico|técnico|monteur|elektroniker|fluggerat|fluggerät)\w*",
+    ("engineering-maintenance", [r"\w*(?:techniker|tekniker|mechaniker|mecanicien|mécanicien|technicien|ingenieur|ingénieur|ingeniero|tecnico|técnico|monteur|elektroniker|fluggerat|fluggerät|kennzeichner)\w*",
                                  r"machinists?", r"cnc", r"assembl(?:er|y)", r"fabricat\w+", r"welders?",
-                                 r"production (?:operator|technician|associate|supervisor)", r"manufacturing",
+                                 r"production (?:operator|technician|associate|supervisor|team leader)",
+                                 r"manufacturing", r"tool ?setters?", r"material handlers?",
+                                 r"computerized machine operator", r"\bcmo\b",
                                  r"quality (?:inspector|technician|engineer)", r"test (?:technician|engineer)",
                                  r"aircraft maintenance", r"\bame\b", r"\bb1\b", r"\bb2\b", r"\ba&p\b",
                                  r"mechanics?", r"technicians?", r"avionics", r"\bmro\b", r"maintenance",
                                  r"airframe", r"powerplant", r"\bndt\b", r"inspectors?", r"line station",
-                                 r"hangar", r"engine shop", r"overhaul", r"repair", r"composite",
+                                 r"hangar", r"engine shop", r"engine lines?", r"overhaul", r"repair", r"composite",
                                  r"airworthiness", r"structures? engineer", r"stress engineer",
                                  r"aerospace engineer", r"aeronautical engineer", r"aircraft engineer",
-                                 r"licen[cs]ed engineer", r"certifying"]),
+                                 r"licen[cs]ed engineer", r"certifying",
+                                 r"superviseur\w*\s*-?\s*(?:ligne|production|moteur)", r"ligne de moteur",
+                                 r"environmental health and safety", r"\behs\b",
+                                 r"industrial engineer\w*"]),
     ("cargo-logistics", [r"cargo", r"freight", r"logistics", r"warehouse", r"supply chain", r"ulds?",
                          r"forwarding", r"shipping"]),
     ("ground-operations", [r"ground (handling|operations|services|staff|crew)", r"ramp", r"baggage",
@@ -68,7 +69,8 @@ _RULES: list[tuple[str, list[str]]] = [
                    r"\bhr\b", r"human resources", r"recruit\w*", r"talent", r"payroll", r"legal",
                    r"counsel", r"lawyer", r"marketing", r"communications", r"procurement",
                    r"buyer", r"analyst", r"administrat\w+", r"assistant", r"secretary", r"intern",
-                   r"product manager", r"project manager", r"program manager", r"designer",
+                   r"product manager", r"project manager", r"program manager", r"program lead",
+                   r"program specialist", r"scrum master", r"functional manager", r"designer",
                    r"engineer"]),  # generic "engineer" left over after aviation rules -> corporate tech
 ]
 _COMPILED = [(role, [re.compile(r"\b(?:" + p + r")\b", re.I) for p in pats]) for role, pats in _RULES]
@@ -89,43 +91,6 @@ def classify_title(title: str, company_type: str | None = None) -> str | None:
         if any(p.search(title) for p in patterns):
             return role
     return None
-
-
-def ai_classify(titles: list[str], cache: dict, limit: int = 200) -> dict[str, str]:
-    """Ask Claude Haiku to sort unclear titles. Only runs when ANTHROPIC_API_KEY is set.
-    Results are cached so each title is only ever asked about once."""
-    key = os.environ.get("ANTHROPIC_API_KEY")
-    todo = [t for t in dict.fromkeys(titles) if t not in cache][:limit]
-    if not key or not todo:
-        return {t: cache[t] for t in titles if t in cache}
-    role_list = "\n".join(f"- {k}: {v}" for k, v in ROLES.items())
-    for i in range(0, len(todo), 50):
-        batch = todo[i:i + 50]
-        prompt = (
-            "Sort each aviation-industry job title into exactly one category key.\n"
-            f"Categories:\n{role_list}\n\n"
-            "Reply with only a JSON object mapping each title (exactly as given) to a category key.\n\n"
-            "Titles:\n" + "\n".join(json.dumps(t) for t in batch)
-        )
-        try:
-            r = requests.post(
-                "https://api.anthropic.com/v1/messages",
-                headers={"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"},
-                json={"model": "claude-haiku-4-5-20251001", "max_tokens": 4000,
-                      "messages": [{"role": "user", "content": prompt}]},
-                timeout=60,
-            )
-            r.raise_for_status()
-            text = "".join(b.get("text", "") for b in r.json().get("content", []))
-            m = re.search(r"\{.*\}", text, re.S)
-            answer = json.loads(m.group(0)) if m else {}
-        except (requests.RequestException, ValueError) as e:
-            print(f"  AI role sorting skipped: {e}")
-            break
-        for t in batch:
-            v = answer.get(t)
-            cache[t] = v if v in ROLES else DEFAULT_ROLE
-    return {t: cache[t] for t in titles if t in cache}
 
 
 _REMOTE = re.compile(r"\b(remote|work from home|wfh|telecommute|home-?based|anywhere)\b", re.I)

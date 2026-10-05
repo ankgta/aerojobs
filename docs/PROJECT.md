@@ -16,7 +16,7 @@ app comes later, only if users ask for it.
 | Contact shown on site | hello@aerojobs.work (Cloudflare Email Routing → site Gmail) |
 | Code | GitHub, private repository **ankgta/aerojobs**, branch `main` |
 | Hosting and domain | Cloudflare (Pages project `aerojobs`, domain registered at Cloudflare) |
-| GitHub secrets | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` (optional later: `ANTHROPIC_API_KEY`) |
+| GitHub secrets | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` |
 | Owner accounts | Site Gmail, GitHub, Cloudflare. Later: Google Search Console, Analytics, AdSense |
 
 The owner holds every password. Claude never sees or stores them.
@@ -81,7 +81,8 @@ All of it runs in GitHub Actions at 05:23 and 17:23 UTC.
 
 ## Money
 
-Running cost: the domain (about $10–15 a year). Optional AI sorting: up to $5 a month.
+Running cost: the domain (about $10–15 a year). Nothing else - the twice-daily update runs free on
+GitHub Actions and uses no Claude or Anthropic API usage.
 
 Income plan: Google AdSense first. Later, in order: job-board partner feeds (Adzuna, Jooble), job alert
 emails with sponsor slots, affiliate links (pilot training, cabin crew courses, exam prep, CV services,

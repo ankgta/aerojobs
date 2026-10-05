@@ -27,7 +27,8 @@ owner, and what to do next. `docs/README.md` lists the other docs.
    employer's full job description. Job pages use a summary written by our own code.
 4. **Every Apply link goes to the employer's own site**, and only `https://`/`http://` links are allowed.
 5. **No secrets in the repository.** Tokens go in GitHub Secrets (`CLOUDFLARE_API_TOKEN`,
-   `CLOUDFLARE_ACCOUNT_ID`, optional `ANTHROPIC_API_KEY`).
+   `CLOUDFLARE_ACCOUNT_ID`. There is no AI key and no AI step - job-title sorting is free word rules only
+   (`fetcher/roles.py`), on purpose.
 
 ## Where things are
 

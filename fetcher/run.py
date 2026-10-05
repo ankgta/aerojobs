@@ -15,12 +15,11 @@ from .common import (DATA_DIR, safe_url, load_employers, load_site_config, now_i
 from .connectors import CONNECTORS
 from .geo import clean_location, country_from_location, country_name, is_country_code, region_of
 from .http import PoliteClient, RobotsBlocked
-from .roles import (DEFAULT_ROLE, ai_classify, classify_title, detect_work_mode,
+from .roles import (DEFAULT_ROLE, classify_title, detect_work_mode,
                     normalize_employment_type)
 
 JOBS_FILE = DATA_DIR / "jobs.json"
 STATUS_FILE = DATA_DIR / "employer_status.json"
-ROLE_CACHE_FILE = DATA_DIR / "role_cache.json"
 ALERTS_FILE = DATA_DIR / "alerts.json"
 
 
@@ -140,7 +139,6 @@ def main(argv: list[str] | None = None) -> int:
     store = read_json(JOBS_FILE, {"jobs": {}})
     jobs = store["jobs"]
     status = read_json(STATUS_FILE, {})
-    role_cache = read_json(ROLE_CACHE_FILE, {})
     alerts = []
 
     for emp in employers:
@@ -196,15 +194,13 @@ def main(argv: list[str] | None = None) -> int:
 
         status[emp["slug"]] = {"last_run": now_iso(), "last_count": len(raws), "last_error": None}
 
-    # Sort unclear titles with AI (only if a key is set), then fall back to the default group.
-    unclear = [r for r in jobs.values() if is_visible(r) and not r.get("role")]
-    if unclear:
-        answers = ai_classify([r["title"] for r in unclear], role_cache, int(fc.get("ai_role_sorting_limit", 200)))
-        for r in unclear:
-            if r["title"] in answers:
-                r["role"], r["role_source"] = answers[r["title"]], "ai"
-            else:
-                r["role"], r["role_source"] = DEFAULT_ROLE, "default"
+    # Re-try the word rules on jobs still sitting in the default group (e.g. after the rules
+    # were improved), then fall back to the default group for anything still unmatched.
+    unclear = [r for r in jobs.values()
+               if is_visible(r) and (not r.get("role") or r.get("role_source") == "default")]
+    for r in unclear:
+        role = classify_title(r["title"], r.get("company_type"))
+        r["role"], r["role_source"] = (role, "rules") if role else (DEFAULT_ROLE, "default")
 
     removed = purge_expired(jobs, int(fc.get("keep_expired_days", 30)), run_date)
     visible = sum(1 for r in jobs.values() if is_visible(r))
@@ -217,7 +213,6 @@ def main(argv: list[str] | None = None) -> int:
     store["updated_at"] = now_iso()
     write_json(JOBS_FILE, store)
     write_json(STATUS_FILE, status)
-    write_json(ROLE_CACHE_FILE, role_cache)
     write_json(ALERTS_FILE, {"run": now_iso(), "alerts": alerts})
     return 0
 
