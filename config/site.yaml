@@ -1,0 +1,22 @@
+# Website settings. Change the values on the right, keep the names on the left.
+
+site_name: "AeroJobs"
+tagline: "Airline, airport and aerospace jobs from employers worldwide, in one place."
+hero_image: ""                             # optional: your own banner photo, e.g. static/hero.jpg (leave empty for the hangar illustration)
+site_url: "https://aerojobs.work"         # your domain (no slash at the end)
+contact_email: "hello@aerojobs.work"      # forwarded to the site Gmail by Cloudflare Email Routing; shown on the Contact page
+owner_name: ""                             # optional, shown on the About page
+
+# Google services. Leave empty until you have them.
+adsense_client: ""        # looks like ca-pub-1234567890123456 (from AdSense)
+google_analytics_id: ""   # looks like G-ABC123XYZ (from Google Analytics)
+search_console_verification: ""  # optional: the code from Search Console's "HTML tag" option
+
+# Job fetcher behaviour
+fetch:
+  delay_seconds: 1.5            # pause between requests to the same website
+  max_new_details_per_employer: 250   # Workday/JSON-LD job pages read per run, per employer
+  max_jobs_per_employer: 3000
+  expire_after_missed_runs: 2   # hide a job after it is missing this many runs in a row
+  keep_expired_days: 30
+  ai_role_sorting_limit: 200    # max unclear job titles sent to Claude Haiku per run

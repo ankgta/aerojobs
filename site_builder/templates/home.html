@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% from "_macros.html" import board %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ site.site_name }}: pilot, cabin crew and aviation jobs worldwide{% endblock %}
+{% block subnav %}{% endblock %}
+{% block main %}
+<section class="hero">
+  <div class="hero-art" aria-hidden="true">
+    <img src="{{ asset(site.hero_image or 'static/hero-hangar.svg') }}" alt="" width="2240" height="485" fetchpriority="high" decoding="async">
+  </div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <h1>Every aviation job, on one board.</h1>
+      {% if stats.jobs %}
+      <p class="hero-sub"><strong>{{ "{:,}".format(stats.jobs) }}</strong> pilot, cabin crew, engineering and airport roles from <strong>{{ stats.companies }}</strong> employers in <strong>{{ stats.countries }}</strong> {{ 'country' if stats.countries == 1 else 'countries' }}, collected twice a day.</p>
+      {% else %}
+      <p class="hero-sub">Pilot, cabin crew, engineering and airport roles from employers worldwide. The first jobs are on their way.</p>
+      {% endif %}
+      <form class="search-pill" role="search" data-search-form>
+        {{ icon("search") }}
+        <label for="q" class="visually-hidden">Search jobs</label>
+        <input id="q" name="q" type="search" inputmode="search" enterkeyhint="search" placeholder="Job title or employer" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button class="btn" type="submit">Search jobs</button>
+      </form>
+      <nav class="chips" aria-label="Job roles">
+        {% for key, label in role_short.items() %}<a class="chip" href="{{ link('roles/' ~ key) }}">{{ label }}{% if role_counts[key] %} <span class="n">{{ role_counts[key] }}</span>{% endif %}</a>{% endfor %}
+      </nav>
+    </div>
+  </div>
+</section>
+
+<section class="wrap finder" id="jobs" data-finder data-root="{{ root }}" data-suffix="{{ link_suffix }}" data-index="{{ asset('data/jobs-index.json') }}">
+  <div class="scrim" data-scrim></div>
+  <aside class="filters" id="filters" aria-labelledby="filters-title" data-sheet>
+    <div class="sheet-head">
+      <h2 id="filters-title">Filters</h2>
+      <button type="button" class="sheet-close" data-sheet-close>{{ icon("close") }}<span class="visually-hidden">Close filters</span></button>
+    </div>
+    <div class="filter-body">
+      <label class="field"><span>Country</span>
+        <select name="country" id="f-country">
+          <option value="">All countries</option>
+          {% for region, countries in regions %}
+          <optgroup label="{{ region }}">
+            <option value="region:{{ region }}">All of {{ region }}</option>
+            {% for c in countries %}<option value="{{ c.code }}">{{ c.name }} ({{ c.count }})</option>{% endfor %}
+          </optgroup>
+          {% endfor %}
+        </select>
+      </label>
+      <label class="field"><span>Job role</span>
+        <select name="role" id="f-role">
+          <option value="">All roles</option>
+          {% for key, label in roles.items() %}<option value="{{ key }}">{{ label }}{% if role_counts[key] %} ({{ role_counts[key] }}){% endif %}</option>{% endfor %}
+        </select>
+      </label>
+      <fieldset class="field">
+        <legend>Work mode</legend>
+        <div class="toggle-row">
+          {% for m in ["On-site", "Hybrid", "Remote"] %}
+          <label class="toggle"><input type="checkbox" name="mode" value="{{ m }}" id="f-mode-{{ m|lower }}"><span>{{ m }}</span></label>
+          {% endfor %}
+        </div>
+      </fieldset>
+      <label class="field"><span>Posted</span>
+        <select name="posted" id="f-posted">
+          <option value="">Any time</option>
+          <option value="1">Last 24 hours</option>
+          <option value="2">Last 48 hours</option>
+          <option value="7">Last week</option>
+          <option value="30">Last month</option>
+          <option value="older">More than a month ago</option>
+        </select>
+      </label>
+      <label class="field"><span>Employer type</span>
+        <select name="type" id="f-type">
+          <option value="">All employers</option>
+          {% for key, label in company_types.items() %}<option value="{{ key }}">{{ label }}</option>{% endfor %}
+        </select>
+      </label>
+    </div>
+    <div class="sheet-foot">
+      <button type="button" class="btn btn-ghost" data-reset>Clear all</button>
+      <button type="button" class="btn sheet-apply" data-sheet-close data-apply-label>Show jobs</button>
+    </div>
+  </aside>
+
+  <div class="results">
+    <div class="results-bar">
+      <p class="count" data-count aria-live="polite">{{ "{:,}".format(stats.jobs) }} jobs</p>
+      <div class="results-tools">
+        <button type="button" class="btn btn-ghost filter-btn" aria-controls="filters" aria-expanded="false" data-sheet-open>{{ icon("sliders") }}Filters <span class="badge-count" data-active-count hidden>0</span></button>
+        <label class="sort"><span class="visually-hidden">Sort jobs</span>
+          <select name="sort" id="f-sort">
+            <option value="new">Newest first</option>
+            <option value="closing">Closing soonest</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    {{ board(jobs, link) }}
+    <p class="empty" data-empty hidden>No jobs match these filters. Try a wider date range or another country.</p>
+    <button type="button" class="btn btn-ghost more" data-more hidden>Show more jobs</button>
+  </div>
+</section>
+
+<section class="wrap browse">
+  <div class="panel">
+    <h2>Browse by country</h2>
+    <ul class="region-list">
+      {% for region, countries in regions %}
+      <li><strong>{{ region }}</strong>
+        {% for c in countries[:8] %}<a href="{{ link('countries/' ~ c.slug) }}">{{ c.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+      </li>
+      {% endfor %}
+    </ul>
+    <a class="see-all" href="{{ link('countries') }}">All countries</a>
+  </div>
+  {% if guides %}
+  <div class="panel">
+    <h2>Career guides</h2>
+    <ul class="guide-list">
+      {% for g in guides %}<li><a href="{{ link('guides/' ~ g.slug) }}">{{ g.title }}</a></li>{% endfor %}
+    </ul>
+    <a class="see-all" href="{{ link('guides') }}">All guides</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ asset('static/search.js') }}" defer></script>{% endblock %}

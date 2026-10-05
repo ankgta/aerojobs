@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from "_macros.html" import board %}
+{% block title %}{{ heading }} | {{ site.site_name }}{% endblock %}
+{% block description %}{{ intro[:155] }}{% endblock %}
+{% block main %}
+<div class="page-head"><div class="wrap">
+  <h1>{{ heading }}</h1>
+  <p class="lede">{{ intro }}</p>
+</div></div>
+<section class="wrap listing">
+  {% if jobs %}
+    {{ board(jobs, link) }}
+    {% if total > jobs|length %}
+    <p class="see-more">Showing the newest {{ jobs|length }} of {{ total }}. <a href="{{ link('') }}?{{ search_query }}#jobs">See all {{ total }} with filters</a></p>
+    {% else %}
+    <p class="see-more"><a href="{{ link('') }}?{{ search_query }}#jobs">Filter these jobs</a></p>
+    {% endif %}
+  {% else %}
+    <p class="empty">Nothing open right now. <a href="{{ link('') }}#jobs">Browse all jobs</a></p>
+  {% endif %}
+</section>
+{% endblock %}

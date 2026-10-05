@@ -1,0 +1,177 @@
+import datetime as dt
+
+from fetcher import connectors as c
+from fetcher.geo import country_from_location, region_of
+from fetcher.roles import classify_title, detect_work_mode
+from fetcher.run import merge_employer_jobs, purge_expired, is_visible
+
+
+class FakeClient:
+    """Answers requests from a dict of url -> response, records what was asked."""
+    def __init__(self, responses):
+        self.responses = responses
+        self.calls = []
+
+    def _get(self, url):
+        self.calls.append(url)
+        for key, value in self.responses.items():
+            if url.startswith(key):
+                return value(url) if callable(value) else value
+        raise AssertionError(f"unexpected url {url}")
+
+    def get_json(self, url, **kw):
+        return self._get(url)
+
+    def get_text(self, url):
+        return self._get(url)
+
+    def post_json(self, url, payload):
+        self.calls.append((url, payload["offset"]))
+        return self.responses[url][payload["offset"] // 20]
+
+
+# ---------------------------------------------------------------- roles
+def test_roles():
+    cases = {
+        "First Officer A320": "pilots",
+        "Captain - Boeing 777": "pilots",
+        "Cabin Crew - Dubai Based": "cabin-crew",
+        "Flight Attendant (Bilingual)": "cabin-crew",
+        "B1 Licensed Aircraft Engineer": "engineering-maintenance",
+        "Avionics Technician": "engineering-maintenance",
+        "IT Support Technician": "corporate",
+        "Ramp Agent": "ground-operations",
+        "Baggage Handler": "ground-operations",
+        "Flight Dispatcher": "flight-operations",
+        "Air Traffic Control Officer": "flight-operations",
+        "Cargo Sales Executive": "cargo-logistics",
+        "Customer Service Agent": "customer-service-sales",
+        "Senior Software Engineer": "corporate",
+        "Financial Controller": "corporate",
+        "Trampoline instructor": None,
+    }
+    for title, role in cases.items():
+        assert classify_title(title) == role, title
+    assert classify_title("Systems Engineer", "manufacturer") == "engineering-maintenance"
+    assert classify_title("Systems Engineer", "airline") == "corporate"
+
+
+def test_work_mode():
+    assert detect_work_mode("Data Analyst (Hybrid)") == "Hybrid"
+    assert detect_work_mode("Recruiter", "Remote - UK") == "Remote"
+    assert detect_work_mode("Ramp Agent", "London") == "On-site"
+    assert detect_work_mode("x", structured="onsite") == "On-site"
+    assert detect_work_mode("x", structured="Remote") == "Remote"
+
+
+# ---------------------------------------------------------------- geography
+def test_countries():
+    assert country_from_location("Seattle, WA") == "US"
+    assert country_from_location("San Jose, CA") == "US"
+    assert country_from_location("Toronto, ON, CA") == "CA"
+    assert country_from_location("Dubai - United Arab Emirates") == "AE"
+    assert country_from_location("London, United Kingdom") == "GB"
+    assert country_from_location("Doha") == "QA"
+    assert country_from_location("Bengaluru, India") == "IN"
+    assert country_from_location("Hamburg, DEU") == "DE"
+    assert country_from_location("UAE") == "AE"
+    assert country_from_location("") is None
+    assert region_of("AE") == "Middle East" and region_of("BR") == "Latin America and Caribbean"
+
+
+# ---------------------------------------------------------------- connectors
+def test_posted_on():
+    base = dt.date(2026, 10, 4)
+    assert c.posted_on_to_date("Posted Today", base) == ("2026-10-04", False)
+    assert c.posted_on_to_date("Posted Yesterday", base) == ("2026-10-03", False)
+    assert c.posted_on_to_date("Posted 5 Days Ago", base) == ("2026-09-29", False)
+    assert c.posted_on_to_date("Posted 30+ Days Ago", base) == ("2026-09-04", True)
+
+
+def test_workday_paging_and_detail():
+    api = "https://acme.wd3.myworkdayjobs.com/wday/cxs/acme/Careers/jobs"
+    page = lambda n, total: {"total": total, "jobPostings": [
+        {"title": f"Job {n}-{i}", "externalPath": f"/job/X/{n}-{i}", "locationsText": "Hamburg, Germany",
+         "postedOn": "Posted Today"} for i in range(20 if n == 0 else 5)]}
+    client = FakeClient({api: [page(0, 25), page(1, 0)]})
+    jobs = c.fetch_workday(client, {"url": "https://acme.wd3.myworkdayjobs.com/en-US/Careers"})
+    assert len(jobs) == 25
+    assert jobs[0]["url"] == "https://acme.wd3.myworkdayjobs.com/Careers/job/X/0-0"
+    detail_client = FakeClient({"https://acme.wd3": {"jobPostingInfo": {
+        "country": {"descriptor": "Germany"}, "startDate": "2026-09-30", "remoteType": "Hybrid",
+        "timeType": "Full time", "jobDescription": "<p>long text we never keep</p>"}}})
+    d = c.workday_detail(detail_client, jobs[0])
+    assert d["country_code"] == "DE" and d["posted_date"] == "2026-09-30" and d["work_mode"] == "Hybrid"
+    assert "jobDescription" not in d and "long text" not in str(d)
+
+
+def test_lever_greenhouse_smartrecruiters():
+    lever = FakeClient({"https://api.lever.co/v0/postings/acme": [
+        {"id": "a1", "text": "Pilot", "hostedUrl": "https://jobs.lever.co/acme/a1", "createdAt": 1790000000000,
+         "categories": {"location": "Auckland", "commitment": "Full-time"}, "workplaceType": "onsite", "country": "NZ"}]})
+    j = c.fetch_lever(lever, {"company": "acme"})[0]
+    assert j["country_code"] == "NZ" and j["posted_date"].startswith("2026")
+
+    gh = FakeClient({"https://boards-api.greenhouse.io/v1/boards/acme/jobs": {"jobs": [
+        {"id": 7, "title": "Ramp Agent", "absolute_url": "https://x/7", "location": {"name": "Denver, CO"},
+         "first_published": "2026-10-01T10:00:00Z"}]}})
+    assert c.fetch_greenhouse(gh, {"board": "acme"})[0]["posted_date"] == "2026-10-01"
+
+    sr = FakeClient({"https://api.smartrecruiters.com/v1/companies/Acme/postings": {"totalFound": 1, "content": [
+        {"id": "9", "name": "Cabin Crew", "releasedDate": "2026-09-20T00:00:00.000Z",
+         "location": {"city": "Doha", "country": "qa", "remote": False}}]}})
+    j = c.fetch_smartrecruiters(sr, {"company": "Acme"})[0]
+    assert j["country_code"] == "QA" and j["url"].endswith("/Acme/9")
+
+
+def test_jsonld():
+    page = """<html><script type="application/ld+json">{"@context":"https://schema.org","@graph":[
+      {"@type":"JobPosting","title":"Aircraft Mechanic","datePosted":"2026-09-01","validThrough":"2026-11-01",
+       "identifier":{"value":"R-55"},"employmentType":["FULL_TIME"],
+       "jobLocation":{"@type":"Place","address":{"addressLocality":"Toulouse","addressCountry":"FR"}}}]}
+    </script></html>"""
+    raws = c.fetch_jsonld(FakeClient({"https://careers.example.com": page}), {"listing_url": "https://careers.example.com/jobs"})
+    assert raws[0]["source_id"] == "R-55" and raws[0]["country_code"] == "FR" and raws[0]["closing_date"] == "2026-11-01"
+
+    listing = '<a href="/job/1">One</a><a href="/job/2#apply">Two</a><a href="/about">x</a>'
+    links = c.fetch_jsonld(FakeClient({"https://careers.example.com": listing}),
+                           {"listing_url": "https://careers.example.com/jobs", "job_link_pattern": "/job/"})
+    assert [l["url"] for l in links] == ["https://careers.example.com/job/1", "https://careers.example.com/job/2"]
+
+
+# ---------------------------------------------------------------- store logic
+def test_merge_expire_and_return():
+    emp = {"name": "Example Air", "slug": "example-air", "type": "airline"}
+    jobs = {}
+    raws = [{"source_id": "1", "title": "First Officer", "url": "https://example.com/j/1", "location": "Dubai"},
+            {"source_id": "2", "title": "Ramp Agent", "url": "https://example.com/j/2", "location": "Doha"}]
+    new = merge_employer_jobs(jobs, emp, raws, "2026-10-01")
+    assert len(new) == 2
+    rec = next(r for r in jobs.values() if r["title"] == "First Officer")
+    assert rec["country_code"] == "AE" and rec["role"] == "pilots" and rec["posted_estimated"]
+    assert is_visible(rec)
+
+    merge_employer_jobs(jobs, emp, raws[:1], "2026-10-02")           # job 2 missing once
+    j2 = next(r for r in jobs.values() if r["title"] == "Ramp Agent")
+    assert j2["status"] == "active" and j2["missed_runs"] == 1
+    merge_employer_jobs(jobs, emp, raws[:1], "2026-10-03")           # missing twice -> expired
+    assert j2["status"] == "expired"
+    merge_employer_jobs(jobs, emp, raws, "2026-10-04")               # back again -> active
+    assert j2["status"] == "active" and j2["missed_runs"] == 0
+
+    merge_employer_jobs(jobs, emp, [], "2026-10-05")
+    merge_employer_jobs(jobs, emp, [], "2026-10-06")
+    assert all(r["status"] == "expired" for r in jobs.values())
+    assert purge_expired(jobs, 30, "2026-11-30") == 2 and not jobs
+
+
+def test_only_web_links_are_allowed():
+    from fetcher.common import safe_url
+    assert safe_url("https://careers.example.com/job/1") == "https://careers.example.com/job/1"
+    for bad in ("javascript:alert(1)", "JaVaScRiPt:alert(1)", "data:text/html,x", "//evil.com",
+                "https://", "https://exa mple.com", 'https://a.com/"onmouseover', None, 42):
+        assert safe_url(bad) is None, bad
+    emp = {"name": "Example Air", "slug": "example-air", "type": "airline"}
+    jobs = {}
+    merge_employer_jobs(jobs, emp, [{"source_id": "x", "title": "Pilot", "url": "javascript:alert(1)"}], "2026-10-01")
+    assert not any(is_visible(r) for r in jobs.values())

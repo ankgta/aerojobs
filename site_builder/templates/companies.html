@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% set section = 'companies' %}
+{% block title %}Aviation employers hiring now | {{ site.site_name }}{% endblock %}
+{% block description %}Airlines, airports, maintenance and aerospace companies with open jobs, and how many roles each has.{% endblock %}
+{% block main %}
+<div class="page-head"><div class="wrap">
+  <h1>Employers hiring now</h1>
+  <p class="lede">{{ companies|length }} employers with open roles. Pick one to see all of its jobs.</p>
+</div></div>
+<section class="wrap listing">
+  {% for key, label in company_types.items() %}
+    {% set group = companies|selectattr('type', 'equalto', key)|list %}
+    {% if group %}
+    <h2>{{ label }}</h2>
+    <ul class="index-grid">
+      {% for c in group %}<li><a href="{{ link('companies/' ~ c.slug) }}">{{ c.name }} <span>{{ c.count }}</span></a></li>{% endfor %}
+    </ul>
+    {% endif %}
+  {% endfor %}
+</section>
+{% endblock %}

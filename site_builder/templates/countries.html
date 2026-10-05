@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% set section = 'countries' %}
+{% block title %}Aviation jobs by country | {{ site.site_name }}{% endblock %}
+{% block description %}Find airline, airport and aerospace jobs by country and region.{% endblock %}
+{% block main %}
+<div class="page-head"><div class="wrap">
+  <h1>Jobs by country</h1>
+  <p class="lede">Open roles in {{ stats.countries }} countries, grouped by region.</p>
+</div></div>
+<section class="wrap listing">
+  {% for region, countries in regions %}
+  <h2>{{ region }}</h2>
+  <ul class="index-grid">
+    {% for c in countries %}<li><a href="{{ link('countries/' ~ c.slug) }}">{{ c.name }} <span>{{ c.count }}</span></a></li>{% endfor %}
+  </ul>
+  {% endfor %}
+</section>
+{% endblock %}

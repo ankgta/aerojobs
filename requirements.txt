@@ -1,0 +1,8 @@
+# Exact versions, so an unexpected update can't change how the site behaves.
+# GitHub's Dependabot suggests updates when new versions or security fixes come out.
+requests==2.34.2
+PyYAML==6.0.3
+Jinja2==3.1.6
+Markdown==3.10.3
+pycountry==26.2.16
+pytest==9.1.1

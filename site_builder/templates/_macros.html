@@ -1,0 +1,33 @@
+{% from "_icons.html" import icon %}
+{% macro board(jobs, link) %}
+<ol class="job-list" data-results>
+{% for j in jobs %}
+  {{ card(j, link) }}
+{% endfor %}
+</ol>
+{% endmacro %}
+
+{% macro tags(j) -%}
+<span class="tags">
+  {%- if j.is_new %}<span class="tag tag-new">New</span>{% endif -%}
+  {%- if j.closing_soon %}<span class="tag tag-closing">Closes soon</span>{% endif -%}
+  <span class="tag tag-{{ j.work_mode|lower }}">{{ j.work_mode }}</span>
+</span>
+{%- endmacro %}
+
+{% macro card(j, link) %}
+<li class="job-card">
+  <span class="avatar tone-{{ j.tone }}" aria-hidden="true">{{ j.initials }}</span>
+  <div class="job-main">
+    <a class="job-title" href="{{ link(j.path) }}">{{ j.title }}</a>
+    <div class="job-meta">
+      <span>{{ icon("building") }}{{ j.company }}</span>
+      <span>{{ icon("pin") }}{{ j.location or j.country or 'See job page' }}</span>
+    </div>
+  </div>
+  <div class="job-side">
+    {{ tags(j) }}
+    <span class="when">{{ j.posted_ago }}</span>
+  </div>
+</li>
+{% endmacro %}

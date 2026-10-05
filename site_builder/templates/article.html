@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% if kind == "guide" %}{% set section = 'guides' %}{% endif %}
+{% block title %}{{ page.title }} | {{ site.site_name }}{% endblock %}
+{% block description %}{{ page.description or site.tagline }}{% endblock %}
+{% block main %}
+<div class="page-head"><div class="wrap">
+  {% if kind == "guide" %}<p class="crumbs"><a href="{{ link('guides') }}">Guides</a></p>{% endif %}
+  <h1>{{ page.title }}</h1>
+  {% if kind == "guide" and page.date %}<p class="fine">Updated {{ human_date(page.date) }}. {{ page.minutes }} min read.</p>{% endif %}
+</div></div>
+<article class="wrap prose">
+  {{ page.html }}
+  {% if kind == "guide" %}
+  <p class="prose-cta"><a class="btn" href="{{ link('') }}#jobs">Browse open aviation jobs</a></p>
+  {% endif %}
+</article>
+{% endblock %}

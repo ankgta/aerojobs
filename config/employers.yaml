@@ -1,0 +1,87 @@
+# The employers the fetcher reads.
+#
+# Each employer needs a "source" (which hiring system it uses and its address)
+# before it can be switched on with enabled: true. Leave enabled: false until the
+# source has been checked. Never guess a source: run
+#     python -m fetcher.detect <careers page link>
+# which looks at the page and suggests the right source.
+#
+# type: airline | airport | mro | manufacturer | ground_services | other
+# country: two-letter country code of the head office (GB, US, AE, IN ...)
+#
+# Source examples (copy the shape that matches the hiring system):
+#   source: {ats: workday, url: "https://company.wd3.myworkdayjobs.com/SiteName"}
+#   source: {ats: greenhouse, board: "companyboardname"}
+#   source: {ats: lever, company: "companyname"}            # add region: eu for EU accounts
+#   source: {ats: smartrecruiters, company: "CompanyIdentifier"}
+#   source: {ats: jsonld, listing_url: "https://careers.example.com/jobs", job_link_pattern: "/job/"}
+
+employers:
+  # ---------- Airlines: Americas ----------
+  - {name: American Airlines, slug: american-airlines, type: airline, country: US, enabled: false}
+  - {name: Delta Air Lines, slug: delta, type: airline, country: US, enabled: false}
+  - {name: United Airlines, slug: united-airlines, type: airline, country: US, enabled: false}
+  - {name: Southwest Airlines, slug: southwest-airlines, type: airline, country: US, enabled: false}
+  - {name: Alaska Airlines, slug: alaska-airlines, type: airline, country: US, enabled: false}
+  - {name: JetBlue, slug: jetblue, type: airline, country: US, enabled: false}
+  - {name: Air Canada, slug: air-canada, type: airline, country: CA, enabled: false}
+  - {name: WestJet, slug: westjet, type: airline, country: CA, enabled: false}
+  - {name: LATAM Airlines, slug: latam, type: airline, country: CL, enabled: false}
+  - {name: Avianca, slug: avianca, type: airline, country: CO, enabled: false}
+  - {name: Copa Airlines, slug: copa-airlines, type: airline, country: PA, enabled: false}
+  - {name: Aeroméxico, slug: aeromexico, type: airline, country: MX, enabled: false}
+  - {name: Azul, slug: azul, type: airline, country: BR, enabled: false}
+
+  # ---------- Airlines: Europe ----------
+  - {name: British Airways, slug: british-airways, type: airline, country: GB, enabled: false}
+  - {name: Virgin Atlantic, slug: virgin-atlantic, type: airline, country: GB, enabled: false}
+  - {name: easyJet, slug: easyjet, type: airline, country: GB, enabled: false}
+  - {name: Ryanair, slug: ryanair, type: airline, country: IE, enabled: false}
+  - {name: Aer Lingus, slug: aer-lingus, type: airline, country: IE, enabled: false}
+  - {name: Lufthansa Group, slug: lufthansa-group, type: airline, country: DE, enabled: false}
+  - {name: KLM, slug: klm, type: airline, country: NL, enabled: false}
+  - {name: Turkish Airlines, slug: turkish-airlines, type: airline, country: TR, enabled: false}
+
+  # ---------- Airlines: Middle East and Africa ----------
+  - {name: Emirates, slug: emirates, type: airline, country: AE, enabled: false}
+  - {name: Etihad Airways, slug: etihad, type: airline, country: AE, enabled: false}
+  - {name: flydubai, slug: flydubai, type: airline, country: AE, enabled: false}
+  - {name: Qatar Airways, slug: qatar-airways, type: airline, country: QA, enabled: false}
+  - {name: Saudia, slug: saudia, type: airline, country: SA, enabled: false}
+  - {name: Ethiopian Airlines, slug: ethiopian-airlines, type: airline, country: ET, enabled: false}
+  - {name: Kenya Airways, slug: kenya-airways, type: airline, country: KE, enabled: false}
+  - {name: South African Airways, slug: south-african-airways, type: airline, country: ZA, enabled: false}
+
+  # ---------- Airlines: Asia-Pacific ----------
+  - {name: IndiGo, slug: indigo, type: airline, country: IN, enabled: false}
+  - {name: Air India, slug: air-india, type: airline, country: IN, enabled: false}
+  - {name: Singapore Airlines, slug: singapore-airlines, type: airline, country: SG, enabled: false}
+  - {name: Cathay Pacific, slug: cathay-pacific, type: airline, country: HK, enabled: false}
+  - {name: Qantas, slug: qantas, type: airline, country: AU, enabled: false}
+  - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, enabled: false}
+  - {name: Air New Zealand, slug: air-new-zealand, type: airline, country: NZ, enabled: false}
+
+  # ---------- Airports ----------
+  - {name: Heathrow Airport, slug: heathrow, type: airport, country: GB, enabled: false}
+  - {name: Dubai Airports, slug: dubai-airports, type: airport, country: AE, enabled: false}
+  - {name: Changi Airport Group, slug: changi-airport-group, type: airport, country: SG, enabled: false}
+  - {name: Dallas Fort Worth International Airport, slug: dfw-airport, type: airport, country: US, enabled: false}
+
+  # ---------- Maintenance (MRO) and ground services ----------
+  - {name: Lufthansa Technik, slug: lufthansa-technik, type: mro, country: DE, enabled: false}
+  - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, enabled: false}
+  - {name: AAR, slug: aar, type: mro, country: US, enabled: false}
+  - {name: dnata, slug: dnata, type: ground_services, country: AE, enabled: false}
+  - {name: Swissport, slug: swissport, type: ground_services, country: CH, enabled: false}
+  - {name: Menzies Aviation, slug: menzies-aviation, type: ground_services, country: GB, enabled: false}
+
+  # ---------- Manufacturers ----------
+  - {name: Airbus, slug: airbus, type: manufacturer, country: FR, enabled: false}
+  - {name: Boeing, slug: boeing, type: manufacturer, country: US, careers_url: "https://jobs.boeing.com", enabled: false}
+  - {name: Embraer, slug: embraer, type: manufacturer, country: BR, enabled: false}
+  - {name: Rolls-Royce, slug: rolls-royce, type: manufacturer, country: GB, enabled: false}
+  - {name: GE Aerospace, slug: ge-aerospace, type: manufacturer, country: US, enabled: false}
+  - {name: Pratt & Whitney, slug: pratt-whitney, type: manufacturer, country: US, enabled: false}
+  - {name: Safran, slug: safran, type: manufacturer, country: FR, enabled: false}
+  - {name: Bombardier, slug: bombardier, type: manufacturer, country: CA, enabled: false}
+  - {name: Collins Aerospace, slug: collins-aerospace, type: manufacturer, country: US, enabled: false}

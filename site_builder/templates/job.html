@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% from "_macros.html" import board, tags %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ job.title }} at {{ job.company }}{% if job.country %}, {{ job.country }}{% endif %} | {{ site.site_name }}{% endblock %}
+{% block description %}{{ job.summary[:155] }}{% endblock %}
+{% block body_class %}has-apply-bar{% endblock %}
+{% block head %}{% if jsonld %}<script type="application/ld+json">{{ jsonld }}</script>{% endif %}{% endblock %}
+{% block main %}
+<div class="page-head"><div class="wrap">
+  <p class="crumbs"><a href="{{ link('') }}#jobs">Jobs</a><span aria-hidden="true">/</span><a href="{{ link('roles/' ~ job.role) }}">{{ role_short[job.role] }}</a><span aria-hidden="true">/</span><a href="{{ link('companies/' ~ job.company_slug) }}">{{ job.company }}</a></p>
+  <div class="job-hero">
+    <span class="avatar tone-{{ job.tone }}" aria-hidden="true">{{ job.initials }}</span>
+    <div>
+      <h1>{{ job.title }}</h1>
+      <p class="job-company"><a href="{{ link('companies/' ~ job.company_slug) }}">{{ job.company }}</a></p>
+    </div>
+  </div>
+</div></div>
+
+<article class="wrap job-page">
+  <div class="job-layout">
+    <div>
+      <dl class="facts">
+        <div><dt>Location</dt><dd>{{ job.location or 'See the employer page' }}{% if job.country and job.country not in (job.location or '') %}, {{ job.country }}{% endif %}</dd></div>
+        <div><dt>Work mode</dt><dd>{{ job.work_mode }}</dd></div>
+        <div><dt>{% if job.posted_estimated %}First seen{% else %}Posted{% endif %}</dt><dd>{{ human_date(job.posted_date) }}</dd></div>
+        <div><dt>Closes</dt><dd>{{ human_date(job.closing_date) if job.closing_date else 'Not stated' }}</dd></div>
+        {% if job.employment_type %}<div><dt>Contract</dt><dd>{{ job.employment_type }}</dd></div>{% endif %}
+        <div><dt>Role</dt><dd>{{ job.role_label }}</dd></div>
+      </dl>
+      <p class="job-summary">{{ job.summary }}</p>
+    </div>
+    <aside class="apply-card">
+      {{ tags(job) }}
+      <a class="btn" href="{{ job.url }}" target="_blank" rel="noopener nofollow">Apply on {{ job.company }}'s site {{ icon("external") }}</a>
+      <p class="fine">Opens the employer's careers page in a new tab. Check the details there before applying; employers sometimes close roles early.</p>
+    </aside>
+  </div>
+
+  {% if similar %}
+  <section class="similar">
+    <h2>More {{ role_short[job.role]|lower }} jobs</h2>
+    {{ board(similar, link) }}
+  </section>
+  {% endif %}
+</article>
+<div class="apply-bar">
+  <a class="btn" href="{{ job.url }}" target="_blank" rel="noopener nofollow">Apply on employer's site {{ icon("external") }}</a>
+</div>
+{% endblock %}

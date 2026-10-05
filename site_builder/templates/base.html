@@ -1,0 +1,101 @@
+{% from "_icons.html" import icon, brand_mark %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% block title %}{{ site.site_name }}{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ site.tagline }}{% endblock %}">
+<link rel="canonical" href="{{ canonical }}">
+<meta property="og:title" content="{{ self.title() }}">
+<meta property="og:description" content="{{ self.description() }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ canonical }}">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-title" content="{{ site.site_name }}">
+<link rel="icon" href="{{ asset('static/favicon.svg') }}" type="image/svg+xml">
+<link rel="icon" href="{{ asset('static/icon-192.png') }}" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="{{ asset('static/apple-touch-icon.png') }}">
+<link rel="manifest" href="{{ asset('site.webmanifest') }}">
+{% if site.search_console_verification %}<meta name="google-site-verification" content="{{ site.search_console_verification }}">{% endif %}
+{% if preview %}<meta name="robots" content="noindex">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('static/style.css') }}">
+{% if site.google_analytics_id or site.adsense_client %}
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+  analytics_storage: 'denied', region: {{ ["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","IS","LI","NO","GB","CH"]|tojson }}});
+gtag('consent', 'default', {ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'});
+</script>
+{% endif %}
+{% if site.google_analytics_id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}"></script>
+<script>gtag('js', new Date()); gtag('config', '{{ site.google_analytics_id }}');</script>
+{% endif %}
+{% if site.adsense_client %}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client }}" crossorigin="anonymous"></script>
+{% endif %}
+{% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+<a class="skip" href="#main">Skip to content</a>
+{% if preview %}
+<div class="preview-note" role="note">Preview with sample data. The employers and jobs shown here are made up.</div>
+{% endif %}
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="{{ link('') }}">{{ brand_mark() }}<span>{{ site.site_name }}</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="top-nav" data-menu>{{ icon("menu") }}<span class="visually-hidden">Menu</span></button>
+    <nav class="top-nav" id="top-nav" aria-label="Site">
+      <a href="{{ link('') }}#jobs">Jobs</a>
+      <a href="{{ link('companies') }}"{% if section == 'companies' %} aria-current="page"{% endif %}>Employers</a>
+      <a href="{{ link('countries') }}"{% if section == 'countries' %} aria-current="page"{% endif %}>Countries</a>
+      <a href="{{ link('guides') }}"{% if section == 'guides' %} aria-current="page"{% endif %}>Guides</a>
+    </nav>
+  </div>
+</header>
+{% block subnav %}
+<nav class="subnav" aria-label="Job roles">
+  <div class="wrap chips">
+    {% for key, label in role_short.items() %}<a class="chip" href="{{ link('roles/' ~ key) }}">{{ label }}</a>{% endfor %}
+  </div>
+</nav>
+{% endblock %}
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="brand foot-brand">{{ brand_mark() }}<span>{{ site.site_name }}</span></p>
+        <p>Jobs are collected from employers' own careers sites{% if updated %} and were last updated {{ updated }}{% endif %}. Every listing links to the employer, where you apply. We are not the employer and never charge job seekers.</p>
+      </div>
+      <div>
+        <h3>Find jobs</h3>
+        <ul class="foot-links">
+          {% for key, label in role_short.items() %}{% if loop.index <= 5 %}<li><a href="{{ link('roles/' ~ key) }}">{{ label }}</a></li>{% endif %}{% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h3>About</h3>
+        <ul class="foot-links">
+          <li><a href="{{ link('about') }}">About us</a></li>
+          <li><a href="{{ link('contact') }}">Contact</a></li>
+          <li><a href="{{ link('privacy') }}">Privacy policy</a></li>
+          <li><a href="{{ link('terms') }}">Terms of use</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© {{ year }} {{ site.site_name }}</p>
+  </div>
+</footer>
+<script src="{{ asset('static/site.js') }}" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

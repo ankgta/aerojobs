@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% set section = 'guides' %}
+{% block title %}Aviation career guides | {{ site.site_name }}{% endblock %}
+{% block description %}Practical guides for pilots, cabin crew, engineers and everyone building a career in aviation.{% endblock %}
+{% block main %}
+<div class="page-head"><div class="wrap">
+  <h1>Career guides</h1>
+  <p class="lede">Practical advice for getting hired in aviation.</p>
+</div></div>
+<section class="wrap listing">
+  <ul class="guide-cards">
+    {% for g in guides %}
+    <li>
+      <a href="{{ link('guides/' ~ g.slug) }}">{{ g.title }}</a>
+      <p>{{ g.description }}</p>
+      <span class="fine">{{ g.minutes }} min read</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

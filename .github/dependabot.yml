@@ -1,0 +1,11 @@
+# Weekly check for updates and security fixes; GitHub opens a pull request to review.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
