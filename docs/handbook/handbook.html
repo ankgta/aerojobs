@@ -1,0 +1,274 @@
+<title>AeroJobs Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Sora:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout: a single readable column with a sky-blue masthead, like the AeroJobs site itself; sections are
+   "gates" in the order a returning owner needs them: status, decisions, how it works, where things live, how to. */
+:root {
+  --bg: #F4F8FC; --surface: #FFFFFF; --ink: #0B1F3A; --ink-2: #44566E; --ink-3: #6B7C93; --line: #DFE8F1;
+  --sky: #C7E8FC; --sky-deep: #8FD0F6; --primary: #0A66E8; --primary-soft: #E7F0FE; --sun: #FFC53D;
+  --good-bg: #E2F6EC; --good: #11724F; --warn-bg: #FFF1E0; --warn: #A34B00; --stop-bg: #FDE7EA; --stop: #A3183F;
+  --display: "Sora", "Segoe UI", system-ui, sans-serif; --text: "Figtree", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0A1626; --surface: #112238; --ink: #EAF2FB; --ink-2: #B5C4D6; --ink-3: #8EA0B7; --line: #233A57;
+  --sky: #133357; --sky-deep: #1B4A7A; --primary: #5EA2FF; --primary-soft: #16345A; --sun: #FFC53D;
+  --good-bg: #0F3A2B; --good: #7FE0B4; --warn-bg: #3D2A12; --warn: #FFBF7A; --stop-bg: #3F1520; --stop: #FF9CB2;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0A1626; --surface: #112238; --ink: #EAF2FB; --ink-2: #B5C4D6; --ink-3: #8EA0B7; --line: #233A57;
+  --sky: #133357; --sky-deep: #1B4A7A; --primary: #5EA2FF; --primary-soft: #16345A; --sun: #FFC53D;
+  --good-bg: #0F3A2B; --good: #7FE0B4; --warn-bg: #3D2A12; --warn: #FFBF7A; --stop-bg: #3F1520; --stop: #FF9CB2;
+  color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
+a { color: var(--primary); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
+h1, h2, h3 { font-family: var(--display); letter-spacing: -.02em; line-height: 1.15; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.3rem, 2.4vw, 1.55rem); margin-bottom: 6px; }
+h3 { font-size: 1.02rem; margin-bottom: 4px; }
+p { margin: 0 0 10px; }
+code, .mono { font-family: var(--mono); font-size: .86em; background: var(--primary-soft); padding: 1px 6px; border-radius: 5px; }
+.wrap { max-width: 980px; margin-inline: auto; padding-inline: 16px; }
+
+.mast { background: linear-gradient(180deg, var(--sky-deep), var(--sky) 70%, var(--bg)); }
+.mast .wrap { padding-block: 36px 28px; }
+.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.mast h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin: 6px 0 10px; }
+.mast .lede { font-size: 1.1rem; color: var(--ink-2); max-width: 60ch; }
+.live { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; padding: 6px 12px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: .95rem; text-decoration: none; color: var(--ink); }
+.beacon { width: 9px; height: 9px; border-radius: 50%; background: #FF3B3B; animation: blink 2s steps(1, end) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .beacon { animation: none; } }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.stat b { display: block; font: 700 1.6rem/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.stat span { color: var(--ink-3); font-size: .9rem; }
+
+main .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; padding-block: 26px 60px; }
+main .wrap > * { min-width: 0; }
+section > .sub { color: var(--ink-2); margin-bottom: 14px; max-width: 70ch; }
+
+.decisions { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.decisions li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start;
+  background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--sun); border-radius: 0 10px 10px 0; padding: 12px 14px; }
+.decisions .n { font: 700 1rem var(--display); color: var(--warn); }
+.decisions p { margin: 2px 0 0; color: var(--ink-2); font-size: .95rem; }
+
+.flow { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; overflow-x: auto; }
+.flow svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.flow .box { fill: var(--bg); stroke: var(--line); }
+.flow .box.hot { fill: var(--primary-soft); stroke: var(--primary); }
+.flow .t { fill: var(--ink); font: 600 13px var(--text); }
+.flow .s { fill: var(--ink-3); font: 400 11.5px var(--text); }
+.flow .edge { stroke: var(--ink-3); stroke-width: 1.4; fill: none; }
+.flow .alert { stroke: var(--warn); stroke-dasharray: 5 4; }
+.flow .lab { fill: var(--warn); font: 600 11.5px var(--text); }
+.flow-note { color: var(--ink-3); font-size: .9rem; margin-top: 8px; }
+
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; min-width: 0; }
+.card p { color: var(--ink-2); font-size: .95rem; }
+.kv { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 14px; font-size: .95rem; }
+.kv dt { color: var(--ink-3); }
+.kv dd { margin: 0; overflow-wrap: anywhere; }
+
+.say { display: flex; align-items: center; gap: 8px; margin-top: 8px; background: var(--bg); border: 1px solid var(--line);
+  border-radius: 10px; padding: 8px 8px 8px 12px; }
+.say q { flex: 1; min-width: 0; font-style: italic; color: var(--ink); quotes: "“" "”"; }
+.copy { flex: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font: 600 .82rem var(--text);
+  border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+.copy:hover { color: var(--primary); border-color: var(--primary); }
+
+.pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.pill { font-size: .85rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+.on { background: var(--good-bg); color: var(--good); }
+.blocked { background: var(--stop-bg); color: var(--stop); }
+.reader { background: var(--warn-bg); color: var(--warn); }
+.unknown { background: var(--primary-soft); color: var(--primary); }
+
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; color: var(--ink-3); font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; }
+.table-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; }
+
+.steps { counter-reset: s; list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: start; }
+.steps li::before { content: counter(s); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--primary); color: #fff; font: 700 .85rem var(--display); }
+.foot { color: var(--ink-3); font-size: .88rem; border-top: 1px solid var(--line); padding-top: 14px; }
+
+@media (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid2 { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="eyebrow">Project handbook · 5 October 2026</div>
+    <h1>AeroJobs</h1>
+    <p class="lede">A global job board for aviation. Twice a day it reads employers' careers systems and publishes every open job on one site, with filters for country, role, work mode and date.</p>
+    <a class="live" href="https://aerojobs.work" target="_blank" rel="noopener"><span class="beacon" aria-hidden="true"></span>Live at aerojobs.work</a>
+    <div class="stats" aria-label="Key numbers">
+      <div class="stat"><b>3,598</b><span>live jobs</span></div>
+      <div class="stat"><b>10</b><span>employers on</span></div>
+      <div class="stat"><b>42</b><span>countries</span></div>
+      <div class="stat"><b>116/117</b><span>browser tests pass</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<section id="decisions">
+  <h2>Waiting on you</h2>
+  <p class="sub">Nothing else is blocked. Answer these in any order; Claude does the rest.</p>
+  <ol class="decisions">
+    <li><span class="n">1</span><div><h3>Honeywell and RTX post many non-aviation jobs</h3><p>Keep them, drop Honeywell, or have Claude filter both down to aerospace jobs only.</p></div></li>
+    <li><span class="n">2</span><div><h3>AI sorting for unclear job titles</h3><p>A third of jobs land in "Corporate". An Anthropic API key with a $5 monthly limit, saved as a GitHub secret, would sort most of them properly.</p></div></li>
+    <li><span class="n">3</span><div><h3>Cloudflare Web Analytics</h3><p>Keep it, or switch it off if you'll use Google Analytics. Switching off clears a harmless Safari warning.</p></div></li>
+    <li><span class="n">4</span><div><h3>More airlines</h3><p>Build readers for SAP SuccessFactors and Oracle Taleo to add JetBlue, Ryanair, Qatar Airways and easyJet. Today there are only 7 pilot jobs and no cabin crew jobs.</p></div></li>
+  </ol>
+</section>
+
+<section id="how">
+  <h2>How it works</h2>
+  <p class="sub">Everything runs in GitHub at 05:23 and 17:23 UTC. Nothing runs on your computer.</p>
+  <div class="flow">
+    <svg viewBox="0 0 900 230" role="img" aria-label="Employer careers systems feed a job fetcher on GitHub, which saves job data, builds the website and publishes it to Cloudflare for visitors; problems open an alert that emails you.">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--ink-3)"/></marker>
+      <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--warn)"/></marker></defs>
+      <rect class="box" x="10" y="40" width="150" height="70" rx="10"/>
+      <text class="t" x="85" y="70" text-anchor="middle">Employer sites</text>
+      <text class="s" x="85" y="90" text-anchor="middle">Workday, Oracle, Greenhouse</text>
+      <rect class="box hot" x="200" y="40" width="150" height="70" rx="10"/>
+      <text class="t" x="275" y="70" text-anchor="middle">Job fetcher</text>
+      <text class="s" x="275" y="90" text-anchor="middle">GitHub, twice a day</text>
+      <rect class="box" x="390" y="40" width="130" height="70" rx="10"/>
+      <text class="t" x="455" y="70" text-anchor="middle">Job data</text>
+      <text class="s" x="455" y="90" text-anchor="middle">data/jobs.json</text>
+      <rect class="box hot" x="560" y="40" width="140" height="70" rx="10"/>
+      <text class="t" x="630" y="70" text-anchor="middle">Site builder</text>
+      <text class="s" x="630" y="90" text-anchor="middle">pages, filters, sitemap</text>
+      <rect class="box" x="740" y="40" width="150" height="70" rx="10"/>
+      <text class="t" x="815" y="70" text-anchor="middle">aerojobs.work</text>
+      <text class="s" x="815" y="90" text-anchor="middle">Cloudflare, free</text>
+      <path class="edge" d="M160 75H198" marker-end="url(#ar)"/>
+      <path class="edge" d="M350 75H388" marker-end="url(#ar)"/>
+      <path class="edge" d="M520 75H558" marker-end="url(#ar)"/>
+      <path class="edge" d="M700 75H738" marker-end="url(#ar)"/>
+      <rect class="box" x="200" y="160" width="150" height="56" rx="10"/>
+      <text class="t" x="275" y="185" text-anchor="middle">Alert email to you</text>
+      <text class="s" x="275" y="203" text-anchor="middle">if an employer breaks</text>
+      <path class="edge alert" d="M275 110V158" marker-end="url(#arw)"/>
+      <text class="lab" x="285" y="140">problem found</text>
+      <rect class="box" x="740" y="160" width="150" height="56" rx="10"/>
+      <text class="t" x="815" y="185" text-anchor="middle">Visitors apply</text>
+      <text class="s" x="815" y="203" text-anchor="middle">on the employer's site</text>
+      <path class="edge" d="M815 110V158" marker-end="url(#ar)"/>
+    </svg>
+  </div>
+  <p class="flow-note">The fetcher obeys every site's robots.txt, keeps facts only (never full job descriptions), and hides jobs that disappear two runs in a row.</p>
+</section>
+
+<section id="where">
+  <h2>Where things live</h2>
+  <p class="sub">Only the Claude side belongs to a Claude account. Everything else stays put if you move accounts.</p>
+  <div class="grid2">
+    <div class="card"><h3>Website and domain</h3><dl class="kv">
+      <dt>Address</dt><dd>aerojobs.work, www.aerojobs.work</dd>
+      <dt>Host</dt><dd>Cloudflare Pages, project <span class="mono">aerojobs</span></dd>
+      <dt>Contact</dt><dd>hello@aerojobs.work</dd></dl></div>
+    <div class="card"><h3>Code, data, docs, skills</h3><dl class="kv">
+      <dt>GitHub</dt><dd>ankgta/aerojobs (private)</dd>
+      <dt>Start here</dt><dd><span class="mono">docs/STATUS.md</span></dd>
+      <dt>Claude's rules</dt><dd><span class="mono">CLAUDE.md</span></dd></dl></div>
+    <div class="card"><h3>Secrets</h3><p>Only in GitHub → Settings → Secrets: <span class="mono">CLOUDFLARE_API_TOKEN</span>, <span class="mono">CLOUDFLARE_ACCOUNT_ID</span>. Never in a chat.</p></div>
+    <div class="card"><h3>Claude</h3><p>Project instructions, knowledge files and four skills. These are the parts to recreate in a new account; the export package has them ready.</p></div>
+  </div>
+</section>
+
+<section id="ask">
+  <h2>What to ask Claude</h2>
+  <p class="sub">Four skills hold the step-by-step procedures, so these short requests are enough.</p>
+  <div class="grid2">
+    <div class="card"><h3>Running the site</h3><p>Health checks, failed runs, alert emails, shipping changes, software updates.</p>
+      <div class="say"><q>Check AeroJobs is healthy.</q><button class="copy" type="button">Copy</button></div></div>
+    <div class="card"><h3>Adding employers</h3><p>Find, check and switch on employers; build readers for new hiring systems.</p>
+      <div class="say"><q>Build the SuccessFactors reader and add JetBlue and Ryanair.</q><button class="copy" type="button">Copy</button></div></div>
+    <div class="card"><h3>Testing</h3><p>Full browser, phone and security tests, plus the report spreadsheet.</p>
+      <div class="say"><q>Run the full tests and give me the report.</q><button class="copy" type="button">Copy</button></div></div>
+    <div class="card"><h3>Guides</h3><p>Original career articles for AdSense and Google traffic (3 of about 15 done).</p>
+      <div class="say"><q>Write the next guide: cabin crew requirements for Gulf airlines.</q><button class="copy" type="button">Copy</button></div></div>
+  </div>
+</section>
+
+<section id="employers">
+  <h2>Employer coverage</h2>
+  <p class="sub">Checked 5 October 2026. Blocked sites forbid automated reading in their own rules; we respect that.</p>
+  <div class="card">
+    <h3>Switched on (10)</h3>
+    <div class="pill-row"><span class="pill on">Airbus</span><span class="pill on">Boeing</span><span class="pill on">RTX</span><span class="pill on">GE Aerospace</span><span class="pill on">Rolls-Royce</span><span class="pill on">Honeywell</span><span class="pill on">Virgin Atlantic</span><span class="pill on">Heathrow</span><span class="pill on">Archer Aviation</span><span class="pill on">Skyryse</span></div>
+    <h3 style="margin-top:14px">Need a new reader</h3>
+    <div class="pill-row"><span class="pill reader">JetBlue</span><span class="pill reader">Ryanair</span><span class="pill reader">Qatar Airways</span><span class="pill reader">easyJet</span></div>
+    <h3 style="margin-top:14px">System not found yet</h3>
+    <div class="pill-row"><span class="pill unknown">United</span><span class="pill unknown">Southwest</span><span class="pill unknown">Air Canada</span><span class="pill unknown">Emirates</span><span class="pill unknown">British Airways</span><span class="pill unknown">Lufthansa</span><span class="pill unknown">Cathay Pacific</span><span class="pill unknown">Air New Zealand</span></div>
+    <h3 style="margin-top:14px">Blocked by their own rules</h3>
+    <div class="pill-row"><span class="pill blocked">American</span><span class="pill blocked">Delta</span><span class="pill blocked">KLM</span><span class="pill blocked">Qantas</span><span class="pill blocked">IndiGo</span><span class="pill blocked">flydubai</span><span class="pill blocked">Etihad</span><span class="pill blocked">Wizz Air</span><span class="pill blocked">Alaska</span><span class="pill blocked">LATAM</span><span class="pill blocked">Ethiopian</span><span class="pill blocked">Swissport</span><span class="pill blocked">Menzies</span><span class="pill blocked">dnata</span></div>
+  </div>
+</section>
+
+<section id="docs">
+  <h2>The project's documents</h2>
+  <p class="sub">All in the GitHub repository under <span class="mono">docs/</span>, kept up to date by Claude after each piece of work.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Document</th><th>Open it when</th></tr></thead>
+    <tbody>
+      <tr><td>STATUS</td><td>You want to know where things stand and what's next</td></tr>
+      <tr><td>PROJECT</td><td>You need the big picture, accounts and limits</td></tr>
+      <tr><td>RUNBOOK</td><td>You need to do something yourself in GitHub or Cloudflare</td></tr>
+      <tr><td>DECISIONS</td><td>You wonder why something is the way it is</td></tr>
+      <tr><td>HISTORY · ROADMAP</td><td>What was done, and what comes next</td></tr>
+      <tr><td>Test report (xlsx)</td><td>You want every test case, result and defect</td></tr>
+      <tr><td>MOVING-TO-ANOTHER-CLAUDE-ACCOUNT</td><td>You set the project up in a different Claude account</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="next">
+  <h2>Next steps</h2>
+  <ol class="steps">
+    <li><div>Answer the four decisions above.</div></li>
+    <li><div>Grow airline coverage: new readers, then the .aero directory tool.</div></li>
+    <li><div>Write about 12 more guides; you edit each in your own voice.</div></li>
+    <li><div>Connect Google Search Console and Analytics; submit the sitemap.</div></li>
+    <li><div>Before 15,000 jobs, make job pages on demand (Cloudflare's 20,000-file limit).</div></li>
+    <li><div>Apply for Google AdSense.</div></li>
+  </ol>
+</section>
+
+<p class="foot">Running cost today: the domain only (about $10–15 a year). GitHub's free plan gives a private repository 2,000 Actions minutes a month; Claude watches usage.</p>
+</div>
+</main>
+
+<script>
+document.querySelectorAll(".copy").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var text = btn.previousElementSibling.textContent;
+    var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1500); };
+    try {
+      navigator.clipboard.writeText(text).then(done, function () { selectText(btn.previousElementSibling); });
+    } catch (e) { selectText(btn.previousElementSibling); }
+  });
+});
+function selectText(el) {
+  var r = document.createRange(); r.selectNodeContents(el);
+  var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+}
+</script>

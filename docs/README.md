@@ -13,6 +13,7 @@ Start with **STATUS.md**.
 | [MVP-PLAN.md](MVP-PLAN.md) | The original plan from 4 Oct 2026 (historical) |
 | [MOVING-TO-ANOTHER-CLAUDE-ACCOUNT.md](MOVING-TO-ANOTHER-CLAUDE-ACCOUNT.md) | Setting the project up in a different Claude account |
 | [project-instructions.txt](project-instructions.txt) | Setting up a Claude Project: paste this into the project's instructions |
+| [handbook/handbook.html](handbook/handbook.html) | You want a one-page visual overview (open it in a browser) |
 | [reports/AeroJobs-Test-Report.xlsx](reports/AeroJobs-Test-Report.xlsx) | Test cases, results, security checks and defects from 5 Oct 2026 |
 
 Also: `../CLAUDE.md` (rules Claude follows in this repository), `../README.md` (technical overview),
