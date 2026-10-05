@@ -208,14 +208,24 @@ def main():
         check("SEC-21", "Injection", "SQL injection", "' OR 1=1 -- in the search", "No error, no data leak", sql, "High")
 
         def framing():
+            seen = {}
+            def on_resp(r):
+                if r.url.rstrip("/") == base and r.request.resource_type == "document":
+                    seen.update({"status": r.status, "xfo": r.headers.get("x-frame-options"),
+                                 "csp": "frame-ancestors" in (r.headers.get("content-security-policy") or "")})
+            pg.on("response", on_resp)
+            pg.goto("about:blank")
             pg.set_content(f'<iframe id=f src="{base}/" width=400 height=300></iframe>')
-            pg.wait_for_timeout(3000)
-            fr = pg.frame_locator("#f")
-            try:
-                loaded = fr.locator("h1").count() > 0
-            except Exception:
-                loaded = False
-            return not loaded, "another site cannot show AeroJobs inside a frame" if not loaded else "PAGE LOADED INSIDE A FOREIGN FRAME"
+            pg.wait_for_timeout(4000)
+            frames = [f for f in pg.frames if f != pg.main_frame]
+            loaded = False
+            for f in frames:
+                try:
+                    loaded = loaded or "Every aviation job" in f.evaluate("document.body ? document.body.innerText : ''")
+                except Exception:
+                    pass
+            info = f"frame url {frames[0].url if frames else '-'}; headers seen {seen}"
+            return not loaded, ("another site cannot show AeroJobs inside a frame; " if not loaded else "PAGE LOADED INSIDE A FOREIGN FRAME; ") + info
         check("SEC-22", "Clickjacking", "Site cannot be framed by other sites", "Embed the site in an iframe on another page",
               "Browser refuses to show it", framing, "Medium")
         b.close()
