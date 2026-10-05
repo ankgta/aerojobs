@@ -1,0 +1,44 @@
+{
+ "results": [
+  {
+   "id": "SEC-24",
+   "area": "Cross-site scripting",
+   "title": "Unsafe Apply link from an employer site is dropped",
+   "attack": "Job whose Apply link is javascript:alert()",
+   "expected": "Job not published",
+   "status": "Pass",
+   "actual": "2 jobs received, 1 published; the javascript: one was rejected",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-25",
+   "area": "Cross-site scripting",
+   "title": "Job data with HTML/script is escaped in pages",
+   "attack": "Script tags in job title, employer name, location and link",
+   "expected": "Shown as text; Google data cannot break out",
+   "status": "Pass",
+   "actual": "no raw <script> in the page; structured data stays valid JSON",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-26",
+   "area": "Cross-site scripting",
+   "title": "Stored XSS through job data in the browser",
+   "attack": "Open home, job and employer pages and search results built from hostile data",
+   "expected": "No script runs",
+   "status": "Pass",
+   "actual": "alerts fired: 0; title shown as text: 'Pilot <script>alert(\"t\")</script><img src=x onerror=alert(\"t'",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-27",
+   "area": "Secrets",
+   "title": "No secrets in the code history",
+   "attack": "Scan every commit for keys and tokens",
+   "expected": "None found; keys live only in GitHub Secrets",
+   "status": "Pass",
+   "actual": "no keys or tokens found in any commit",
+   "severity": "-"
+  }
+ ]
+}

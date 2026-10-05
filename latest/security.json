@@ -1,0 +1,235 @@
+{
+ "base": "https://aerojobs.work",
+ "results": [
+  {
+   "id": "SEC-01",
+   "area": "Transport",
+   "title": "Plain http redirects to https",
+   "attack": "Request http://",
+   "expected": "Redirect to https",
+   "status": "Pass",
+   "actual": "HTTP 301 -> https://aerojobs.work/",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-02",
+   "area": "Transport",
+   "title": "HSTS header",
+   "attack": "Read response headers",
+   "expected": "max-age of at least 6 months",
+   "status": "Pass",
+   "actual": "max-age=31536000; includeSubDomains",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-03",
+   "area": "Transport",
+   "title": "Old TLS versions refused",
+   "attack": "Connect with TLS 1.0 and 1.1",
+   "expected": "Both refused",
+   "status": "Pass",
+   "actual": "TLS 1.0 refused, TLS 1.1 refused",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-04",
+   "area": "Transport",
+   "title": "Valid TLS certificate",
+   "attack": "Verify the certificate chain",
+   "expected": "Trusted and in date",
+   "status": "Pass",
+   "actual": "valid, issued to aerojobs.work, expires Jan  3 09:21:33 2027 GMT, TLSv1.3",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-05",
+   "area": "Security headers",
+   "title": "content-security-policy header",
+   "attack": "Read response headers",
+   "expected": "Contains 'frame-ancestors'",
+   "status": "Pass",
+   "actual": "default-src 'self' https: data:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-06",
+   "area": "Security headers",
+   "title": "x-frame-options header",
+   "attack": "Read response headers",
+   "expected": "Contains 'SAMEORIGIN'",
+   "status": "Pass",
+   "actual": "SAMEORIGIN",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-07",
+   "area": "Security headers",
+   "title": "x-content-type-options header",
+   "attack": "Read response headers",
+   "expected": "Contains 'nosniff'",
+   "status": "Pass",
+   "actual": "nosniff",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-08",
+   "area": "Security headers",
+   "title": "referrer-policy header",
+   "attack": "Read response headers",
+   "expected": "Contains 'strict-origin'",
+   "status": "Pass",
+   "actual": "strict-origin-when-cross-origin",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-09",
+   "area": "Security headers",
+   "title": "permissions-policy header",
+   "attack": "Read response headers",
+   "expected": "Contains 'camera=()'",
+   "status": "Pass",
+   "actual": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-10",
+   "area": "Information disclosure",
+   "title": "No software version leaks in headers",
+   "attack": "Read response headers",
+   "expected": "No X-Powered-By and similar",
+   "status": "Pass",
+   "actual": "Server: cloudflare; no technology leaks",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-11",
+   "area": "Session",
+   "title": "No cookies or logins to steal",
+   "attack": "Check Set-Cookie",
+   "expected": "None set",
+   "status": "Pass",
+   "actual": "No cookies set by the site itself",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-12",
+   "area": "Exposed files",
+   "title": "Private files not downloadable",
+   "attack": "Request .git, .env, config, code and raw data files",
+   "expected": "All return the 404 page",
+   "status": "Pass",
+   "actual": "15 private paths tried; exposed: none",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-13",
+   "area": "Exposed files",
+   "title": "No directory listings",
+   "attack": "Request folder addresses",
+   "expected": "No file lists shown",
+   "status": "Pass",
+   "actual": "directory listings: none",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-14",
+   "area": "Injection",
+   "title": "Path traversal",
+   "attack": "Encoded ../ sequences",
+   "expected": "No system or config files returned",
+   "status": "Pass",
+   "actual": "path traversal attempts all blocked",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-15",
+   "area": "HTTP methods",
+   "title": "Write methods do nothing",
+   "attack": "Send POST, PUT, DELETE, PATCH",
+   "expected": "Rejected or ignored; site unchanged",
+   "status": "Pass",
+   "actual": "POST 405, PUT 405, DELETE 405, PATCH 405; site unchanged afterwards",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-16",
+   "area": "Robustness",
+   "title": "Very long query string",
+   "attack": "6,000-character search parameter",
+   "expected": "No server error",
+   "status": "Pass",
+   "actual": "HTTP 200",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-17",
+   "area": "Injection",
+   "title": "Open redirect",
+   "attack": "Redirect-style parameters to an outside site",
+   "expected": "Never redirected",
+   "status": "Pass",
+   "actual": "no redirects to outside sites",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-18",
+   "area": "Transport",
+   "title": "No mixed content",
+   "attack": "Scan home page for http:// resources",
+   "expected": "All resources https",
+   "status": "Pass",
+   "actual": "insecure resources: none",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-19",
+   "area": "Cross-site scripting",
+   "title": "Reflected XSS through URL parameters",
+   "attack": "Script and HTML payloads in q, country, role, mode, sort, company",
+   "expected": "No script runs; text shown as text",
+   "status": "Pass",
+   "actual": "6 payloads in 6 URL parameters; alerts fired: 0; page still works: True",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-20",
+   "area": "Cross-site scripting",
+   "title": "XSS typed into the search box",
+   "attack": "Type the payloads and press Enter",
+   "expected": "No script runs",
+   "status": "Pass",
+   "actual": "alerts fired: 0; the box keeps the text as typed ('\" ; DROP TABLE jobs; --')",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-21",
+   "area": "Injection",
+   "title": "SQL injection",
+   "attack": "' OR 1=1 -- in the search",
+   "expected": "No error, no data leak",
+   "status": "Pass",
+   "actual": "no database to inject into; page shows '0 of 3,584 jobs'",
+   "severity": "-"
+  },
+  {
+   "id": "SEC-22",
+   "area": "Clickjacking",
+   "title": "Site cannot be framed by other sites",
+   "attack": "Embed the site in an iframe on another page",
+   "expected": "Browser refuses to show it",
+   "status": "Fail",
+   "actual": "PAGE LOADED INSIDE A FOREIGN FRAME",
+   "severity": "Medium"
+  },
+  {
+   "id": "SEC-23",
+   "area": "Denial of service",
+   "title": "Flood / DDoS resistance",
+   "attack": "Not attempted (would attack Cloudflare's network)",
+   "expected": "Handled by Cloudflare's free DDoS protection",
+   "status": "Not tested",
+   "actual": "Not tested on purpose; static files on Cloudflare's network",
+   "severity": "-"
+  }
+ ]
+}
