@@ -1,0 +1,731 @@
+{
+ "run": "2026-10-05T09:39:30+00:00",
+ "results": [
+  {
+   "name": "Airbus",
+   "slug": "airbus",
+   "source": {
+    "ats": "workday",
+    "url": "https://ag.wd3.myworkdayjobs.com/Airbus"
+   },
+   "ok": true,
+   "jobs_found": 400,
+   "sample": [
+    {
+     "title": "Digital Operations Solutions AD Business Analyst (Temp Agency)",
+     "location": "Getafe Area",
+     "url": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Getafe-Area/Digital-Operations-Solutions-AD-Business-Analyst--Temp-Agency-_JR10447695",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Qualitätsprüfer Rissprüfung PT/MT-QNDT (m/w/d)",
+     "location": "Donauwörth",
+     "url": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Donauwrth/Qualittsprfer-Rissprfung-PT-MT-QNDT--m-w-d-_JR10441918-1",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Testia SAS –  Logisticien(ne) à temps partiel - (H/F) - CDD – Toulouse",
+     "location": "Toulouse Area",
+     "url": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Toulouse-Area/Testia-SAS----Logisticien-ne---temps-partiel----H-F----CDD---Toulouse_JR10447977",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "STAGE 2027 -  Digitalisation  d'atelier et amélioration continue (ALL GENDER)",
+     "location": "Méaulte Area",
+     "url": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Maulte-Area/STAGE-2027----Digitalisation--d-atelier-et-amlioration-continue--ALL-GENDER-_JR10444561",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Occupational Hygienist",
+     "location": "Belfast",
+     "url": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Belfast/Occupational-Hygienist_JR10438291",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Stage 2027-Stage en Navigabilité (Structure et Installation Systèmes) (h/f)",
+     "location": "Toulouse Area",
+     "url": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Toulouse-Area/Stage-2027-Stage-en-Navigabilit--Structure-et-Installation-Systmes---h-f-_JR10437605",
+     "posted": "2026-10-05"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "ES",
+    "posted_date": "2026-10-05",
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": "Full time",
+    "location": "Getafe Area"
+   }
+  },
+  {
+   "name": "Boeing",
+   "slug": "boeing",
+   "source": {
+    "ats": "workday",
+    "url": "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS"
+   },
+   "ok": true,
+   "jobs_found": 400,
+   "sample": [
+    {
+     "title": "Senior MRO Planning Specialist​",
+     "location": "IND - INS Rajali, India",
+     "url": "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS/job/IND---INS-Rajali-India/Senior-MRO-Planning-Specialist-_JR2026515479-1",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Electrical Engineer for Seat Integration (Experienced or Senior level / CVE) (M/F/D)",
+     "location": "DEU - Hamburg, Germany",
+     "url": "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS/job/DEU---Hamburg-Germany/Electrical-Engineer-for-Seat-Integration--Experienced-or-Senior-level---CVE---M-F-D--_JR2026514321-1",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Senior Project Management Specialist – Spacecraft Products",
+     "location": "USA - El Segundo, CA",
+     "url": "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS/job/USA---El-Segundo-CA/Senior-Project-Management-Specialist---Spacecraft-Products_JR2026516037-1",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "ASIC Physical Design Engineer — Synthesis and Timing – (Associate or Experienced)",
+     "location": "USA - El Segundo, CA",
+     "url": "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS/job/USA---El-Segundo-CA/ASIC-Physical-Design-Engineer---Synthesis-and-Timing----Associate-or-Experienced-_JR2026523236-1",
+     "posted": "2026-10-04"
+    },
+    {
+     "title": "Mid-Level, Lead or Senior Satellite Systems Ground Systems Engineer",
+     "location": "USA - El Segundo, CA",
+     "url": "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS/job/USA---El-Segundo-CA/Mid-Level--Lead-or-Senior-Satellite-Systems-Ground-Systems-Engineer_JR2026513943-1",
+     "posted": "2026-10-04"
+    },
+    {
+     "title": "Systems Engineer, Senior / Experienced",
+     "location": "",
+     "url": "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS/job/USA---Seal-Beach-CA/Systems-Engineer--Senior---Experienced_JR2026525045-1",
+     "posted": "2026-10-03"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "IN",
+    "posted_date": "2026-10-05",
+    "closing_date": "2026-10-10",
+    "work_mode": "Onsite Job",
+    "employment_type": "Full time",
+    "location": "IND - INS Rajali, India"
+   }
+  },
+  {
+   "name": "RTX (Collins Aerospace",
+   "slug": "rtx",
+   "source": {
+    "ats": "workday",
+    "url": "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway"
+   },
+   "ok": true,
+   "jobs_found": 400,
+   "sample": [
+    {
+     "title": "Werkstudent Qualitätsmanagement (m/w/d)",
+     "location": "DE-BY-NORDLINGEN-010 ~ Anton-Jaumann-Industriepark 10 ~ BLDG 10",
+     "url": "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/DE-BY-NORDLINGEN-010--Anton-Jaumann-Industriepark-10--BLDG-10/Werkstudent-Qualittsmanagement--m-w-d-_01876001",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Spawacz/ka",
+     "location": "PL-30-KALISZ-140 ~ Czestochowska 140 ~ CZESTOCHOWSKA",
+     "url": "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/PL-30-KALISZ-140--Czestochowska-140--CZESTOCHOWSKA/Operator-ka-Produkcji---Spawacz-ka_01851968",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Starszy/a- Spawacz/ka",
+     "location": "PL-30-KALISZ-140 ~ Czestochowska 140 ~ CZESTOCHOWSKA",
+     "url": "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/PL-30-KALISZ-140--Czestochowska-140--CZESTOCHOWSKA/Starszy-a--Spawacz-ka_01879819",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Inżynier / Inżynierka Projektów Silnikowych",
+     "location": "PL-18-RZESZOW-120 B05 ~ Ul Hetmanska 120 ~ BLDG B05",
+     "url": "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/PL-18-RZESZOW-120-B05--Ul-Hetmanska-120--BLDG-B05/Inynier---Inynierka-Projektw-Silnikowych_01877479",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Sr. Manager, Supplier Performance (SPM)",
+     "location": "SA-02-JEDDAH-001 ~ 97 Kaheel Al-Azdey St ~ RAYMES, PO Box 1348",
+     "url": "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/SA-02-JEDDAH-001--97-Kaheel-Al-Azdey-St--RAYMES-PO-Box-1348/Sr-Manager--Supplier-Performance--SPM-_01879492",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Senior Analyst, Procurement (Hybrid)",
+     "location": "US-CT-EAST HARTFORD-A ~ 400 Main St ~ BLDG A",
+     "url": "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-CT-EAST-HARTFORD-A--400-Main-St--BLDG-A/Senior-Analyst--Procurement--Hybrid-_01878363",
+     "posted": "2026-10-05"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "DE",
+    "posted_date": "2026-10-05",
+    "closing_date": "2026-10-25",
+    "work_mode": null,
+    "employment_type": "Part time",
+    "location": "DE-BY-NORDLINGEN-010 ~ Anton-Jaumann-Industriepark 10 ~ BLDG 10"
+   }
+  },
+  {
+   "name": "GE Aerospace",
+   "slug": "ge-aerospace",
+   "source": {
+    "ats": "workday",
+    "url": "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite"
+   },
+   "ok": true,
+   "jobs_found": 400,
+   "sample": [
+    {
+     "title": "Lead Manufacturing Engineer - 2nd Shift",
+     "location": "Clearwater",
+     "url": "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Clearwater/Lead-Manufacturing-Engineer---2nd-Shift_R5040369-1",
+     "posted": "2026-09-21"
+    },
+    {
+     "title": "Thermal Systems Design Engineering Intern (6 Months)",
+     "location": "Istanbul",
+     "url": "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Istanbul/Thermal-Systems-Design-Engineering-Intern--6-Months-_R5039990-1",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Thermal Systems Design Engineering Intern (6 Months)",
+     "location": "Istanbul",
+     "url": "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Istanbul/Thermal-Systems-Design-Engineering-Intern--6-Months-_R5039995-1",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Dowty Aerospace Engineering Degree Apprentice, 2027 intake",
+     "location": "Gloucester",
+     "url": "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Gloucester/Dowty-Aerospace-Engineering-Degree-Apprentice--2027-intake_R5040779-1",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Component Repair Technician (Production Control)",
+     "location": "Singapore",
+     "url": "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Singapore/Component-Repair-Technician--Production-Control-_R5041170-2",
+     "posted": "2026-10-04"
+    },
+    {
+     "title": "Advanced Manufacturing Apprenticeship, Dowty 2027 intake",
+     "location": "Gloucester",
+     "url": "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Gloucester/Advanced-Manufacturing-Apprenticeship--Dowty-2027-intake_R5040782-1",
+     "posted": "2026-10-04"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "US",
+    "posted_date": "2026-09-21",
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": "Full time",
+    "location": "Clearwater"
+   }
+  },
+  {
+   "name": "Honeywell",
+   "slug": "honeywell",
+   "source": {
+    "ats": "workday",
+    "url": "https://honeywell.wd5.myworkdayjobs.com/Honeywell"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://honeywell.wd5.myworkdayjobs.com/wday/cxs/honeywell/Honeywell/jobs"
+  },
+  {
+   "name": "Rolls-Royce",
+   "slug": "rolls-royce",
+   "source": {
+    "ats": "workday",
+    "url": "https://rollsroyce.wd3.myworkdayjobs.com/professional"
+   },
+   "ok": true,
+   "jobs_found": 400,
+   "sample": [
+    {
+     "title": "Supply Chain Manager (m/w/d) Produktionsmaterial",
+     "location": "Friedrichshafen",
+     "url": "https://rollsroyce.wd3.myworkdayjobs.com/professional/job/Friedrichshafen/Supply-Chain-Manager-Produktionsmaterial--m-w-d-_JR6142971-2",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Procurement Analytics & Data Analyst",
+     "location": "Bangalore",
+     "url": "https://rollsroyce.wd3.myworkdayjobs.com/professional/job/Bangalore/Procurement-Analytics---Data-Analyst_JR6158927",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "SRM Support Manager",
+     "location": "Bangalore",
+     "url": "https://rollsroyce.wd3.myworkdayjobs.com/professional/job/Bangalore/SRM-Support-Manager_JR6158929",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "HR Process & Project Specialist with German",
+     "location": "Krakow",
+     "url": "https://rollsroyce.wd3.myworkdayjobs.com/professional/job/Krakow/Senior-HR-Process-Administrator_JR6157684",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Aftermarket Operations Analyst",
+     "location": "Bangalore",
+     "url": "https://rollsroyce.wd3.myworkdayjobs.com/professional/job/Bangalore/Aftermarket-Operations-Analyst_JR6160564-1",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Source to Contract Manager",
+     "location": "Bangalore",
+     "url": "https://rollsroyce.wd3.myworkdayjobs.com/professional/job/Bangalore/Source-to-Contract-Manager_JR6158926",
+     "posted": "2026-10-05"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "DE",
+    "posted_date": "2026-10-05",
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": "Full time",
+    "location": "Friedrichshafen"
+   }
+  },
+  {
+   "name": "Bombardier",
+   "slug": "bombardier",
+   "source": {
+    "ats": "workday",
+    "url": "https://bombardier.wd3.myworkdayjobs.com/Bombardier"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://bombardier.wd3.myworkdayjobs.com/wday/cxs/bombardier/Bombardier/jobs"
+  },
+  {
+   "name": "Spirit AeroSystems",
+   "slug": "spirit-aerosystems",
+   "source": {
+    "ats": "workday",
+    "url": "https://spiritaero.wd5.myworkdayjobs.com/SpiritAeroSystems"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://spiritaero.wd5.myworkdayjobs.com/wday/cxs/spiritaero/SpiritAeroSystems/jobs"
+  },
+  {
+   "name": "Textron Aviation",
+   "slug": "textron",
+   "source": {
+    "ats": "workday",
+    "url": "https://textron.wd5.myworkdayjobs.com/Textron"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://textron.wd5.myworkdayjobs.com/wday/cxs/textron/Textron/jobs"
+  },
+  {
+   "name": "Embraer",
+   "slug": "embraer",
+   "source": {
+    "ats": "workday",
+    "url": "https://embraer.wd3.myworkdayjobs.com/Embraer"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://embraer.wd3.myworkdayjobs.com/wday/cxs/embraer/Embraer/jobs"
+  },
+  {
+   "name": "AAR",
+   "slug": "aar",
+   "source": {
+    "ats": "workday",
+    "url": "https://aarcorp.wd1.myworkdayjobs.com/AAR"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://aarcorp.wd1.myworkdayjobs.com/wday/cxs/aarcorp/AAR/jobs"
+  },
+  {
+   "name": "Alaska Airlines",
+   "slug": "alaska-airlines",
+   "source": {
+    "ats": "workday",
+    "url": "https://alaskaair.wd1.myworkdayjobs.com/AlaskaAirlines"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://alaskaair.wd1.myworkdayjobs.com/wday/cxs/alaskaair/AlaskaAirlines/jobs"
+  },
+  {
+   "name": "Air Canada",
+   "slug": "air-canada",
+   "source": {
+    "ats": "workday",
+    "url": "https://aircanada.wd3.myworkdayjobs.com/AirCanada"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://aircanada.wd3.myworkdayjobs.com/wday/cxs/aircanada/AirCanada/jobs"
+  },
+  {
+   "name": "Qantas",
+   "slug": "qantas",
+   "source": {
+    "ats": "workday",
+    "url": "https://qantas.wd3.myworkdayjobs.com/Qantas"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://qantas.wd3.myworkdayjobs.com/wday/cxs/qantas/Qantas/jobs"
+  },
+  {
+   "name": "easyJet",
+   "slug": "easyjet",
+   "source": {
+    "ats": "workday",
+    "url": "https://easyjet.wd3.myworkdayjobs.com/easyJet"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 401 from https://easyjet.wd3.myworkdayjobs.com/wday/cxs/easyjet/easyJet/jobs"
+  },
+  {
+   "name": "Heathrow Airport",
+   "slug": "heathrow",
+   "source": {
+    "ats": "workday",
+    "url": "https://heathrow.wd3.myworkdayjobs.com/Heathrow"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://heathrow.wd3.myworkdayjobs.com/wday/cxs/heathrow/Heathrow/jobs"
+  },
+  {
+   "name": "JetBlue",
+   "slug": "jetblue",
+   "source": {
+    "ats": "workday",
+    "url": "https://jetblue.wd5.myworkdayjobs.com/JetBlue"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://jetblue.wd5.myworkdayjobs.com/wday/cxs/jetblue/JetBlue/jobs"
+  },
+  {
+   "name": "Virgin Atlantic",
+   "slug": "virgin-atlantic",
+   "source": {
+    "ats": "workday",
+    "url": "https://virginatlantic.wd3.myworkdayjobs.com/VirginAtlantic"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://virginatlantic.wd3.myworkdayjobs.com/wday/cxs/virginatlantic/VirginAtlantic/jobs"
+  },
+  {
+   "name": "Joby Aviation",
+   "slug": "joby-aviation",
+   "source": {
+    "ats": "greenhouse",
+    "board": "jobyaviation"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/jobyaviation/jobs"
+  },
+  {
+   "name": "Archer Aviation",
+   "slug": "archer-aviation",
+   "source": {
+    "ats": "greenhouse",
+    "board": "archer56"
+   },
+   "ok": true,
+   "jobs_found": 148,
+   "sample": [
+    {
+     "title": "Aerodynamics Engineer – Conceptual Sizing & Performance",
+     "location": "San Jose, California, United States",
+     "url": "https://job-boards.greenhouse.io/archer56/jobs/7976318003",
+     "posted": "2026-08-31"
+    },
+    {
+     "title": "Aerospace Software Certification Engineer",
+     "location": "San Jose, California, United States",
+     "url": "https://job-boards.greenhouse.io/archer56/jobs/7742975003",
+     "posted": "2026-06-09"
+    },
+    {
+     "title": "AI Autonomy Engineer",
+     "location": "San Jose, California, United States",
+     "url": "https://job-boards.greenhouse.io/archer56/jobs/7703614003",
+     "posted": "2026-05-14"
+    },
+    {
+     "title": "Airborne Electronic Hardware Systems Engineer",
+     "location": "San Jose, California, United States",
+     "url": "https://job-boards.greenhouse.io/archer56/jobs/7740894003",
+     "posted": "2026-05-26"
+    },
+    {
+     "title": "Aircraft Architecture & Integration Engineer",
+     "location": "San Jose, California, United States",
+     "url": "https://job-boards.greenhouse.io/archer56/jobs/7976320003",
+     "posted": "2026-08-26"
+    },
+    {
+     "title": "Airframe Design Lead, Fuselage",
+     "location": "San Jose, California, United States",
+     "url": "https://job-boards.greenhouse.io/archer56/jobs/7740998003",
+     "posted": "2026-05-31"
+    }
+   ]
+  },
+  {
+   "name": "Wisk Aero",
+   "slug": "wisk",
+   "source": {
+    "ats": "greenhouse",
+    "board": "wisk"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/wisk/jobs"
+  },
+  {
+   "name": "Boom Supersonic",
+   "slug": "boom-supersonic",
+   "source": {
+    "ats": "greenhouse",
+    "board": "boomsupersonic"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/boomsupersonic/jobs"
+  },
+  {
+   "name": "Hermeus",
+   "slug": "hermeus",
+   "source": {
+    "ats": "greenhouse",
+    "board": "hermeus"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/hermeus/jobs"
+  },
+  {
+   "name": "BETA Technologies",
+   "slug": "beta-technologies",
+   "source": {
+    "ats": "greenhouse",
+    "board": "betatechnologies"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/betatechnologies/jobs"
+  },
+  {
+   "name": "Reliable Robotics",
+   "slug": "reliable-robotics",
+   "source": {
+    "ats": "greenhouse",
+    "board": "reliablerobotics"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/reliablerobotics/jobs"
+  },
+  {
+   "name": "Skyryse",
+   "slug": "skyryse",
+   "source": {
+    "ats": "greenhouse",
+    "board": "skyryse"
+   },
+   "ok": true,
+   "jobs_found": 19,
+   "sample": [
+    {
+     "title": "Airframe & Powerplant Mechanic (Contract)",
+     "location": "Hawthorne, CA",
+     "url": "https://job-boards.greenhouse.io/skyryse/jobs/8078208",
+     "posted": "2026-07-21"
+    },
+    {
+     "title": "Chief Engineer",
+     "location": "El Segundo, CA",
+     "url": "https://job-boards.greenhouse.io/skyryse/jobs/8174942",
+     "posted": "2026-09-02"
+    },
+    {
+     "title": "Defense Business Development Lead",
+     "location": "El Segundo, CA",
+     "url": "https://job-boards.greenhouse.io/skyryse/jobs/7872515",
+     "posted": "2026-05-05"
+    },
+    {
+     "title": "Electrical & Wiring Technician",
+     "location": "El Segundo, CA",
+     "url": "https://job-boards.greenhouse.io/skyryse/jobs/8178717",
+     "posted": "2026-09-08"
+    },
+    {
+     "title": "Embedded Software Engineer",
+     "location": "El Segundo, CA",
+     "url": "https://job-boards.greenhouse.io/skyryse/jobs/8065495",
+     "posted": "2026-07-14"
+    },
+    {
+     "title": "Experimental Test Pilot",
+     "location": "Camarillo, CA",
+     "url": "https://job-boards.greenhouse.io/skyryse/jobs/8174871",
+     "posted": "2026-09-02"
+    }
+   ]
+  },
+  {
+   "name": "Blade Air Mobility",
+   "slug": "blade",
+   "source": {
+    "ats": "greenhouse",
+    "board": "flyblade"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/flyblade/jobs"
+  },
+  {
+   "name": "JSX",
+   "slug": "jsx",
+   "source": {
+    "ats": "greenhouse",
+    "board": "jsx"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/jsx/jobs"
+  },
+  {
+   "name": "Wheels Up",
+   "slug": "wheels-up",
+   "source": {
+    "ats": "greenhouse",
+    "board": "wheelsup"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/wheelsup/jobs"
+  },
+  {
+   "name": "Surf Air Mobility",
+   "slug": "surf-air",
+   "source": {
+    "ats": "greenhouse",
+    "board": "surfair"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/surfair/jobs"
+  },
+  {
+   "name": "Merlin Labs",
+   "slug": "merlin-labs",
+   "source": {
+    "ats": "greenhouse",
+    "board": "merlinlabs"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/merlinlabs/jobs"
+  },
+  {
+   "name": "Electra.aero",
+   "slug": "electra-aero",
+   "source": {
+    "ats": "greenhouse",
+    "board": "electra"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/electra/jobs"
+  },
+  {
+   "name": "ZeroAvia",
+   "slug": "zeroavia",
+   "source": {
+    "ats": "lever",
+    "company": "zeroavia"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://api.lever.co/v0/postings/zeroavia?mode=json&skip=0&limit=100"
+  },
+  {
+   "name": "Boom Supersonic (Lever)",
+   "slug": "boom-lever",
+   "source": {
+    "ats": "lever",
+    "company": "boomsupersonic"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://api.lever.co/v0/postings/boomsupersonic?mode=json&skip=0&limit=100"
+  },
+  {
+   "name": "Skyports",
+   "slug": "skyports",
+   "source": {
+    "ats": "lever",
+    "company": "skyports"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://api.lever.co/v0/postings/skyports?mode=json&skip=0&limit=100"
+  },
+  {
+   "name": "Vertical Aerospace",
+   "slug": "vertical-aerospace",
+   "source": {
+    "ats": "lever",
+    "company": "vertical-aerospace"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://api.lever.co/v0/postings/vertical-aerospace?mode=json&skip=0&limit=100"
+  },
+  {
+   "name": "Wizz Air",
+   "slug": "wizz-air",
+   "source": {
+    "ats": "smartrecruiters",
+    "company": "WizzAir"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/WizzAir/postings?limit=100&offset=0"
+  },
+  {
+   "name": "Swissport",
+   "slug": "swissport",
+   "source": {
+    "ats": "smartrecruiters",
+    "company": "Swissport"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/Swissport/postings?limit=100&offset=0"
+  },
+  {
+   "name": "Menzies Aviation",
+   "slug": "menzies-aviation",
+   "source": {
+    "ats": "smartrecruiters",
+    "company": "MenziesAviation"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/MenziesAviation/postings?limit=100&offset=0"
+  },
+  {
+   "name": "dnata",
+   "slug": "dnata",
+   "source": {
+    "ats": "smartrecruiters",
+    "company": "dnata"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/dnata/postings?limit=100&offset=0"
+  },
+  {
+   "name": "Etihad Airways",
+   "slug": "etihad",
+   "source": {
+    "ats": "smartrecruiters",
+    "company": "EtihadAirways"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/EtihadAirways/postings?limit=100&offset=0"
+  },
+  {
+   "name": "SmartLynx Airlines",
+   "slug": "smartlynx",
+   "source": {
+    "ats": "smartrecruiters",
+    "company": "SmartLynxAirlines"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/SmartLynxAirlines/postings?limit=100&offset=0"
+  }
+ ]
+}
