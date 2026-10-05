@@ -215,3 +215,13 @@ def test_roles_in_other_languages_and_manufacturing():
     assert classify_title("CNC-Rundschleifer (m/f/d)") == "engineering-maintenance"
     assert classify_title("Ingénieur Recherche & Technologique") == "engineering-maintenance"
     assert classify_title("Softwareentwickler (m/w/d)") == "corporate"
+
+
+def test_clean_coded_locations():
+    from fetcher.geo import clean_location
+    assert clean_location("IN-KA-BENGALURU-BLDG 1 ~ Hitech, Defence & Aerospace Park ~ HI TECH DEFENSE") == "Bengaluru, India"
+    assert clean_location("PL-30-KALISZ-140 ~ Czestochowska 140 ~ CZESTOCHOWSKA") == "Kalisz, Poland"
+    assert clean_location("US-CT-EAST HARTFORD-ETC ~ 400 Main St ~ BLDG ETC") == "East Hartford, United States"
+    assert clean_location("US-AZ-TUCSON-801 ~ 1151 E Hermans Rd ~ BLDG 801 (External Site)") == "Tucson, United States"
+    assert clean_location("Toulouse Area") == "Toulouse Area"
+    assert clean_location("Seattle, WA") == "Seattle, WA"

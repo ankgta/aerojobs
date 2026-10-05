@@ -13,7 +13,7 @@ import traceback
 from .common import (DATA_DIR, safe_url, load_employers, load_site_config, now_iso, read_json,
                      short_hash, slugify, today, write_json)
 from .connectors import CONNECTORS
-from .geo import country_from_location, country_name, is_country_code, region_of
+from .geo import clean_location, country_from_location, country_name, is_country_code, region_of
 from .http import PoliteClient, RobotsBlocked
 from .roles import (DEFAULT_ROLE, ai_classify, classify_title, detect_work_mode,
                     normalize_employment_type)
@@ -30,9 +30,11 @@ def job_id(employer_slug: str, source_id: str) -> str:
 
 def apply_fields(rec: dict, raw: dict, employer: dict) -> None:
     """Copy what a source told us onto a stored job and work out the derived fields."""
+    if raw.get("location") and not rec.get("country_code"):
+        rec["country_code"] = country_from_location(raw["location"], employer.get("country"))   # before cleaning
     for key in ("title", "location", "closing_date", "department"):
         if raw.get(key):
-            rec[key] = raw[key]
+            rec[key] = clean_location(raw[key]) if key == "location" else raw[key]
     if raw.get("url") and safe_url(raw["url"]):
         rec["url"] = safe_url(raw["url"])
     if raw.get("posted_date") and (rec.get("posted_estimated", True) or raw.get("posted_estimated") is False):

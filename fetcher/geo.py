@@ -191,3 +191,22 @@ def country_from_location(location: str | None, hint: str | None = None) -> str 
         if code:
             return code
     return None
+
+
+_CODED = re.compile(r"^([A-Z]{2})-[A-Z0-9]{1,3}-([A-Z][A-Z .'&/]*?)(?:-[^~]*)?\s*(?:~|$)")
+
+
+def clean_location(location: str | None) -> str:
+    """Turn company location codes like 'IN-KA-BENGALURU-BLDG 1 ~ Hitech Park ~ …' into
+    'Bengaluru, India'. Other locations are returned unchanged (minus extra spaces)."""
+    if not location:
+        return ""
+    loc = " ".join(location.split())
+    m = _CODED.match(loc)
+    if m and m.group(1) in _REGION_OF:
+        city = m.group(2).strip(" -").title()
+        country = country_name(m.group(1))
+        if not country or city.lower() == country.lower():
+            return country or city
+        return f"{city}, {country}"
+    return loc
