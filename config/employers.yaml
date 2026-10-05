@@ -64,7 +64,7 @@ employers:
   - {name: Cathay Pacific, slug: cathay-pacific, type: airline, country: HK, enabled: false}
   - {name: Qantas, slug: qantas, type: airline, country: AU, enabled: false}
   - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, enabled: false}
-  - {name: Air New Zealand, slug: air-new-zealand, type: airline, country: NZ, enabled: false}
+  - {name: Air New Zealand, slug: air-new-zealand, type: airline, country: NZ, source: {ats: smartrecruiters, company: "airnewzealand"}, enabled: true}
 
   # ---------- Airports ----------
   - {name: Heathrow Airport, slug: heathrow, type: airport, country: GB, source: {ats: oracle, host: "encd.fa.em3.oraclecloud.com", site: "CX_3001"}, enabled: true}
@@ -74,6 +74,7 @@ employers:
 
   # ---------- Maintenance (MRO) and ground services ----------
   - {name: Lufthansa Technik, slug: lufthansa-technik, type: mro, country: DE, enabled: false}
+  - {name: StandardAero, slug: standardaero, type: mro, country: US, source: {ats: oracle, host: "cva.fa.us1.oraclecloud.com", site: "CX_3"}, enabled: true}
   - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, enabled: false}
   - {name: AAR, slug: aar, type: mro, country: US, enabled: false}
   - {name: dnata, slug: dnata, type: ground_services, country: AE, enabled: false}
@@ -86,9 +87,17 @@ employers:
   - {name: Skyryse, slug: skyryse, type: manufacturer, country: US, source: {ats: greenhouse, board: "skyryse"}, enabled: true}
   - {name: Airbus, slug: airbus, type: manufacturer, country: FR, source: {ats: workday, url: "https://ag.wd3.myworkdayjobs.com/Airbus"}, enabled: true}
   - {name: Boeing, slug: boeing, type: manufacturer, country: US, careers_url: "https://jobs.boeing.com", source: {ats: workday, url: "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS"}, enabled: true}
+  - {name: Heart Aerospace, slug: heart-aerospace, type: manufacturer, country: SE, source: {ats: greenhouse, board: "heartaerospace"}, enabled: true}
+  - {name: Supernal, slug: supernal, type: manufacturer, country: US, source: {ats: greenhouse, board: "supernal"}, enabled: true}
+  - {name: Wisk Aero, slug: wisk-aero, type: manufacturer, country: US, source: {ats: workday, url: "https://wisk.wd108.myworkdayjobs.com/Wisk_Careers"}, enabled: true}
   - {name: Embraer, slug: embraer, type: manufacturer, country: BR, enabled: false}
   - {name: Rolls-Royce, slug: rolls-royce, type: manufacturer, country: GB, source: {ats: workday, url: "https://rollsroyce.wd3.myworkdayjobs.com/professional"}, enabled: true}
   - {name: GE Aerospace, slug: ge-aerospace, type: manufacturer, country: US, source: {ats: workday, url: "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite"}, enabled: true}
   - {name: Safran, slug: safran, type: manufacturer, country: FR, enabled: false}
+  - {name: CAE, slug: cae, type: manufacturer, country: CA, source: {ats: workday, url: "https://cae.wd3.myworkdayjobs.com/career"}, enabled: true}
   - {name: Bombardier, slug: bombardier, type: manufacturer, country: CA, enabled: false}
   - {name: "RTX (Collins Aerospace, Pratt & Whitney)", slug: rtx, type: manufacturer, country: US, source: {ats: workday, url: "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway"}, enabled: true}
+
+  # ---------- Other aviation organisations ----------
+  - {name: NAV Canada, slug: nav-canada, type: other, country: CA, source: {ats: workday, url: "https://navcanada.wd10.myworkdayjobs.com/NAV_Careers"}, enabled: true}
+  - {name: ICAO, slug: icao, type: other, country: CA, source: {ats: oracle, host: "estm.fa.em2.oraclecloud.com", site: "CX_3001"}, enabled: true}
