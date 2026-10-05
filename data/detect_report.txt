@@ -1,120 +1,24 @@
 
-https://www.aa.jobs/
-  could not open: robots.txt does not allow https://www.aa.jobs/
+https://careers.virgin-atlantic.com/
+  source: {ats: oracle, host: "iagime.fa.ocs.oraclecloud.com", site: "CX_1"}   # site number guessed
 
-https://careers.delta.com/
-  could not open: robots.txt does not allow https://careers.delta.com/
+https://careers.heathrow.com/
+  source: {ats: oracle, host: "encd.fa.em3.oraclecloud.com", site: "CX_3001"}
 
-https://careers.united.com/
-  no known hiring system found on careers.united.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://careers.southwestair.com/
-  no known hiring system found on careers.southwestair.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+https://careers.honeywell.com/
+  source: {ats: oracle, host: "ibqbjb.fa.ocs.oraclecloud.com", site: "CX_1"}   # site number guessed
 
 https://careers.alaskaair.com/
   # uses icims (employee-alaskaair.icims.com): no connector yet; try the jsonld reader or a custom reader
 
-https://careers.jetblue.com/
-  # uses successfactors (career8.successfactors.com): no connector yet; try the jsonld reader or a custom reader
-
-https://careers.aircanada.com/
-  no known hiring system found on careers.aircanada.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://www.westjet.com/en-ca/about-us/careers
-  could not open: HTTP 404 from https://www.westjet.com/en-ca/about-us/careers
-
-https://www.emiratesgroupcareers.com/
-  no known hiring system found on www.emiratesgroupcareers.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://careers.etihad.com/
-  source: {ats: smartrecruiters, company: "my-applications"}
-
-https://careers.qatarairways.com/
-  # uses taleo (aa115.taleo.net): no connector yet; try the jsonld reader or a custom reader
-
 https://careers.flydubai.com/
   # uses icims (careers-flydubai.icims.com): no connector yet; try the jsonld reader or a custom reader
-
-https://careers.easyjet.com/
-  # uses taleo (easyjet.taleo.net): no connector yet; try the jsonld reader or a custom reader
-
-https://careers.ryanair.com/
-  # uses successfactors (career2.successfactors.eu): no connector yet; try the jsonld reader or a custom reader
-
-https://careers.virgin-atlantic.com/
-  # uses oracle (iagime.fa.ocs.oraclecloud.com): no connector yet; try the jsonld reader or a custom reader
 
 https://careers.ba.com/
   no known hiring system found on careers.ba.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
-https://www.lufthansagroup.careers/
-  no known hiring system found on www.lufthansagroup.careers. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+https://www.iberia.com/es/trabaja-con-nosotros/
+  could not open: HTTP 403 from https://www.iberia.com/es/trabaja-con-nosotros/
 
-https://careers.klm.com/
-  could not open: robots.txt does not allow https://careers.klm.com/
-
-https://www.qantas.com/au/en/about-us/qantas-careers.html
-  could not open: robots.txt does not allow https://www.qantas.com/au/en/about-us/qantas-careers.html
-
-https://careers.airnewzealand.co.nz/
-  no known hiring system found on careers.airnewzealand.co.nz. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://www.singaporeair.com/en_UK/sg/careers/
-  could not open: HTTP 404 from https://www.singaporeair.com/en_UK/sg/careers/
-
-https://careers.cathaypacific.com/
-  no known hiring system found on careers.cathaypacific.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://www.goindigo.in/careers.html
-  could not open: robots.txt does not allow https://www.goindigo.in/careers.html
-
-https://careers.heathrow.com/
-  # uses oracle (encd.fa.em3.oraclecloud.com): no connector yet; try the jsonld reader or a custom reader
-
-https://www.airbus.com/en/careers
-  source: {ats: workday, url: "https://ag.wd3.myworkdayjobs.com/Airbus"}
-
-https://jobs.boeing.com/
-  source: {ats: workday, url: "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS"}
-
-https://careers.rolls-royce.com/
-  could not open: HTTP 403 from https://careers.rolls-royce.com/
-
-https://careers.geaerospace.com/
-  no known hiring system found on careers.geaerospace.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://careers.honeywell.com/
-  # uses oracle (ibqbjb.fa.ocs.oraclecloud.com): no connector yet; try the jsonld reader or a custom reader
-
-https://careers.bombardier.com/
-  no known hiring system found on careers.bombardier.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://careers.rtx.com/
-  no known hiring system found on careers.rtx.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://www.swissport.com/en/careers
-  no known hiring system found on www.swissport.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://www.menziesaviation.com/careers
-  no known hiring system found on www.menziesaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://careers.wizzair.com/
-  # uses successfactors (.jobs2web.com): no connector yet; try the jsonld reader or a custom reader
-
-https://careers.aarcorp.com/
-  could not open: robots.txt does not allow https://careers.aarcorp.com/
-
-https://jobs.lufthansa-technik.com/
-  could not open: robots.txt does not allow https://jobs.lufthansa-technik.com/
-
-https://www.stengg.com/en/careers
-  no known hiring system found on www.stengg.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
-
-https://careers.latamairlines.com/
-  could not open: robots.txt does not allow https://careers.latamairlines.com/
-
-https://jobs.ethiopianairlines.com/
-  could not open: robots.txt does not allow https://jobs.ethiopianairlines.com/
-
-https://www.dfwairport.com/careers/
-  no known hiring system found on www.dfwairport.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+https://careers.aerlingus.com/
+  could not open: HTTP 405 from https://careers.aerlingus.com/
