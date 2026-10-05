@@ -3,7 +3,7 @@
     python -m fetcher.discover_aero              # list every .aero website in the directory
     python -m fetcher.discover_aero --check 200  # also look for a careers page on up to 200 of them
 
-Step 1 reads the directory's public listing pages (allowed by its robots.txt; its search
+Step 1 reads the directory's public category pages (allowed by its robots.txt; its search
 pages are not, so they are never used) and saves data/aero_directory.csv.
 Step 2 visits each organisation's home page, looks for a careers / jobs link, and works out
 which hiring system that page uses. Results go to data/aero_candidates.csv.
@@ -25,10 +25,27 @@ from .common import DATA_DIR, today
 from .detect import suggest
 from .http import PoliteClient
 
-LISTING_URL = "https://information.aero/taxonomy/term/all?page={page}"
+DIRECTORY_URL = "https://information.aero/directory"
+CATEGORY_BASE = "https://information.aero/category/registrant_group/"
 DIRECTORY_FILE = DATA_DIR / "aero_directory.csv"
 CANDIDATES_FILE = DATA_DIR / "aero_candidates.csv"
 CAREERS_WORDS = re.compile(r"career|jobs?\b|vacanc|recruit|join[\s-]?(us|our)|work[\s-]?with[\s-]?us|employment|hiring", re.I)
+
+# Categories most likely to have employers with job openings. Others (air sports,
+# recreational aviation, pilots, media, etc.) are skipped to save time and requests.
+RELEVANT_CATEGORIES = {
+    "airlines_and_commercial_operators",
+    "airports",
+    "aerospace",
+    "air_freight_and_logistics_companies",
+    "air_navigation_services_providers",
+    "air_safety_medical_and_certification",
+    "aviation_suppliers_and_service_providers",
+    "aviation_education_and_research",
+    "business_aircraft_operators",
+    "civil_aviation_authorities",
+    "government_organizations",
+}
 
 
 class _Anchors(HTMLParser):
@@ -79,6 +96,19 @@ def aero_sites_on_page(html: str) -> list[dict]:
     return found
 
 
+def subcategory_urls(html: str) -> list[str]:
+    """Extract subcategory URLs from a directory or category page."""
+    urls = []
+    for href, _text in anchors(html):
+        if href and href.startswith(CATEGORY_BASE):
+            # Subcategories have at least two path segments after the base
+            rest = href[len(CATEGORY_BASE):]
+            parts = rest.strip("/").split("/")
+            if len(parts) >= 2:
+                urls.append(href)
+    return urls
+
+
 def careers_link(home_url: str, html: str) -> str | None:
     """Best guess at the careers page linked from an organisation's home page."""
     best = None
@@ -93,21 +123,75 @@ def careers_link(home_url: str, html: str) -> str | None:
     return best
 
 
-def read_directory(client: PoliteClient, max_pages: int = 400) -> list[dict]:
+def read_directory(client: PoliteClient) -> list[dict]:
+    """Read the .aero directory by crawling category and subcategory pages."""
     sites: dict[str, dict] = {}
-    for page in range(max_pages):
+
+    # Step 1: fetch the main directory page to find all subcategory URLs
+    print("  fetching directory index ...", flush=True)
+    try:
+        index_html = client.get_text(DIRECTORY_URL)
+    except Exception as e:
+        print(f"  could not read {DIRECTORY_URL}: {e}")
+        return []
+
+    # Collect all subcategory URLs from the directory index page
+    all_subcats = []
+    for href, _text in anchors(index_html):
+        if not href or not href.startswith(CATEGORY_BASE):
+            continue
+        rest = href[len(CATEGORY_BASE):]
+        parts = rest.strip("/").split("/")
+        # Top-level categories (1 part) — check if it's relevant
+        if len(parts) == 1:
+            continue  # we only want subcategories
+        # Subcategory (2 parts) — check if its parent category is relevant
+        if len(parts) >= 2:
+            # The parent category slug is encoded in the first part of the subcategory URL,
+            # but the subcategory URL uses a compressed form (e.g. "airlinesandcommercialoperators")
+            # while RELEVANT_CATEGORIES uses the top-level slug (e.g. "airlines_and_commercial_operators").
+            # We match by checking if the top-level category page URL is for a relevant category.
+            # Since the directory page lists both category and subcategory links, we check the
+            # subcategory's parent by looking at the URL pattern.
+            if href not in all_subcats:
+                all_subcats.append(href)
+
+    # Filter subcategories to only relevant parent categories
+    filtered_subcats = []
+    for url in all_subcats:
+        if not RELEVANT_CATEGORIES:
+            # Empty set means include everything
+            filtered_subcats.append(url)
+            continue
+        rest = url[len(CATEGORY_BASE):]
+        parent_slug = rest.strip("/").split("/")[0]
+        # Match compressed parent slug against relevant categories
+        parent_normalised = parent_slug.lower().replace("_", "")
+        relevant = False
+        for cat in RELEVANT_CATEGORIES:
+            if cat.replace("_", "") == parent_normalised:
+                relevant = True
+                break
+        if relevant:
+            filtered_subcats.append(url)
+
+    print(f"  found {len(filtered_subcats)} relevant subcategories (of {len(all_subcats)} total)", flush=True)
+
+    # Step 2: visit each subcategory to collect .aero organisation links
+    for i, subcat_url in enumerate(filtered_subcats):
+        label = subcat_url.split("/")[-1]
         try:
-            html = client.get_text(LISTING_URL.format(page=page))
-        except Exception as e:  # stop at the first page that fails or does not exist
-            print(f"  stopped at page {page}: {e}")
-            break
+            html = client.get_text(subcat_url)
+        except Exception as e:
+            print(f"  {label}: error ({e})")
+            continue
         new = [s for s in aero_sites_on_page(html) if s["domain"] not in sites]
-        if not new:
-            print(f"  page {page}: no new websites, finished")
-            break
         for s in new:
+            s["category"] = subcat_url.split("/")[-2] + "/" + label
             sites[s["domain"]] = s
-        print(f"  page {page}: {len(new)} new, {len(sites)} total", flush=True)
+        if new:
+            print(f"  {label}: {len(new)} new, {len(sites)} total", flush=True)
+
     return sorted(sites.values(), key=lambda s: s["domain"])
 
 
@@ -149,15 +233,21 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--check", type=int, default=0, metavar="N",
                     help="look for careers pages on up to N of the websites found")
-    ap.add_argument("--max-pages", type=int, default=400)
+    ap.add_argument("--all-categories", action="store_true",
+                    help="include all categories, not just the ones likely to have employers")
     args = ap.parse_args(argv)
     client = PoliteClient(delay=2.0)
 
+    if args.all_categories:
+        global RELEVANT_CATEGORIES  # noqa: PLW0603
+        # Empty set means no filtering
+        RELEVANT_CATEGORIES = set()
+
     print("Reading the .aero directory at information.aero ...")
-    sites = read_directory(client, args.max_pages)
+    sites = read_directory(client)
     for s in sites:
         s["first_seen"] = today().isoformat()
-    write_csv(DIRECTORY_FILE, sites, ["name", "domain", "url", "first_seen"])
+    write_csv(DIRECTORY_FILE, sites, ["name", "domain", "url", "category", "first_seen"])
     print(f"Saved {len(sites)} websites to {DIRECTORY_FILE.name}")
 
     if args.check:
