@@ -1,0 +1,49 @@
+# Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
+# Many of these are educated guesses; the check shows which ones are real.
+employers:
+  # ---- Workday ----
+  - {name: Airbus, slug: airbus, type: manufacturer, country: FR, source: {ats: workday, url: "https://ag.wd3.myworkdayjobs.com/Airbus"}}
+  - {name: Boeing, slug: boeing, type: manufacturer, country: US, source: {ats: workday, url: "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS"}}
+  - {name: RTX (Collins Aerospace, Pratt & Whitney), slug: rtx, type: manufacturer, country: US, source: {ats: workday, url: "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway"}}
+  - {name: GE Aerospace, slug: ge-aerospace, type: manufacturer, country: US, source: {ats: workday, url: "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite"}}
+  - {name: Honeywell, slug: honeywell, type: manufacturer, country: US, source: {ats: workday, url: "https://honeywell.wd5.myworkdayjobs.com/Honeywell"}}
+  - {name: Rolls-Royce, slug: rolls-royce, type: manufacturer, country: GB, source: {ats: workday, url: "https://rollsroyce.wd3.myworkdayjobs.com/professional"}}
+  - {name: Bombardier, slug: bombardier, type: manufacturer, country: CA, source: {ats: workday, url: "https://bombardier.wd3.myworkdayjobs.com/Bombardier"}}
+  - {name: Spirit AeroSystems, slug: spirit-aerosystems, type: manufacturer, country: US, source: {ats: workday, url: "https://spiritaero.wd5.myworkdayjobs.com/SpiritAeroSystems"}}
+  - {name: Textron Aviation, slug: textron, type: manufacturer, country: US, source: {ats: workday, url: "https://textron.wd5.myworkdayjobs.com/Textron"}}
+  - {name: Embraer, slug: embraer, type: manufacturer, country: BR, source: {ats: workday, url: "https://embraer.wd3.myworkdayjobs.com/Embraer"}}
+  - {name: AAR, slug: aar, type: mro, country: US, source: {ats: workday, url: "https://aarcorp.wd1.myworkdayjobs.com/AAR"}}
+  - {name: Alaska Airlines, slug: alaska-airlines, type: airline, country: US, source: {ats: workday, url: "https://alaskaair.wd1.myworkdayjobs.com/AlaskaAirlines"}}
+  - {name: Air Canada, slug: air-canada, type: airline, country: CA, source: {ats: workday, url: "https://aircanada.wd3.myworkdayjobs.com/AirCanada"}}
+  - {name: Qantas, slug: qantas, type: airline, country: AU, source: {ats: workday, url: "https://qantas.wd3.myworkdayjobs.com/Qantas"}}
+  - {name: easyJet, slug: easyjet, type: airline, country: GB, source: {ats: workday, url: "https://easyjet.wd3.myworkdayjobs.com/easyJet"}}
+  - {name: Heathrow Airport, slug: heathrow, type: airport, country: GB, source: {ats: workday, url: "https://heathrow.wd3.myworkdayjobs.com/Heathrow"}}
+  - {name: JetBlue, slug: jetblue, type: airline, country: US, source: {ats: workday, url: "https://jetblue.wd5.myworkdayjobs.com/JetBlue"}}
+  - {name: Virgin Atlantic, slug: virgin-atlantic, type: airline, country: GB, source: {ats: workday, url: "https://virginatlantic.wd3.myworkdayjobs.com/VirginAtlantic"}}
+  # ---- Greenhouse ----
+  - {name: Joby Aviation, slug: joby-aviation, type: manufacturer, country: US, source: {ats: greenhouse, board: "jobyaviation"}}
+  - {name: Archer Aviation, slug: archer-aviation, type: manufacturer, country: US, source: {ats: greenhouse, board: "archer56"}}
+  - {name: Wisk Aero, slug: wisk, type: manufacturer, country: US, source: {ats: greenhouse, board: "wisk"}}
+  - {name: Boom Supersonic, slug: boom-supersonic, type: manufacturer, country: US, source: {ats: greenhouse, board: "boomsupersonic"}}
+  - {name: Hermeus, slug: hermeus, type: manufacturer, country: US, source: {ats: greenhouse, board: "hermeus"}}
+  - {name: BETA Technologies, slug: beta-technologies, type: manufacturer, country: US, source: {ats: greenhouse, board: "betatechnologies"}}
+  - {name: Reliable Robotics, slug: reliable-robotics, type: manufacturer, country: US, source: {ats: greenhouse, board: "reliablerobotics"}}
+  - {name: Skyryse, slug: skyryse, type: manufacturer, country: US, source: {ats: greenhouse, board: "skyryse"}}
+  - {name: Blade Air Mobility, slug: blade, type: airline, country: US, source: {ats: greenhouse, board: "flyblade"}}
+  - {name: JSX, slug: jsx, type: airline, country: US, source: {ats: greenhouse, board: "jsx"}}
+  - {name: Wheels Up, slug: wheels-up, type: airline, country: US, source: {ats: greenhouse, board: "wheelsup"}}
+  - {name: Surf Air Mobility, slug: surf-air, type: airline, country: US, source: {ats: greenhouse, board: "surfair"}}
+  - {name: Merlin Labs, slug: merlin-labs, type: manufacturer, country: US, source: {ats: greenhouse, board: "merlinlabs"}}
+  - {name: Electra.aero, slug: electra-aero, type: manufacturer, country: US, source: {ats: greenhouse, board: "electra"}}
+  # ---- Lever ----
+  - {name: ZeroAvia, slug: zeroavia, type: manufacturer, country: GB, source: {ats: lever, company: "zeroavia"}}
+  - {name: Boom Supersonic (Lever), slug: boom-lever, type: manufacturer, country: US, source: {ats: lever, company: "boomsupersonic"}}
+  - {name: Skyports, slug: skyports, type: airport, country: GB, source: {ats: lever, company: "skyports"}}
+  - {name: Vertical Aerospace, slug: vertical-aerospace, type: manufacturer, country: GB, source: {ats: lever, company: "vertical-aerospace"}}
+  # ---- SmartRecruiters ----
+  - {name: Wizz Air, slug: wizz-air, type: airline, country: HU, source: {ats: smartrecruiters, company: "WizzAir"}}
+  - {name: Swissport, slug: swissport, type: ground_services, country: CH, source: {ats: smartrecruiters, company: "Swissport"}}
+  - {name: Menzies Aviation, slug: menzies-aviation, type: ground_services, country: GB, source: {ats: smartrecruiters, company: "MenziesAviation"}}
+  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: smartrecruiters, company: "dnata"}}
+  - {name: Etihad Airways, slug: etihad, type: airline, country: AE, source: {ats: smartrecruiters, company: "EtihadAirways"}}
+  - {name: SmartLynx Airlines, slug: smartlynx, type: airline, country: LV, source: {ats: smartrecruiters, company: "SmartLynxAirlines"}}
