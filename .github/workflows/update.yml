@@ -56,14 +56,18 @@ jobs:
       - name: Build website
         run: python -m site_builder.build
 
-      - name: Create the Cloudflare Pages project (first run only)
+      - name: Create the Cloudflare Pages project if it does not exist yet
         if: env.CF_TOKEN != ''
-        continue-on-error: true
-        uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0  # v4.1.3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages project create ${{ vars.CLOUDFLARE_PROJECT || 'aerojobs' }} --production-branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PROJECT: ${{ vars.CLOUDFLARE_PROJECT || 'aerojobs' }}
+        run: |
+          if npx --yes wrangler@4.147.0 pages project list | grep -qw "$PROJECT"; then
+            echo "Project $PROJECT already exists"
+          else
+            npx --yes wrangler@4.147.0 pages project create "$PROJECT" --production-branch=main
+          fi
 
       - name: Publish website to Cloudflare
         if: env.CF_TOKEN != ''
@@ -71,6 +75,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.147.0"
           command: pages deploy public --project-name=${{ vars.CLOUDFLARE_PROJECT || 'aerojobs' }} --branch=main --commit-dirty=true
 
       - name: Report employers that need a look
