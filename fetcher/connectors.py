@@ -272,24 +272,34 @@ def jobposting_to_raw(jp: dict, page_url: str) -> dict | None:
 
 
 def list_job_links(client: PoliteClient, src: dict) -> list[str]:
-    page = client.get_text(src["listing_url"])
-    p = _LinkAndScriptParser()
-    p.feed(page)
+    """Links to job pages on a listing page. If listing_url contains {page}, pages
+    start..start+max_pages-1 are read until one adds no new links."""
     pattern = re.compile(src.get("job_link_pattern") or r"/jobs?/")
-    base = src["listing_url"]
-    links = []
-    for href in p.links:
-        full = urllib.parse.urljoin(base, href.split("#")[0])
-        if pattern.search(full) and full not in links and full.rstrip("/") != base.rstrip("/"):
-            links.append(full)
+    tpl = src["listing_url"]
+    pages = range(int(src.get("first_page", 0)), int(src.get("first_page", 0)) + int(src.get("max_pages", 30))) if "{page}" in tpl else [None]
+    links: list[str] = []
+    for n in pages:
+        base = tpl.format(page=n) if n is not None else tpl
+        p = _LinkAndScriptParser()
+        p.feed(client.get_text(base))
+        before = len(links)
+        for href in p.links:
+            full = urllib.parse.urljoin(base, href.split("#")[0])
+            if src.get("strip_query"):
+                full = full.split("?")[0]
+            if pattern.search(full) and full not in links and full.rstrip("/") != base.rstrip("/"):
+                links.append(full)
+        if len(links) == before:
+            break
     return links
 
 
 def fetch_jsonld(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
     """Two shapes: the listing page itself holds JobPosting data, or it links to job pages
     that do. Job pages are read later, only for links not seen before (see run.py)."""
-    page = client.get_text(src["listing_url"])
-    direct = [r for r in (jobposting_to_raw(jp, src["listing_url"]) for jp in extract_job_postings(page)) if r]
+    first_url = src["listing_url"].format(page=src.get("first_page", 0)) if "{page}" in src["listing_url"] else src["listing_url"]
+    page = client.get_text(first_url)
+    direct = [r for r in (jobposting_to_raw(jp, first_url) for jp in extract_job_postings(page)) if r]
     if direct:
         return direct[:max_jobs]
     return [{"source_id": link, "title": "", "url": link, "detail_url": link, "needs_detail": True}
@@ -306,10 +316,49 @@ def jsonld_detail(client: PoliteClient, job: dict) -> dict:
     return raw
 
 
+# ------------------------------------------------------------------ Oracle Recruiting Cloud
+def fetch_oracle(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """Oracle Cloud HCM careers sites (…oraclecloud.com/hcmUI/CandidateExperience/…/sites/<site>)."""
+    host, site = src["host"], src["site"]
+    lang = src.get("lang", "en")
+    jobs, offset = [], 0
+    while True:
+        url = (f"https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true"
+               f"&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber={site},"
+               f"limit=25,offset={offset},sortBy=POSTING_DATES_DESC")
+        data = client.get_json(url)
+        items = (data.get("items") or [{}])[0]
+        reqs = items.get("requisitionList") or []
+        total = items.get("TotalJobsCount") or 0
+        for r in reqs:
+            if not r.get("Title") or not r.get("Id"):
+                continue
+            posted = parse_date(r.get("PostedDate"))
+            mode = (r.get("WorkplaceType") or r.get("WorkplaceTypeCode") or "")
+            jobs.append({
+                "source_id": str(r["Id"]),
+                "title": r["Title"].strip(),
+                "url": f"https://{host}/hcmUI/CandidateExperience/{lang}/sites/{site}/job/{r['Id']}",
+                "location": r.get("PrimaryLocation") or "",
+                "country_code": (r.get("PrimaryLocationCountry") or "").upper() or None,
+                "posted_date": posted,
+                "posted_estimated": posted is None,
+                "closing_date": parse_date(r.get("ExternalPostedEndDate") or r.get("PostingEndDate")),
+                "work_mode": mode.lower().replace("_", "-") if mode else None,
+                "employment_type": r.get("JobSchedule") or r.get("ContractType"),
+                "department": r.get("Organization") or r.get("JobFamily"),
+            })
+        offset += 25
+        if not reqs or offset >= total or len(jobs) >= max_jobs:
+            break
+    return jobs[:max_jobs]
+
+
 CONNECTORS = {
     "workday": (fetch_workday, workday_detail),
     "greenhouse": (fetch_greenhouse, None),
     "lever": (fetch_lever, None),
     "smartrecruiters": (fetch_smartrecruiters, None),
     "jsonld": (fetch_jsonld, jsonld_detail),
+    "oracle": (fetch_oracle, None),
 }

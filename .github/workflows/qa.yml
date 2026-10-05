@@ -1,0 +1,41 @@
+name: Test the live website
+
+# Run by hand. Tests https://aerojobs.work in Chrome, Firefox and Safari's engine (desktop and phone),
+# runs the security checks, then saves results and screenshots on the qa-results branch.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install test tools
+        run: |
+          pip install -r requirements.txt -r qa/requirements.txt
+          python -m playwright install --with-deps chromium firefox webkit
+      - name: Website tests (3 browsers, desktop and phone)
+        run: python qa/site_tests.py --base https://aerojobs.work --browsers chromium,firefox,webkit --out qa-results || true
+      - name: Security tests
+        run: python qa/security_tests.py --base https://aerojobs.work --out qa-results || true
+      - name: Software vulnerability scan
+        run: pip-audit -r requirements.txt -f json -o qa-results/pip-audit.json || true
+      - name: Save results on the qa-results branch
+        run: |
+          git config user.name "qa-bot"
+          git config user.email "qa-bot@users.noreply.github.com"
+          mv qa-results /tmp/qa-results
+          git fetch origin qa-results || true
+          if git rev-parse --verify --quiet origin/qa-results; then git checkout -B qa-results origin/qa-results; else git checkout --orphan qa-results; git rm -rf -q . ; fi
+          rm -rf ./latest && mkdir -p latest && cp -r /tmp/qa-results/. latest/
+          git add latest
+          git commit -q -m "QA results $(date -u +%Y-%m-%dT%H:%MZ)" || true
+          git push origin qa-results

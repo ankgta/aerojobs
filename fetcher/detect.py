@@ -19,7 +19,7 @@ PATTERNS = [
     ("successfactors", re.compile(r"(career\d*\.successfactors\.\w+|jobs\.sap\.com|\.jobs2web\.com)")),
     ("taleo", re.compile(r"([a-z0-9-]+\.taleo\.net)")),
     ("icims", re.compile(r"([a-z0-9-]+\.icims\.com)")),
-    ("oracle", re.compile(r"([a-z0-9-]+\.fa\.[a-z0-9-]+\.oraclecloud\.com)")),
+    ("oracle", re.compile(r"([a-z0-9-]+\.fa\.[a-z0-9-]+\.oraclecloud\.com)(?:/hcmUI/CandidateExperience/[a-z]{2}/sites/([A-Za-z0-9_]+))?")),
 ]
 
 
@@ -36,6 +36,9 @@ def suggest(url: str, page: str) -> list[str]:
         elif name == "lever":
             region = ", region: eu" if m[1] else ""
             found.append(f'source: {{ats: lever, company: "{m[2]}"{region}}}')
+        elif name == "oracle":
+            site = m[2] or "CX_1"
+            found.append(f'source: {{ats: oracle, host: "{m[1]}", site: "{site}"}}' + ("" if m[2] else "   # site number guessed"))
         elif name == "smartrecruiters":
             found.append(f'source: {{ats: smartrecruiters, company: "{m[1]}"}}')
         else:

@@ -175,3 +175,26 @@ def test_only_web_links_are_allowed():
     jobs = {}
     merge_employer_jobs(jobs, emp, [{"source_id": "x", "title": "Pilot", "url": "javascript:alert(1)"}], "2026-10-01")
     assert not any(is_visible(r) for r in jobs.values())
+
+
+def test_oracle_connector():
+    host = "abcd.fa.ocs.oraclecloud.com"
+    def page(url):
+        off = int(url.split("offset=")[1].split(",")[0])
+        reqs = [{"Id": f"{off + i}", "Title": f"Job {off + i}", "PostedDate": "2026-10-01",
+                 "PrimaryLocation": "London, England, United Kingdom", "PrimaryLocationCountry": "GB",
+                 "WorkplaceType": "Hybrid"} for i in range(25 if off == 0 else 5)]
+        return {"items": [{"TotalJobsCount": 30, "requisitionList": reqs}]}
+    client = FakeClient({f"https://{host}/hcmRestApi": page})
+    jobs = c.fetch_oracle(client, {"host": host, "site": "CX_1"})
+    assert len(jobs) == 30 and jobs[0]["country_code"] == "GB" and jobs[0]["work_mode"] == "hybrid"
+    assert jobs[0]["url"] == f"https://{host}/hcmUI/CandidateExperience/en/sites/CX_1/job/0"
+
+
+def test_jsonld_listing_pagination():
+    pages = {0: '<a href="/jobs/1/a/job">1</a><a href="/jobs/2/b/job">2</a>',
+             1: '<a href="/jobs/3/c/job">3</a>', 2: '<a href="/jobs/3/c/job">3</a>'}
+    client = FakeClient({"https://x.icims.com/jobs/search": lambda u: pages[int(u.split("pr=")[1].split("&")[0])]})
+    links = c.list_job_links(client, {"listing_url": "https://x.icims.com/jobs/search?pr={page}&in_iframe=1",
+                                       "job_link_pattern": r"/jobs/\d+/", "max_pages": 10})
+    assert [l.split("/jobs/")[1][0] for l in links] == ["1", "2", "3"]

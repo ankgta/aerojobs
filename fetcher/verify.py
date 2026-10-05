@@ -36,6 +36,12 @@ def check(client: PoliteClient, emp: dict) -> dict:
         out["error"] = f"{type(e).__name__}: {str(e)[:200]}"
         return out
     out["jobs_found"] = len(jobs)
+    if jobs and jobs[0].get("needs_detail") and detail_fn:
+        for j in jobs[:3]:
+            try:
+                j.update({k: v for k, v in detail_fn(client, j).items() if v})
+            except Exception as e:
+                out["detail_error"] = f"{type(e).__name__}: {str(e)[:200]}"
     out["sample"] = [{"title": j.get("title"), "location": j.get("location"), "url": j.get("url"),
                       "posted": j.get("posted_date")} for j in jobs[:6]]
     if detail_fn and jobs:

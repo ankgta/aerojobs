@@ -28,6 +28,7 @@
   color-scheme: light;
 }
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }   /* anything hidden by the page's script stays hidden */
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 16px); }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
@@ -137,11 +138,11 @@ h3 { font-size: 1.1rem; font-weight: 600; }
 .sheet-head h2 { font-size: 1.1rem; margin: 0; }
 .sheet-close { display: none; }
 .filter-body { display: grid; gap: 18px; padding: 10px 20px 20px; }
-.field { display: grid; gap: 6px; }
+.field { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; min-width: 0; }   /* long option names must not widen the page */
 .field > span, .field legend { font-weight: 600; font-size: .9rem; color: var(--ink-2); }
 fieldset.field { border: 0; margin: 0; padding: 0; }
 select {
-  width: 100%; min-height: 44px; padding: 0 38px 0 12px; font-size: 16px;
+  width: 100%; max-width: 100%; min-width: 0; min-height: 44px; text-overflow: ellipsis; padding: 0 38px 0 12px; font-size: 16px;
   border: 1px solid var(--line); border-radius: 10px; background-color: var(--surface);
   -webkit-appearance: none; -moz-appearance: none; appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2344566E' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -287,7 +288,9 @@ select:hover { border-color: #B9CDE3; }
     background: var(--bg); border-bottom: 1px solid var(--line);
   }
   .filter-btn { display: inline-flex; min-height: 42px; padding: 0 16px; }
-  .sort select { min-width: 0; min-height: 42px; }
+  .results-tools { flex: 1 1 auto; justify-content: flex-end; }
+  .sort { min-width: 0; flex: 0 1 11rem; }
+  .sort select { width: 100%; min-width: 0; min-height: 42px; padding-right: 30px; background-position: right 10px center; }
   /* filters become a bottom sheet */
   .filters {
     position: fixed; z-index: 60; left: 0; right: 0; bottom: 0; top: auto;
