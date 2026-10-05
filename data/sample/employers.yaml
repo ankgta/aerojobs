@@ -1,0 +1,46 @@
+employers:
+- name: Harbourline Air
+  slug: harbourline-air
+  type: airline
+  country: GB
+  enabled: true
+- name: Dune Coast Airlines
+  slug: dune-coast-airlines
+  type: airline
+  country: AE
+  enabled: true
+- name: Kestrel Regional
+  slug: kestrel-regional
+  type: airline
+  country: US
+  enabled: true
+- name: Larkspur Airways
+  slug: larkspur-airways
+  type: airline
+  country: IN
+  enabled: true
+- name: Tasman Arc Airlines
+  slug: tasman-arc-airlines
+  type: airline
+  country: NZ
+  enabled: true
+- name: Brightfield Airport
+  slug: brightfield-airport
+  type: airport
+  country: GB
+  enabled: true
+- name: Corvid Aero Services
+  slug: corvid-aero-services
+  type: mro
+  country: SG
+  enabled: true
+- name: Orrery Aerospace
+  slug: orrery-aerospace
+  type: manufacturer
+  country: FR
+  enabled: true
+- name: Ridgeline Ground Handling
+  slug: ridgeline-ground-handling
+  type: ground_services
+  country: QA
+  enabled: true
