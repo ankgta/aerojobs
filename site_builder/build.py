@@ -244,7 +244,8 @@ class Builder:
 
         # home + search
         self.render("home.html", "", jobs=jobs[:25], regions=regions, guides=guides[:6],
-                    role_counts=Counter(j["role"] for j in jobs), **common)
+                    role_counts=Counter(j["role"] for j in jobs),
+                    type_counts=Counter(j["company_type"] for j in jobs), **common)
         # job pages
         for j in jobs:
             similar = [x for x in by_role[j["role"]] if x["id"] != j["id"]][:5]

@@ -156,6 +156,8 @@ select:hover { border-color: #B9CDE3; }
   display: inline-flex; align-items: center; min-height: 38px; padding: 0 14px; border-radius: 999px;
   border: 1px solid var(--line); background: var(--surface); font-weight: 600; font-size: .9rem; color: var(--ink-2);
 }
+.toggle.is-empty span { opacity: .45; cursor: not-allowed; }
+.toggle input:disabled { cursor: not-allowed; }
 .toggle input:checked + span { background: var(--ink); border-color: var(--ink); color: #fff; }
 .toggle input:focus-visible + span { outline: 3px solid var(--primary); outline-offset: 2px; }
 .sheet-foot { display: flex; gap: 10px; padding: 0 20px 20px; }

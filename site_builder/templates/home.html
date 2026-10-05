@@ -75,7 +75,7 @@
       <label class="field"><span>Employer type</span>
         <select name="type" id="f-type">
           <option value="">All employers</option>
-          {% for key, label in company_types.items() %}<option value="{{ key }}">{{ label }}</option>{% endfor %}
+          {% for key, label in company_types.items() %}<option value="{{ key }}">{{ label }}{% if type_counts[key] %} ({{ type_counts[key] }}){% endif %}</option>{% endfor %}
         </select>
       </label>
     </div>

@@ -122,6 +122,65 @@
     moreBtn.hidden = shown >= total;
   }
 
+  // ----- live counts next to every filter choice -----
+  // Each count shows how many jobs that choice would give, taking every OTHER active
+  // filter into account (e.g. with Remote ticked, "India (0)").
+  var countLabelRe = /\s*\(\d[\d,]*\)$/;
+  [].forEach.call(finder.querySelectorAll(".filters select option, [name=mode] + span"), function (el) {
+    el.setAttribute("data-label", el.textContent.replace(countLabelRe, ""));
+  });
+
+  function without(s, dim) {
+    var c = {}; for (var k in s) c[k] = s[k];
+    if (dim === "modes") c.modes = []; else c[dim] = "";
+    return c;
+  }
+
+  function tally(list, keyFn) {
+    var out = {};
+    list.forEach(function (j) { keyFn(j).forEach(function (k) { out[k] = (out[k] || 0) + 1; }); });
+    return out;
+  }
+
+  function setOption(opt, n, selected) {
+    var base = opt.getAttribute("data-label");
+    if (!opt.value) { opt.textContent = base; return; }          // "All countries" etc.
+    opt.textContent = base + " (" + n.toLocaleString() + ")";
+    opt.disabled = n === 0 && !selected;
+  }
+
+  function updateCounts(s) {
+    var pool;
+    // country and region
+    pool = jobs.filter(function (j) { return matchesState(j, without(s, "country")); });
+    var byCountry = tally(pool, function (j) { return [j.cc, "region:" + j.rg]; });
+    [].forEach.call(field("country").options, function (o) { setOption(o, byCountry[o.value] || 0, o.value === s.country); });
+    // role
+    pool = jobs.filter(function (j) { return matchesState(j, without(s, "role")); });
+    var byRole = tally(pool, function (j) { return [j.r]; });
+    [].forEach.call(field("role").options, function (o) { setOption(o, byRole[o.value] || 0, o.value === s.role); });
+    // employer type
+    pool = jobs.filter(function (j) { return matchesState(j, without(s, "type")); });
+    var byType = tally(pool, function (j) { return [j.ct]; });
+    [].forEach.call(field("type").options, function (o) { setOption(o, byType[o.value] || 0, o.value === s.type); });
+    // posted date (the ranges overlap: a job from yesterday is also in "last week")
+    pool = jobs.filter(function (j) { return matchesState(j, without(s, "posted")); });
+    var byPosted = tally(pool, function (j) {
+      var d = daysAgo(j.p);
+      return d > 30 ? ["older"] : ["1", "2", "7", "30"].filter(function (v) { return d <= Number(v); });
+    });
+    [].forEach.call(field("posted").options, function (o) { setOption(o, byPosted[o.value] || 0, o.value === s.posted); });
+    // work mode buttons
+    pool = jobs.filter(function (j) { return matchesState(j, without(s, "modes")); });
+    var byMode = tally(pool, function (j) { return [j.w]; });
+    [].forEach.call(finder.querySelectorAll("[name=mode]"), function (box) {
+      var n = byMode[box.value] || 0, span = box.nextElementSibling;
+      span.textContent = span.getAttribute("data-label") + " (" + n.toLocaleString() + ")";
+      box.disabled = n === 0 && !box.checked;
+      box.parentNode.classList.toggle("is-empty", box.disabled);
+    });
+  }
+
   function activeFilters(s) {
     return (s.country ? 1 : 0) + (s.role ? 1 : 0) + (s.posted ? 1 : 0) + (s.type ? 1 : 0) + s.modes.length + (company ? 1 : 0);
   }
@@ -143,6 +202,7 @@
     activeBadge.textContent = n;
     activeBadge.hidden = n === 0;
     writeUrl(s);
+    updateCounts(s);
     render(true);
   }
 

@@ -350,6 +350,49 @@ def t_filter_combined_and_clear(page, base, index):
     return f"Country+role+mode together = {n} (matches); Clear all restores {len(index)}"
 
 
+def option_counts(page, sel):
+    return page.evaluate(f"""[...document.querySelectorAll('{sel} option')].filter(o => o.value)
+        .map(o => [o.value, o.textContent, o.disabled])""")
+
+
+def t_live_counts(page, base, index):
+    """Owner's bug report: with Remote ticked, 'India (225)' must change to India's remote count."""
+    goto(page, base)
+    wait_ready(page)
+    open_filters_if_sheet(page)
+    page.locator("label.toggle:has(#f-mode-remote)").click()
+    page.wait_for_timeout(250)
+    remote = [j for j in index if j["w"] == "Remote"]
+    bad, zero_disabled = [], 0
+    for value, text, disabled in option_counts(page, "#f-country"):
+        exp = sum(1 for j in remote if (j["rg"] == value[7:] if value.startswith("region:") else j["cc"] == value))
+        m = re.search(r"\(([\d,]+)\)$", text)
+        got = int(m.group(1).replace(",", "")) if m else None
+        if got != exp:
+            bad.append(f"{text!r} expected ({exp})")
+        if exp == 0:
+            zero_disabled += disabled
+            if not disabled:
+                bad.append(f"{text!r} should be greyed out")
+    for value, text, disabled in option_counts(page, "#f-role"):
+        exp = sum(1 for j in remote if j["r"] == value)
+        if not text.endswith(f"({exp:,})"):
+            bad.append(f"role {text!r} expected ({exp})")
+    # and the other way round: pick the busiest country, the Remote button count must follow
+    page.locator("label.toggle:has(#f-mode-remote)").click()
+    cc = max({j["cc"] for j in index if j["cc"]}, key=lambda c: sum(j["cc"] == c for j in index))
+    page.select_option("#f-country", cc)
+    page.wait_for_timeout(250)
+    exp_remote = sum(1 for j in index if j["cc"] == cc and j["w"] == "Remote")
+    label = page.locator("label.toggle:has(#f-mode-remote) span").inner_text()
+    if not label.endswith(f"({exp_remote:,})"):
+        bad.append(f"Remote button says {label!r}, expected ({exp_remote}) for {cc}")
+    close_filters_if_sheet(page)
+    assert not bad, "; ".join(bad[:5])
+    return (f"With Remote ticked every country, region and role count matches the remote jobs; {zero_disabled} countries "
+            f"with no remote jobs are greyed out; with {cc} picked the Remote button shows ({exp_remote})")
+
+
 def t_url_state(page, base, index):
     j0 = index[0]
     goto(page, base, f"/?role={j0['r']}&mode={urllib.parse.quote(j0['w'])}&sort=closing#jobs")
@@ -679,6 +722,7 @@ DESKTOP_CASES = [
     ("TC-FLT-04", "Filters", "Functional", "Posted date filter", "Pick 24h, 48h, week, month, older", "Counts equal the data", t_filter_posted),
     ("TC-FLT-05", "Filters", "Functional", "Employer type filter", "Pick each employer type", "Counts equal the data", t_filter_type),
     ("TC-FLT-06", "Filters", "End to end", "Combined filters, then Clear all", "Set country + role + mode, then Clear all", "Combined count correct; Clear all restores everything", t_filter_combined_and_clear),
+    ("TC-FLT-08", "Filters", "Black box", "Filter counts update with other filters (owner's bug report)", "Tick Remote, read the counts next to each country, region and role; then pick a country and read the Remote count", "Every count reflects the other filters; choices with 0 jobs are greyed out", t_live_counts),
     ("TC-FLT-07", "Filters", "Black box", "Filters saved in a shareable link", "Open a link with filters, reload", "Filters applied from the link and kept on reload", t_url_state),
     ("TC-SORT-01", "Sorting", "Functional", "Newest first and Closing soonest", "Check default order, switch to Closing soonest", "Correct order both ways", t_sort),
     ("TC-PAGE-01", "Results list", "Functional", "Show more jobs", "Click Show more until all shown", "25 at a time; button hides at the end", t_show_more),
@@ -701,6 +745,7 @@ MOBILE_CASES = [
     ("TC-MOB-05", "Phones", "Functional", "No zoom when typing on iPhone", "Check text size of search box and menus", "At least 16px", t_input_zoom),
     ("TC-MOB-06", "Phones", "Functional", "Tap targets big enough", "Measure buttons and chips", "At least 36px tall", t_tap_targets),
     ("TC-FLT-02", "Filters", "Functional", "Job role filter", "Pick each role in turn (phone)", "Counts equal the data", t_filter_role),
+    ("TC-FLT-08", "Filters", "Black box", "Filter counts update with other filters (owner's bug report)", "Same steps in the phone filter panel", "Counts reflect the other filters", t_live_counts),
     ("TC-SRCH-01", "Search", "Functional", "Search by job title (case-insensitive)", "Search on a phone", "Only matching jobs", t_search_title),
 ]
 
