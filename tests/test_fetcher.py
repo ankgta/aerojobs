@@ -198,3 +198,20 @@ def test_jsonld_listing_pagination():
     links = c.list_job_links(client, {"listing_url": "https://x.icims.com/jobs/search?pr={page}&in_iframe=1",
                                        "job_link_pattern": r"/jobs/\d+/", "max_pages": 10})
     assert [l.split("/jobs/")[1][0] for l in links] == ["1", "2", "3"]
+
+
+def test_countries_from_company_location_styles():
+    assert country_from_location("US-GA-MIDLAND-MPC ~ 8801 Macon Rd", "US") == "US"
+    assert country_from_location("CA-QC-LONGUEUIL-J01 ~ 1000 Blvd Marie-Victorin", "US") == "CA"
+    assert country_from_location("Toulouse Area", "FR") == "FR"
+    assert country_from_location("Lisbon (Airbus Portugal)", "FR") == "PT"
+    assert country_from_location("Friedrichshafen", "GB") == "DE"
+    assert country_from_location("Lynn", "US") == "US"
+    assert country_from_location("Remote") is None
+
+
+def test_roles_in_other_languages_and_manufacturing():
+    assert classify_title("Servicetekniker") == "engineering-maintenance"
+    assert classify_title("CNC-Rundschleifer (m/f/d)") == "engineering-maintenance"
+    assert classify_title("Ingénieur Recherche & Technologique") == "engineering-maintenance"
+    assert classify_title("Softwareentwickler (m/w/d)") == "corporate"

@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 from functools import lru_cache
 
+import geonamescache
 import pycountry
 
 REGIONS = {
@@ -121,10 +123,39 @@ def lookup_country(text: str | None) -> str | None:
     return None
 
 
-def country_from_location(location: str | None) -> str | None:
-    """Best-effort: read a country code from text like 'Seattle, WA' or 'Dubai - UAE'."""
+def _fold(s: str) -> str:
+    return unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower().strip()
+
+
+@lru_cache(maxsize=1)
+def _city_index() -> dict[str, list[tuple[int, str]]]:
+    """City name -> [(population, country code)], for towns of 5,000+ people worldwide (GeoNames)."""
+    idx: dict[str, list[tuple[int, str]]] = {}
+    for c in geonamescache.GeonamesCache(min_city_population=5000).get_cities().values():
+        idx.setdefault(_fold(c["name"]), []).append((c["population"], c["countrycode"]))
+    return idx
+
+
+def _city_country(name: str, hint: str | None) -> str | None:
+    found = _city_index().get(_fold(name))
+    if not found:
+        return None
+    biggest = max(found)
+    if hint:  # prefer the employer's home country when it has a town of that name of similar size
+        home = [f for f in found if f[1] == hint]
+        if home and max(home)[0] >= biggest[0] * 0.2:
+            return hint
+    return biggest[1]
+
+
+def country_from_location(location: str | None, hint: str | None = None) -> str | None:
+    """Best-effort: read a country code from text like 'Seattle, WA', 'Dubai - UAE',
+    'Toulouse Area' or 'US-GA-MACON-12 ~ 8801 Main St'. hint = employer's home country."""
     if not location:
         return None
+    m = re.match(r"^([A-Z]{2})-[A-Z0-9]{1,3}-", location)          # 'US-GA-MIDLAND…', 'CA-QC-LONGUEUIL…'
+    if m and m.group(1) in _REGION_OF:
+        return m.group(1)
     whole = lookup_country(location)
     if whole:
         return whole
@@ -149,6 +180,14 @@ def country_from_location(location: str | None) -> str | None:
     # 4) three- and two-letter country codes
     for tok in reversed(upper_tokens):
         code = lookup_country(tok)
+        if code:
+            return code
+    # 5) town names worldwide, e.g. 'Toulouse Area', 'Lisbon (Airbus Portugal)', 'Friedrichshafen'
+    for tok in tokens:
+        name = re.sub(r"\s+(area|region|metro|metropolitan area)$", "", tok, flags=re.I).strip()
+        if _fold(name) in {"remote", "hybrid", "home", "various", "multiple", "anywhere", "worldwide", "global"}:
+            continue
+        code = _city_country(name, hint) if len(name) > 2 else None
         if code:
             return code
     return None

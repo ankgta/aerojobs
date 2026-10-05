@@ -44,7 +44,7 @@ def apply_fields(rec: dict, raw: dict, employer: dict) -> None:
     if code and is_country_code(code):
         rec["country_code"] = code.upper()
     elif not rec.get("country_code"):
-        rec["country_code"] = country_from_location(rec.get("location"))
+        rec["country_code"] = country_from_location(rec.get("location"), employer.get("country"))
     rec["country"] = country_name(rec.get("country_code"))
     rec["region"] = region_of(rec.get("country_code")) if rec.get("country_code") else None
     rec["work_mode"] = detect_work_mode(rec.get("title"), rec.get("location"),
