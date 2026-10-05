@@ -138,7 +138,10 @@ _NON_AVIATION_TITLE = re.compile(
     r"undersea|submarine|shipboard|naval (?:weapon|combat|system)|"
     r"patriot|stinger|javelin|tomahawk|"
     r"directed energy weapon|kinetic weapon|"
-    r"ground[- ]based (?:air )?defen[sc]e"
+    r"ground[- ]based (?:air )?defen[sc]e|"
+    r"defen[sc]e (?:hardware|system(?! .*(?:aircraft|aero|flight)))|"
+    r"active secret|secret clearance|"
+    r"military (?:hardware|vehicle|system)"
     r")\b",
     re.I,
 )
