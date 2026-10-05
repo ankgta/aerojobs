@@ -1,8 +1,8 @@
-# Aviation Jobs Portal
+# AeroJobs
 
-A global job board for the aviation industry. Twice a day it reads the careers sites of airlines, airports, maintenance companies and aerospace manufacturers, and publishes every open job on one searchable website.
+https://aerojobs.work — a global job board for the aviation industry. Twice a day it reads the careers sites of airlines, airports, maintenance companies and aerospace manufacturers, and publishes every open job on one searchable website.
 
-To get it live, follow **SETUP-GUIDE.md**. This file explains how it works.
+This file explains how the code works. For where things stand and how to work on the project, start with **docs/STATUS.md** and **docs/README.md**. Claude reads **CLAUDE.md** automatically. (`SETUP-GUIDE.md` describes how the accounts were first set up; that is already done.)
 
 ## How it works
 
@@ -53,18 +53,19 @@ The [.aero directory at information.aero](https://information.aero/directory) li
 
 | System | Status |
 | --- | --- |
-| Workday | Supported (many large airlines and manufacturers) |
+| Workday | Supported (Airbus, Boeing, RTX, GE Aerospace, Rolls-Royce) |
+| Oracle Recruiting Cloud | Supported (Honeywell, Virgin Atlantic, Heathrow) |
 | Greenhouse, Lever, SmartRecruiters | Supported |
-| Google JobPosting data in web pages | Supported |
-| SAP SuccessFactors, Oracle Taleo, iCIMS, Oracle Cloud | Detected but not read yet. Next connectors to build. |
+| Google JobPosting data in web pages | Supported, including multi-page listings |
+| SAP SuccessFactors, Oracle Taleo, iCIMS | Detected but not read yet. Next readers to build. |
 
 To find out which system an employer uses, run `python -m fetcher.detect <careers page link>`.
 
 ## Known limits
 
-- **Employer list not verified yet.** All 55 starting employers are listed but switched off. Each needs its careers system checked before it is switched on. This is the next task.
-- **Short descriptions on job pages.** Google for Jobs prefers full descriptions. We deliberately show short summaries to respect employers' content, so some jobs may get less visibility there.
-- **Some sites block automated reading.** When a site's robots.txt disallows it, the fetcher skips it and reports it rather than working around it.
+See `docs/STATUS.md` (known issues) and `docs/PROJECT.md` (limits). In short: many airlines forbid
+automated reading in their robots.txt and are left off; job pages show our own short summary, not the
+employer's full text; Cloudflare's free plan allows 20,000 files per site.
 
 ## Commands (for Claude, or if you are curious)
 
@@ -75,4 +76,6 @@ python -m fetcher.run                  # fetch jobs
 python -m fetcher.run --only boeing    # fetch one employer
 python -m site_builder.build           # build the live site into public/
 python -m site_builder.sample && python -m site_builder.build --preview   # preview with made-up data
+python -m fetcher.verify config/candidates.yaml   # check candidate employer sources
+python qa/site_tests.py --base https://aerojobs.work --browsers chromium   # live-site tests (needs qa/requirements.txt)
 ```

@@ -1,5 +1,7 @@
 # Setup guide: getting your job site live
 
+> **Already done for AeroJobs (5 Oct 2026).** Kept as a record and for rebuilding from scratch. For day-to-day tasks see `docs/RUNBOOK.md`; for moving to a different Claude account see `docs/MOVING-TO-ANOTHER-CLAUDE-ACCOUNT.md`.
+
 This takes about an hour, spread over a few sittings. You only do it once. Screens on these websites change from time to time, so if a button has a slightly different name, look for the closest match, or ask Claude.
 
 **Never paste passwords or keys into a chat with Claude.** Keys go only into the GitHub "Secrets" page described below.

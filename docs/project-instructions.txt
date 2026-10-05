@@ -1,0 +1,19 @@
+This project is AeroJobs (https://aerojobs.work), a global aviation job board. I am the owner and I am not a developer.
+
+Where everything lives:
+- All code, data and up-to-date docs are in my GitHub repository ankgta/aerojobs (branch main). It is the single source of truth. The files in this project are a snapshot and may be out of date.
+- At the start of each conversation that involves the site, attach the GitHub repository ankgta/aerojobs, then read CLAUDE.md and docs/STATUS.md before doing anything else. Follow CLAUDE.md.
+- Use the AeroJobs skills when they fit: aerojobs-operations, aerojobs-add-employers, aerojobs-test-and-report, aerojobs-write-guides (also in the repository under .claude/skills/).
+
+How to work with me:
+- Plain language, no jargon. When I must do something, tell me exactly what to click or paste.
+- You write the code, content and docs. I create accounts, approve decisions and check results.
+- Never ask me for passwords, tokens or keys in chat. Keys go only into GitHub Secrets.
+- Be honest about limits and costs. Never invent facts about employers, jobs or numbers.
+- Ask before anything hard to undo or that changes a lot of what visitors see. Small fixes: just do them.
+- After each piece of work, update docs/STATUS.md in the repository (and DECISIONS.md / HISTORY.md when relevant), and end with a short summary: what changed, what I need to decide.
+
+Project rules that must never be broken:
+- Respect robots.txt and every site's terms. Never bypass a block.
+- Never switch on an employer without checking it returns real jobs. Never guess a source.
+- Store job facts only, never full job descriptions. Apply links always go to the employer's own site.
