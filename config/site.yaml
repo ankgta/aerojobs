@@ -15,8 +15,8 @@ search_console_verification: ""  # optional: the code from Search Console's "HTM
 # Job fetcher behaviour
 fetch:
   delay_seconds: 1.5            # pause between requests to the same website
-  max_new_details_per_employer: 250   # Workday/JSON-LD job pages read per run, per employer
-  max_jobs_per_employer: 3000
+  max_new_details_per_employer: 150   # Workday/JSON-LD job pages read per run, per employer
+  max_jobs_per_employer: 600   # kept low while testing; Cloudflare Pages allows 20,000 files per site
   expire_after_missed_runs: 2   # hide a job after it is missing this many runs in a row
   keep_expired_days: 30
   ai_role_sorting_limit: 200    # max unclear job titles sent to Claude Haiku per run

@@ -9,6 +9,11 @@
 # type: airline | airport | mro | manufacturer | ground_services | other
 # country: two-letter country code of the head office (GB, US, AE, IN ...)
 #
+# Checked 5 Oct 2026 and NOT usable: these sites' robots.txt forbids automated reading, so they stay off:
+#   Wizz Air, Swissport, Menzies, dnata, Etihad (SmartRecruiters API), flydubai and Alaska Airlines (iCIMS),
+#   American Airlines, Delta, KLM, Qantas, IndiGo, AAR, Lufthansa Technik, LATAM, Ethiopian (careers sites).
+# Not yet readable (no connector): JetBlue, Ryanair, Wizz Air (SuccessFactors); Qatar Airways, easyJet (Taleo).
+#
 # Source examples (copy the shape that matches the hiring system):
 #   source: {ats: workday, url: "https://company.wd3.myworkdayjobs.com/SiteName"}
 #   source: {ats: greenhouse, board: "companyboardname"}
@@ -34,7 +39,7 @@ employers:
 
   # ---------- Airlines: Europe ----------
   - {name: British Airways, slug: british-airways, type: airline, country: GB, enabled: false}
-  - {name: Virgin Atlantic, slug: virgin-atlantic, type: airline, country: GB, enabled: false}
+  - {name: Virgin Atlantic, slug: virgin-atlantic, type: airline, country: GB, source: {ats: oracle, host: "iagime.fa.ocs.oraclecloud.com", site: "CX_1"}, enabled: true}
   - {name: easyJet, slug: easyjet, type: airline, country: GB, enabled: false}
   - {name: Ryanair, slug: ryanair, type: airline, country: IE, enabled: false}
   - {name: Aer Lingus, slug: aer-lingus, type: airline, country: IE, enabled: false}
@@ -62,7 +67,7 @@ employers:
   - {name: Air New Zealand, slug: air-new-zealand, type: airline, country: NZ, enabled: false}
 
   # ---------- Airports ----------
-  - {name: Heathrow Airport, slug: heathrow, type: airport, country: GB, enabled: false}
+  - {name: Heathrow Airport, slug: heathrow, type: airport, country: GB, source: {ats: oracle, host: "encd.fa.em3.oraclecloud.com", site: "CX_3001"}, enabled: true}
   - {name: Dubai Airports, slug: dubai-airports, type: airport, country: AE, enabled: false}
   - {name: Changi Airport Group, slug: changi-airport-group, type: airport, country: SG, enabled: false}
   - {name: Dallas Fort Worth International Airport, slug: dfw-airport, type: airport, country: US, enabled: false}
@@ -76,12 +81,14 @@ employers:
   - {name: Menzies Aviation, slug: menzies-aviation, type: ground_services, country: GB, enabled: false}
 
   # ---------- Manufacturers ----------
-  - {name: Airbus, slug: airbus, type: manufacturer, country: FR, enabled: false}
-  - {name: Boeing, slug: boeing, type: manufacturer, country: US, careers_url: "https://jobs.boeing.com", enabled: false}
+  - {name: Honeywell, slug: honeywell, type: manufacturer, country: US, source: {ats: oracle, host: "ibqbjb.fa.ocs.oraclecloud.com", site: "CX_1"}, enabled: true}
+  - {name: Archer Aviation, slug: archer-aviation, type: manufacturer, country: US, source: {ats: greenhouse, board: "archer56"}, enabled: true}
+  - {name: Skyryse, slug: skyryse, type: manufacturer, country: US, source: {ats: greenhouse, board: "skyryse"}, enabled: true}
+  - {name: Airbus, slug: airbus, type: manufacturer, country: FR, source: {ats: workday, url: "https://ag.wd3.myworkdayjobs.com/Airbus"}, enabled: true}
+  - {name: Boeing, slug: boeing, type: manufacturer, country: US, careers_url: "https://jobs.boeing.com", source: {ats: workday, url: "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS"}, enabled: true}
   - {name: Embraer, slug: embraer, type: manufacturer, country: BR, enabled: false}
-  - {name: Rolls-Royce, slug: rolls-royce, type: manufacturer, country: GB, enabled: false}
-  - {name: GE Aerospace, slug: ge-aerospace, type: manufacturer, country: US, enabled: false}
-  - {name: Pratt & Whitney, slug: pratt-whitney, type: manufacturer, country: US, enabled: false}
+  - {name: Rolls-Royce, slug: rolls-royce, type: manufacturer, country: GB, source: {ats: workday, url: "https://rollsroyce.wd3.myworkdayjobs.com/professional"}, enabled: true}
+  - {name: GE Aerospace, slug: ge-aerospace, type: manufacturer, country: US, source: {ats: workday, url: "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite"}, enabled: true}
   - {name: Safran, slug: safran, type: manufacturer, country: FR, enabled: false}
   - {name: Bombardier, slug: bombardier, type: manufacturer, country: CA, enabled: false}
-  - {name: Collins Aerospace, slug: collins-aerospace, type: manufacturer, country: US, enabled: false}
+  - {name: "RTX (Collins Aerospace, Pratt & Whitney)", slug: rtx, type: manufacturer, country: US, source: {ats: workday, url: "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway"}, enabled: true}

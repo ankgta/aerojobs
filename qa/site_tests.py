@@ -437,6 +437,26 @@ def t_jsonld(page, base, index):
     return f"Google for Jobs data present and complete on {n} sampled job pages"
 
 
+def t_apply_links_live(page, base, index):
+    """One job per employer: the Apply link must reach a working page on the employer's site."""
+    seen, out, bad = set(), [], []
+    for j in index:
+        if j["cs"] in seen:
+            continue
+        seen.add(j["cs"])
+        goto(page, base, f"/{j['u']}/")
+        href = page.locator(".apply-card a.btn, .apply-bar a.btn").first.get_attribute("href")
+        try:
+            r = page.request.get(href, max_redirects=5, timeout=30000)
+            status = r.status
+        except Exception as e:
+            status = f"error {type(e).__name__}"
+        host = urllib.parse.urlsplit(href).netloc
+        (out if isinstance(status, int) and status < 400 else bad).append(f"{j['c']}: {status} ({host})")
+    assert not bad, "; ".join(bad)
+    return f"Apply links reach the employer for all {len(out)} employers: " + "; ".join(out)
+
+
 def t_breadcrumbs_similar(page, base, index):
     j = index[0]
     goto(page, base, f"/{j['u']}/")
@@ -664,6 +684,7 @@ DESKTOP_CASES = [
     ("TC-PAGE-01", "Results list", "Functional", "Show more jobs", "Click Show more until all shown", "25 at a time; button hides at the end", t_show_more),
     ("TC-JOB-01", "Job page", "Functional", "Job details and Apply button", "Open a job", "Title, employer, dates; Apply opens employer site in new tab", t_job_page),
     ("TC-JOB-02", "Job page", "Functional", "Google for Jobs data on job pages", "Read the JobPosting data on 15 job pages", "Valid with title, date, employer, description, location", t_jsonld),
+    ("TC-JOB-04", "Job page", "End to end", "Apply links reach each employer's site", "For one job per employer, follow the Apply link", "Employer page answers without error", t_apply_links_live),
     ("TC-JOB-03", "Job page", "End to end", "Breadcrumbs and similar jobs", "Click each breadcrumb; click a similar job", "All links work", t_breadcrumbs_similar),
     ("TC-LIST-01", "Listing pages", "End to end", "Employer page and its filter link", "Open an employer page, click 'Filter these jobs'", "Counts match; board opens filtered to that employer", t_company_page),
     ("TC-LIST-02", "Listing pages", "Functional", "Countries index", "Open Countries, click the first country", "Country page opens", t_country_page),

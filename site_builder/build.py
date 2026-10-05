@@ -6,6 +6,7 @@ can serve. Use --preview to build with sample data and links that work from file
 from __future__ import annotations
 
 import argparse
+from html import escape as html_escape
 import datetime as dt
 import json
 import re
@@ -111,7 +112,7 @@ def job_posting_jsonld(job: dict, site: dict, page_url: str) -> str | None:
         "@context": "https://schema.org/",
         "@type": "JobPosting",
         "title": job["title"],
-        "description": f"<p>{job['summary']}</p>",
+        "description": f"<p>{html_escape(job['summary'])}</p>",
         "datePosted": job["posted_date"],
         "hiringOrganization": {"@type": "Organization", "name": job["company"]},
         "identifier": {"@type": "PropertyValue", "name": job["company"], "value": job["id"]},
@@ -130,7 +131,9 @@ def job_posting_jsonld(job: dict, site: dict, page_url: str) -> str | None:
         data["applicantLocationRequirements"] = {"@type": "Country", "name": job["country"]}
     else:
         data["jobLocation"] = {"@type": "Place", "address": address}
-    return json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    # Escape < > & so nothing inside the data can close the script block or add markup.
+    return (json.dumps(data, ensure_ascii=False)
+            .replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026"))
 
 
 def read_markdown(path: Path) -> tuple[dict, str]:
