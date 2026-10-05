@@ -93,6 +93,94 @@ def classify_title(title: str, company_type: str | None = None) -> str | None:
     return None
 
 
+# ---------------------------------------------------------------------------
+# Aviation relevance filter
+# ---------------------------------------------------------------------------
+# Conglomerates like Honeywell and RTX post many non-aviation jobs on the same
+# careers feed (building automation, HVAC, fire systems, oil & gas, defence
+# weapons, etc.). This filter catches those by title keywords. It is applied to
+# every employer – pure aviation companies (airlines, Airbus, Boeing …) are not
+# affected because their job titles never contain these terms.
+#
+# Design: EXCLUDE clearly non-aviation titles rather than INCLUDE only titles
+# with "aero" in them, because most legitimate aviation jobs have generic titles
+# ("Software Engineer", "Project Manager") that would be wrongly excluded.
+
+_NON_AVIATION_TITLE = re.compile(
+    r"\b("
+    # Honeywell Building Technologies / Building Automation
+    r"building automation|building management|building controls|building solutions|"
+    r"building tech|building systems|smart building|intelligent building|"
+    r"hvac|heat(?:ing)?[\s,]+ventilat|air condition(?:ing|er)|chiller|boiler|"
+    r"thermostat|energy management system|"
+    # Honeywell Fire & Security (non-aviation)
+    r"fire alarm|fire system|fire detection|fire suppression|fire safety|"
+    r"fire install|fire (?:service|protect)|sprinkler|intruder|intrusion|"
+    r"burglar|cctv|video surveillance|access control system|"
+    r"security (?:system install|install)|"
+    # Honeywell Process Solutions / Oil & Gas / Chemicals
+    r"petroleum|refin(?:ery|ing|er)|oil\s*(?:&|and)\s*gas|o&g|"
+    r"petrochemical|chemical plant|chemical process|chemical (?:engr|engineer|operator)|"
+    r"downstream|upstream|midstream|pipeline(?:s| oper)|lng terminal|"
+    r"drilling|wellhead|subsea(?! aircraft)|offshore platform|"
+    r"process automation|process solution|process control(?! .*(?:aircraft|aero|flight|engine))|"
+    r"dcs\b|distributed control system|"
+    r"pulp\s*(?:&|and)\s*paper|mining (?:oper|equip|sol)|mineral process|"
+    # Honeywell Warehouse / Supply-chain automation (non-aviation logistics)
+    r"warehouse management system|warehouse automation|"
+    r"conveyor|sortation system|"
+    # Honeywell Safety & Productivity Solutions (PPE, gas detection)
+    r"personal protective|gas detection|"
+    r"safety products|industrial safety (?:product|solution)|"
+    # Defence / weapons / military (not aerospace)
+    r"missile|warhead|torpedo|munition|"
+    r"electronic warfare|countermeasure|"
+    r"undersea|submarine|shipboard|naval (?:weapon|combat|system)|"
+    r"patriot|stinger|javelin|tomahawk|"
+    r"directed energy weapon|kinetic weapon|"
+    r"ground[- ]based (?:air )?defen[sc]e"
+    r")\b",
+    re.I,
+)
+
+# Titles that look non-aviation but actually ARE aviation — override the exclusion.
+_AVIATION_OVERRIDE = re.compile(
+    r"\b("
+    r"aero(?:space|naut)|aviat|aircraft|airframe|airline|"
+    r"airbus|boeing|embraer|bombardier|"
+    r"engine (?:overhaul|shop|line|mro|test)|turbine|turbofan|turbojet|turboprop|"
+    r"propulsion|nacelle|thrust reverser|"
+    r"flight (?:test|control|system|simul)|"
+    r"pilot|cabin crew|cockpit|"
+    r"avionics|"
+    r"wing (?:design|struct|assembl)|fuselage|pylon|"
+    r"landing gear|auxiliary power|apu\b|"
+    r"rotor(?:craft)?|helicopter|vtol|evtol|"
+    r"a320|a330|a340|a350|a380|"
+    r"b737|b747|b767|b777|b787|737|747|767|777|787|"
+    r"cf34|cfm|cfm56|leap|genx|ge90|trent|pw1\d|geared turbofan|"
+    r"fan blade|compressor (?:blade|disk|rotor)|"
+    r"combustor|combustion (?:chamber|liner)|nozzle guide vane"
+    r")\b",
+    re.I,
+)
+
+
+def is_aviation_job(title: str) -> bool:
+    """Return True if the title looks like an aviation-industry job.
+
+    Returns True for anything that is NOT clearly non-aviation. Only titles
+    with explicit non-aviation keywords (HVAC, building tech, missiles, oil &
+    gas, etc.) are rejected, unless they also contain an aviation override term.
+    """
+    if not title:
+        return False
+    if _NON_AVIATION_TITLE.search(title):
+        # Blocked — unless the title also mentions something clearly aviation
+        return bool(_AVIATION_OVERRIDE.search(title))
+    return True
+
+
 _REMOTE = re.compile(r"\b(remote|work from home|wfh|telecommute|home-?based|anywhere)\b", re.I)
 _HYBRID = re.compile(r"\bhybrid\b", re.I)
 

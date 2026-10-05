@@ -2,7 +2,7 @@ import datetime as dt
 
 from fetcher import connectors as c
 from fetcher.geo import country_from_location, region_of
-from fetcher.roles import classify_title, detect_work_mode
+from fetcher.roles import classify_title, detect_work_mode, is_aviation_job
 from fetcher.run import merge_employer_jobs, purge_expired, is_visible
 
 
@@ -225,3 +225,55 @@ def test_clean_coded_locations():
     assert clean_location("US-AZ-TUCSON-801 ~ 1151 E Hermans Rd ~ BLDG 801 (External Site)") == "Tucson, United States"
     assert clean_location("Toulouse Area") == "Toulouse Area"
     assert clean_location("Seattle, WA") == "Seattle, WA"
+
+
+def test_aviation_filter_blocks_non_aviation():
+    """Non-aviation titles from conglomerates are excluded."""
+    blocked = [
+        "Building Automation Engineer",
+        "Lead HVAC Controls Technician",
+        "Lead Field Service Technician | Fire Alarm Systems",
+        "Key Account Manager Security & Access Solutions (m/f/d) Building Automation",
+        "Chemical Engineer II",
+        "Chemical Engr I",
+        "Advanced Field Service Engineer ( O&G Metering Specialist)",
+        "Advanced Field Service Engineer - DCS Process Automation",
+        "Shipboard Missiles Critical Munitions Associate Director",
+        "Associate Director of Business Development Undersea Programs (Hybrid)",
+        "Senior Manager, Defense Hardware Technology- Active Secret (Onsite)",
+        "Lead Building Automation Systems (BAS) Technician",
+        "Field Service Engineer - HVAC m/f/d",
+        "Major Project Sales Executive-Building Management Systems (Mid-Atlantic)",
+    ]
+    for title in blocked:
+        assert not is_aviation_job(title), f"Should be blocked: {title}"
+
+
+def test_aviation_filter_keeps_aviation_jobs():
+    """Legitimate aviation titles pass through even with generic wording."""
+    allowed = [
+        "Software Engineer",
+        "Advanced Project Engineer",
+        "Account Manager II",
+        "Senior Data Analyst",
+        "Manufacturing Engineer II",
+        "Quality Inspector",
+        "Test Technician",
+        "Mechanical Design Engineer",
+        "Avionics Electronics Technician - 2nd Shift (Onsite)",
+        "Aerospace Engineer - Propulsion",
+        "Aircraft Maintenance Technician",
+        "Cabin Crew",
+        "First Officer A320",
+        "Aerothermal Engineer Co-Op (January 2027) (Hybrid)",
+        "Engine Overhaul Specialist",
+        "Flight Test Engineer",
+    ]
+    for title in allowed:
+        assert is_aviation_job(title), f"Should be allowed: {title}"
+
+
+def test_aviation_filter_override():
+    """A title with both non-aviation and aviation keywords is kept."""
+    assert is_aviation_job("Aerospace Fire Detection Systems Engineer")
+    assert is_aviation_job("Aircraft Chemical Process Technician")

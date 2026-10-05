@@ -16,7 +16,7 @@ from .connectors import CONNECTORS
 from .geo import clean_location, country_from_location, country_name, is_country_code, region_of
 from .http import PoliteClient, RobotsBlocked
 from .roles import (DEFAULT_ROLE, classify_title, detect_work_mode,
-                    normalize_employment_type)
+                    is_aviation_job, normalize_employment_type)
 
 JOBS_FILE = DATA_DIR / "jobs.json"
 STATUS_FILE = DATA_DIR / "employer_status.json"
@@ -65,11 +65,21 @@ def merge_employer_jobs(jobs: dict, employer: dict, raws: list[dict], run_date: 
     """Add new jobs, refresh known ones, count misses and expire old ones. Returns new jobs."""
     slug = employer["slug"]
     seen, new = set(), []
+    filtered_count = 0
     for raw in raws:
         jid = job_id(slug, raw["source_id"])
         if jid in seen:
             continue
         seen.add(jid)
+
+        # Hard aviation filter: skip jobs that are clearly non-aviation.
+        title = raw.get("title") or (jobs[jid]["title"] if jid in jobs and jobs[jid].get("title") else "")
+        if title and not is_aviation_job(title):
+            filtered_count += 1
+            if jid in jobs:
+                jobs[jid]["status"] = "filtered"
+            continue
+
         rec = jobs.get(jid)
         if rec is None:
             rec = {
@@ -98,6 +108,8 @@ def merge_employer_jobs(jobs: dict, employer: dict, raws: list[dict], run_date: 
         apply_fields(rec, raw, employer)
         if not rec.get("slug") and rec.get("title"):
             rec["slug"] = f"{slugify(rec['title'], 60)}-{slug}-{short_hash(raw['source_id'], 6)}"
+    if filtered_count:
+        print(f"  {filtered_count} non-aviation jobs filtered out")
     for jid, rec in jobs.items():
         if rec["employer"] == slug and rec["status"] == "active" and jid not in seen:
             rec["missed_runs"] = rec.get("missed_runs", 0) + 1
@@ -117,7 +129,7 @@ def purge_expired(jobs: dict, keep_days: int, run_date: str) -> int:
 
 def is_visible(rec: dict) -> bool:
     return (rec.get("status") == "active" and bool(rec.get("title")) and bool(rec.get("slug"))
-            and safe_url(rec.get("url")) is not None)
+            and safe_url(rec.get("url")) is not None and is_aviation_job(rec.get("title", "")))
 
 
 def main(argv: list[str] | None = None) -> int:

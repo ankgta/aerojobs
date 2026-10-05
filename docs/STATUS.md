@@ -44,11 +44,13 @@ British Airways, Lufthansa, Cathay Pacific, Air New Zealand.
 
 ## Waiting on the owner
 
-1. **Honeywell and RTX post many non-aviation jobs** (building tech, defence). Keep, drop Honeywell, or
-   filter both to aerospace units only?
+1. ~~**Honeywell and RTX post many non-aviation jobs**~~ **Resolved 5 Oct 2026**: hard aviation-only filter
+   added to `fetcher/roles.py`. Non-aviation titles (building tech, HVAC, fire systems, oil & gas, defence
+   weapons) are excluded from all employers. About 61 jobs filtered from the current dataset.
 2. **Cloudflare Web Analytics**: keep it, or switch it off if Google Analytics will be used (clears the
    Safari console item).
-3. **More airlines**: build SuccessFactors and Taleo readers (JetBlue, Ryanair, Qatar Airways, easyJet)?
+3. ~~**More airlines**: build SuccessFactors and Taleo readers~~ **In progress 5 Oct 2026**: .aero directory
+   discovery workflow triggered to find all available employers.
 
 ## Role sorting (5 Oct 2026)
 
@@ -59,7 +61,7 @@ and French). A title the rules can't place falls into "Corporate", which was abo
 terms) to lower that share. If "Corporate" keeps catching jobs that belong elsewhere, send a few example
 titles and ask for the rules to be widened again - that's free and has no limit.
 
-Also open: Dependabot pull request #4 (Markdown 3.10.3 → 3.11). Safe to merge after tests pass.
+Dependabot pull request #4 (Markdown 3.10.3 → 3.11) merged 5 Oct 2026.
 
 ## Not set up yet
 
