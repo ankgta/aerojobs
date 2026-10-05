@@ -208,7 +208,7 @@
    "attack": "' OR 1=1 -- in the search",
    "expected": "No error, no data leak",
    "status": "Pass",
-   "actual": "no database to inject into; page shows '0 of 3,584 jobs'",
+   "actual": "no database to inject into; page shows '0 of 3,598 jobs'",
    "severity": "-"
   },
   {
@@ -217,9 +217,9 @@
    "title": "Site cannot be framed by other sites",
    "attack": "Embed the site in an iframe on another page",
    "expected": "Browser refuses to show it",
-   "status": "Fail",
-   "actual": "PAGE LOADED INSIDE A FOREIGN FRAME",
-   "severity": "Medium"
+   "status": "Pass",
+   "actual": "another site cannot show AeroJobs inside a frame; frame url chrome-error://chromewebdata/; headers seen {'status': 200, 'xfo': 'SAMEORIGIN', 'csp': True}",
+   "severity": "-"
   },
   {
    "id": "SEC-23",
