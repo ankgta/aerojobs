@@ -4,6 +4,10 @@ What was done, newest first. For why, see `DECISIONS.md`.
 
 ## 6 October 2026
 
+- **Swissport enabled (batch 3):** 400 ground-services jobs from Switzerland, the fourth SuccessFactors
+  employer. Also researched all ~35 remaining disabled employers: Etihad blocked by SmartRecruiters
+  robots.txt, dnata iCIMS returns 404, and the rest use unsupported ATS platforms (Phenom People,
+  Avature, TalentBrew, Zellis, Dayforce, custom sites). Updated employers.yaml comment block.
 - **SuccessFactors Career Site Builder connector built:** HTML parser for SAP SuccessFactors listing pages.
   Handles standard `/job/<slug>/<id>/` and Changi-style `/<company>/job/<slug>/<id>/` URL patterns with
   pagination. Location cleaner strips repeated title text, job IDs, and dates from messy cell content.

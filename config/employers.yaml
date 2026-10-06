@@ -9,11 +9,13 @@
 # type: airline | airport | mro | manufacturer | ground_services | other
 # country: two-letter country code of the head office (GB, US, AE, IN ...)
 #
-# Checked 5 Oct 2026 and NOT usable: these sites' robots.txt forbids automated reading, so they stay off:
-#   Wizz Air, Swissport, Menzies, dnata, Etihad (SmartRecruiters API), flydubai and Alaska Airlines (iCIMS),
+# Checked 6 Oct 2026 and NOT usable: these sites' robots.txt forbids automated reading, so they stay off:
+#   Etihad (SmartRecruiters API), Menzies, flydubai and Alaska Airlines (iCIMS),
 #   American Airlines, Delta, KLM, Qantas, IndiGo, AAR, Lufthansa Technik, LATAM, Ethiopian (careers sites).
 # Not yet readable (no connector): Ryanair (SuccessFactors, robots.txt blocks); Qatar Airways, easyJet (Taleo).
-# Bombardier and ST Engineering (SuccessFactors): search page returned 0 jobs (JS-rendered?).
+# dnata (iCIMS): HTTP 404 — listing URL not valid. Bombardier and ST Engineering (SuccessFactors): 0 jobs.
+# Unsupported ATS: Emirates (Avature), Southwest/Delta/Air Canada/DFW/Virgin Australia (Phenom People),
+#   British Airways (TalentBrew), Aer Lingus (Zellis), Safran (custom Drupal), many others (custom sites).
 #
 # Source examples (copy the shape that matches the hiring system):
 #   source: {ats: workday, url: "https://company.wd3.myworkdayjobs.com/SiteName"}
@@ -80,7 +82,7 @@ employers:
   - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, enabled: false}
   - {name: AAR, slug: aar, type: mro, country: US, enabled: false}
   - {name: dnata, slug: dnata, type: ground_services, country: AE, enabled: false}
-  - {name: Swissport, slug: swissport, type: ground_services, country: CH, enabled: false}
+  - {name: Swissport, slug: swissport, type: ground_services, country: CH, source: {ats: successfactors, url: "https://jobs.swissport.com"}, enabled: true}
   - {name: Menzies Aviation, slug: menzies-aviation, type: ground_services, country: GB, enabled: false}
 
   # ---------- Manufacturers ----------

@@ -4,16 +4,16 @@ Last updated: 6 October 2026. Update this file whenever something changes.
 
 ## In one line
 
-AeroJobs is **live at https://aerojobs.work** with jobs from **20 employers** (17 prior + 3 new
-SuccessFactors), refreshed twice a day. SuccessFactors connector built 6 Oct, unlocking JetBlue,
-Wizz Air and Changi Airport Group.
+AeroJobs is **live at https://aerojobs.work** with jobs from **21 employers** (17 prior + 3
+SuccessFactors + Swissport), refreshed twice a day. SuccessFactors connector built 6 Oct, unlocking
+JetBlue, Wizz Air, Changi Airport Group and Swissport.
 
 ## Live numbers (6 Oct 2026, 05:07 UTC fetch)
 
 | Measure | Value |
 | --- | --- |
 | Live jobs | 4,373 |
-| Employers switched on | 20 fetching + 1 blocked (Air New Zealand) = 21 enabled, of 65 listed |
+| Employers switched on | 21 fetching + 1 blocked (Air New Zealand) = 22 enabled, of 65 listed |
 | Countries with jobs | 46 |
 | Jobs with a known country | 93% |
 | Jobs whose role is unclear (shown as Corporate) | 33% |
@@ -26,10 +26,10 @@ Full detail: `docs/reports/AeroJobs-Test-Report.xlsx`.
 
 ## Employers
 
-**Live and fetching (20):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
-Rolls-Royce (459), CAE (365), StandardAero (198), Archer Aviation (149), ICAO (98), Changi Airport
-Group (82), Wizz Air (70), JetBlue (60), NAV Canada (26), Skyryse (19), Heathrow Airport (18),
-Supernal (7), Heart Aerospace (6), Wisk Aero (3), Virgin Atlantic (3).
+**Live and fetching (21):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
+Rolls-Royce (459), Swissport (400), CAE (365), StandardAero (198), Archer Aviation (149), ICAO (98),
+Changi Airport Group (82), Wizz Air (70), JetBlue (60), NAV Canada (26), Skyryse (19),
+Heathrow Airport (18), Supernal (7), Heart Aerospace (6), Wisk Aero (3), Virgin Atlantic (3).
 
 **Enabled but failing — in backlog (1):** Air New Zealand (SmartRecruiters). Our fetcher's user agent
 is blocked by `api.smartrecruiters.com/robots.txt`. Kept enabled so we remember to look into it. See
@@ -42,18 +42,26 @@ Air New Zealand enabled but blocked by SmartRecruiters robots.txt (added +775 jo
 **New 6 Oct 2026, batch 2 (3 live):** JetBlue (60 jobs), Wizz Air (70), Changi Airport Group (82).
 SuccessFactors Career Site Builder connector built and deployed; first three employers switched on.
 
+**New 6 Oct 2026, batch 3 (1 live):** Swissport (400 jobs, ground services, Switzerland). Fourth
+SuccessFactors employer.
+
 **Blocked by their own rules (robots.txt), so left off:** American Airlines, Delta, KLM, Qantas, IndiGo,
-LATAM, Ethiopian, AAR, Lufthansa Technik (careers sites); flydubai, Alaska Airlines (iCIMS); Ryanair
-(SuccessFactors); Swissport, Menzies, dnata, Etihad (SmartRecruiters).
+LATAM, Ethiopian, AAR, Lufthansa Technik (careers sites); Etihad (SmartRecruiters API); flydubai,
+Alaska Airlines (iCIMS); Ryanair (SuccessFactors); Menzies.
 
 **SuccessFactors: search page returns 0 jobs (likely JS-rendered):** Bombardier, ST Engineering.
 
 **Need a new reader first:** Qatar Airways, easyJet (Oracle Taleo).
 
-**Hiring system not found yet** (jobs load by script): United, Southwest, Air Canada, Emirates,
-British Airways, Lufthansa, Cathay Pacific, Singapore Airlines.
+**dnata (iCIMS):** listing URL returns HTTP 404; not usable.
 
-**Not yet explored:** the .aero directory (tool ready, never run) and the rest of the listed employers.
+**Unsupported ATS (no connector):** Emirates (Avature), Southwest/Delta/Air Canada/DFW Airport/
+Virgin Australia (Phenom People), British Airways (TalentBrew/Radancy), Aer Lingus (Zellis),
+Safran (custom Drupal), WestJet (Dayforce), South African Airways (eRecruit), Dubai Airports (Cazar),
+Aeroméxico (Recruiting.com), Azul (Gupy), Embraer (Breezy HR), United/Singapore Airlines/Cathay Pacific/
+Qatar Airways/Turkish Airlines/Saudia/Ethiopian/Kenya Airways/Lufthansa Group/Air India/IndiGo (custom).
+
+**Not yet explored:** the .aero directory (tool ready, never run).
 
 ## Waiting on the owner
 
