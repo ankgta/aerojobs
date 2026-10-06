@@ -491,6 +491,282 @@ def fetch_oracle(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[
     return jobs[:max_jobs]
 
 
+# ------------------------------------------------------------------ Oracle Taleo Enterprise
+class _TaleoPortalParser(HTMLParser):
+    """Extract the portal ID from a Taleo jobsearch.ftl page."""
+    def __init__(self):
+        super().__init__()
+        self.portal_id: str | None = None
+        self._in_script = False
+        self._buf: list[str] = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "script":
+            self._in_script = True
+            self._buf = []
+
+    def handle_data(self, data):
+        if self._in_script:
+            self._buf.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "script" and self._in_script:
+            text = "".join(self._buf)
+            # Look for portal ID in various forms: portal:123, "portal":"123", portalId=123
+            m = re.search(r'["\']?portal(?:Id)?["\']?\s*[:=]\s*["\']?(\d+)["\']?', text, re.I)
+            if m and not self.portal_id:
+                self.portal_id = m.group(1)
+            self._in_script = False
+
+
+def _taleo_get_portal(client: PoliteClient, host: str, section: str = "2") -> str | None:
+    """Fetch the Taleo jobsearch page and extract the portal ID."""
+    url = f"https://{host}/careersection/{section}/jobsearch.ftl"
+    try:
+        page = client.get_text(url)
+    except Exception:
+        return None
+    p = _TaleoPortalParser()
+    p.feed(page)
+    return p.portal_id
+
+
+def fetch_taleo(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """Oracle Taleo Enterprise Edition job listings.
+
+    Source shape:
+        source: {ats: taleo, host: "company.taleo.net", section: "2"}
+    """
+    host = src["host"]
+    section = str(src.get("section", "2"))
+
+    # Step 1: get the portal ID from the search page
+    portal_id = src.get("portal_id") or _taleo_get_portal(client, host, section)
+    if not portal_id:
+        return []
+
+    api = f"https://{host}/careersection/rest/jobboard/searchjobs"
+    jobs: list[dict] = []
+    page_num = 0
+    while True:
+        try:
+            data = client.get_json(
+                api,
+                params={"lang": "en", "portal": portal_id, "start": page_num * 25},
+            )
+        except Exception:
+            break
+        req_list = data.get("reqList") or []
+        columns = data.get("columnHeader") or []
+        # Build column index map: find title, location, department cols
+        col_map: dict[str, int] = {}
+        for i, col in enumerate(columns):
+            lbl = (col.get("display") or "").lower()
+            if any(k in lbl for k in ("title", "position", "job title")):
+                col_map.setdefault("title", i)
+            elif any(k in lbl for k in ("location", "city")):
+                col_map.setdefault("location", i)
+            elif any(k in lbl for k in ("date", "posted")):
+                col_map.setdefault("posted", i)
+            elif any(k in lbl for k in ("department", "function")):
+                col_map.setdefault("department", i)
+
+        for req in req_list:
+            cells = req.get("column") or []
+            def _cell(idx: int | None) -> str:
+                if idx is None or idx >= len(cells):
+                    return ""
+                return (cells[idx].get("value") or "").strip()
+
+            # Taleo often gives title as req["title"] or via column
+            title = req.get("title") or _cell(col_map.get("title"))
+            if not title:
+                continue
+            req_id = str(req.get("jobId") or req.get("req") or "")
+            location = _cell(col_map.get("location"))
+            posted_raw = _cell(col_map.get("posted"))
+            posted = parse_date(posted_raw)
+            department = _cell(col_map.get("department"))
+            job_url = f"https://{host}/careersection/{section}/jobdetail.ftl?job={req_id}"
+            jobs.append({
+                "source_id": req_id,
+                "title": title.strip(),
+                "url": job_url,
+                "location": location,
+                "posted_date": posted,
+                "posted_estimated": posted is None,
+                "department": department or None,
+            })
+
+        page_num += 1
+        if not req_list or len(jobs) >= max_jobs:
+            break
+        total = data.get("pageInfo", {}).get("totalCount") or 0
+        if total and len(jobs) >= total:
+            break
+
+    return jobs[:max_jobs]
+
+
+# ------------------------------------------------------------------ iCIMS
+class _ICIMSJobParser(HTMLParser):
+    """Parse iCIMS /api/jobs JSON response or HTML listing page."""
+    # iCIMS sites may expose JSON at /api/jobs or HTML at /jobs/search
+    pass  # handled inline in fetch_icims
+
+
+def fetch_icims(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """iCIMS job listings via the /api/jobs JSON endpoint.
+
+    Source shape:
+        source: {ats: icims, url: "https://careers.example.com"}
+    The connector first tries the /api/jobs JSON endpoint (used by iCIMS career sites).
+    If that returns no results, falls back to the sitemap.
+    """
+    base = src["url"].rstrip("/")
+    jobs: list[dict] = []
+
+    # Try the JSON API first
+    api_url = f"{base}/api/jobs"
+    try:
+        data = client.get_json(api_url)
+        job_list = data if isinstance(data, list) else (data.get("jobs") or data.get("results") or [])
+        for j in job_list:
+            title = j.get("title") or j.get("job_title") or j.get("name") or ""
+            if not title:
+                continue
+            job_id = str(j.get("id") or j.get("job_id") or j.get("req_id") or "")
+            url = j.get("canonicalUrl") or j.get("url") or j.get("apply_url") or f"{base}/jobs/{job_id}"
+            location = (j.get("location") or j.get("city") or "")
+            if isinstance(location, dict):
+                location = location.get("name") or location.get("city") or ""
+            country = (j.get("country") or j.get("country_code") or "")
+            if isinstance(country, dict):
+                country = country.get("code") or country.get("name") or ""
+            posted = parse_date(j.get("date_posted") or j.get("posted_date") or j.get("created_date"))
+            jobs.append({
+                "source_id": job_id or url,
+                "title": title.strip(),
+                "url": url,
+                "location": str(location),
+                "country_code": str(country).upper() or None,
+                "posted_date": posted,
+                "posted_estimated": posted is None,
+                "employment_type": j.get("job_type") or j.get("employment_type"),
+                "department": j.get("department") or j.get("category"),
+            })
+        if jobs:
+            return jobs[:max_jobs]
+    except Exception:
+        pass
+
+    # Fallback: sitemap-based discovery (returns stub records for detail fetching)
+    sitemap_url = f"{base}/sitemaps/index.xml"
+    try:
+        sitemap_xml = client.get_text(sitemap_url)
+        urls = re.findall(r"<loc>([^<]+)</loc>", sitemap_xml)
+        # For sitemap index, fetch sub-sitemaps
+        sub_urls: list[str] = []
+        for u in urls:
+            if "sitemap" in u.lower() and u.endswith(".xml"):
+                try:
+                    sub = client.get_text(u)
+                    sub_urls.extend(re.findall(r"<loc>([^<]+)</loc>", sub))
+                except Exception:
+                    pass
+        all_urls = sub_urls or urls
+        for url in all_urls:
+            if "/jobs/" in url and url not in [j.get("url") for j in jobs]:
+                # Extract ID from URL pattern like /jobs/12345/
+                m = re.search(r"/jobs/(\d+)", url)
+                job_id = m.group(1) if m else url
+                jobs.append({
+                    "source_id": job_id,
+                    "title": "",
+                    "url": url,
+                    "detail_url": url,
+                    "needs_detail": True,
+                    "posted_estimated": True,
+                })
+            if len(jobs) >= max_jobs:
+                break
+    except Exception:
+        pass
+
+    return jobs[:max_jobs]
+
+
+# ------------------------------------------------------------------ Phenom People (TXM)
+def fetch_phenom(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """Phenom People career sites via sitemap-based discovery.
+
+    Source shape:
+        source: {ats: phenom, url: "https://careers.example.com", country: "US"}
+
+    Phenom's job search API requires OAuth. We use their sitemaps instead,
+    which are allowed by robots.txt on all confirmed employers.
+    """
+    base = src["url"].rstrip("/")
+    country_hint = src.get("country", "").upper()
+    jobs: list[dict] = []
+    seen: set[str] = set()
+
+    # Phenom sitemaps: try multiple locale paths
+    sitemap_candidates = [
+        f"{base}/sitemap.xml",
+        f"{base}/us/en/sitemap.xml",
+        f"{base}/en/sitemap.xml",
+        f"{base}/ca/en/sitemap.xml",
+        f"{base}/in/en/sitemap.xml",
+    ]
+
+    job_urls: list[str] = []
+    for sitemap_url in sitemap_candidates:
+        try:
+            xml = client.get_text(sitemap_url)
+        except Exception:
+            continue
+        urls = re.findall(r"<loc>([^<]+)</loc>", xml)
+        # Check if it's a sitemap index
+        sub_sitemaps = [u for u in urls if "sitemap" in u.lower() and u.endswith(".xml")]
+        if sub_sitemaps:
+            for sub_url in sub_sitemaps:
+                try:
+                    sub = client.get_text(sub_url)
+                    sub_urls = re.findall(r"<loc>([^<]+)</loc>", sub)
+                    job_urls.extend(u for u in sub_urls if "/jobs/" in u or "/job/" in u)
+                except Exception:
+                    continue
+        else:
+            job_urls.extend(u for u in urls if "/jobs/" in u or "/job/" in u)
+
+        if job_urls:
+            break  # Found job URLs in this sitemap
+
+    # De-duplicate
+    for url in job_urls:
+        url = url.split("?")[0]  # strip query params
+        if url in seen:
+            continue
+        seen.add(url)
+        # Extract job ID from URL
+        m = re.search(r"/(?:jobs?|positions?)/(?:[^/]+/)?(\d+)", url)
+        job_id = m.group(1) if m else url
+        jobs.append({
+            "source_id": job_id,
+            "title": "",  # will be filled by detail fetch
+            "url": url,
+            "detail_url": url,
+            "needs_detail": True,
+            "country_code": country_hint or None,
+            "posted_estimated": True,
+        })
+        if len(jobs) >= max_jobs:
+            break
+
+    return jobs[:max_jobs]
+
+
 CONNECTORS = {
     "workday": (fetch_workday, workday_detail),
     "greenhouse": (fetch_greenhouse, None),
@@ -499,4 +775,7 @@ CONNECTORS = {
     "jsonld": (fetch_jsonld, jsonld_detail),
     "oracle": (fetch_oracle, None),
     "successfactors": (fetch_successfactors, None),
+    "taleo": (fetch_taleo, None),
+    "icims": (fetch_icims, jsonld_detail),
+    "phenom": (fetch_phenom, jsonld_detail),
 }

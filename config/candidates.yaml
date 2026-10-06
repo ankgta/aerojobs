@@ -1,8 +1,16 @@
-# Round 3 candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
+# Round 4 candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
 employers:
-  # ---- SmartRecruiters ----
-  - {name: Etihad Airways, slug: etihad, type: airline, country: AE, source: {ats: smartrecruiters, company: "EtihadAirways5"}}
-  # ---- SuccessFactors Career Site Builder ----
-  - {name: Swissport, slug: swissport, type: ground_services, country: CH, source: {ats: successfactors, url: "https://jobs.swissport.com"}}
-  # ---- iCIMS (likely blocked by robots.txt like flydubai/Alaska, but worth checking) ----
-  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: jsonld, listing_url: "https://careers-dnata.icims.com/jobs/search?pr={page}&in_iframe=1", job_link_pattern: "/jobs/\\d+/", max_pages: 3, strip_query: true}}
+  # ---- Taleo Enterprise ----
+  - {name: easyJet, slug: easyjet, type: airline, country: GB, source: {ats: taleo, host: "easyjet.taleo.net", section: "2"}}
+  # Qatar Airways: taleo.net DNS fails — try their ORC site instead
+  - {name: Qatar Airways, slug: qatar-airways, type: airline, country: QA, source: {ats: oracle, host: "qatarairways.fa.em4.oraclecloud.com", site: "CX_1"}}
+  - {name: Qatar Airways Alt, slug: qatar-airways-alt, type: airline, country: QA, source: {ats: oracle, host: "qatarairways.fa.em2.oraclecloud.com", site: "CX_1"}}
+
+  # ---- iCIMS ----
+  - {name: Alaska Airlines, slug: alaska-airlines, type: airline, country: US, source: {ats: icims, url: "https://careers.alaskaair.com"}}
+
+  # ---- Phenom People (sitemap-based) ----
+  - {name: Southwest Airlines, slug: southwest-airlines, type: airline, country: US, source: {ats: phenom, url: "https://careers.southwestair.com", country: "US"}}
+  - {name: Air Canada, slug: air-canada, type: airline, country: CA, source: {ats: phenom, url: "https://careers.aircanada.com", country: "CA"}}
+  - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, source: {ats: phenom, url: "https://jobs.virginaustralia.com", country: "AU"}}
+  - {name: DFW Airport, slug: dfw-airport, type: airport, country: US, source: {ats: phenom, url: "https://dfwcareers.org", country: "US"}}

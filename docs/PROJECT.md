@@ -46,13 +46,16 @@ All of it runs in GitHub Actions at 05:23 and 17:23 UTC.
 
 | System | Reader | Used by (switched on) |
 | --- | --- | --- |
-| Workday | `workday` | Airbus, Boeing, RTX, GE Aerospace, Rolls-Royce |
-| Oracle Recruiting Cloud | `oracle` | Honeywell, Virgin Atlantic, Heathrow |
-| Greenhouse | `greenhouse` | Archer Aviation, Skyryse |
+| Workday | `workday` | Airbus, Boeing, RTX, GE Aerospace, Rolls-Royce, CAE, Wisk Aero, NAV Canada |
+| Oracle Recruiting Cloud | `oracle` | Honeywell, Virgin Atlantic, Heathrow, StandardAero, ICAO |
+| Greenhouse | `greenhouse` | Archer Aviation, Skyryse, Heart Aerospace, Supernal |
 | Lever | `lever` | (none yet) |
-| SmartRecruiters | `smartrecruiters` | (none; its API is blocked by robots.txt for the airlines tried) |
+| SmartRecruiters | `smartrecruiters` | (none; Air New Zealand blocked by robots.txt) |
 | Google JobPosting data in pages | `jsonld` (with multi-page listings) | (none yet) |
-| SAP SuccessFactors, Oracle Taleo, iCIMS | detected only | Readers not built yet |
+| SAP SuccessFactors | `successfactors` | JetBlue, Wizz Air, Changi Airport Group, Swissport |
+| Oracle Taleo Enterprise | `taleo` | easyJet (pending verify) |
+| iCIMS | `icims` | Alaska Airlines (pending verify) |
+| Phenom People (sitemap) | `phenom` | Southwest, Air Canada, Virgin Australia (pending verify) |
 
 `python -m fetcher.detect <careers page>` tells which system a careers page uses.
 

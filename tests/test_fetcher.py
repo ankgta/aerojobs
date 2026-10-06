@@ -321,3 +321,84 @@ def test_aviation_filter_override():
     """A title with both non-aviation and aviation keywords is kept."""
     assert is_aviation_job("Aerospace Fire Detection Systems Engineer")
     assert is_aviation_job("Aircraft Chemical Process Technician")
+
+
+# ---------------------------------------------------------------- new connectors
+def test_taleo_connector():
+    """Taleo fetches jobs using portal ID + reqList columns."""
+    host = "example.taleo.net"
+    portal_html = '<script>var cfg = {portal: "42", section: 2};</script>'
+    api_resp = {
+        "pageInfo": {"totalCount": 2},
+        "columnHeader": [
+            {"display": "Job Title"},
+            {"display": "Location"},
+            {"display": "Posted Date"},
+        ],
+        "reqList": [
+            {"jobId": "REQ001", "title": "First Officer", "column": [
+                {"value": "First Officer"},
+                {"value": "Doha, Qatar"},
+                {"value": "2026-09-15"},
+            ]},
+            {"jobId": "REQ002", "title": "Cabin Crew", "column": [
+                {"value": "Cabin Crew"},
+                {"value": "Dubai, UAE"},
+                {"value": "2026-09-20"},
+            ]},
+        ],
+    }
+    client = FakeClient({
+        f"https://{host}/careersection/2/jobsearch.ftl": portal_html,
+        f"https://{host}/careersection/rest/jobboard/searchjobs": api_resp,
+    })
+    jobs = c.fetch_taleo(client, {"host": host})
+    assert len(jobs) == 2
+    assert jobs[0]["source_id"] == "REQ001"
+    assert jobs[0]["title"] == "First Officer"
+    assert jobs[0]["location"] == "Doha, Qatar"
+    assert "taleo.net" in jobs[0]["url"]
+    assert jobs[1]["source_id"] == "REQ002"
+
+
+def test_icims_connector_json_api():
+    """iCIMS connector uses /api/jobs JSON when available."""
+    base = "https://careers.alaskaair.com"
+    api_data = [
+        {"id": "12345", "title": "Pilot", "location": "Seattle, WA", "country_code": "US",
+         "date_posted": "2026-10-01", "apply_url": f"{base}/jobs/12345"},
+        {"id": "67890", "title": "Ramp Agent", "location": "Anchorage, AK", "country_code": "US",
+         "date_posted": "2026-10-02", "apply_url": f"{base}/jobs/67890"},
+    ]
+    client = FakeClient({f"{base}/api/jobs": api_data})
+    jobs = c.fetch_icims(client, {"url": base})
+    assert len(jobs) == 2
+    assert jobs[0]["source_id"] == "12345"
+    assert jobs[0]["title"] == "Pilot"
+    assert jobs[0]["country_code"] == "US"
+    assert jobs[0]["posted_date"] == "2026-10-01"
+
+
+def test_phenom_connector_sitemap():
+    """Phenom connector discovers jobs via sitemap XML."""
+    base = "https://careers.southwestair.com"
+    sitemap_index = """<?xml version="1.0" encoding="UTF-8"?>
+    <sitemapindex>
+      <sitemap><loc>https://careers.southwestair.com/us/en/sitemap.xml</loc></sitemap>
+    </sitemapindex>"""
+    jobs_sitemap = """<?xml version="1.0" encoding="UTF-8"?>
+    <urlset>
+      <url><loc>https://careers.southwestair.com/us/en/job/Flight-Attendant/12345</loc></url>
+      <url><loc>https://careers.southwestair.com/us/en/job/First-Officer/67890</loc></url>
+      <url><loc>https://careers.southwestair.com/us/en/home</loc></url>
+    </urlset>"""
+    client = FakeClient({
+        f"{base}/sitemap.xml": sitemap_index,
+        f"{base}/us/en/sitemap.xml": jobs_sitemap,
+    })
+    jobs = c.fetch_phenom(client, {"url": base, "country": "US"})
+    assert len(jobs) == 2
+    assert jobs[0]["source_id"] == "12345"
+    assert jobs[0]["country_code"] == "US"
+    assert jobs[0]["needs_detail"] is True
+    assert "12345" in jobs[0]["url"]

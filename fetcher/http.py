@@ -91,8 +91,8 @@ class PoliteClient:
             return r
         raise FetchError(f"Gave up on {url}: {last_error}")
 
-    def get_json(self, url: str, **kwargs):
-        return self.request("GET", url, headers={"Accept": "application/json"}, **kwargs).json()
+    def get_json(self, url: str, params: dict | None = None, **kwargs):
+        return self.request("GET", url, params=params, headers={"Accept": "application/json"}, **kwargs).json()
 
     def post_json(self, url: str, payload: dict):
         return self.request("POST", url, json=payload,

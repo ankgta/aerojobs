@@ -44,6 +44,11 @@ def suggest(url: str, page: str) -> list[str]:
         elif name == "successfactors":
             host = urllib.parse.urlsplit(url).netloc
             found.append(f'source: {{ats: successfactors, url: "https://{host}"}}   # check /search/ page loads jobs')
+        elif name == "taleo":
+            found.append(f'source: {{ats: taleo, host: "{m[1]}"}}   # section defaults to "2"; set section: "1" if needed')
+        elif name == "icims":
+            host = urllib.parse.urlsplit(url).netloc
+            found.append(f'source: {{ats: icims, url: "https://{host}"}}')
         else:
             found.append(f"# uses {name} ({m[1]}): no connector yet; try the jsonld reader or a custom reader")
     if extract_job_postings(page):
