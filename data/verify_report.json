@@ -1,5 +1,5 @@
 {
- "run": "2026-10-05T09:50:01+00:00",
+ "run": "2026-10-06T10:58:46+00:00",
  "results": [
   {
    "name": "Virgin Atlantic",
@@ -10,25 +10,13 @@
     "site": "CX_1"
    },
    "ok": true,
-   "jobs_found": 5,
+   "jobs_found": 3,
    "sample": [
-    {
-     "title": "Retail Travel Advisor - Braehead",
-     "location": "United Kingdom",
-     "url": "https://iagime.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/610",
-     "posted": "2026-10-01"
-    },
     {
      "title": "Account Manager - UK Cargo Sales - MAN",
      "location": "Manchester, Greater Manchester, United Kingdom",
      "url": "https://iagime.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/605",
      "posted": "2026-09-29"
-    },
-    {
-     "title": "Digital Analyst",
-     "location": "Crawley, West Sussex, United Kingdom",
-     "url": "https://iagime.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/522",
-     "posted": "2026-09-25"
     },
     {
      "title": "Engineering Operations Manager",
@@ -53,25 +41,13 @@
     "site": "CX_2"
    },
    "ok": true,
-   "jobs_found": 5,
+   "jobs_found": 3,
    "sample": [
-    {
-     "title": "Retail Travel Advisor - Braehead",
-     "location": "United Kingdom",
-     "url": "https://iagime.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/job/610",
-     "posted": "2026-10-01"
-    },
     {
      "title": "Account Manager - UK Cargo Sales - MAN",
      "location": "Manchester, Greater Manchester, United Kingdom",
      "url": "https://iagime.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/job/605",
      "posted": "2026-09-29"
-    },
-    {
-     "title": "Digital Analyst",
-     "location": "Crawley, West Sussex, United Kingdom",
-     "url": "https://iagime.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/job/522",
-     "posted": "2026-09-25"
     },
     {
      "title": "Engineering Operations Manager",
@@ -99,6 +75,18 @@
    "jobs_found": 17,
    "sample": [
     {
+     "title": "Data Protection Analyst - Complaints",
+     "location": "London, United Kingdom",
+     "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/5672",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Data Governance Lead",
+     "location": "London, United Kingdom",
+     "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/5959",
+     "posted": "2026-10-05"
+    },
+    {
      "title": "Commercial Manager - Infrastructure",
      "location": "London, United Kingdom",
      "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/4800",
@@ -121,18 +109,6 @@
      "location": "London, United Kingdom",
      "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/5601",
      "posted": "2026-09-29"
-    },
-    {
-     "title": "Salesforce Lead Architect",
-     "location": "London, United Kingdom",
-     "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/5706",
-     "posted": "2026-09-28"
-    },
-    {
-     "title": "Technician - Specialist Systems",
-     "location": "London, United Kingdom",
-     "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/5966",
-     "posted": "2026-09-25"
     }
    ]
   },
@@ -147,6 +123,18 @@
    "ok": true,
    "jobs_found": 17,
    "sample": [
+    {
+     "title": "Data Protection Analyst - Complaints",
+     "location": "London, United Kingdom",
+     "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/5672",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Data Governance Lead",
+     "location": "London, United Kingdom",
+     "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/5959",
+     "posted": "2026-10-05"
+    },
     {
      "title": "Commercial Manager - Infrastructure",
      "location": "London, United Kingdom",
@@ -170,18 +158,6 @@
      "location": "London, United Kingdom",
      "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/5601",
      "posted": "2026-09-29"
-    },
-    {
-     "title": "Salesforce Lead Architect",
-     "location": "London, United Kingdom",
-     "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/5706",
-     "posted": "2026-09-28"
-    },
-    {
-     "title": "Technician - Specialist Systems",
-     "location": "London, United Kingdom",
-     "url": "https://encd.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/5966",
-     "posted": "2026-09-25"
     }
    ]
   },
@@ -197,40 +173,40 @@
    "jobs_found": 400,
    "sample": [
     {
-     "title": "Tech Supp Professional",
-     "location": "Pune, Maharashtra, India",
-     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/154144",
-     "posted": "2026-10-05"
+     "title": "Sr Quality Engineer Poole",
+     "location": "Poole, Dorset, United Kingdom",
+     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/152752",
+     "posted": "2026-10-06"
     },
     {
-     "title": "Advanced Hardware Engr",
-     "location": "Hyderabad, Telangana, India",
-     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/155293",
-     "posted": "2026-10-05"
+     "title": "Field Service Engr II",
+     "location": "Pune City, Maharashtra, India",
+     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/155630",
+     "posted": "2026-10-06"
     },
     {
-     "title": "Sr Project Manager",
-     "location": "Pune, Maharashtra, India",
-     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/155403",
-     "posted": "2026-10-05"
+     "title": "Lead SW Architect",
+     "location": "Bengaluru, Karnataka, India",
+     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/158171",
+     "posted": "2026-10-06"
     },
     {
-     "title": "R&D Engr/Scientist II",
-     "location": "Gurugram, Haryana, India",
-     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/155624",
-     "posted": "2026-10-05"
+     "title": "Estimator I",
+     "location": "Pune City, Maharashtra, India",
+     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/158997",
+     "posted": "2026-10-06"
     },
     {
-     "title": "Senior Field Service Technician - BMS",
-     "location": "Perth, Western Australia, Australia",
-     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/155813",
-     "posted": "2026-10-05"
+     "title": "Cyber Sec Archt/Engr I - UAE National Only",
+     "location": "Dubai, United Arab Emirates",
+     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/159440",
+     "posted": "2026-10-06"
     },
     {
-     "title": "Sr Adv Appl/Sys Sales Engineer",
-     "location": "Pune, Maharashtra, India",
-     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/156136",
-     "posted": "2026-10-05"
+     "title": "Advanced Cyber Sec Archt/Engr",
+     "location": "Bengaluru, Karnataka, India",
+     "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/159226",
+     "posted": "2026-10-06"
     }
    ]
   },
@@ -272,6 +248,172 @@
    },
    "ok": false,
    "error": "robots.txt blocks it: robots.txt does not allow https://employee-alaskaair.icims.com/jobs/search?pr=0&in_iframe=1"
+  },
+  {
+   "name": "JetBlue",
+   "slug": "jetblue",
+   "source": {
+    "ats": "successfactors",
+    "url": "https://careers.jetblue.com"
+   },
+   "ok": true,
+   "jobs_found": 60,
+   "sample": [
+    {
+     "title": "Instructor Maintenance",
+     "location": "Instructor Maintenance\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Instructor Maintenance\n                                                                    \n                                                                    \n        \n        \n            Orlando, FL, US, 32827\n            \n        \n                                                                    58082",
+     "url": "https://careers.jetblue.com/job/Orlando-Instructor-Maintenance-FL-32827/1391184300/",
+     "posted": null
+    },
+    {
+     "title": "Ground Operations Crew",
+     "location": "Ground Operations Crew\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Ground Operations Crew\n                                                                    \n                                                                    \n        \n        \n            Cheektowaga, NY, US, 14225\n            \n        \n                                                                    58766",
+     "url": "https://careers.jetblue.com/job/Cheektowaga-Ground-Operations-Crew-NY-14225/1437107500/",
+     "posted": null
+    },
+    {
+     "title": "Manager, Governance Risk and Compliance (Paisly)",
+     "location": "Manager, Governance Risk and Compliance (Paisly)\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Manager, Governance Risk and Compliance (Paisly)\n                                                                    \n                                                                    \n        \n        \n            Dania Beach, FL, US, 33004\n            \n        \n                                                                    58759",
+     "url": "https://careers.jetblue.com/job/Dania-Beach-Manager%2C-Governance-Risk-and-Compliance-%28Paisly%29-FL-33004/1437055100/",
+     "posted": null
+    },
+    {
+     "title": "Coordinator Inflight Crew",
+     "location": "Coordinator Inflight Crew\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Coordinator Inflight Crew\n                                                                    \n                                                                    \n        \n        \n            Long Island City, NY, US, 11101\n            \n        \n                                                                    58753",
+     "url": "https://careers.jetblue.com/job/Long-Island-City-Coordinator-Inflight-Crew-NY-11101/1436898000/",
+     "posted": null
+    },
+    {
+     "title": "Scheduler Flight Crew",
+     "location": "Scheduler Flight Crew\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Scheduler Flight Crew\n                                                                    \n                                                                    \n        \n        \n            Long Island City, NY, US, 11101\n            \n        \n                                                                    58755",
+     "url": "https://careers.jetblue.com/job/Long-Island-City-Scheduler-Flight-Crew-NY-11101/1436892000/",
+     "posted": null
+    },
+    {
+     "title": "Scheduler Inflight Crew",
+     "location": "Scheduler Inflight Crew\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Scheduler Inflight Crew\n                                                                    \n                                                                    \n        \n        \n            Long Island City, NY, US, 11101\n            \n        \n                                                                    58756",
+     "url": "https://careers.jetblue.com/job/Long-Island-City-Scheduler-Inflight-Crew-NY-11101/1436882400/",
+     "posted": null
+    }
+   ]
+  },
+  {
+   "name": "Wizz Air",
+   "slug": "wizz-air",
+   "source": {
+    "ats": "successfactors",
+    "url": "https://careers.wizzair.com"
+   },
+   "ok": true,
+   "jobs_found": 70,
+   "sample": [
+    {
+     "title": "MOC Duty Engineer",
+     "location": "MOC Duty Engineer\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        MOC Duty Engineer\n                                                                    \n                                                                    \n        \n        \n            Budapest, HU, H-1095",
+     "url": "https://careers.wizzair.com/job/Budapest-MOC-Duty-Engineer-H-1095/1401845933/",
+     "posted": null
+    },
+    {
+     "title": "Material Planner",
+     "location": "Material Planner\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Material Planner\n                                                                    \n                                                                    \n        \n        \n            Budapest, HU, H-1095",
+     "url": "https://careers.wizzair.com/job/Budapest-Material-Planner-H-1095/1413861733/",
+     "posted": null
+    },
+    {
+     "title": "LEARNING AND TALENT TRAINEE",
+     "location": "LEARNING AND TALENT TRAINEE\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        LEARNING AND TALENT TRAINEE\n                                                                    \n                                                                    \n        \n        \n            Budapest, HU, H-1095",
+     "url": "https://careers.wizzair.com/job/Budapest-LEARNING-AND-TALENT-TRAINEE-H-1095/1444247433/",
+     "posted": null
+    },
+    {
+     "title": "Group Data Protection Manager",
+     "location": "Group Data Protection Manager\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Group Data Protection Manager\n                                                                    \n                                                                    \n        \n        \n            Budapest, HU, H-1095",
+     "url": "https://careers.wizzair.com/job/Budapest-Group-Data-Protection-Manager-H-1095/1402828733/",
+     "posted": null
+    },
+    {
+     "title": "Corporate Communications Manager",
+     "location": "Corporate Communications Manager\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Corporate Communications Manager\n                                                                    \n                                                                    \n        \n        \n            Budapest, HU, H-1095",
+     "url": "https://careers.wizzair.com/job/Budapest-Corporate-Communications-Manager-H-1095/1392653733/",
+     "posted": null
+    },
+    {
+     "title": "Cabin Crew Recruitment Day - Chisinau - 8 October 2026",
+     "location": "Cabin Crew Recruitment Day - Chisinau - 8 October 2026\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Cabin Crew Recruitment Day - Chisinau - 8 October 2026\n                                                                    \n                                                                    \n        \n        \n            Chisinau, MD, 2026",
+     "url": "https://careers.wizzair.com/job/Chisinau-Cabin-Crew-Recruitment-Day-Chisinau-8-October-2026-2026/1433783133/",
+     "posted": null
+    }
+   ]
+  },
+  {
+   "name": "Changi Airport Group",
+   "slug": "changi-airport",
+   "source": {
+    "ats": "successfactors",
+    "url": "https://jobs.changiairport.com"
+   },
+   "ok": true,
+   "jobs_found": 82,
+   "sample": [
+    {
+     "title": "Assistant Manager / Manager, Programme Management Office",
+     "location": "Assistant Manager / Manager, Programme Management Office\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Assistant Manager / Manager, Programme Management Office\n                                                                    \n                                                                    Changi East Development\n                                                                    5 Oct 2026",
+     "url": "https://jobs.changiairport.com/cag/job/Assistant-Manager-Manager%2C-Programme-Management-Office/1364136066/",
+     "posted": null
+    },
+    {
+     "title": "Senior Associate/ Assistant Manager, Airside Concessions (Planning & Leasing)",
+     "location": "Senior Associate/ Assistant Manager, Airside Concessions (Planning & Leasing)\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Senior Associate/ Assistant Manager, Airside Concessions (Planning & Leasing)\n                                                                    \n                                                                    Commercial\n                                                                    5 Oct 2026",
+     "url": "https://jobs.changiairport.com/cag/job/Senior-Associate-Assistant-Manager%2C-Airside-Concessions-%28Planning-&-Leasing%29/1364135866/",
+     "posted": null
+    },
+    {
+     "title": "Project Manager (Building Mechanical Systems)",
+     "location": "Project Manager (Building Mechanical Systems)\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Project Manager (Building Mechanical Systems)\n                                                                    \n                                                                    Changi Airport Planners and Engineers\n                                                                    4 Oct 2026",
+     "url": "https://jobs.changiairport.com/cai/job/Project-Manager-%28Building-Mechanical-Systems%29/1065666266/",
+     "posted": null
+    },
+    {
+     "title": "Director, People Rewards",
+     "location": "Director, People Rewards\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Director, People Rewards\n                                                                    \n                                                                    People Team\n                                                                    4 Oct 2026",
+     "url": "https://jobs.changiairport.com/cag/job/Director%2C-People-Rewards/1365537466/",
+     "posted": null
+    },
+    {
+     "title": "Assistant Manager (Corporate Infrastructure)",
+     "location": "Assistant Manager (Corporate Infrastructure)\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Assistant Manager (Corporate Infrastructure)\n                                                                    \n                                                                    Airport Management\n                                                                    4 Oct 2026",
+     "url": "https://jobs.changiairport.com/cag/job/Assistant-Manager-%28Corporate-Infrastructure%29/1331644966/",
+     "posted": null
+    },
+    {
+     "title": "Manager (Digital Infrastructure)",
+     "location": "Manager (Digital Infrastructure)\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n                                                    \n                                                                    \n                                                                        Manager (Digital Infrastructure)\n                                                                    \n                                                                    Airport Management\n                                                                    4 Oct 2026",
+     "url": "https://jobs.changiairport.com/cag/job/Manager-%28Digital-Infrastructure%29/1331644366/",
+     "posted": null
+    }
+   ]
+  },
+  {
+   "name": "Bombardier",
+   "slug": "bombardier",
+   "source": {
+    "ats": "successfactors",
+    "url": "https://jobs.bombardier.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "ST Engineering",
+   "slug": "st-engineering",
+   "source": {
+    "ats": "successfactors",
+    "url": "https://careers.stengg.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
   }
  ]
 }
