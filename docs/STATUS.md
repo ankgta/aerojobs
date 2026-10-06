@@ -4,17 +4,17 @@ Last updated: 6 October 2026. Update this file whenever something changes.
 
 ## In one line
 
-AeroJobs is **live at https://aerojobs.work** with about **3,600 real jobs** from **10 employers** (soon
-**18**), refreshed twice a day. Full testing is done. Eight new employers added 6 Oct; the next scheduled
-fetch will pull their jobs.
+AeroJobs is **live at https://aerojobs.work** with **4,373 real jobs** from **17 employers** in **46
+countries**, refreshed twice a day. Eight new employers added 6 Oct: 7 working, Air New Zealand parked
+in backlog (its SmartRecruiters API is blocked by robots.txt — see Known issues).
 
-## Live numbers (5 Oct 2026, 10:55 UTC fetch)
+## Live numbers (6 Oct 2026, 05:07 UTC fetch)
 
 | Measure | Value |
 | --- | --- |
-| Live jobs | 3,598 |
-| Employers switched on | 10 of 57 listed (18 after next fetch) |
-| Countries with jobs | 42 |
+| Live jobs | 4,373 |
+| Employers switched on | 17 fetching + 1 blocked (Air New Zealand) = 18 enabled, of 64 listed |
+| Countries with jobs | 46 |
 | Jobs with a known country | 93% |
 | Jobs whose role is unclear (shown as Corporate) | 33% |
 | Pilot jobs / cabin crew jobs | 7 / 0 |
@@ -26,14 +26,17 @@ Full detail: `docs/reports/AeroJobs-Test-Report.xlsx`.
 
 ## Employers
 
-**Switched on (18):** Airbus, Boeing, RTX (Collins Aerospace and Pratt & Whitney), GE Aerospace, Rolls-Royce,
-Wisk Aero, CAE, NAV Canada (Workday) · Honeywell, Virgin Atlantic, Heathrow Airport, StandardAero, ICAO
-(Oracle Recruiting Cloud) · Archer Aviation, Skyryse, Heart Aerospace, Supernal (Greenhouse) · Air New
-Zealand (SmartRecruiters). Each capped at 600 jobs while testing.
+**Live and fetching (17):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
+Rolls-Royce (459), CAE (365), StandardAero (198), Archer Aviation (149), ICAO (98), NAV Canada (26),
+Skyryse (19), Heathrow Airport (18), Supernal (7), Heart Aerospace (6), Wisk Aero (3), Virgin Atlantic (3).
 
-**New 6 Oct 2026 (8):** Air New Zealand, Heart Aerospace, Supernal (Hyundai eVTOL), StandardAero (MRO),
-Wisk Aero, CAE (flight training/simulation), NAV Canada, ICAO. Note: SmartRecruiters API may be blocked
-by robots.txt for Air New Zealand — will know after first fetch.
+**Enabled but failing — in backlog (1):** Air New Zealand (SmartRecruiters). Our fetcher's user agent
+is blocked by `api.smartrecruiters.com/robots.txt`. Kept enabled so we remember to look into it. See
+backlog item below.
+
+**New 6 Oct 2026 (7 live + 1 blocked):** Heart Aerospace, Supernal (Hyundai eVTOL), StandardAero (MRO),
+Wisk Aero, CAE (flight training/simulation), NAV Canada, ICAO — all fetching jobs. Air New Zealand
+enabled but blocked by SmartRecruiters robots.txt (added +775 jobs net: 3,598 → 4,373).
 
 **Blocked by their own rules (robots.txt), so left off:** American Airlines, Delta, KLM, Qantas, IndiGo,
 LATAM, Ethiopian, AAR, Lufthansa Technik (careers sites); flydubai, Alaska Airlines (iCIMS); Wizz Air,
@@ -78,12 +81,19 @@ Dependabot pull request #4 (Markdown 3.10.3 → 3.11) merged 5 Oct 2026.
 ## Next steps, in order
 
 1. Owner answers the decisions above.
-2. Monitor first fetch with 18 employers; disable any that fail or are blocked by robots.txt.
-3. Grow airline coverage: SuccessFactors and Taleo readers, then run the .aero directory tool.
-4. Write the remaining ~12 guides (skill `aerojobs-write-guides`), owner edits them.
-5. Set up Search Console and Analytics; submit the sitemap.
-6. Before passing ~15,000 jobs: generate job pages on demand (Cloudflare 20,000-file limit).
-7. Apply for AdSense.
+2. Grow airline coverage: SuccessFactors and Taleo readers, then run the .aero directory tool.
+3. Write the remaining ~12 guides (skill `aerojobs-write-guides`), owner edits them.
+4. Set up Search Console and Analytics; submit the sitemap.
+5. Before passing ~15,000 jobs: generate job pages on demand (Cloudflare 20,000-file limit).
+6. Apply for AdSense.
+
+## Backlog (look into later)
+
+- **Air New Zealand (SmartRecruiters robots.txt block)**: `api.smartrecruiters.com/robots.txt` disallows
+  our user agent. Possible routes: (a) check if their careers page has JSON-LD JobPosting data and use
+  the jsonld reader instead; (b) read the SmartRecruiters HTML list page (not the API) if robots.txt
+  allows it; (c) write to the company for permission. Do not change the fetcher's user agent to bypass.
+  Kept enabled in `config/employers.yaml` so this stays visible.
 
 ## Known issues
 
@@ -93,5 +103,5 @@ Dependabot pull request #4 (Markdown 3.10.3 → 3.11) merged 5 Oct 2026.
 | 33% of jobs default to Corporate | Role filter less precise | Widen rules as needed |
 | 13 older RTX jobs still show coded locations | Cosmetic; fixes itself when they update | None needed |
 | Few airline jobs | Weak for pilots and cabin crew | Next step 3 |
-| SmartRecruiters API may block Air New Zealand | Would need to disable that employer | Check after first fetch |
+| Air New Zealand blocked by SmartRecruiters robots.txt | Fetches 0 jobs; one error per run in alerts | Parked in backlog above |
 | GitHub Actions minutes | Private repos get 2,000 free minutes a month. Today's fetch runs took ~25 min each (catching up on 2,000+ job detail pages); at that pace 2 runs a day use ~1,500 min a month | Check run times after a few days. If still long: lower `max_new_details_per_employer`, or make the repository public (unlimited free minutes) |
