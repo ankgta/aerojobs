@@ -227,6 +227,40 @@ def test_clean_coded_locations():
     assert clean_location("Seattle, WA") == "Seattle, WA"
 
 
+def test_successfactors_connector():
+    base = "https://careers.example-air.com"
+    listing_html = """<html><body>
+    <div>Results 1 &ndash; 25 of 30 jobs</div>
+    <table>
+      <tr><th>Title</th><th>Location</th></tr>
+      <tr><td><a href="/job/Dubai-First-Officer-A380/12345/">First Officer A380</a></td>
+          <td>Dubai, AE</td></tr>
+      <tr><td><a href="/job/London-Cabin-Crew-E1-1AB/67890/">Cabin Crew</a></td>
+          <td>London, United Kingdom</td></tr>
+    </table></body></html>"""
+    page2_html = """<html><body>
+    <table>
+      <tr><td><a href="/cag/job/Singapore-Ramp-Agent-S123/11111/">Ramp Agent</a></td>
+          <td>Singapore</td></tr>
+    </table></body></html>"""
+    def page(url):
+        if "startrow=25" in url:
+            return page2_html
+        return listing_html
+    client = FakeClient({base: page})
+    jobs = c.fetch_successfactors(client, {"url": base})
+    assert len(jobs) == 3
+    assert jobs[0]["source_id"] == "12345"
+    assert jobs[0]["title"] == "First Officer A380"
+    assert jobs[0]["url"] == f"{base}/job/Dubai-First-Officer-A380/12345/"
+    assert jobs[0]["location"] == "Dubai, AE"
+    assert jobs[1]["source_id"] == "67890"
+    assert jobs[1]["location"] == "London, United Kingdom"
+    # third job uses /unit/job/ URL pattern (Changi-style)
+    assert jobs[2]["source_id"] == "11111"
+    assert jobs[2]["url"] == f"{base}/cag/job/Singapore-Ramp-Agent-S123/11111/"
+
+
 def test_aviation_filter_blocks_non_aviation():
     """Non-aviation titles from conglomerates are excluded."""
     blocked = [

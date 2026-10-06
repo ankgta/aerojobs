@@ -316,6 +316,119 @@ def jsonld_detail(client: PoliteClient, job: dict) -> dict:
     return raw
 
 
+# ------------------------------------------------------------------ SuccessFactors Career Site Builder
+class _SFListingParser(HTMLParser):
+    """Extract jobs from SAP SuccessFactors Career Site Builder listing pages.
+
+    The pages render jobs in HTML table rows.  Each row contains an <a> tag
+    linking to /job/<slug>/<id>/ (or /<unit>/job/<slug>/<id>/) with the job
+    title as the link text.  The location is the next non-empty text content
+    in the same <tr>, after the title.
+    """
+    def __init__(self):
+        super().__init__()
+        self.jobs: list[dict] = []
+        self.total: int | None = None
+        # row tracking
+        self._in_tr = False
+        self._tds: list[str] = []
+        self._td_buf: list[str] = []
+        self._in_td = False
+        # link tracking
+        self._job_href: str | None = None
+        self._job_title: str | None = None
+        self._in_link = False
+        self._link_buf: list[str] = []
+        # total-count tracking
+        self._all_text: list[str] = []
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "tr":
+            self._in_tr = True
+            self._tds = []
+            self._job_href = None
+            self._job_title = None
+        elif tag in ("td", "th") and self._in_tr:
+            self._in_td = True
+            self._td_buf = []
+        elif tag == "a":
+            href = a.get("href", "")
+            if self._in_tr and re.search(r"/job/.+/\d+/?$", href):
+                self._job_href = href
+                self._in_link = True
+                self._link_buf = []
+
+    def handle_data(self, data):
+        if self._in_link:
+            self._link_buf.append(data)
+        if self._in_td:
+            self._td_buf.append(data)
+        self._all_text.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self._in_link:
+            self._job_title = "".join(self._link_buf).strip()
+            self._in_link = False
+        elif tag in ("td", "th") and self._in_td:
+            self._tds.append("".join(self._td_buf).strip())
+            self._in_td = False
+        elif tag == "tr" and self._in_tr:
+            self._in_tr = False
+            if self._job_href and self._job_title:
+                # location = first non-empty td text that isn't the title
+                location = ""
+                for cell in self._tds:
+                    if cell and cell != self._job_title:
+                        location = cell
+                        break
+                self.jobs.append({
+                    "href": self._job_href,
+                    "title": self._job_title,
+                    "location": location,
+                })
+
+    def close(self):
+        super().close()
+        # try to find total count from text like "Results 1 – 25 of 70"
+        text = " ".join(self._all_text)
+        m = re.search(r"of\s+(\d+)\s+(?:results?|jobs?|positions?|openings?)", text, re.I)
+        if m:
+            self.total = int(m.group(1))
+
+
+def fetch_successfactors(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """SAP SuccessFactors Career Site Builder (careers.example.com/search/…)."""
+    base = src["url"].rstrip("/")
+    jobs: list[dict] = []
+    offset, total = 0, None
+    while True:
+        url = f"{base}/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow={offset}"
+        page_html = client.get_text(url)
+        parser = _SFListingParser()
+        parser.feed(page_html)
+        parser.close()
+        if total is None and parser.total is not None:
+            total = parser.total
+        if not parser.jobs:
+            break
+        for j in parser.jobs:
+            full_url = urllib.parse.urljoin(base + "/", j["href"])
+            m = re.search(r"/(\d+)/?$", j["href"])
+            source_id = m.group(1) if m else j["href"]
+            jobs.append({
+                "source_id": source_id,
+                "title": j["title"].strip(),
+                "url": full_url,
+                "location": j["location"],
+                "posted_estimated": True,
+            })
+        offset += 25
+        if (total and offset >= total) or len(jobs) >= max_jobs:
+            break
+    return jobs[:max_jobs]
+
+
 # ------------------------------------------------------------------ Oracle Recruiting Cloud
 def fetch_oracle(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
     """Oracle Cloud HCM careers sites (…oraclecloud.com/hcmUI/CandidateExperience/…/sites/<site>)."""
@@ -361,4 +474,5 @@ CONNECTORS = {
     "smartrecruiters": (fetch_smartrecruiters, None),
     "jsonld": (fetch_jsonld, jsonld_detail),
     "oracle": (fetch_oracle, None),
+    "successfactors": (fetch_successfactors, None),
 }

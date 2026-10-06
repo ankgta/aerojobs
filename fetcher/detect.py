@@ -41,6 +41,9 @@ def suggest(url: str, page: str) -> list[str]:
             found.append(f'source: {{ats: oracle, host: "{m[1]}", site: "{site}"}}' + ("" if m[2] else "   # site number guessed"))
         elif name == "smartrecruiters":
             found.append(f'source: {{ats: smartrecruiters, company: "{m[1]}"}}')
+        elif name == "successfactors":
+            host = urllib.parse.urlsplit(url).netloc
+            found.append(f'source: {{ats: successfactors, url: "https://{host}"}}   # check /search/ page loads jobs')
         else:
             found.append(f"# uses {name} ({m[1]}): no connector yet; try the jsonld reader or a custom reader")
     if extract_job_postings(page):
