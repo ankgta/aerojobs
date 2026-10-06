@@ -1,18 +1,8 @@
-# Round 2 candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
+# Round 3 candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
 employers:
-  # ---- Oracle Recruiting Cloud (hosts found on the employers' own careers pages) ----
-  - {name: Virgin Atlantic, slug: virgin-atlantic, type: airline, country: GB, source: {ats: oracle, host: "iagime.fa.ocs.oraclecloud.com", site: "CX_1"}}
-  - {name: Virgin Atlantic (site 2), slug: virgin-atlantic-2, type: airline, country: GB, source: {ats: oracle, host: "iagime.fa.ocs.oraclecloud.com", site: "CX_2"}}
-  - {name: Heathrow Airport, slug: heathrow, type: airport, country: GB, source: {ats: oracle, host: "encd.fa.em3.oraclecloud.com", site: "CX_1"}}
-  - {name: Heathrow Airport (site 2), slug: heathrow-2, type: airport, country: GB, source: {ats: oracle, host: "encd.fa.em3.oraclecloud.com", site: "CX"}}
-  - {name: Honeywell, slug: honeywell, type: manufacturer, country: US, source: {ats: oracle, host: "ibqbjb.fa.ocs.oraclecloud.com", site: "CX_1"}}
-  # ---- iCIMS (job pages carry Google JobPosting data) ----
-  - {name: flydubai, slug: flydubai, type: airline, country: AE, source: {ats: jsonld, listing_url: "https://careers-flydubai.icims.com/jobs/search?pr={page}&in_iframe=1", job_link_pattern: "/jobs/\\d+/", max_pages: 3, strip_query: true}}
-  - {name: Alaska Airlines, slug: alaska-airlines, type: airline, country: US, source: {ats: jsonld, listing_url: "https://careers-alaskaair.icims.com/jobs/search?pr={page}&in_iframe=1", job_link_pattern: "/jobs/\\d+/", max_pages: 3, strip_query: true}}
-  - {name: Alaska Airlines (employee site), slug: alaska-airlines-2, type: airline, country: US, source: {ats: jsonld, listing_url: "https://employee-alaskaair.icims.com/jobs/search?pr={page}&in_iframe=1", job_link_pattern: "/jobs/\\d+/", max_pages: 3, strip_query: true}}
+  # ---- SmartRecruiters ----
+  - {name: Etihad Airways, slug: etihad, type: airline, country: AE, source: {ats: smartrecruiters, company: "EtihadAirways5"}}
   # ---- SuccessFactors Career Site Builder ----
-  - {name: JetBlue, slug: jetblue, type: airline, country: US, source: {ats: successfactors, url: "https://careers.jetblue.com"}}
-  - {name: Wizz Air, slug: wizz-air, type: airline, country: HU, source: {ats: successfactors, url: "https://careers.wizzair.com"}}
-  - {name: Changi Airport Group, slug: changi-airport, type: airport, country: SG, source: {ats: successfactors, url: "https://jobs.changiairport.com"}}
-  - {name: Bombardier, slug: bombardier, type: manufacturer, country: CA, source: {ats: successfactors, url: "https://jobs.bombardier.com"}}
-  - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, source: {ats: successfactors, url: "https://careers.stengg.com"}}
+  - {name: Swissport, slug: swissport, type: ground_services, country: CH, source: {ats: successfactors, url: "https://jobs.swissport.com"}}
+  # ---- iCIMS (likely blocked by robots.txt like flydubai/Alaska, but worth checking) ----
+  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: jsonld, listing_url: "https://careers-dnata.icims.com/jobs/search?pr={page}&in_iframe=1", job_link_pattern: "/jobs/\\d+/", max_pages: 3, strip_query: true}}
