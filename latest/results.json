@@ -1,6 +1,6 @@
 {
  "base": "https://aerojobs.work",
- "run": "2026-10-05T11:30:39.271710+00:00",
+ "run": "2026-10-06T05:53:54.422513+00:00",
  "results": [
   {
    "id": "TC-NAV-01",
@@ -12,7 +12,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "HTTP 200, headline shown, 3598 jobs listed (matches data)",
+   "actual": "HTTP 200, headline shown, 4373 jobs listed (matches data)",
    "evidence": ""
   },
   {
@@ -90,7 +90,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Search 'ENGINEER' (upper case) found 1203 jobs, matching the data; case-insensitive",
+   "actual": "Search 'ENGINEER' (upper case) found 1341 jobs, matching the data; case-insensitive",
    "evidence": ""
   },
   {
@@ -103,7 +103,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Search 'RTX (Collins Aerospace, Pratt & Whitney)' with Enter key found 602 jobs, matching the data",
+   "actual": "Search 'RTX (Collins Aerospace, Pratt & Whitney)' with Enter key found 672 jobs, matching the data",
    "evidence": ""
   },
   {
@@ -129,7 +129,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Country US: 1754 jobs; region North America: 1887 jobs; both match the data",
+   "actual": "Country US: 2258 jobs; region North America: 2540 jobs; both match the data",
    "evidence": ""
   },
   {
@@ -142,7 +142,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Each role matches the data: cargo-logistics=66, corporate=2151, customer-service-sales=108, engineering-maintenance=1240, flight-operations=17, ground-operations=9, pilots=7",
+   "actual": "Each role matches the data: cargo-logistics=78, corporate=2528, customer-service-sales=110, engineering-maintenance=1548, flight-operations=41, ground-operations=20, pilots=48",
    "evidence": ""
   },
   {
@@ -155,7 +155,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Single modes On-site=3266, Hybrid=252, Remote=80; Hybrid+Remote together = 332",
+   "actual": "Single modes On-site=4059, Hybrid=232, Remote=82; Hybrid+Remote together = 314",
    "evidence": ""
   },
   {
@@ -168,7 +168,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Posted-date filters match the data: 24h=184, 48h=202, week=2168, month=3309, >month=289",
+   "actual": "Posted-date filters match the data: 24h=682, 48h=696, week=2386, month=3689, >month=684",
    "evidence": ""
   },
   {
@@ -181,7 +181,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Employer types match: airline=5, airport=17, manufacturer=3576",
+   "actual": "Employer types match: airline=5, airport=20, manufacturer=4026, mro=198, other=124",
    "evidence": ""
   },
   {
@@ -194,7 +194,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Country+role+mode together = 1 (matches); Clear all restores 3598",
+   "actual": "Country+role+mode together = 37 (matches); Clear all restores 4373",
    "evidence": ""
   },
   {
@@ -207,7 +207,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 34 countries with no remote jobs are greyed out; with US picked the Remote button shows (61)",
+   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 37 countries with no remote jobs are greyed out; with US picked the Remote button shows (63)",
    "evidence": ""
   },
   {
@@ -220,7 +220,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "A shared link with filters opens with them applied (63 jobs) and survives reload",
+   "actual": "A shared link with filters opens with them applied (2285 jobs) and survives reload",
    "evidence": ""
   },
   {
@@ -233,7 +233,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Newest-first order correct; Closing-soonest puts 'Associate Engineer – Data Analytics' (closes 2026-10-06) first",
+   "actual": "Newest-first order correct; Closing-soonest puts 'Systems Engineer, Senior / Experienced' (closes 2026-10-06) first",
    "evidence": ""
   },
   {
@@ -246,7 +246,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Shows 25, then 50 after 'Show more'; button disappears after all 3598 are shown",
+   "actual": "Shows 25, then 50 after 'Show more'; button disappears after all 4373 are shown",
    "evidence": ""
   },
   {
@@ -285,7 +285,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Apply links reach the employer for all 10 employers: RTX (Collins Aerospace, Pratt & Whitney): 200 (globalhr.wd5.myworkdayjobs.com); Rolls-Royce: 200 (rollsroyce.wd3.myworkdayjobs.com); Honeywell: 200 (ibqbjb.fa.ocs.oraclecloud.com); GE Aerospace: 200 (geaerospace.wd5.myworkdayjobs.com); Boeing: 200 (boeing.wd1.myworkdayjobs.com); Airbus: 200 (ag.wd3.myworkdayjobs.com); Virgin Atlantic: 200 (iagime.fa.ocs.oraclecloud.com); Skyryse: 200 (job-boards.greenhouse.io); Archer Aviation: 200 (job-boards.greenhouse.io); Heathrow Airport: 200 (encd.fa.em3.oraclecloud.com)",
+   "actual": "Apply links reach the employer for all 17 employers: RTX (Collins Aerospace, Pratt & Whitney): 200 (globalhr.wd5.myworkdayjobs.com); Rolls-Royce: 200 (rollsroyce.wd3.myworkdayjobs.com); Honeywell: 200 (ibqbjb.fa.ocs.oraclecloud.com); GE Aerospace: 200 (geaerospace.wd5.myworkdayjobs.com); CAE: 200 (cae.wd3.myworkdayjobs.com); Boeing: 200 (boeing.wd1.myworkdayjobs.com); Airbus: 200 (ag.wd3.myworkdayjobs.com); StandardAero: 200 (cva.fa.us1.oraclecloud.com); NAV Canada: 200 (navcanada.wd10.myworkdayjobs.com); Heathrow Airport: 200 (encd.fa.em3.oraclecloud.com); Archer Aviation: 200 (job-boards.greenhouse.io); Virgin Atlantic: 200 (iagime.fa.ocs.oraclecloud.com); Skyryse: 200 (job-boards.greenhouse.io); ICAO: 200 (estm.fa.em2.oraclecloud.com); Supernal: 200 (job-boards.greenhouse.io); Heart Aerospace: 200 (job-boards.greenhouse.io); Wisk Aero: 200 (wisk.wd108.myworkdayjobs.com)",
    "evidence": ""
   },
   {
@@ -311,7 +311,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Employer page lists 100 jobs; its filter link opens the board filtered to that employer (602)",
+   "actual": "Employer page lists 100 jobs; its filter link opens the board filtered to that employer (672)",
    "evidence": ""
   },
   {
@@ -324,7 +324,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Countries index opens 'Kuwait' page correctly",
+   "actual": "Countries index opens 'Oman' page correctly",
    "evidence": ""
   },
   {
@@ -337,7 +337,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Sitemap has 3669 pages on https://aerojobs.work; robots.txt points to it; canonical and descriptions present",
+   "actual": "Sitemap has 4455 pages on https://aerojobs.work; robots.txt points to it; canonical and descriptions present",
    "evidence": ""
   },
   {
@@ -376,7 +376,7 @@
    "browser": "chromium",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Home page with search ready in 0.4s; job list download 1217 KB",
+   "actual": "Home page with search ready in 0.4s; job list download 1466 KB",
    "evidence": ""
   },
   {
@@ -401,9 +401,9 @@
    "expected": "Page never scrolls sideways",
    "browser": "chromium",
    "device": "Pixel 7 (Android)",
-   "status": "Pass",
-   "actual": "No sideways scrolling on 4 pages at widths 320, 360, 390, 412, 768px",
-   "evidence": ""
+   "status": "Fail",
+   "actual": "sideways scroll: /@320px=323",
+   "evidence": "screens/TC-MOB-01-chromium-Pixel 7 (Android).png"
   },
   {
    "id": "TC-MOB-02",
@@ -427,9 +427,9 @@
    "expected": "Panel opens, shows live count, badge 1, closes",
    "browser": "chromium",
    "device": "Pixel 7 (Android)",
-   "status": "Pass",
-   "actual": "Filter panel opens, shows 'Show 66 jobs', badge shows 1, closes when tapping outside",
-   "evidence": ""
+   "status": "Fail",
+   "actual": "button says 'Show 2,528 jobs', expected 2528",
+   "evidence": "screens/TC-MOB-03-chromium-Pixel 7 (Android).png"
   },
   {
    "id": "TC-MOB-04",
@@ -480,7 +480,7 @@
    "browser": "chromium",
    "device": "Pixel 7 (Android)",
    "status": "Pass",
-   "actual": "Each role matches the data: cargo-logistics=66, corporate=2151, customer-service-sales=108, engineering-maintenance=1240, flight-operations=17, ground-operations=9, pilots=7",
+   "actual": "Each role matches the data: cargo-logistics=78, corporate=2528, customer-service-sales=110, engineering-maintenance=1548, flight-operations=41, ground-operations=20, pilots=48",
    "evidence": ""
   },
   {
@@ -493,7 +493,7 @@
    "browser": "chromium",
    "device": "Pixel 7 (Android)",
    "status": "Pass",
-   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 34 countries with no remote jobs are greyed out; with US picked the Remote button shows (61)",
+   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 37 countries with no remote jobs are greyed out; with US picked the Remote button shows (63)",
    "evidence": ""
   },
   {
@@ -506,7 +506,7 @@
    "browser": "chromium",
    "device": "Pixel 7 (Android)",
    "status": "Pass",
-   "actual": "Search 'ENGINEER' (upper case) found 1203 jobs, matching the data; case-insensitive",
+   "actual": "Search 'ENGINEER' (upper case) found 1341 jobs, matching the data; case-insensitive",
    "evidence": ""
   },
   {
@@ -519,7 +519,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "HTTP 200, headline shown, 3598 jobs listed (matches data)",
+   "actual": "HTTP 200, headline shown, 4373 jobs listed (matches data)",
    "evidence": ""
   },
   {
@@ -597,7 +597,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Search 'ENGINEER' (upper case) found 1203 jobs, matching the data; case-insensitive",
+   "actual": "Search 'ENGINEER' (upper case) found 1341 jobs, matching the data; case-insensitive",
    "evidence": ""
   },
   {
@@ -610,7 +610,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Search 'RTX (Collins Aerospace, Pratt & Whitney)' with Enter key found 602 jobs, matching the data",
+   "actual": "Search 'RTX (Collins Aerospace, Pratt & Whitney)' with Enter key found 672 jobs, matching the data",
    "evidence": ""
   },
   {
@@ -636,7 +636,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Country US: 1754 jobs; region North America: 1887 jobs; both match the data",
+   "actual": "Country US: 2258 jobs; region North America: 2540 jobs; both match the data",
    "evidence": ""
   },
   {
@@ -649,7 +649,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Each role matches the data: cargo-logistics=66, corporate=2151, customer-service-sales=108, engineering-maintenance=1240, flight-operations=17, ground-operations=9, pilots=7",
+   "actual": "Each role matches the data: cargo-logistics=78, corporate=2528, customer-service-sales=110, engineering-maintenance=1548, flight-operations=41, ground-operations=20, pilots=48",
    "evidence": ""
   },
   {
@@ -662,7 +662,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Single modes On-site=3266, Hybrid=252, Remote=80; Hybrid+Remote together = 332",
+   "actual": "Single modes On-site=4059, Hybrid=232, Remote=82; Hybrid+Remote together = 314",
    "evidence": ""
   },
   {
@@ -675,7 +675,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Posted-date filters match the data: 24h=184, 48h=202, week=2168, month=3309, >month=289",
+   "actual": "Posted-date filters match the data: 24h=682, 48h=696, week=2386, month=3689, >month=684",
    "evidence": ""
   },
   {
@@ -688,7 +688,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Employer types match: airline=5, airport=17, manufacturer=3576",
+   "actual": "Employer types match: airline=5, airport=20, manufacturer=4026, mro=198, other=124",
    "evidence": ""
   },
   {
@@ -701,7 +701,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Country+role+mode together = 1 (matches); Clear all restores 3598",
+   "actual": "Country+role+mode together = 37 (matches); Clear all restores 4373",
    "evidence": ""
   },
   {
@@ -714,7 +714,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 34 countries with no remote jobs are greyed out; with US picked the Remote button shows (61)",
+   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 37 countries with no remote jobs are greyed out; with US picked the Remote button shows (63)",
    "evidence": ""
   },
   {
@@ -727,7 +727,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "A shared link with filters opens with them applied (63 jobs) and survives reload",
+   "actual": "A shared link with filters opens with them applied (2285 jobs) and survives reload",
    "evidence": ""
   },
   {
@@ -740,7 +740,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Newest-first order correct; Closing-soonest puts 'Associate Engineer – Data Analytics' (closes 2026-10-06) first",
+   "actual": "Newest-first order correct; Closing-soonest puts 'Systems Engineer, Senior / Experienced' (closes 2026-10-06) first",
    "evidence": ""
   },
   {
@@ -753,7 +753,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Shows 25, then 50 after 'Show more'; button disappears after all 3598 are shown",
+   "actual": "Shows 25, then 50 after 'Show more'; button disappears after all 4373 are shown",
    "evidence": ""
   },
   {
@@ -792,7 +792,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Apply links reach the employer for all 10 employers: RTX (Collins Aerospace, Pratt & Whitney): 200 (globalhr.wd5.myworkdayjobs.com); Rolls-Royce: 200 (rollsroyce.wd3.myworkdayjobs.com); Honeywell: 200 (ibqbjb.fa.ocs.oraclecloud.com); GE Aerospace: 200 (geaerospace.wd5.myworkdayjobs.com); Boeing: 200 (boeing.wd1.myworkdayjobs.com); Airbus: 200 (ag.wd3.myworkdayjobs.com); Virgin Atlantic: 200 (iagime.fa.ocs.oraclecloud.com); Skyryse: 200 (job-boards.greenhouse.io); Archer Aviation: 200 (job-boards.greenhouse.io); Heathrow Airport: 200 (encd.fa.em3.oraclecloud.com)",
+   "actual": "Apply links reach the employer for all 17 employers: RTX (Collins Aerospace, Pratt & Whitney): 200 (globalhr.wd5.myworkdayjobs.com); Rolls-Royce: 200 (rollsroyce.wd3.myworkdayjobs.com); Honeywell: 200 (ibqbjb.fa.ocs.oraclecloud.com); GE Aerospace: 200 (geaerospace.wd5.myworkdayjobs.com); CAE: 200 (cae.wd3.myworkdayjobs.com); Boeing: 200 (boeing.wd1.myworkdayjobs.com); Airbus: 200 (ag.wd3.myworkdayjobs.com); StandardAero: 200 (cva.fa.us1.oraclecloud.com); NAV Canada: 200 (navcanada.wd10.myworkdayjobs.com); Heathrow Airport: 200 (encd.fa.em3.oraclecloud.com); Archer Aviation: 200 (job-boards.greenhouse.io); Virgin Atlantic: 200 (iagime.fa.ocs.oraclecloud.com); Skyryse: 200 (job-boards.greenhouse.io); ICAO: 200 (estm.fa.em2.oraclecloud.com); Supernal: 200 (job-boards.greenhouse.io); Heart Aerospace: 200 (job-boards.greenhouse.io); Wisk Aero: 200 (wisk.wd108.myworkdayjobs.com)",
    "evidence": ""
   },
   {
@@ -818,7 +818,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Employer page lists 100 jobs; its filter link opens the board filtered to that employer (602)",
+   "actual": "Employer page lists 100 jobs; its filter link opens the board filtered to that employer (672)",
    "evidence": ""
   },
   {
@@ -831,7 +831,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Countries index opens 'Kuwait' page correctly",
+   "actual": "Countries index opens 'Oman' page correctly",
    "evidence": ""
   },
   {
@@ -844,7 +844,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Sitemap has 3669 pages on https://aerojobs.work; robots.txt points to it; canonical and descriptions present",
+   "actual": "Sitemap has 4455 pages on https://aerojobs.work; robots.txt points to it; canonical and descriptions present",
    "evidence": ""
   },
   {
@@ -883,7 +883,7 @@
    "browser": "firefox",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Home page with search ready in 0.5s; job list download 1217 KB",
+   "actual": "Home page with search ready in 0.5s; job list download 1466 KB",
    "evidence": ""
   },
   {
@@ -934,9 +934,9 @@
    "expected": "Panel opens, shows live count, badge 1, closes",
    "browser": "firefox",
    "device": "Phone 390px (Firefox)",
-   "status": "Pass",
-   "actual": "Filter panel opens, shows 'Show 66 jobs', badge shows 1, closes when tapping outside",
-   "evidence": ""
+   "status": "Fail",
+   "actual": "button says 'Show 2,528 jobs', expected 2528",
+   "evidence": "screens/TC-MOB-03-firefox-Phone 390px (Firefox).png"
   },
   {
    "id": "TC-MOB-04",
@@ -987,7 +987,7 @@
    "browser": "firefox",
    "device": "Phone 390px (Firefox)",
    "status": "Pass",
-   "actual": "Each role matches the data: cargo-logistics=66, corporate=2151, customer-service-sales=108, engineering-maintenance=1240, flight-operations=17, ground-operations=9, pilots=7",
+   "actual": "Each role matches the data: cargo-logistics=78, corporate=2528, customer-service-sales=110, engineering-maintenance=1548, flight-operations=41, ground-operations=20, pilots=48",
    "evidence": ""
   },
   {
@@ -1000,7 +1000,7 @@
    "browser": "firefox",
    "device": "Phone 390px (Firefox)",
    "status": "Pass",
-   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 34 countries with no remote jobs are greyed out; with US picked the Remote button shows (61)",
+   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 37 countries with no remote jobs are greyed out; with US picked the Remote button shows (63)",
    "evidence": ""
   },
   {
@@ -1013,7 +1013,7 @@
    "browser": "firefox",
    "device": "Phone 390px (Firefox)",
    "status": "Pass",
-   "actual": "Search 'ENGINEER' (upper case) found 1203 jobs, matching the data; case-insensitive",
+   "actual": "Search 'ENGINEER' (upper case) found 1341 jobs, matching the data; case-insensitive",
    "evidence": ""
   },
   {
@@ -1026,7 +1026,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "HTTP 200, headline shown, 3598 jobs listed (matches data)",
+   "actual": "HTTP 200, headline shown, 4373 jobs listed (matches data)",
    "evidence": ""
   },
   {
@@ -1104,7 +1104,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Search 'ENGINEER' (upper case) found 1203 jobs, matching the data; case-insensitive",
+   "actual": "Search 'ENGINEER' (upper case) found 1341 jobs, matching the data; case-insensitive",
    "evidence": ""
   },
   {
@@ -1117,7 +1117,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Search 'RTX (Collins Aerospace, Pratt & Whitney)' with Enter key found 602 jobs, matching the data",
+   "actual": "Search 'RTX (Collins Aerospace, Pratt & Whitney)' with Enter key found 672 jobs, matching the data",
    "evidence": ""
   },
   {
@@ -1143,7 +1143,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Country US: 1754 jobs; region North America: 1887 jobs; both match the data",
+   "actual": "Country US: 2258 jobs; region North America: 2540 jobs; both match the data",
    "evidence": ""
   },
   {
@@ -1156,7 +1156,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Each role matches the data: cargo-logistics=66, corporate=2151, customer-service-sales=108, engineering-maintenance=1240, flight-operations=17, ground-operations=9, pilots=7",
+   "actual": "Each role matches the data: cargo-logistics=78, corporate=2528, customer-service-sales=110, engineering-maintenance=1548, flight-operations=41, ground-operations=20, pilots=48",
    "evidence": ""
   },
   {
@@ -1169,7 +1169,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Single modes On-site=3266, Hybrid=252, Remote=80; Hybrid+Remote together = 332",
+   "actual": "Single modes On-site=4059, Hybrid=232, Remote=82; Hybrid+Remote together = 314",
    "evidence": ""
   },
   {
@@ -1182,7 +1182,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Posted-date filters match the data: 24h=184, 48h=202, week=2168, month=3309, >month=289",
+   "actual": "Posted-date filters match the data: 24h=682, 48h=696, week=2386, month=3689, >month=684",
    "evidence": ""
   },
   {
@@ -1195,7 +1195,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Employer types match: airline=5, airport=17, manufacturer=3576",
+   "actual": "Employer types match: airline=5, airport=20, manufacturer=4026, mro=198, other=124",
    "evidence": ""
   },
   {
@@ -1208,7 +1208,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Country+role+mode together = 1 (matches); Clear all restores 3598",
+   "actual": "Country+role+mode together = 37 (matches); Clear all restores 4373",
    "evidence": ""
   },
   {
@@ -1221,7 +1221,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 34 countries with no remote jobs are greyed out; with US picked the Remote button shows (61)",
+   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 37 countries with no remote jobs are greyed out; with US picked the Remote button shows (63)",
    "evidence": ""
   },
   {
@@ -1234,7 +1234,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "A shared link with filters opens with them applied (63 jobs) and survives reload",
+   "actual": "A shared link with filters opens with them applied (2285 jobs) and survives reload",
    "evidence": ""
   },
   {
@@ -1247,7 +1247,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Newest-first order correct; Closing-soonest puts 'Associate Engineer – Data Analytics' (closes 2026-10-06) first",
+   "actual": "Newest-first order correct; Closing-soonest puts 'Systems Engineer, Senior / Experienced' (closes 2026-10-06) first",
    "evidence": ""
   },
   {
@@ -1260,7 +1260,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Shows 25, then 50 after 'Show more'; button disappears after all 3598 are shown",
+   "actual": "Shows 25, then 50 after 'Show more'; button disappears after all 4373 are shown",
    "evidence": ""
   },
   {
@@ -1299,7 +1299,7 @@
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Pass",
-   "actual": "Apply links reach the employer for all 10 employers: RTX (Collins Aerospace, Pratt & Whitney): 200 (globalhr.wd5.myworkdayjobs.com); Rolls-Royce: 200 (rollsroyce.wd3.myworkdayjobs.com); Honeywell: 200 (ibqbjb.fa.ocs.oraclecloud.com); GE Aerospace: 200 (geaerospace.wd5.myworkdayjobs.com); Boeing: 200 (boeing.wd1.myworkdayjobs.com); Airbus: 200 (ag.wd3.myworkdayjobs.com); Virgin Atlantic: 200 (iagime.fa.ocs.oraclecloud.com); Skyryse: 200 (job-boards.greenhouse.io); Archer Aviation: 200 (job-boards.greenhouse.io); Heathrow Airport: 200 (encd.fa.em3.oraclecloud.com)",
+   "actual": "Apply links reach the employer for all 17 employers: RTX (Collins Aerospace, Pratt & Whitney): 200 (globalhr.wd5.myworkdayjobs.com); Rolls-Royce: 200 (rollsroyce.wd3.myworkdayjobs.com); Honeywell: 200 (ibqbjb.fa.ocs.oraclecloud.com); GE Aerospace: 200 (geaerospace.wd5.myworkdayjobs.com); CAE: 200 (cae.wd3.myworkdayjobs.com); Boeing: 200 (boeing.wd1.myworkdayjobs.com); Airbus: 200 (ag.wd3.myworkdayjobs.com); StandardAero: 200 (cva.fa.us1.oraclecloud.com); NAV Canada: 200 (navcanada.wd10.myworkdayjobs.com); Heathrow Airport: 200 (encd.fa.em3.oraclecloud.com); Archer Aviation: 200 (job-boards.greenhouse.io); Virgin Atlantic: 200 (iagime.fa.ocs.oraclecloud.com); Skyryse: 200 (job-boards.greenhouse.io); ICAO: 200 (estm.fa.em2.oraclecloud.com); Supernal: 200 (job-boards.greenhouse.io); Heart Aerospace: 200 (job-boards.greenhouse.io); Wisk Aero: 200 (wisk.wd108.myworkdayjobs.com)",
    "evidence": ""
   },
   {
@@ -1322,89 +1322,89 @@
    "title": "Employer page and its filter link",
    "steps": "Open an employer page, click 'Filter these jobs'",
    "expected": "Counts match; board opens filtered to that employer",
-   "browser": "webkit",
-   "device": "Desktop 1366px",
-   "status": "Pass",
-   "actual": "Employer page lists 100 jobs; its filter link opens the board filtered to that employer (602)",
-   "evidence": ""
-  },
-  {
-   "id": "TC-LIST-02",
-   "area": "Listing pages",
-   "type": "Functional",
-   "title": "Countries index",
-   "steps": "Open Countries, click the first country",
-   "expected": "Country page opens",
-   "browser": "webkit",
-   "device": "Desktop 1366px",
-   "status": "Pass",
-   "actual": "Countries index opens 'Kuwait' page correctly",
-   "evidence": ""
-  },
-  {
-   "id": "TC-SEO-01",
-   "area": "SEO and AdSense readiness",
-   "type": "Functional",
-   "title": "Sitemap, robots.txt, canonical, descriptions",
-   "steps": "Read sitemap.xml, robots.txt and page tags",
-   "expected": "All present and on aerojobs.work",
-   "browser": "webkit",
-   "device": "Desktop 1366px",
-   "status": "Pass",
-   "actual": "Sitemap has 3669 pages on https://aerojobs.work; robots.txt points to it; canonical and descriptions present",
-   "evidence": ""
-  },
-  {
-   "id": "TC-SEO-02",
-   "area": "SEO and AdSense readiness",
-   "type": "Functional",
-   "title": "Home-screen manifest and icons",
-   "steps": "Request manifest and icons",
-   "expected": "All load",
-   "browser": "webkit",
-   "device": "Desktop 1366px",
-   "status": "Pass",
-   "actual": "Home-screen manifest, icons and banner image all load",
-   "evidence": ""
-  },
-  {
-   "id": "TC-A11Y-01",
-   "area": "Accessibility",
-   "type": "Functional",
-   "title": "Basic accessibility",
-   "steps": "Check labels, alt text, headings, keyboard skip link",
-   "expected": "No issues",
-   "browser": "webkit",
-   "device": "Desktop 1366px",
-   "status": "Pass",
-   "actual": "Language set, images have alt text, every field has a label, one h1, 'Skip to content' is first on Tab",
-   "evidence": ""
-  },
-  {
-   "id": "TC-PERF-01",
-   "area": "Performance",
-   "type": "Non-functional",
-   "title": "Home page speed",
-   "steps": "Load home page until search is ready",
-   "expected": "Under 6 seconds",
-   "browser": "webkit",
-   "device": "Desktop 1366px",
-   "status": "Pass",
-   "actual": "Home page with search ready in 0.6s; job list download 1217 KB",
-   "evidence": ""
-  },
-  {
-   "id": "TC-JS-01",
-   "area": "Reliability",
-   "type": "Non-functional",
-   "title": "No JavaScript errors",
-   "steps": "Open home and a job page, watch the console",
-   "expected": "No errors",
    "browser": "webkit",
    "device": "Desktop 1366px",
    "status": "Fail",
-   "actual": "/aerojobs.work/cdn-cgi/rum? due to access control checks.; /aerojobs.work/cdn-cgi/rum? due to access control checks.",
-   "evidence": "screens/TC-JS-01-webkit-Desktop 1366px.png"
+   "actual": "'filter these jobs' link gave 596, expected 672",
+   "evidence": "screens/TC-LIST-01-webkit-Desktop 1366px.png"
+  },
+  {
+   "id": "TC-LIST-02",
+   "area": "Listing pages",
+   "type": "Functional",
+   "title": "Countries index",
+   "steps": "Open Countries, click the first country",
+   "expected": "Country page opens",
+   "browser": "webkit",
+   "device": "Desktop 1366px",
+   "status": "Pass",
+   "actual": "Countries index opens 'Oman' page correctly",
+   "evidence": ""
+  },
+  {
+   "id": "TC-SEO-01",
+   "area": "SEO and AdSense readiness",
+   "type": "Functional",
+   "title": "Sitemap, robots.txt, canonical, descriptions",
+   "steps": "Read sitemap.xml, robots.txt and page tags",
+   "expected": "All present and on aerojobs.work",
+   "browser": "webkit",
+   "device": "Desktop 1366px",
+   "status": "Pass",
+   "actual": "Sitemap has 4297 pages on https://aerojobs.work; robots.txt points to it; canonical and descriptions present",
+   "evidence": ""
+  },
+  {
+   "id": "TC-SEO-02",
+   "area": "SEO and AdSense readiness",
+   "type": "Functional",
+   "title": "Home-screen manifest and icons",
+   "steps": "Request manifest and icons",
+   "expected": "All load",
+   "browser": "webkit",
+   "device": "Desktop 1366px",
+   "status": "Pass",
+   "actual": "Home-screen manifest, icons and banner image all load",
+   "evidence": ""
+  },
+  {
+   "id": "TC-A11Y-01",
+   "area": "Accessibility",
+   "type": "Functional",
+   "title": "Basic accessibility",
+   "steps": "Check labels, alt text, headings, keyboard skip link",
+   "expected": "No issues",
+   "browser": "webkit",
+   "device": "Desktop 1366px",
+   "status": "Pass",
+   "actual": "Language set, images have alt text, every field has a label, one h1, 'Skip to content' is first on Tab",
+   "evidence": ""
+  },
+  {
+   "id": "TC-PERF-01",
+   "area": "Performance",
+   "type": "Non-functional",
+   "title": "Home page speed",
+   "steps": "Load home page until search is ready",
+   "expected": "Under 6 seconds",
+   "browser": "webkit",
+   "device": "Desktop 1366px",
+   "status": "Pass",
+   "actual": "Home page with search ready in 0.6s; job list download 1415 KB",
+   "evidence": ""
+  },
+  {
+   "id": "TC-JS-01",
+   "area": "Reliability",
+   "type": "Non-functional",
+   "title": "No JavaScript errors",
+   "steps": "Open home and a job page, watch the console",
+   "expected": "No errors",
+   "browser": "webkit",
+   "device": "Desktop 1366px",
+   "status": "Pass",
+   "actual": "No JavaScript errors on the home and job pages",
+   "evidence": ""
   },
   {
    "id": "TC-MOB-01",
@@ -1441,9 +1441,9 @@
    "expected": "Panel opens, shows live count, badge 1, closes",
    "browser": "webkit",
    "device": "iPhone 13 (iOS Safari engine)",
-   "status": "Pass",
-   "actual": "Filter panel opens, shows 'Show 66 jobs', badge shows 1, closes when tapping outside",
-   "evidence": ""
+   "status": "Fail",
+   "actual": "button says 'Show 2,441 jobs', expected 2528",
+   "evidence": "screens/TC-MOB-03-webkit-iPhone 13 (iOS Safari engine).png"
   },
   {
    "id": "TC-MOB-04",
@@ -1493,9 +1493,9 @@
    "expected": "Counts equal the data",
    "browser": "webkit",
    "device": "iPhone 13 (iOS Safari engine)",
-   "status": "Pass",
-   "actual": "Each role matches the data: cargo-logistics=66, corporate=2151, customer-service-sales=108, engineering-maintenance=1240, flight-operations=17, ground-operations=9, pilots=7",
-   "evidence": ""
+   "status": "Fail",
+   "actual": "role cargo-logistics: page 71, data 78",
+   "evidence": "screens/TC-FLT-02-webkit-iPhone 13 (iOS Safari engine).png"
   },
   {
    "id": "TC-FLT-08",
@@ -1506,9 +1506,9 @@
    "expected": "Counts reflect the other filters",
    "browser": "webkit",
    "device": "iPhone 13 (iOS Safari engine)",
-   "status": "Pass",
-   "actual": "With Remote ticked every country, region and role count matches the remote jobs; 34 countries with no remote jobs are greyed out; with US picked the Remote button shows (61)",
-   "evidence": ""
+   "status": "Fail",
+   "actual": "'All of North America (63)' expected (65); 'United States (61)' expected (63); role 'Corporate (IT, finance, HR, other) (56)' expected (58); Remote button says 'Remote (61)', expected (63) for US",
+   "evidence": "screens/TC-FLT-08-webkit-iPhone 13 (iOS Safari engine).png"
   },
   {
    "id": "TC-SRCH-01",
@@ -1519,9 +1519,9 @@
    "expected": "Only matching jobs",
    "browser": "webkit",
    "device": "iPhone 13 (iOS Safari engine)",
-   "status": "Pass",
-   "actual": "Search 'ENGINEER' (upper case) found 1203 jobs, matching the data; case-insensitive",
-   "evidence": ""
+   "status": "Fail",
+   "actual": "searching 'engineer': page shows 1277, expected 1341",
+   "evidence": "screens/TC-SRCH-01-webkit-iPhone 13 (iOS Safari engine).png"
   }
  ]
 }

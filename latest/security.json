@@ -118,7 +118,7 @@
    "attack": "Request .git, .env, config, code and raw data files",
    "expected": "All return the 404 page",
    "status": "Pass",
-   "actual": "15 private paths tried; exposed: none",
+   "actual": "14 private paths tried; exposed: none",
    "severity": "-"
   },
   {
@@ -208,7 +208,7 @@
    "attack": "' OR 1=1 -- in the search",
    "expected": "No error, no data leak",
    "status": "Pass",
-   "actual": "no database to inject into; page shows '0 of 3,598 jobs'",
+   "actual": "no database to inject into; page shows '0 of 4,216 jobs'",
    "severity": "-"
   },
   {
