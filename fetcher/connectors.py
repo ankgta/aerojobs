@@ -397,6 +397,29 @@ class _SFListingParser(HTMLParser):
             self.total = int(m.group(1))
 
 
+def _clean_sf_location(raw: str, title: str) -> str:
+    """Extract a clean location from the messy SuccessFactors cell text.
+
+    SF listing cells often contain the title repeated, department names,
+    dates, and job IDs alongside the actual location.  This picks out the
+    location line by looking for the first comma-containing line that isn't
+    the title itself.
+    """
+    lines = [ln.strip() for ln in raw.split("\n") if ln.strip()]
+    # drop lines that ARE the title (often repeated)
+    lines = [ln for ln in lines if ln != title]
+    # drop pure-digit lines (job IDs like "58082")
+    lines = [ln for ln in lines if not re.fullmatch(r"\d+", ln)]
+    # drop date-like lines ("5 Oct 2026", "12 September 2025")
+    lines = [ln for ln in lines if not re.fullmatch(r"\d{1,2}\s+\w+\s+\d{4}", ln)]
+    # first remaining line with a comma is most likely the location
+    for ln in lines:
+        if "," in ln:
+            return ln
+    # fallback: first remaining non-empty line (might be a department or city)
+    return lines[0] if lines else ""
+
+
 def fetch_successfactors(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
     """SAP SuccessFactors Career Site Builder (careers.example.com/search/…)."""
     base = src["url"].rstrip("/")
@@ -416,11 +439,12 @@ def fetch_successfactors(client: PoliteClient, src: dict, max_jobs: int = 3000) 
             full_url = urllib.parse.urljoin(base + "/", j["href"])
             m = re.search(r"/(\d+)/?$", j["href"])
             source_id = m.group(1) if m else j["href"]
+            location = _clean_sf_location(j["location"], j["title"])
             jobs.append({
                 "source_id": source_id,
                 "title": j["title"].strip(),
                 "url": full_url,
-                "location": j["location"],
+                "location": location,
                 "posted_estimated": True,
             })
         offset += 25

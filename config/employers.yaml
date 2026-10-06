@@ -12,7 +12,8 @@
 # Checked 5 Oct 2026 and NOT usable: these sites' robots.txt forbids automated reading, so they stay off:
 #   Wizz Air, Swissport, Menzies, dnata, Etihad (SmartRecruiters API), flydubai and Alaska Airlines (iCIMS),
 #   American Airlines, Delta, KLM, Qantas, IndiGo, AAR, Lufthansa Technik, LATAM, Ethiopian (careers sites).
-# Not yet readable (no connector): JetBlue, Ryanair, Wizz Air (SuccessFactors); Qatar Airways, easyJet (Taleo).
+# Not yet readable (no connector): Ryanair (SuccessFactors, robots.txt blocks); Qatar Airways, easyJet (Taleo).
+# Bombardier and ST Engineering (SuccessFactors): search page returned 0 jobs (JS-rendered?).
 #
 # Source examples (copy the shape that matches the hiring system):
 #   source: {ats: workday, url: "https://company.wd3.myworkdayjobs.com/SiteName"}
@@ -28,7 +29,7 @@ employers:
   - {name: United Airlines, slug: united-airlines, type: airline, country: US, enabled: false}
   - {name: Southwest Airlines, slug: southwest-airlines, type: airline, country: US, enabled: false}
   - {name: Alaska Airlines, slug: alaska-airlines, type: airline, country: US, enabled: false}
-  - {name: JetBlue, slug: jetblue, type: airline, country: US, enabled: false}
+  - {name: JetBlue, slug: jetblue, type: airline, country: US, source: {ats: successfactors, url: "https://careers.jetblue.com"}, enabled: true}
   - {name: Air Canada, slug: air-canada, type: airline, country: CA, enabled: false}
   - {name: WestJet, slug: westjet, type: airline, country: CA, enabled: false}
   - {name: LATAM Airlines, slug: latam, type: airline, country: CL, enabled: false}
@@ -41,6 +42,7 @@ employers:
   - {name: British Airways, slug: british-airways, type: airline, country: GB, enabled: false}
   - {name: Virgin Atlantic, slug: virgin-atlantic, type: airline, country: GB, source: {ats: oracle, host: "iagime.fa.ocs.oraclecloud.com", site: "CX_1"}, enabled: true}
   - {name: easyJet, slug: easyjet, type: airline, country: GB, enabled: false}
+  - {name: Wizz Air, slug: wizz-air, type: airline, country: HU, source: {ats: successfactors, url: "https://careers.wizzair.com"}, enabled: true}
   - {name: Ryanair, slug: ryanair, type: airline, country: IE, enabled: false}
   - {name: Aer Lingus, slug: aer-lingus, type: airline, country: IE, enabled: false}
   - {name: Lufthansa Group, slug: lufthansa-group, type: airline, country: DE, enabled: false}
@@ -69,7 +71,7 @@ employers:
   # ---------- Airports ----------
   - {name: Heathrow Airport, slug: heathrow, type: airport, country: GB, source: {ats: oracle, host: "encd.fa.em3.oraclecloud.com", site: "CX_3001"}, enabled: true}
   - {name: Dubai Airports, slug: dubai-airports, type: airport, country: AE, enabled: false}
-  - {name: Changi Airport Group, slug: changi-airport-group, type: airport, country: SG, enabled: false}
+  - {name: Changi Airport Group, slug: changi-airport-group, type: airport, country: SG, source: {ats: successfactors, url: "https://jobs.changiairport.com"}, enabled: true}
   - {name: Dallas Fort Worth International Airport, slug: dfw-airport, type: airport, country: US, enabled: false}
 
   # ---------- Maintenance (MRO) and ground services ----------

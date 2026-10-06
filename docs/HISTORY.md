@@ -2,6 +2,19 @@
 
 What was done, newest first. For why, see `DECISIONS.md`.
 
+## 6 October 2026
+
+- **SuccessFactors Career Site Builder connector built:** HTML parser for SAP SuccessFactors listing pages.
+  Handles standard `/job/<slug>/<id>/` and Changi-style `/<company>/job/<slug>/<id>/` URL patterns with
+  pagination. Location cleaner strips repeated title text, job IDs, and dates from messy cell content.
+- **8 more employers added (batch 1):** Heart Aerospace, Supernal, StandardAero, Wisk Aero, CAE, NAV Canada,
+  ICAO — all fetching. Air New Zealand enabled but blocked by SmartRecruiters robots.txt (+775 jobs net).
+- **3 more employers added (batch 2):** JetBlue (60 jobs), Wizz Air (70), Changi Airport Group (82) —
+  first SuccessFactors employers live. Total: 20 fetching employers.
+- **8 QA test failures fixed:** comma formatting in counts, sub-pixel rounding in CSS.
+- **Bombardier and ST Engineering** checked but returned 0 jobs (search pages likely JS-rendered); left off.
+  Ryanair SuccessFactors blocked by robots.txt.
+
 ## 5 October 2026
 
 - **Project organised for long-term use:** `CLAUDE.md`, structured docs in `docs/`, four skills in
