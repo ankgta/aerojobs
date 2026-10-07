@@ -1,34 +1,12 @@
 {
- "run": "2026-10-07T18:08:58+00:00",
+ "run": "2026-10-07T18:19:41+00:00",
  "results": [
-  {
-   "name": "SITA",
-   "slug": "sita",
-   "source": {
-    "ats": "icims",
-    "url": "https://www.sita.aero"
-   },
-   "ok": false,
-   "jobs_found": 0,
-   "sample": []
-  },
   {
    "name": "VistaJet",
    "slug": "vistajet",
    "source": {
     "ats": "icims",
-    "url": "https://www.vistajet.com"
-   },
-   "ok": false,
-   "jobs_found": 0,
-   "sample": []
-  },
-  {
-   "name": "Spirit AeroSystems",
-   "slug": "spirit-aerosystems",
-   "source": {
-    "ats": "icims",
-    "url": "https://careers.spiritaero.com"
+    "url": "https://careers-vistaglobal.icims.com"
    },
    "ok": false,
    "jobs_found": 0,
@@ -39,7 +17,18 @@
    "slug": "joby-aviation",
    "source": {
     "ats": "icims",
-    "url": "https://www.jobyaviation.com"
+    "url": "https://careers-jobyaviation.icims.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "SITA",
+   "slug": "sita",
+   "source": {
+    "ats": "icims",
+    "url": "https://careers-sita.icims.com"
    },
    "ok": false,
    "jobs_found": 0,
@@ -55,168 +44,6 @@
    "ok": false,
    "jobs_found": 0,
    "sample": []
-  },
-  {
-   "name": "Cirium",
-   "slug": "cirium",
-   "source": {
-    "ats": "workday",
-    "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers"
-   },
-   "ok": true,
-   "jobs_found": 5,
-   "sample": [
-    {
-     "title": "Solution Consultant",
-     "location": "Dubai",
-     "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers/job/Dubai/Solution-Consultant_R109634",
-     "posted": "2026-09-28"
-    },
-    {
-     "title": "Key Account Manager (Hybrid - Irving, TX)",
-     "location": "Irving, TX",
-     "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers/job/Irving-TX/Key-Account-Manager--Hybrid---Irving--TX-_R118460-2",
-     "posted": "2026-09-25"
-    },
-    {
-     "title": "Business Development Manager",
-     "location": "JAPAN-TOKYO-Yaesu",
-     "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers/job/JAPAN-TOKYO-Yaesu/Business-Development-Manager_R118569-2",
-     "posted": "2026-09-25"
-    },
-    {
-     "title": "Senior Consultant",
-     "location": "",
-     "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers/job/Heathrow/Senior-Consultant_R117795-2",
-     "posted": "2026-09-18"
-    },
-    {
-     "title": "Solutions Consultant",
-     "location": "Singapore - Risk Winsland House",
-     "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers/job/Singapore---Risk-Winsland-House/Solutions-Consultant_R116149-1",
-     "posted": "2026-09-07"
-    }
-   ],
-   "detail_sample": {
-    "country_code": "AE",
-    "posted_date": "2026-09-28",
-    "closing_date": null,
-    "work_mode": null,
-    "employment_type": "Full time",
-    "location": "Dubai"
-   }
-  },
-  {
-   "name": "gategroup",
-   "slug": "gategroup",
-   "source": {
-    "ats": "workday",
-    "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers"
-   },
-   "ok": true,
-   "jobs_found": 221,
-   "sample": [
-    {
-     "title": "Final Assembler - $25/hr",
-     "location": "Dorval, QC, CAN",
-     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/Dorval-QC-CAN/Final-Assembler_R0101916",
-     "posted": "2026-10-07"
-    },
-    {
-     "title": "Asst Admin Dispatch",
-     "location": "San Antonio, TX, USA",
-     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/San-Antonio-TX-USA/Asst-Admin-Dispatch_R0109865",
-     "posted": "2026-10-07"
-    },
-    {
-     "title": "Food Supervisor",
-     "location": "Chantilly, VA, USA",
-     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/Chantilly-VA-USA/Food-Supervisor_R0110726",
-     "posted": "2026-10-07"
-    },
-    {
-     "title": "Human Resources Generalist",
-     "location": "Los Angeles, CA, USA",
-     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/Los-Angeles-CA-USA/Human-Resources-Generalist_R0110857",
-     "posted": "2026-10-06"
-    },
-    {
-     "title": "Porter/Janitor - $19.00/hr",
-     "location": "Dallas FT Worth, TX, USA",
-     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/Dallas-FT-Worth-TX-USA/Porter-Janitor----1900-hr_R0109743",
-     "posted": "2026-10-06"
-    },
-    {
-     "title": "Cleaner - $18.10 hr",
-     "location": "Ottawa, ON, CAN",
-     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/Ottawa-ON-CAN/Cleaner----1810-hr_R0104376",
-     "posted": "2026-10-06"
-    }
-   ],
-   "detail_sample": {
-    "country_code": "CA",
-    "posted_date": "2026-10-07",
-    "closing_date": null,
-    "work_mode": null,
-    "employment_type": "Full time",
-    "location": "Dorval, QC, CAN"
-   }
-  },
-  {
-   "name": "World Fuel Services",
-   "slug": "world-fuel-services",
-   "source": {
-    "ats": "workday",
-    "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers"
-   },
-   "ok": true,
-   "jobs_found": 34,
-   "sample": [
-    {
-     "title": "Analyst, Payroll EMEA-APAC",
-     "location": "JOHANNESBURG, SOUTH AFRICA (Remote)",
-     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/JOHANNESBURG-SOUTH-AFRICA-Remote/Analyst--Payroll-EMEA-APAC_R23010",
-     "posted": "2026-10-06"
-    },
-    {
-     "title": "Aircraft Refuelling Operator",
-     "location": "LUTON AIRPORT, UK",
-     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/LUTON-AIRPORT-UK/Aircraft-Refuelling-Operator_R22824",
-     "posted": "2026-10-06"
-    },
-    {
-     "title": "Senior Digital Marketing Specialist",
-     "location": "JOHANNESBURG, SOUTH AFRICA (Remote)",
-     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/JOHANNESBURG-SOUTH-AFRICA-Remote/Senior-Digital-Marketing-Specialist_R22998",
-     "posted": "2026-10-06"
-    },
-    {
-     "title": "Business Analyst III",
-     "location": "SAN JOSE, COSTA RICA",
-     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/SAN-JOSE-COSTA-RICA/Business-Analyst-III_R23041",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "Terminal Operator",
-     "location": "GIBRALTAR, GI",
-     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/GIBRALTAR-GI/Terminal-Operator_R22969",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "Sales Executive",
-     "location": "SINGAPORE",
-     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/SINGAPORE/Sales-Executive_R22977",
-     "posted": "2026-10-05"
-    }
-   ],
-   "detail_sample": {
-    "country_code": "ZA",
-    "posted_date": "2026-10-06",
-    "closing_date": null,
-    "work_mode": null,
-    "employment_type": "Full time",
-    "location": "JOHANNESBURG, SOUTH AFRICA (Remote)"
-   }
   },
   {
    "name": "easyJet",
