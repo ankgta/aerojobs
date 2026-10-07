@@ -112,3 +112,11 @@ employers:
   # ---------- Other aviation organisations ----------
   - {name: NAV Canada, slug: nav-canada, type: other, country: CA, source: {ats: workday, url: "https://navcanada.wd10.myworkdayjobs.com/NAV_Careers"}, enabled: true}
   - {name: ICAO, slug: icao, type: other, country: CA, source: {ats: oracle, host: "estm.fa.em2.oraclecloud.com", site: "CX_3001"}, enabled: true}
+
+  # ---------- Aviation ecosystem (added 7 Oct 2026 after detect + verify) ----------
+  # Catering
+  - {name: gategroup, slug: gategroup, type: other, country: CH, source: {ats: workday, url: "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers"}, enabled: true}
+  # Aviation fuel
+  - {name: World Fuel Services, slug: world-fuel-services, type: other, country: US, source: {ats: workday, url: "https://wfscorp.wd5.myworkdayjobs.com/wfscareers"}, enabled: true}
+  # Aviation data / analytics
+  - {name: Cirium, slug: cirium, type: other, country: GB, source: {ats: workday, url: "https://relx.wd3.myworkdayjobs.com/ciriumcareers"}, enabled: true}
