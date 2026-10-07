@@ -380,28 +380,37 @@ def test_icims_connector_json_api():
 
 
 def test_icims_connector_html_listing():
-    """iCIMS connector falls back to HTML listing for *.icims.com hosted portals."""
+    """iCIMS connector falls back to HTML listing for *.icims.com hosted portals.
+
+    Real portal structure (observed on careers-vistaglobal.icims.com):
+      <a class="iCIMS_Anchor" href="/jobs/ID/slug/job?in_iframe=1">
+        <span class="sr-only">Title</span><h3>Job Title Here</h3>
+      </a>
+    Pagination uses ?pr=N (not searchPage); stops on empty page.
+    """
     base = "https://careers-jobyaviation.icims.com"
 
-    # Page 1 has two jobs, page 2 is empty → pagination stops
-    page1_html = """
-    <html><body>
-    <a class="iCIMS_jobTitle" href="/jobs/1001/avionics-engineer/job">Avionics Engineer</a>
-    <a class="iCIMS_jobTitle" href="/jobs/1002/flight-operations-manager/job">Flight Operations Manager</a>
-    </body></html>
-    """
+    page1_html = """<html><body>
+    <a class="iCIMS_Anchor" href="/jobs/1001/avionics-engineer/job?in_iframe=1" title="1001 - Avionics Engineer">
+      <span class="sr-only field-label">Title</span><h3>Avionics Engineer</h3>
+    </a>
+    <a class="iCIMS_Anchor" href="/jobs/1002/flight-operations-manager/job?in_iframe=1" title="1002 - Flight Ops">
+      <span class="sr-only field-label">Title</span><h3>Flight Operations Manager</h3>
+    </a>
+    <a href="/jobs/search?pr=1&amp;in_iframe=1">Next page of results</a>
+    </body></html>"""
     page2_html = "<html><body><p>No jobs found.</p></body></html>"
 
     client = FakeClient({
         f"{base}/api/jobs": lambda _: (_ for _ in ()).throw(Exception("404 Not Found")),
-        f"{base}/jobs/search?ss=1&in_iframe=1&searchPage=1": page1_html,
-        f"{base}/jobs/search?ss=1&in_iframe=1&searchPage=2": page2_html,
+        f"{base}/jobs/search?ss=1&in_iframe=1": page1_html,
+        f"{base}/jobs/search?pr=1&in_iframe=1": page2_html,
     })
     jobs = c.fetch_icims(client, {"url": base})
     assert len(jobs) == 2
     assert jobs[0]["source_id"] == "1001"
     assert jobs[0]["title"] == "Avionics Engineer"
-    assert f"{base}/jobs/1001/avionics-engineer/job" == jobs[0]["url"]
+    assert jobs[0]["url"] == f"{base}/jobs/1001/avionics-engineer/job"
     assert jobs[1]["source_id"] == "1002"
     assert jobs[1]["title"] == "Flight Operations Manager"
     assert jobs[0]["needs_detail"] is True

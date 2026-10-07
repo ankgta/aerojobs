@@ -667,43 +667,59 @@ def fetch_icims(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[d
 
     # ── Approach 2: Server-rendered HTML at /jobs/search (*.icims.com hosted portals) ──
     # iCIMS renders job listings server-side at /jobs/search?ss=1&in_iframe=1.
-    # Job title links follow: <a class="iCIMS_jobTitle" href="/jobs/ID/slug/job">Title</a>
-    # Pagination: add &searchPage=N (stops when a page returns no new jobs).
+    # Job links: <a class="iCIMS_Anchor" href="/jobs/ID/slug/job?in_iframe=1"><h3>Title</h3></a>
+    # Pagination: ?pr=N (next page); stops when no new jobs appear.
+    # Note: title is inside <h3> inside the <a>, not direct link text.
     try:
         seen: set[str] = set()
         for page_num in range(1, 200):  # safety cap at 199 pages
-            search_url = f"{base}/jobs/search?ss=1&in_iframe=1&searchPage={page_num}"
+            if page_num == 1:
+                search_url = f"{base}/jobs/search?ss=1&in_iframe=1"
+            else:
+                search_url = f"{base}/jobs/search?pr={page_num - 1}&in_iframe=1"
             html = client.get_text(search_url)
 
-            # Primary pattern: href before class
-            matches = re.findall(
-                r'href="(/jobs/\d+/[^"]+/job)"[^>]*class="iCIMS_jobTitle"[^>]*>\s*([^<]+)',
-                html,
-            )
-            # Secondary pattern: class before href
-            if not matches:
-                matches = re.findall(
-                    r'class="iCIMS_jobTitle"[^>]*href="(/jobs/\d+/[^"]+/job)"[^>]*>\s*([^<]+)',
-                    html,
-                )
-            # Tertiary: any /jobs/NNN/.../job link with visible label (no class required)
-            if not matches:
-                matches = re.findall(
-                    r'href="(/jobs/\d+/[^"#"]+/job)"[^>]*>\s*([^<\n]{5,120})',
-                    html,
-                )
+            # Extract (path, title) pairs from iCIMS job listing HTML.
+            # Pattern A: iCIMS_Anchor link with <h3> title inside (observed on *.icims.com portals)
+            #   <a class="iCIMS_Anchor" href="/jobs/ID/slug/job?in_iframe=1"><span>...</span><h3>Title</h3></a>
+            raw_pairs: list[tuple[str, str]] = []
+            for m in re.finditer(
+                r'<a[^>]+href="([^"]*?/jobs/\d+/[^"]+/job[^"]*)"[^>]*>(.*?)</a>',
+                html, re.DOTALL
+            ):
+                path_raw, inner = m.group(1), m.group(2)
+                # Strip query string from path for dedup key, but keep full URL
+                path_clean = path_raw.split("?")[0]
+                # Title: prefer <h3> content, then <span class="iCIMS_jobTitle">, then direct text
+                h3 = re.search(r'<h3[^>]*>\s*([^<]+?)\s*</h3>', inner)
+                jt = re.search(r'class="iCIMS_jobTitle"[^>]*>\s*([^<]+)', inner)
+                bare = re.sub(r'<[^>]+>', '', inner).strip()
+                title_raw = (h3.group(1) if h3 else
+                             jt.group(1) if jt else
+                             bare if 5 <= len(bare) <= 120 else "")
+                if title_raw:
+                    raw_pairs.append((path_clean, path_raw, title_raw.strip()))
+
+            # Pattern B fallback: iCIMS_jobTitle class link (older portal style)
+            if not raw_pairs:
+                for m in re.finditer(
+                    r'class="iCIMS_jobTitle"[^>]*href="([^"]*?/jobs/\d+/[^"]+/job[^"]*)"[^>]*>\s*([^<]+)',
+                    html
+                ):
+                    path_raw = m.group(1)
+                    path_clean = path_raw.split("?")[0]
+                    raw_pairs.append((path_clean, path_raw, m.group(2).strip()))
 
             new_on_page = 0
-            for path, raw_title in matches:
-                path = path.strip()
-                title = raw_title.strip()
-                if not path or not title or path in seen:
+            for path_clean, path_full, title in raw_pairs:
+                if not path_clean or not title or path_clean in seen:
                     continue
-                seen.add(path)
-                job_url = f"{base}{path}" if path.startswith("/") else path
-                m = re.search(r"/jobs/(\d+)/", path)
+                seen.add(path_clean)
+                # Build canonical URL: use base + clean path (no in_iframe param)
+                job_url = f"{base}{path_clean}" if path_clean.startswith("/") else path_clean
+                mid = re.search(r"/jobs/(\d+)/", path_clean)
                 jobs.append({
-                    "source_id": m.group(1) if m else path,
+                    "source_id": mid.group(1) if mid else path_clean,
                     "title": title,
                     "url": job_url,
                     "location": "",
