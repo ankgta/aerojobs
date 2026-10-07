@@ -1,6 +1,223 @@
 {
- "run": "2026-10-07T18:03:16+00:00",
+ "run": "2026-10-07T18:08:58+00:00",
  "results": [
+  {
+   "name": "SITA",
+   "slug": "sita",
+   "source": {
+    "ats": "icims",
+    "url": "https://www.sita.aero"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "VistaJet",
+   "slug": "vistajet",
+   "source": {
+    "ats": "icims",
+    "url": "https://www.vistajet.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Spirit AeroSystems",
+   "slug": "spirit-aerosystems",
+   "source": {
+    "ats": "icims",
+    "url": "https://careers.spiritaero.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Joby Aviation",
+   "slug": "joby-aviation",
+   "source": {
+    "ats": "icims",
+    "url": "https://www.jobyaviation.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "dnata",
+   "slug": "dnata",
+   "source": {
+    "ats": "icims",
+    "url": "https://careers-dnata.icims.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Cirium",
+   "slug": "cirium",
+   "source": {
+    "ats": "workday",
+    "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers"
+   },
+   "ok": true,
+   "jobs_found": 5,
+   "sample": [
+    {
+     "title": "Solution Consultant",
+     "location": "Dubai",
+     "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers/job/Dubai/Solution-Consultant_R109634",
+     "posted": "2026-09-28"
+    },
+    {
+     "title": "Key Account Manager (Hybrid - Irving, TX)",
+     "location": "Irving, TX",
+     "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers/job/Irving-TX/Key-Account-Manager--Hybrid---Irving--TX-_R118460-2",
+     "posted": "2026-09-25"
+    },
+    {
+     "title": "Business Development Manager",
+     "location": "JAPAN-TOKYO-Yaesu",
+     "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers/job/JAPAN-TOKYO-Yaesu/Business-Development-Manager_R118569-2",
+     "posted": "2026-09-25"
+    },
+    {
+     "title": "Senior Consultant",
+     "location": "",
+     "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers/job/Heathrow/Senior-Consultant_R117795-2",
+     "posted": "2026-09-18"
+    },
+    {
+     "title": "Solutions Consultant",
+     "location": "Singapore - Risk Winsland House",
+     "url": "https://relx.wd3.myworkdayjobs.com/ciriumcareers/job/Singapore---Risk-Winsland-House/Solutions-Consultant_R116149-1",
+     "posted": "2026-09-07"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "AE",
+    "posted_date": "2026-09-28",
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": "Full time",
+    "location": "Dubai"
+   }
+  },
+  {
+   "name": "gategroup",
+   "slug": "gategroup",
+   "source": {
+    "ats": "workday",
+    "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers"
+   },
+   "ok": true,
+   "jobs_found": 221,
+   "sample": [
+    {
+     "title": "Final Assembler - $25/hr",
+     "location": "Dorval, QC, CAN",
+     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/Dorval-QC-CAN/Final-Assembler_R0101916",
+     "posted": "2026-10-07"
+    },
+    {
+     "title": "Asst Admin Dispatch",
+     "location": "San Antonio, TX, USA",
+     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/San-Antonio-TX-USA/Asst-Admin-Dispatch_R0109865",
+     "posted": "2026-10-07"
+    },
+    {
+     "title": "Food Supervisor",
+     "location": "Chantilly, VA, USA",
+     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/Chantilly-VA-USA/Food-Supervisor_R0110726",
+     "posted": "2026-10-07"
+    },
+    {
+     "title": "Human Resources Generalist",
+     "location": "Los Angeles, CA, USA",
+     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/Los-Angeles-CA-USA/Human-Resources-Generalist_R0110857",
+     "posted": "2026-10-06"
+    },
+    {
+     "title": "Porter/Janitor - $19.00/hr",
+     "location": "Dallas FT Worth, TX, USA",
+     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/Dallas-FT-Worth-TX-USA/Porter-Janitor----1900-hr_R0109743",
+     "posted": "2026-10-06"
+    },
+    {
+     "title": "Cleaner - $18.10 hr",
+     "location": "Ottawa, ON, CAN",
+     "url": "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers/job/Ottawa-ON-CAN/Cleaner----1810-hr_R0104376",
+     "posted": "2026-10-06"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "CA",
+    "posted_date": "2026-10-07",
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": "Full time",
+    "location": "Dorval, QC, CAN"
+   }
+  },
+  {
+   "name": "World Fuel Services",
+   "slug": "world-fuel-services",
+   "source": {
+    "ats": "workday",
+    "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers"
+   },
+   "ok": true,
+   "jobs_found": 34,
+   "sample": [
+    {
+     "title": "Analyst, Payroll EMEA-APAC",
+     "location": "JOHANNESBURG, SOUTH AFRICA (Remote)",
+     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/JOHANNESBURG-SOUTH-AFRICA-Remote/Analyst--Payroll-EMEA-APAC_R23010",
+     "posted": "2026-10-06"
+    },
+    {
+     "title": "Aircraft Refuelling Operator",
+     "location": "LUTON AIRPORT, UK",
+     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/LUTON-AIRPORT-UK/Aircraft-Refuelling-Operator_R22824",
+     "posted": "2026-10-06"
+    },
+    {
+     "title": "Senior Digital Marketing Specialist",
+     "location": "JOHANNESBURG, SOUTH AFRICA (Remote)",
+     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/JOHANNESBURG-SOUTH-AFRICA-Remote/Senior-Digital-Marketing-Specialist_R22998",
+     "posted": "2026-10-06"
+    },
+    {
+     "title": "Business Analyst III",
+     "location": "SAN JOSE, COSTA RICA",
+     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/SAN-JOSE-COSTA-RICA/Business-Analyst-III_R23041",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Terminal Operator",
+     "location": "GIBRALTAR, GI",
+     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/GIBRALTAR-GI/Terminal-Operator_R22969",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Sales Executive",
+     "location": "SINGAPORE",
+     "url": "https://wfscorp.wd5.myworkdayjobs.com/wfscareers/job/SINGAPORE/Sales-Executive_R22977",
+     "posted": "2026-10-05"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "ZA",
+    "posted_date": "2026-10-06",
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": "Full time",
+    "location": "JOHANNESBURG, SOUTH AFRICA (Remote)"
+   }
+  },
   {
    "name": "easyJet",
    "slug": "easyjet",
@@ -26,250 +243,6 @@
    "sample": []
   },
   {
-   "name": "Qatar Airways",
-   "slug": "qatar-airways",
-   "source": {
-    "ats": "oracle",
-    "host": "qatarairways.fa.em4.oraclecloud.com",
-    "site": "CX_1"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://qatarairways.fa.em4.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
-  },
-  {
-   "name": "Qatar Airways Alt",
-   "slug": "qatar-airways-alt",
-   "source": {
-    "ats": "oracle",
-    "host": "qatarairways.fa.em2.oraclecloud.com",
-    "site": "CX_1"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://qatarairways.fa.em2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
-  },
-  {
-   "name": "Menzies Aviation",
-   "slug": "menzies-aviation",
-   "source": {
-    "ats": "oracle",
-    "host": "menziesaviation.fa.em2.oraclecloud.com",
-    "site": "CX_1"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://menziesaviation.fa.em2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
-  },
-  {
-   "name": "Alaska Airlines",
-   "slug": "alaska-airlines",
-   "source": {
-    "ats": "icims",
-    "url": "https://careers.alaskaair.com"
-   },
-   "ok": true,
-   "jobs_found": 40,
-   "sample": [
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.alaskaair.com/jobs/",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.alaskaair.com/locations/usa/jobs/",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.alaskaair.com/locations/washington/jobs/",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.alaskaair.com/locations/california/jobs/",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.alaskaair.com/locations/hawaii/jobs/",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.alaskaair.com/locations/alaska/jobs/",
-     "posted": null
-    }
-   ],
-   "detail_sample": {
-    "country_code": null,
-    "posted_date": null,
-    "closing_date": null,
-    "work_mode": null,
-    "employment_type": null,
-    "location": null
-   }
-  },
-  {
-   "name": "dnata",
-   "slug": "dnata",
-   "source": {
-    "ats": "icims",
-    "url": "https://careers-dnata.icims.com"
-   },
-   "ok": false,
-   "jobs_found": 0,
-   "sample": []
-  },
-  {
-   "name": "Singapore Airlines",
-   "slug": "singapore-airlines",
-   "source": {
-    "ats": "successfactors",
-    "url": "https://singaporeair.sapsf.com"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://singaporeair.sapsf.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
-  },
-  {
-   "name": "ST Engineering",
-   "slug": "st-engineering",
-   "source": {
-    "ats": "successfactors",
-    "url": "https://stengg.sapsf.com"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://stengg.sapsf.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
-  },
-  {
-   "name": "Lufthansa Group",
-   "slug": "lufthansa-group",
-   "source": {
-    "ats": "smartrecruiters",
-    "company": "lufthansa"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/lufthansa/postings?limit=100&offset=0"
-  },
-  {
-   "name": "Southwest Airlines",
-   "slug": "southwest-airlines",
-   "source": {
-    "ats": "phenom",
-    "url": "https://careers.southwestair.com",
-    "country": "US"
-   },
-   "ok": true,
-   "jobs_found": 49,
-   "sample": [
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.southwestair.com/us/en/job/R-2026-69180/Flight-Ops-Flight-Instructor-HDQ",
-     "posted": null
-    },
-    {
-     "title": "Ramp Agent - GEG (Part-Time)",
-     "location": "Spokane, Washington, United States of America",
-     "url": "https://careers.southwestair.com/us/en/job/R-2026-71909/Ramp-Agent-GEG-Part-Time",
-     "posted": "2026-10-06"
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.southwestair.com/us/en/job/R-2026-73040/Summer-2027-Communications-Public-Relations-Internship",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.southwestair.com/us/en/job/R-2026-73273/Summer-2027-Labor-Planning-Analytics-Internship",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.southwestair.com/us/en/job/R-2026-73045/Summer-2027-Creative-Studio-Multimedia-Internship",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.southwestair.com/us/en/job/R-2026-73268/Summer-2027-Technology-Analyst-Internship",
-     "posted": null
-    }
-   ],
-   "detail_sample": {
-    "country_code": null,
-    "posted_date": null,
-    "closing_date": null,
-    "work_mode": null,
-    "employment_type": null,
-    "location": null
-   }
-  },
-  {
-   "name": "Air Canada",
-   "slug": "air-canada",
-   "source": {
-    "ats": "phenom",
-    "url": "https://careers.aircanada.com",
-    "country": "CA"
-   },
-   "ok": true,
-   "jobs_found": 55,
-   "sample": [
-    {
-     "title": "Aircraft Maintenance Engineer – (CAT 19) - Structures",
-     "location": "DORVAL, QUEBEC, CANADA",
-     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA39467EXTERNALENCA/Aircraft-Maintenance-Engineer-CAT-19-Structures",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA39573EXTERNALENCA/Aircraft-Maintenance-Engineer-CAT-01",
-     "posted": null
-    },
-    {
-     "title": "Ramp Agent (Station Attendant) – Airport - Part-Time - Proactive hiring",
-     "location": "QUEBEC CITY, QUEBEC, CANADA",
-     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA38993EXTERNALENCA/Ramp-Agent-Station-Attendant-Airport-Part-Time-Proactive-hiring",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA39873EXTERNALENCA/Facility-Maintenance-Electrician-CAT-24",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA39002EXTERNALENCA/Customer-Sales-and-Service-Agent-Call-Centre",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA40167EXTERNALENCA/Development-Lead-Application-Development",
-     "posted": null
-    }
-   ],
-   "detail_sample": {
-    "country_code": "CA",
-    "posted_date": "2026-10-05",
-    "closing_date": null,
-    "work_mode": null,
-    "employment_type": "FULL_TIME",
-    "location": "DORVAL, QUEBEC, CANADA"
-   }
-  },
-  {
    "name": "Virgin Australia",
    "slug": "virgin-australia",
    "source": {
@@ -292,54 +265,6 @@
    "ok": false,
    "jobs_found": 0,
    "sample": []
-  },
-  {
-   "name": "Embraer",
-   "slug": "embraer",
-   "source": {
-    "ats": "breezy",
-    "company": "embraer"
-   },
-   "ok": true,
-   "jobs_found": 73,
-   "sample": [
-    {
-     "title": "A&P Mechanic",
-     "location": "Fort Worth",
-     "url": "https://embraer.breezy.hr/p/047536889314-a-p-mechanic",
-     "posted": null
-    },
-    {
-     "title": "A&P Technician",
-     "location": "Macon",
-     "url": "https://embraer.breezy.hr/p/4658211f5c93-a-p-technician",
-     "posted": null
-    },
-    {
-     "title": "A&P Technician - (Delivery Center, 1st Shift)",
-     "location": "Melbourne",
-     "url": "https://embraer.breezy.hr/p/ed49147bb26c-a-p-technician-delivery-center-1st-shift",
-     "posted": null
-    },
-    {
-     "title": "A&P Technician - 2nd Shift, NetJets 1",
-     "location": "Fort Lauderdale",
-     "url": "https://embraer.breezy.hr/p/883f4f6edffa-a-p-technician-2nd-shift-netjets-1",
-     "posted": null
-    },
-    {
-     "title": "A&P Technician - MRO (Weekends)",
-     "location": "Mesa",
-     "url": "https://embraer.breezy.hr/p/8e79ba4b1faa-a-p-technician-mro-weekends",
-     "posted": null
-    },
-    {
-     "title": "A&P Technician - Weekend Shift, Contract",
-     "location": "Fort Lauderdale",
-     "url": "https://embraer.breezy.hr/p/c6513421f55c-a-p-technician-weekend-shift-contract",
-     "posted": null
-    }
-   ]
   },
   {
    "name": "Azul Airlines",
