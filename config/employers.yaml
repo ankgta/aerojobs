@@ -9,13 +9,20 @@
 # type: airline | airport | mro | manufacturer | ground_services | other
 # country: two-letter country code of the head office (GB, US, AE, IN ...)
 #
-# Checked 6 Oct 2026 and NOT usable: these sites' robots.txt forbids automated reading, so they stay off:
-#   Etihad (SmartRecruiters API), Menzies, flydubai and Alaska Airlines (iCIMS),
-#   American Airlines, Delta, KLM, Qantas, IndiGo, AAR, Lufthansa Technik, LATAM, Ethiopian (careers sites).
-# Not yet readable (no connector): Ryanair (SuccessFactors, robots.txt blocks); Qatar Airways, easyJet (Taleo).
-# dnata (iCIMS): HTTP 404 — listing URL not valid. Bombardier and ST Engineering (SuccessFactors): 0 jobs.
-# Unsupported ATS: Emirates (Avature), Southwest/Delta/Air Canada/DFW/Virgin Australia (Phenom People),
-#   British Airways (TalentBrew), Aer Lingus (Zellis), Safran (custom Drupal), many others (custom sites).
+# Checked 7 Oct 2026 — robots.txt blocks (never attempt to work around these):
+#   Qatar Airways (Oracle Fusion API), Menzies Aviation (Oracle Fusion API), Singapore Airlines (SuccessFactors),
+#   ST Engineering (SuccessFactors), Lufthansa Group (SmartRecruiters API), Etihad (SmartRecruiters API),
+#   flydubai (iCIMS), American Airlines, Delta, KLM, Qantas, IndiGo, AAR, Lufthansa Technik, LATAM,
+#   Ethiopian Airlines (careers sites blocked).
+# Checked 7 Oct 2026 — wrong config / 0 jobs (needs more research):
+#   easyJet (Taleo: easyjet.taleo.net returned 0 — section param may be wrong),
+#   Saudia (Taleo: saudia.taleo.net returned 0 — same issue),
+#   dnata (iCIMS: careers-dnata.icims.com returned 0 — URL or pr param may be wrong),
+#   Virgin Australia (Phenom: jobs.virginaustralia.com returned 0 — sitemap not found),
+#   DFW Airport (Phenom: dfwcareers.org returned 0 — sitemap not found),
+#   Azul Airlines (Gupy: voeazul company_id returned 0 — company_id may be wrong).
+# Unsupported ATS: Emirates (Avature), British Airways (TalentBrew), Aer Lingus (Zellis),
+#   Safran (custom Drupal), WestJet (Dayforce), many others (custom sites).
 #
 # Source examples (copy the shape that matches the hiring system):
 #   source: {ats: workday, url: "https://company.wd3.myworkdayjobs.com/SiteName"}
@@ -29,10 +36,10 @@ employers:
   - {name: American Airlines, slug: american-airlines, type: airline, country: US, enabled: false}
   - {name: Delta Air Lines, slug: delta, type: airline, country: US, enabled: false}
   - {name: United Airlines, slug: united-airlines, type: airline, country: US, enabled: false}
-  - {name: Southwest Airlines, slug: southwest-airlines, type: airline, country: US, enabled: false}
-  - {name: Alaska Airlines, slug: alaska-airlines, type: airline, country: US, enabled: false}
+  - {name: Southwest Airlines, slug: southwest-airlines, type: airline, country: US, source: {ats: phenom, url: "https://careers.southwestair.com", country: "US"}, enabled: true}
+  - {name: Alaska Airlines, slug: alaska-airlines, type: airline, country: US, source: {ats: icims, url: "https://careers.alaskaair.com"}, enabled: true}
   - {name: JetBlue, slug: jetblue, type: airline, country: US, source: {ats: successfactors, url: "https://careers.jetblue.com"}, enabled: true}
-  - {name: Air Canada, slug: air-canada, type: airline, country: CA, enabled: false}
+  - {name: Air Canada, slug: air-canada, type: airline, country: CA, source: {ats: phenom, url: "https://careers.aircanada.com", country: "CA"}, enabled: true}
   - {name: WestJet, slug: westjet, type: airline, country: CA, enabled: false}
   - {name: LATAM Airlines, slug: latam, type: airline, country: CL, enabled: false}
   - {name: Avianca, slug: avianca, type: airline, country: CO, enabled: false}
@@ -94,7 +101,7 @@ employers:
   - {name: Heart Aerospace, slug: heart-aerospace, type: manufacturer, country: SE, source: {ats: greenhouse, board: "heartaerospace"}, enabled: true}
   - {name: Supernal, slug: supernal, type: manufacturer, country: US, source: {ats: greenhouse, board: "supernal"}, enabled: true}
   - {name: Wisk Aero, slug: wisk-aero, type: manufacturer, country: US, source: {ats: workday, url: "https://wisk.wd108.myworkdayjobs.com/Wisk_Careers"}, enabled: true}
-  - {name: Embraer, slug: embraer, type: manufacturer, country: BR, enabled: false}
+  - {name: Embraer, slug: embraer, type: manufacturer, country: BR, source: {ats: breezy, company: "embraer"}, enabled: true}
   - {name: Rolls-Royce, slug: rolls-royce, type: manufacturer, country: GB, source: {ats: workday, url: "https://rollsroyce.wd3.myworkdayjobs.com/professional"}, enabled: true}
   - {name: GE Aerospace, slug: ge-aerospace, type: manufacturer, country: US, source: {ats: workday, url: "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite"}, enabled: true}
   - {name: Safran, slug: safran, type: manufacturer, country: FR, enabled: false}

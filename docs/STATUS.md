@@ -1,14 +1,14 @@
 # Status
 
-Last updated: 6 October 2026. Update this file whenever something changes.
+Last updated: 7 October 2026. Update this file whenever something changes.
 
 ## In one line
 
-AeroJobs is **live at https://aerojobs.work** with jobs from **21 employers** (17 prior + 3
-SuccessFactors + Swissport), refreshed twice a day. SuccessFactors connector built 6 Oct, unlocking
-JetBlue, Wizz Air, Changi Airport Group and Swissport.
+AeroJobs is **live at https://aerojobs.work** with jobs from **25 employers**, refreshed twice a day.
+7 Oct 2026: Breezy HR, iCIMS and Phenom connectors deployed — Southwest Airlines, Alaska Airlines,
+Air Canada and Embraer switched on (+221 jobs).
 
-## Live numbers (6 Oct 2026, 05:07 UTC fetch)
+## Live numbers (6 Oct 2026, 05:07 UTC fetch — next fetch will include new employers)
 
 | Measure | Value |
 | --- | --- |
@@ -26,10 +26,11 @@ Full detail: `docs/reports/AeroJobs-Test-Report.xlsx`.
 
 ## Employers
 
-**Live and fetching (21):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
-Rolls-Royce (459), Swissport (400), CAE (365), StandardAero (198), Archer Aviation (149), ICAO (98),
-Changi Airport Group (82), Wizz Air (70), JetBlue (60), NAV Canada (26), Skyryse (19),
-Heathrow Airport (18), Supernal (7), Heart Aerospace (6), Wisk Aero (3), Virgin Atlantic (3).
+**Live and fetching (25):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
+Rolls-Royce (459), Swissport (400), CAE (365), StandardAero (198), Embraer (73), Archer Aviation (149),
+Air Canada (57), ICAO (98), Changi Airport Group (82), Southwest Airlines (51), Wizz Air (70),
+JetBlue (60), Alaska Airlines (40), NAV Canada (26), Skyryse (19), Heathrow Airport (18), Supernal (7),
+Heart Aerospace (6), Wisk Aero (3), Virgin Atlantic (3).
 
 **Enabled but failing — in backlog (1):** Air New Zealand (SmartRecruiters). Our fetcher's user agent
 is blocked by `api.smartrecruiters.com/robots.txt`. Kept enabled so we remember to look into it. See
@@ -45,19 +46,24 @@ SuccessFactors Career Site Builder connector built and deployed; first three emp
 **New 6 Oct 2026, batch 3 (1 live):** Swissport (400 jobs, ground services, Switzerland). Fourth
 SuccessFactors employer.
 
+**New 7 Oct 2026, batch 4 (4 live):** Southwest Airlines (51), Alaska Airlines (40), Air Canada (57) —
+all via new Phenom/iCIMS connectors. Embraer (73 jobs) — Breezy HR connector. Net ~+221 jobs.
+
 **Blocked by their own rules (robots.txt), so left off:** American Airlines, Delta, KLM, Qantas, IndiGo,
-LATAM, Ethiopian, AAR, Lufthansa Technik (careers sites); Etihad (SmartRecruiters API); flydubai,
-Alaska Airlines (iCIMS); Ryanair (SuccessFactors); Menzies.
+LATAM, Ethiopian, AAR, Lufthansa Technik (careers sites); Etihad (SmartRecruiters API); Qatar Airways,
+Menzies Aviation, Singapore Airlines, ST Engineering, Lufthansa Group (Oracle/SF/SR APIs);
+flydubai, Ryanair (SuccessFactors).
 
-**SuccessFactors: search page returns 0 jobs (likely JS-rendered):** Bombardier, ST Engineering.
+**SuccessFactors: search page returns 0 jobs (likely JS-rendered):** Bombardier.
 
-**Need a new reader first:** Qatar Airways, easyJet (Oracle Taleo).
+**Config needs investigation (returned 0 jobs but no robots.txt block):**
+  easyJet (Taleo: section param may be wrong), Saudia (Taleo: same),
+  dnata (iCIMS: URL may be wrong), Virgin Australia and DFW Airport (Phenom: sitemaps not found),
+  Azul Airlines (Gupy: company_id "voeazul" may be wrong).
 
-**dnata (iCIMS):** listing URL returns HTTP 404; not usable.
-
-**Unsupported ATS (no connector):** Emirates (Avature), Southwest/Delta/Air Canada/DFW Airport/
-Virgin Australia (Phenom People), British Airways (TalentBrew/Radancy), Aer Lingus (Zellis),
-Safran (custom Drupal), WestJet (Dayforce), South African Airways (eRecruit), Dubai Airports (Cazar),
+**Unsupported ATS (no connector):** Emirates (Avature), British Airways (TalentBrew/Radancy),
+Aer Lingus (Zellis), Safran (custom Drupal), WestJet (Dayforce), South African Airways (eRecruit),
+Dubai Airports (Cazar),
 Aeroméxico (Recruiting.com), Azul (Gupy), Embraer (Breezy HR), United/Singapore Airlines/Cathay Pacific/
 Qatar Airways/Turkish Airlines/Saudia/Ethiopian/Kenya Airways/Lufthansa Group/Air India/IndiGo (custom).
 
