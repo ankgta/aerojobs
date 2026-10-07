@@ -1,24 +1,99 @@
 
-https://careers.virgin-atlantic.com/
-  source: {ats: oracle, host: "iagime.fa.ocs.oraclecloud.com", site: "CX_1"}   # site number guessed
+https://www.aercap.com/careers/
+  no known hiring system found on www.aercap.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
-https://careers.heathrow.com/
-  source: {ats: oracle, host: "encd.fa.em3.oraclecloud.com", site: "CX_3001"}
+https://www.smbc.aero/careers
+  no known hiring system found on www.smbc.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
-https://careers.honeywell.com/
-  source: {ats: oracle, host: "ibqbjb.fa.ocs.oraclecloud.com", site: "CX_1"}   # site number guessed
+https://www.avolon.aero/careers
+  no known hiring system found on www.avolon.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
-https://careers.alaskaair.com/
-  source: {ats: icims, url: "https://careers.alaskaair.com"}
+https://www.airleasecorp.com/careers
+  no known hiring system found on www.airleasecorp.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
-https://careers.flydubai.com/
-  source: {ats: icims, url: "https://careers.flydubai.com"}
+https://www.bocaviation.com/en/careers
+  no known hiring system found on www.bocaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
-https://careers.ba.com/
-  no known hiring system found on careers.ba.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+https://dubaiaerospace.com/careers/
+  no known hiring system found on dubaiaerospace.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
-https://www.iberia.com/es/trabaja-con-nosotros/
-  could not open: HTTP 403 from https://www.iberia.com/es/trabaja-con-nosotros/
+https://www.sita.aero/careers/
+  source: {ats: icims, url: "https://www.sita.aero"}
 
-https://careers.aerlingus.com/
-  could not open: HTTP 405 from https://careers.aerlingus.com/
+https://careers.amadeus.com/
+  no known hiring system found on careers.amadeus.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.sabre.com/careers/
+  no known hiring system found on www.sabre.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.jeppesen.com/careers/
+  could not open: Gave up on https://www.jeppesen.com/careers/: HTTPSConnectionPool(host='jeppesen.referrals.selectminds.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("HTTPSConnection(host='jeppesen.referrals.selectminds.com', port=443): Failed to resolve 'jeppesen.referrals.selectminds.com' ([Errno -2] Name or service not known)"))
+
+https://www.navblue.aero/careers/
+  no known hiring system found on www.navblue.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://ibsplc.com/careers/
+  could not open: HTTP 404 from https://ibsplc.com/careers/
+
+https://www.cirium.com/careers/
+  source: {ats: workday, url: "https://relx.wd3.myworkdayjobs.com/ciriumcareers"}
+
+https://altonaviation.com/careers/
+  no known hiring system found on altonaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.flightsafety.com/careers/
+  no known hiring system found on www.flightsafety.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.l3harris.com/en-gb/careers
+  no known hiring system found on www.l3harris.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.netjets.com/careers/
+  no known hiring system found on www.netjets.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.vistajet.com/careers/
+  source: {ats: icims, url: "https://www.vistajet.com"}
+
+https://www.signatureaviation.com/careers
+  could not open: HTTP 404 from https://www.signatureaviation.com/careers
+
+https://www.gategroup.com/careers/
+  source: {ats: workday, url: "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers"}
+
+https://www.wfs.aero/careers
+  no known hiring system found on www.wfs.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.fraport.com/en/careers.html
+  could not open: HTTP 404 from https://www.fraport.com/en/careers.html
+
+https://world-kinect.com/careers
+  source: {ats: workday, url: "https://wfscorp.wd5.myworkdayjobs.com/wfscareers"}
+
+https://www.thalesgroup.com/en/careers
+  no known hiring system found on www.thalesgroup.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://careers.spiritaero.com/
+  source: {ats: icims, url: "https://careers.spiritaero.com"}
+
+https://www.gknaerospace.com/en/our-company/careers/
+  could not open: HTTP 403 from https://www.gknaerospace.com/en/our-company/careers/
+
+https://www.gulfstream.com/en/careers/
+  could not open: HTTP 403 from https://www.gulfstream.com/en/careers/
+
+https://careers.txtav.com/
+  no known hiring system found on careers.txtav.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.dassault-aviation.com/en/dassault-aviation/careers/
+  no known hiring system found on www.dassault-aviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.jobyaviation.com/careers/
+  source: {ats: icims, url: "https://www.jobyaviation.com"}
+
+https://vertical-aerospace.com/careers/
+  no known hiring system found on vertical-aerospace.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://beta.team/careers/
+  no known hiring system found on beta.team. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://careers.nats.aero/
+  could not open: robots.txt does not allow https://careers.nats.aero/
