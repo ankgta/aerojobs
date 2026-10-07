@@ -9,10 +9,10 @@ https://careers.honeywell.com/
   source: {ats: oracle, host: "ibqbjb.fa.ocs.oraclecloud.com", site: "CX_1"}   # site number guessed
 
 https://careers.alaskaair.com/
-  # uses icims (employee-alaskaair.icims.com): no connector yet; try the jsonld reader or a custom reader
+  source: {ats: icims, url: "https://careers.alaskaair.com"}
 
 https://careers.flydubai.com/
-  # uses icims (careers-flydubai.icims.com): no connector yet; try the jsonld reader or a custom reader
+  source: {ats: icims, url: "https://careers.flydubai.com"}
 
 https://careers.ba.com/
   no known hiring system found on careers.ba.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.

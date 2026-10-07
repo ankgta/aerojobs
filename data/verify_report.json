@@ -1,76 +1,357 @@
 {
- "run": "2026-10-06T15:45:58+00:00",
+ "run": "2026-10-07T06:24:16+00:00",
  "results": [
   {
-   "name": "Etihad Airways",
-   "slug": "etihad",
+   "name": "easyJet",
+   "slug": "easyjet",
    "source": {
-    "ats": "smartrecruiters",
-    "company": "EtihadAirways5"
+    "ats": "taleo",
+    "host": "easyjet.taleo.net",
+    "section": "2"
    },
    "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/EtihadAirways5/postings?limit=100&offset=0"
+   "jobs_found": 0,
+   "sample": []
   },
   {
-   "name": "Swissport",
-   "slug": "swissport",
+   "name": "Saudia",
+   "slug": "saudia",
    "source": {
-    "ats": "successfactors",
-    "url": "https://jobs.swissport.com"
+    "ats": "taleo",
+    "host": "saudia.taleo.net",
+    "section": "2"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Qatar Airways",
+   "slug": "qatar-airways",
+   "source": {
+    "ats": "oracle",
+    "host": "qatarairways.fa.em4.oraclecloud.com",
+    "site": "CX_1"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://qatarairways.fa.em4.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
+  },
+  {
+   "name": "Qatar Airways Alt",
+   "slug": "qatar-airways-alt",
+   "source": {
+    "ats": "oracle",
+    "host": "qatarairways.fa.em2.oraclecloud.com",
+    "site": "CX_1"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://qatarairways.fa.em2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
+  },
+  {
+   "name": "Menzies Aviation",
+   "slug": "menzies-aviation",
+   "source": {
+    "ats": "oracle",
+    "host": "menziesaviation.fa.em2.oraclecloud.com",
+    "site": "CX_1"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://menziesaviation.fa.em2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
+  },
+  {
+   "name": "Alaska Airlines",
+   "slug": "alaska-airlines",
+   "source": {
+    "ats": "icims",
+    "url": "https://careers.alaskaair.com"
    },
    "ok": true,
-   "jobs_found": 400,
+   "jobs_found": 40,
    "sample": [
     {
-     "title": "Duty Manager Fret (M/F/D)",
-     "location": "Aeroport Genève, Genève, CH",
-     "url": "https://jobs.swissport.com/job/Aeroport-Gen%C3%A8ve-Duty-Manager-Fret-%28MFD%29-Gen%C3%A8/1368266657/",
+     "title": "",
+     "location": null,
+     "url": "https://careers.alaskaair.com/jobs/",
      "posted": null
     },
     {
-     "title": "Business & Finance Controller (M/W/D)",
-     "location": "Glattbrugg, CH",
-     "url": "https://jobs.swissport.com/job/Glattbrugg-Business-&-Finance-Controller-%28MWD%29/1370716157/",
+     "title": "",
+     "location": null,
+     "url": "https://careers.alaskaair.com/locations/usa/jobs/",
      "posted": null
     },
     {
-     "title": "Laufbahn Ramp Supervisor 40-100% (M/W/D)",
-     "location": "Zürich, Zürich, CH",
-     "url": "https://jobs.swissport.com/job/Z%C3%BCrich-Laufbahn-Ramp-Supervisor-40-100-%28MWD%29-Z%C3%BCri/778399002/",
+     "title": "",
+     "location": null,
+     "url": "https://careers.alaskaair.com/locations/washington/jobs/",
      "posted": null
     },
     {
-     "title": "Team Manager Cargo (M/F/D)",
-     "location": "Aeroport Genève, CH",
-     "url": "https://jobs.swissport.com/job/Aeroport-Gen%C3%A8ve-Team-Manager-Cargo-%28MFD%29/1367383757/",
+     "title": "",
+     "location": null,
+     "url": "https://careers.alaskaair.com/locations/california/jobs/",
      "posted": null
     },
     {
-     "title": "Studentischer Nebenjob 40-60% (M/W/D)",
-     "location": "Zürich, Zürich, CH",
-     "url": "https://jobs.swissport.com/job/Z%C3%BCrich-Studentischer-Nebenjob-40-60-%28MWD%29-Z%C3%BCri/1353639957/",
+     "title": "",
+     "location": null,
+     "url": "https://careers.alaskaair.com/locations/hawaii/jobs/",
      "posted": null
     },
     {
-     "title": "Mechaniker für Spezialfahrzeuge 80-100% (M/W/D)",
-     "location": "Zürich, Zürich, CH",
-     "url": "https://jobs.swissport.com/job/Z%C3%BCrich-Mechaniker-f%C3%BCr-Spezialfahrzeuge-80-100-%28MWD%29-Z%C3%BCri/812974302/",
+     "title": "",
+     "location": null,
+     "url": "https://careers.alaskaair.com/locations/alaska/jobs/",
      "posted": null
     }
-   ]
+   ],
+   "detail_sample": {
+    "country_code": null,
+    "posted_date": null,
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": null,
+    "location": null
+   }
   },
   {
    "name": "dnata",
    "slug": "dnata",
    "source": {
-    "ats": "jsonld",
-    "listing_url": "https://careers-dnata.icims.com/jobs/search?pr={page}&in_iframe=1",
-    "job_link_pattern": "/jobs/\\d+/",
-    "max_pages": 3,
-    "strip_query": true
+    "ats": "icims",
+    "url": "https://careers-dnata.icims.com"
    },
    "ok": false,
-   "error": "FetchError: HTTP 404 from https://careers-dnata.icims.com/jobs/search?pr=0&in_iframe=1"
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Singapore Airlines",
+   "slug": "singapore-airlines",
+   "source": {
+    "ats": "successfactors",
+    "url": "https://singaporeair.sapsf.com"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://singaporeair.sapsf.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
+  },
+  {
+   "name": "ST Engineering",
+   "slug": "st-engineering",
+   "source": {
+    "ats": "successfactors",
+    "url": "https://stengg.sapsf.com"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://stengg.sapsf.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
+  },
+  {
+   "name": "Lufthansa Group",
+   "slug": "lufthansa-group",
+   "source": {
+    "ats": "smartrecruiters",
+    "company": "lufthansa"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/lufthansa/postings?limit=100&offset=0"
+  },
+  {
+   "name": "Southwest Airlines",
+   "slug": "southwest-airlines",
+   "source": {
+    "ats": "phenom",
+    "url": "https://careers.southwestair.com",
+    "country": "US"
+   },
+   "ok": true,
+   "jobs_found": 51,
+   "sample": [
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.southwestair.com/us/en/job/R-2026-69180/Flight-Ops-Flight-Instructor-HDQ",
+     "posted": null
+    },
+    {
+     "title": "Ramp Agent - GEG (Part-Time)",
+     "location": "Spokane, Washington, United States of America",
+     "url": "https://careers.southwestair.com/us/en/job/R-2026-71909/Ramp-Agent-GEG-Part-Time",
+     "posted": "2026-10-06"
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.southwestair.com/us/en/job/R-2026-73040/Summer-2027-Communications-Public-Relations-Internship",
+     "posted": null
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.southwestair.com/us/en/job/R-2026-73270/Summer-2027-Software-Engineer-Internship",
+     "posted": null
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.southwestair.com/us/en/job/R-2026-73269/Summer-2027-Cybersecurity-Engineer-Internship",
+     "posted": null
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.southwestair.com/us/en/job/R-2026-73271/Summer-2027-Data-Engineer-Internship",
+     "posted": null
+    }
+   ],
+   "detail_sample": {
+    "country_code": null,
+    "posted_date": null,
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": null,
+    "location": null
+   }
+  },
+  {
+   "name": "Air Canada",
+   "slug": "air-canada",
+   "source": {
+    "ats": "phenom",
+    "url": "https://careers.aircanada.com",
+    "country": "CA"
+   },
+   "ok": true,
+   "jobs_found": 57,
+   "detail_error": "FetchError: HTTP 410 from https://careers.aircanada.com/ca/en/job/AIPACICA40168EXTERNALENCA/Front-end-Developer-Application-Development-Customer",
+   "sample": [
+    {
+     "title": "Pilot – AC Express Pilot Careers Portal (for AC Express Pilots only)",
+     "location": "TORONTO, ONTARIO, CANADA",
+     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA39044EXTERNALENCA/Pilot-AC-Express-Pilot-Careers-Portal-for-AC-Express-Pilots-only",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "Cabin Service and Cleaning Attendant",
+     "location": "DORVAL, QUEBEC, CANADA",
+     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA40209EXTERNALENCA/Cabin-Service-and-Cleaning-Attendant",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA40168EXTERNALENCA/Front-end-Developer-Application-Development-Customer",
+     "posted": null
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA39443EXTERNALENCA/Bilingual-Customer-Experience-Specialist-Airport-Proactive-hiring",
+     "posted": null
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA39484EXTERNALENCA/Aircraft-Maintenance-Engineer-CAT-38-Avionics",
+     "posted": null
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.aircanada.com/ca/en/job/AIPACICA39468EXTERNALENCA/Aircraft-Maintenance-Engineer-CAT-38-Avionics",
+     "posted": null
+    }
+   ],
+   "detail_sample": {
+    "country_code": "CA",
+    "posted_date": "2026-10-05",
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": "FULL_TIME",
+    "location": "TORONTO, ONTARIO, CANADA"
+   }
+  },
+  {
+   "name": "Virgin Australia",
+   "slug": "virgin-australia",
+   "source": {
+    "ats": "phenom",
+    "url": "https://jobs.virginaustralia.com",
+    "country": "AU"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "DFW Airport",
+   "slug": "dfw-airport",
+   "source": {
+    "ats": "phenom",
+    "url": "https://dfwcareers.org",
+    "country": "US"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Embraer",
+   "slug": "embraer",
+   "source": {
+    "ats": "breezy",
+    "company": "embraer"
+   },
+   "ok": true,
+   "jobs_found": 73,
+   "sample": [
+    {
+     "title": "A&P Mechanic",
+     "location": "Fort Worth",
+     "url": "https://embraer.breezy.hr/p/047536889314-a-p-mechanic",
+     "posted": null
+    },
+    {
+     "title": "A&P Technician",
+     "location": "Macon",
+     "url": "https://embraer.breezy.hr/p/4658211f5c93-a-p-technician",
+     "posted": null
+    },
+    {
+     "title": "A&P Technician - (Delivery Center, 1st Shift)",
+     "location": "Melbourne",
+     "url": "https://embraer.breezy.hr/p/ed49147bb26c-a-p-technician-delivery-center-1st-shift",
+     "posted": null
+    },
+    {
+     "title": "A&P Technician - 2nd Shift, NetJets 1",
+     "location": "Fort Lauderdale",
+     "url": "https://embraer.breezy.hr/p/883f4f6edffa-a-p-technician-2nd-shift-netjets-1",
+     "posted": null
+    },
+    {
+     "title": "A&P Technician - MRO (Weekends)",
+     "location": "Mesa",
+     "url": "https://embraer.breezy.hr/p/8e79ba4b1faa-a-p-technician-mro-weekends",
+     "posted": null
+    },
+    {
+     "title": "A&P Technician - Weekend Shift, Contract",
+     "location": "Fort Lauderdale",
+     "url": "https://embraer.breezy.hr/p/c6513421f55c-a-p-technician-weekend-shift-contract",
+     "posted": null
+    }
+   ]
+  },
+  {
+   "name": "Azul Airlines",
+   "slug": "azul-airlines",
+   "source": {
+    "ats": "gupy",
+    "company_id": "voeazul"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
   }
  ]
 }
