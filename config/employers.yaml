@@ -9,15 +9,16 @@
 # type: airline | airport | mro | manufacturer | ground_services | other
 # country: two-letter country code of the head office (GB, US, AE, IN ...)
 #
-# Checked 7 Oct 2026 — robots.txt blocks (never attempt to work around these):
+# Checked 8 Oct 2026 — robots.txt blocks (never attempt to work around these):
 #   Qatar Airways (Oracle Fusion API), Menzies Aviation (Oracle Fusion API), Singapore Airlines (SuccessFactors),
 #   ST Engineering (SuccessFactors), Lufthansa Group (SmartRecruiters API), Etihad (SmartRecruiters API),
 #   flydubai (iCIMS), American Airlines, Delta, KLM, Qantas, IndiGo, AAR, Lufthansa Technik, LATAM,
-#   Ethiopian Airlines (careers sites blocked).
-# Checked 7 Oct 2026 — wrong config / 0 jobs (needs more research):
+#   Ethiopian Airlines (careers sites blocked),
+#   SITA (iCIMS: careers-sita.icims.com — robots.txt blocks /api/jobs and /jobs/search).
+# Checked 8 Oct 2026 — wrong config / 0 jobs (needs more research):
 #   easyJet (Taleo: easyjet.taleo.net returned 0 — section param may be wrong),
 #   Saudia (Taleo: saudia.taleo.net returned 0 — same issue),
-#   dnata (iCIMS: careers-dnata.icims.com returned 0 — URL or pr param may be wrong),
+#   dnata (iCIMS: careers-dnata.icims.com returned 404 on all paths — portal URL may be wrong),
 #   Virgin Australia (Phenom: jobs.virginaustralia.com returned 0 — sitemap not found),
 #   DFW Airport (Phenom: dfwcareers.org returned 0 — sitemap not found),
 #   Azul Airlines (Gupy: voeazul company_id returned 0 — company_id may be wrong).
@@ -108,6 +109,7 @@ employers:
   - {name: CAE, slug: cae, type: manufacturer, country: CA, source: {ats: workday, url: "https://cae.wd3.myworkdayjobs.com/career"}, enabled: true}
   - {name: Bombardier, slug: bombardier, type: manufacturer, country: CA, enabled: false}
   - {name: "RTX (Collins Aerospace, Pratt & Whitney)", slug: rtx, type: manufacturer, country: US, source: {ats: workday, url: "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway"}, enabled: true}
+  - {name: Joby Aviation, slug: joby-aviation, type: manufacturer, country: US, source: {ats: icims, url: "https://careers-jobyaviation.icims.com"}, enabled: true}
 
   # ---------- Other aviation organisations ----------
   - {name: NAV Canada, slug: nav-canada, type: other, country: CA, source: {ats: workday, url: "https://navcanada.wd10.myworkdayjobs.com/NAV_Careers"}, enabled: true}
@@ -120,3 +122,5 @@ employers:
   - {name: World Fuel Services, slug: world-fuel-services, type: other, country: US, source: {ats: workday, url: "https://wfscorp.wd5.myworkdayjobs.com/wfscareers"}, enabled: true}
   # Aviation data / analytics
   - {name: Cirium, slug: cirium, type: other, country: GB, source: {ats: workday, url: "https://relx.wd3.myworkdayjobs.com/ciriumcareers"}, enabled: true}
+  # Private aviation (added 8 Oct 2026 after iCIMS HTML connector fix + verify)
+  - {name: VistaJet, slug: vistajet, type: other, country: CH, source: {ats: icims, url: "https://careers-vistaglobal.icims.com"}, enabled: true}
