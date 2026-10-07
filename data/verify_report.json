@@ -1,5 +1,5 @@
 {
- "run": "2026-10-07T18:56:42+00:00",
+ "run": "2026-10-07T19:34:25+00:00",
  "results": [
   {
    "name": "VistaJet",
@@ -8,8 +8,54 @@
     "ats": "icims",
     "url": "https://careers-vistaglobal.icims.com"
    },
-   "ok": false,
-   "error": "Exception: api/jobs: HTTP 404 from https://careers-vistaglobal.icims.com/api/jobs; sitemap: HTTP 404 from https://careers-vistaglobal.icims.com/sitemaps/index.xml"
+   "ok": true,
+   "jobs_found": 53,
+   "sample": [
+    {
+     "title": "Technical Preparation Engineer",
+     "location": "",
+     "url": "https://careers-vistaglobal.icims.com/jobs/6145/technical-preparation-engineer/job",
+     "posted": null
+    },
+    {
+     "title": "Maintenance Operations Controller",
+     "location": "",
+     "url": "https://careers-vistaglobal.icims.com/jobs/6144/maintenance-operations-controller/job",
+     "posted": null
+    },
+    {
+     "title": "Supply Chain Manager",
+     "location": "",
+     "url": "https://careers-vistaglobal.icims.com/jobs/6140/supply-chain-manager/job",
+     "posted": null
+    },
+    {
+     "title": "Head of Risk and Controls",
+     "location": "",
+     "url": "https://careers-vistaglobal.icims.com/jobs/6131/head-of-risk-and-controls/job",
+     "posted": null
+    },
+    {
+     "title": "Aircraft Mechanic",
+     "location": "",
+     "url": "https://careers-vistaglobal.icims.com/jobs/6129/aircraft-mechanic/job",
+     "posted": null
+    },
+    {
+     "title": "Fleet Sales Executive",
+     "location": "",
+     "url": "https://careers-vistaglobal.icims.com/jobs/6119/fleet-sales-executive/job",
+     "posted": null
+    }
+   ],
+   "detail_sample": {
+    "country_code": null,
+    "posted_date": null,
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": null,
+    "location": null
+   }
   },
   {
    "name": "Joby Aviation",
@@ -18,8 +64,54 @@
     "ats": "icims",
     "url": "https://careers-jobyaviation.icims.com"
    },
-   "ok": false,
-   "error": "Exception: api/jobs: HTTP 404 from https://careers-jobyaviation.icims.com/api/jobs; sitemap: HTTP 404 from https://careers-jobyaviation.icims.com/sitemaps/index.xml"
+   "ok": true,
+   "jobs_found": 158,
+   "sample": [
+    {
+     "title": "Aircraft Integration Assembly Technician",
+     "location": "Marina, CA, US",
+     "url": "https://careers-jobyaviation.icims.com/jobs/5248/aircraft-integration-assembly-technician/job",
+     "posted": "2024-10-07"
+    },
+    {
+     "title": "Aircraft Maintenance Training Manager",
+     "location": "Marina, CA, US",
+     "url": "https://careers-jobyaviation.icims.com/jobs/4815/aircraft-maintenance-training-manager/job",
+     "posted": "2024-10-07"
+    },
+    {
+     "title": "Aircraft Mechanic",
+     "location": "Marina, CA, US",
+     "url": "https://careers-jobyaviation.icims.com/jobs/4526/aircraft-mechanic/job",
+     "posted": "2024-10-07"
+    },
+    {
+     "title": "Aircraft Technical Project Manager",
+     "location": "",
+     "url": "https://careers-jobyaviation.icims.com/jobs/5324/aircraft-technical-project-manager/job",
+     "posted": null
+    },
+    {
+     "title": "Aircraft Technical Support Engineer",
+     "location": "",
+     "url": "https://careers-jobyaviation.icims.com/jobs/5419/aircraft-technical-support-engineer/job",
+     "posted": null
+    },
+    {
+     "title": "Autonomous Aircraft Systems Engineering Manager",
+     "location": "",
+     "url": "https://careers-jobyaviation.icims.com/jobs/5448/autonomous-aircraft-systems-engineering-manager/job",
+     "posted": null
+    }
+   ],
+   "detail_sample": {
+    "country_code": "US",
+    "posted_date": "2024-10-07",
+    "closing_date": "2027-10-07",
+    "work_mode": null,
+    "employment_type": "FULL_TIME",
+    "location": "Marina, CA, US"
+   }
   },
   {
    "name": "SITA",
@@ -29,7 +121,7 @@
     "url": "https://careers-sita.icims.com"
    },
    "ok": false,
-   "error": "Exception: api/jobs: robots.txt does not allow https://careers-sita.icims.com/api/jobs; html_search: robots.txt does not allow https://careers-sita.icims.com/jobs/search?ss=1&in_iframe=1&searchPage=1; sitemap: r"
+   "error": "Exception: api/jobs: robots.txt does not allow https://careers-sita.icims.com/api/jobs; html_search: robots.txt does not allow https://careers-sita.icims.com/jobs/search?ss=1&in_iframe=1; sitemap: robots.txt doe"
   },
   {
    "name": "dnata",
@@ -39,7 +131,7 @@
     "url": "https://careers-dnata.icims.com"
    },
    "ok": false,
-   "error": "Exception: api/jobs: HTTP 404 from https://careers-dnata.icims.com/api/jobs; html_search: HTTP 404 from https://careers-dnata.icims.com/jobs/search?ss=1&in_iframe=1&searchPage=1; sitemap: HTTP 404 from https://c"
+   "error": "Exception: api/jobs: HTTP 404 from https://careers-dnata.icims.com/api/jobs; html_search: HTTP 404 from https://careers-dnata.icims.com/jobs/search?ss=1&in_iframe=1; sitemap: HTTP 404 from https://careers-dnata."
   },
   {
    "name": "easyJet",
