@@ -20,6 +20,8 @@ PATTERNS = [
     ("taleo", re.compile(r"([a-z0-9-]+\.taleo\.net)")),
     ("icims", re.compile(r"([a-z0-9-]+\.icims\.com)")),
     ("oracle", re.compile(r"([a-z0-9-]+\.fa\.[a-z0-9-]+\.oraclecloud\.com)(?:/hcmUI/CandidateExperience/[a-z]{2}/sites/([A-Za-z0-9_]+))?")),
+    ("breezy", re.compile(r"([a-z0-9-]+)\.breezy\.hr")),
+    ("gupy", re.compile(r"([a-z0-9-]+)\.gupy\.io")),
 ]
 
 
@@ -49,6 +51,10 @@ def suggest(url: str, page: str) -> list[str]:
         elif name == "icims":
             host = urllib.parse.urlsplit(url).netloc
             found.append(f'source: {{ats: icims, url: "https://{host}"}}')
+        elif name == "breezy":
+            found.append(f'source: {{ats: breezy, company: "{m[1]}"}}')
+        elif name == "gupy":
+            found.append(f'source: {{ats: gupy, company_id: "{m[1]}"}}   # check company ID at portal.api.gupy.io')
         else:
             found.append(f"# uses {name} ({m[1]}): no connector yet; try the jsonld reader or a custom reader")
     if extract_job_postings(page):

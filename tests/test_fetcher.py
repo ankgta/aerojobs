@@ -19,7 +19,7 @@ class FakeClient:
                 return value(url) if callable(value) else value
         raise AssertionError(f"unexpected url {url}")
 
-    def get_json(self, url, **kw):
+    def get_json(self, url, params=None, **kw):
         return self._get(url)
 
     def get_text(self, url):
@@ -402,3 +402,70 @@ def test_phenom_connector_sitemap():
     assert jobs[0]["country_code"] == "US"
     assert jobs[0]["needs_detail"] is True
     assert "12345" in jobs[0]["url"]
+
+
+def test_breezy_connector():
+    """Breezy HR connector fetches from public /json endpoint."""
+    company = "embraer"
+    api_data = [
+        {
+            "_id": "abc123",
+            "friendly_id": "senior-avionics-engineer",
+            "name": "Senior Avionics Engineer",
+            "location": {"city": "Melbourne, FL", "country": {"id": "us"}},
+            "type": {"name": "Full-Time"},
+        },
+        {
+            "_id": "def456",
+            "friendly_id": "flight-test-engineer",
+            "name": "Flight Test Engineer",
+            "location": {"city": "Gavião Peixoto", "country": {"id": "br"}},
+            "type": {"name": "Full-Time"},
+        },
+    ]
+    client = FakeClient({f"https://{company}.breezy.hr/json": api_data})
+    jobs = c.fetch_breezy(client, {"company": company})
+    assert len(jobs) == 2
+    assert jobs[0]["source_id"] == "abc123"
+    assert jobs[0]["title"] == "Senior Avionics Engineer"
+    assert jobs[0]["location"] == "Melbourne, FL"
+    assert jobs[0]["country_code"] == "US"
+    assert jobs[0]["employment_type"] == "full_time"
+    assert "embraer.breezy.hr/p/senior-avionics-engineer" in jobs[0]["url"]
+    assert jobs[1]["country_code"] == "BR"
+
+
+def test_gupy_connector():
+    """Gupy connector fetches from public REST API with pagination."""
+    company_id = "voeazul"
+    page1 = {
+        "data": [
+            {
+                "id": 11111,
+                "name": "Comandante A320",
+                "city": "Campinas",
+                "state": "SP",
+                "jobUrl": "https://voeazul.gupy.io/job/11111",
+                "publishedDate": "2026-10-01",
+                "type": "effective",
+            },
+            {
+                "id": 22222,
+                "name": "Agente de Rampa",
+                "city": "São Paulo",
+                "state": "SP",
+                "jobUrl": "https://voeazul.gupy.io/job/22222",
+                "publishedDate": "2026-10-02",
+                "type": "effective",
+            },
+        ]
+    }
+    client = FakeClient({"https://portal.api.gupy.io/api/v1/jobs": page1})
+    jobs = c.fetch_gupy(client, {"company_id": company_id})
+    assert len(jobs) == 2
+    assert jobs[0]["source_id"] == "11111"
+    assert jobs[0]["title"] == "Comandante A320"
+    assert jobs[0]["location"] == "Campinas, SP"
+    assert jobs[0]["country_code"] == "BR"
+    assert jobs[0]["employment_type"] == "full_time"
+    assert jobs[0]["url"] == "https://voeazul.gupy.io/job/11111"

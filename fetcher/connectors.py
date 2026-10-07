@@ -767,6 +767,150 @@ def fetch_phenom(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[
     return jobs[:max_jobs]
 
 
+# ------------------------------------------------------------------ Breezy HR
+def fetch_breezy(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """Breezy HR via public JSON feed.
+
+    Source shape:
+        source: {ats: breezy, company: "embraer"}
+
+    Breezy exposes a public /json endpoint for each company's open positions.
+    No authentication required.
+    """
+    company = src["company"]
+    url = f"https://{company}.breezy.hr/json"
+    try:
+        data = client.get_json(url)
+    except Exception:
+        return []
+
+    if not isinstance(data, list):
+        return []
+
+    jobs: list[dict] = []
+    for item in data:
+        if not isinstance(item, dict):
+            continue
+        position_id = str(item.get("_id", "") or item.get("id", ""))
+        if not position_id:
+            continue
+        slug = item.get("friendly_id") or item.get("id") or position_id
+        job_url = f"https://{company}.breezy.hr/p/{slug}"
+        # Location parsing
+        loc_obj = item.get("location") or {}
+        city = loc_obj.get("city", "") if isinstance(loc_obj, dict) else ""
+        country_raw = (loc_obj.get("country", {}) or {}).get("id", "") if isinstance(loc_obj, dict) else ""
+        location = city or ""
+        country_code = country_raw.upper()[:2] if country_raw else None
+
+        # Work type
+        work_type = (item.get("type") or {}).get("name", "") if isinstance(item.get("type"), dict) else ""
+        employment_type = None
+        if work_type:
+            wl = work_type.lower()
+            if "full" in wl:
+                employment_type = "full_time"
+            elif "part" in wl:
+                employment_type = "part_time"
+            elif "contract" in wl:
+                employment_type = "contract"
+
+        jobs.append({
+            "source_id": position_id,
+            "title": item.get("name", ""),
+            "url": job_url,
+            "location": location,
+            "country_code": country_code,
+            "posted_date": None,
+            "posted_estimated": False,
+            "closing_date": None,
+            "work_mode": None,
+            "employment_type": employment_type,
+        })
+        if len(jobs) >= max_jobs:
+            break
+
+    return jobs[:max_jobs]
+
+
+# ------------------------------------------------------------------ Gupy (Brazilian ATS)
+def fetch_gupy(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """Gupy ATS via public REST API.
+
+    Source shape:
+        source: {ats: gupy, company_id: "voeazul"}  # subdomain of gupy.io
+
+    Gupy exposes a public pagination API with no auth for published positions.
+    """
+    company_id = src["company_id"]
+    base_url = f"https://portal.api.gupy.io/api/v1/jobs"
+    jobs: list[dict] = []
+    page = 1
+
+    while len(jobs) < max_jobs:
+        try:
+            data = client.get_json(base_url, params={
+                "companyId": company_id,
+                "isRemoteWork": "false",
+                "limit": 100,
+                "offset": (page - 1) * 100,
+            })
+        except Exception:
+            break
+
+        items = data if isinstance(data, list) else (data.get("data") or data.get("jobs") or [])
+        if not items:
+            break
+
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            job_id = str(item.get("id", ""))
+            if not job_id:
+                continue
+            job_url = item.get("jobUrl") or f"https://{company_id}.gupy.io/job/{job_id}"
+            location_parts = []
+            city = item.get("city") or ""
+            state = item.get("state") or ""
+            if city:
+                location_parts.append(city)
+            if state and state != city:
+                location_parts.append(state)
+            location = ", ".join(location_parts)
+            # Gupy is Brazil-based; default BR unless specified
+            country_code = src.get("country", "BR").upper()
+
+            work_type = (item.get("type") or "").lower()
+            employment_type = None
+            if "effective" in work_type or "full" in work_type or "clt" in work_type:
+                employment_type = "full_time"
+            elif "part" in work_type:
+                employment_type = "part_time"
+            elif "intern" in work_type or "estagi" in work_type:
+                employment_type = "internship"
+
+            jobs.append({
+                "source_id": job_id,
+                "title": item.get("name", ""),
+                "url": job_url,
+                "location": location,
+                "country_code": country_code,
+                "posted_date": item.get("publishedDate"),
+                "posted_estimated": False,
+                "closing_date": item.get("applicationDeadline"),
+                "work_mode": None,
+                "employment_type": employment_type,
+            })
+            if len(jobs) >= max_jobs:
+                break
+
+        if len(items) < 100:
+            break  # Last page
+        page += 1
+
+    return jobs[:max_jobs]
+
+
 CONNECTORS = {
     "workday": (fetch_workday, workday_detail),
     "greenhouse": (fetch_greenhouse, None),
@@ -778,4 +922,6 @@ CONNECTORS = {
     "taleo": (fetch_taleo, None),
     "icims": (fetch_icims, jsonld_detail),
     "phenom": (fetch_phenom, jsonld_detail),
+    "breezy": (fetch_breezy, None),
+    "gupy": (fetch_gupy, None),
 }
