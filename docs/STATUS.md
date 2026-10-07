@@ -18,7 +18,7 @@ Air Canada and Embraer switched on (+221 jobs).
 | Jobs with a known country | 93% |
 | Jobs whose role is unclear (shown as Corporate) | 33% |
 | Pilot jobs / cabin crew jobs | 7 / 0 |
-| Guides written | 3 of about 15 |
+| Guides written | 7 of about 15 |
 | Website test runs passing | 116 of 117 (1 known Safari analytics item) |
 | Security tests passing | 28 of 29 (1 not run on purpose: DDoS) |
 
@@ -78,6 +78,8 @@ Qatar Airways/Turkish Airlines/Saudia/Ethiopian/Kenya Airways/Lufthansa Group/Ai
    Safari console item).
 3. ~~**More airlines**: build SuccessFactors and Taleo readers~~ **SuccessFactors done 6 Oct 2026**: connector
    built and 3 employers live (JetBlue, Wizz Air, Changi Airport). Taleo still needed.
+4. **Four new guides drafted 7 Oct 2026** (not yet pushed): commercial pilot in India, cabin crew for
+   Gulf airlines, Part-66 B1 vs B2, cadet pilot programmes. Owner to read and add their own voice.
 
 ## Role sorting (5 Oct 2026)
 

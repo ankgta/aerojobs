@@ -59,3 +59,24 @@ Cadet pilot schemes are another target. Some genuine schemes are self-funded, wh
 ## The bottom line
 
 A real aviation job begins on a real employer's website and costs you nothing to apply for. When in doubt, go to the source. You can [browse current aviation jobs]({{ link('') }}#jobs) here, each linked directly to the employer's official careers page.
+
+## Sources
+
+The warning signs and verification steps in this guide follow the fraud-warning pages published by major airlines and the fraud-reporting services of national authorities. If an offer involves an airline on this list, check their own fraud page first:
+
+- **Emirates:** [emirates.com](https://www.emirates.com) - "Recruitment scams" / "Report fraud"
+- **Qatar Airways:** [qatarairways.com](https://www.qatarairways.com) - "Fraudulent job offers"
+- **Etihad Airways:** [etihad.com](https://www.etihad.com) - "Recruitment fraud awareness"
+- **British Airways:** [britishairways.com](https://www.britishairways.com) - "Recruitment fraud"
+- **IATA warning on recruitment scams:** [iata.org](https://www.iata.org)
+
+**National fraud-reporting services:**
+
+- **UK - Action Fraud:** [actionfraud.police.uk](https://www.actionfraud.police.uk)
+- **US - FTC Report Fraud:** [reportfraud.ftc.gov](https://reportfraud.ftc.gov); IC3 for online fraud: [ic3.gov](https://www.ic3.gov)
+- **India - National Cyber Crime Reporting Portal:** [cybercrime.gov.in](https://cybercrime.gov.in)
+- **UAE - eCrime:** [ecrime.ae](https://www.ecrime.ae)
+- **Canada - Canadian Anti-Fraud Centre:** [antifraudcentre-centreantifraude.ca](https://www.antifraudcentre-centreantifraude.ca)
+- **Australia - Scamwatch:** [scamwatch.gov.au](https://www.scamwatch.gov.au)
+
+If you shared payment card details, contact your bank immediately; most countries treat recruitment fraud as a criminal offence.

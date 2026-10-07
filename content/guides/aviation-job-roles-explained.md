@@ -62,3 +62,17 @@ Aviation companies are large businesses with the same office functions as any ot
 If you are starting out, ground operations, cabin crew and customer service roles are the most common entry points without previous aviation experience. If you have a technical background, maintenance and engineering offer clear, licence-based progression. If you want to fly, look closely at cadet programmes and the cost of training before you commit.
 
 You can [browse open jobs by role]({{ link('') }}#jobs) using the role filter, and narrow them by country and work mode.
+
+## Sources
+
+The licence names, medical categories and regulatory frameworks referenced in this guide come from the civil aviation authorities and international bodies that issue them:
+
+- **ICAO** (international standards for pilot and crew licensing, medical classes, English proficiency): Annex 1 to the Chicago Convention, [icao.int](https://www.icao.int)
+- **EASA Part-FCL** (European pilot licensing - CPL, ATPL, instrument rating, type rating): Commission Regulation (EU) No 1178/2011, [eur-lex.europa.eu](https://eur-lex.europa.eu)
+- **EASA Part-66** (European aircraft maintenance licence - categories A, B1, B2, C): Commission Regulation (EU) No 1321/2014, Annex III
+- **FAA** (US pilot and mechanic certification): 14 CFR Parts 61, 65, 67, 121, [faa.gov](https://www.faa.gov)
+- **UK Civil Aviation Authority:** [caa.co.uk](https://www.caa.co.uk)
+- **DGCA India:** [dgca.gov.in](https://www.dgca.gov.in)
+- **IATA Dangerous Goods training** (for cargo specialists): [iata.org](https://www.iata.org) - Cargo and Dangerous Goods Regulations
+
+For a country-specific breakdown of licence routes see {{ link('guides/how-to-become-a-commercial-pilot-in-india') }}, {{ link('guides/part-66-b1-vs-b2-licence-explained') }} and {{ link('guides/cadet-pilot-programmes-cost-and-how-they-work') }}.

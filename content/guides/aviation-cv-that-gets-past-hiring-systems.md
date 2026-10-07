@@ -74,3 +74,24 @@ Expectations differ around the world. In the UK, the US and Canada, CVs usually 
 - Apply through the employer's official careers site. Every job on this site links straight to it.
 
 When your CV is ready, [find open aviation jobs]({{ link('') }}#jobs) and filter by role and country to see which employers are hiring now.
+
+## Sources
+
+CV format advice in this guide is based on how the applicant tracking systems (ATS) used by large aviation employers work in practice - the same systems this site reads jobs from. Vendor documentation on how each system parses CVs:
+
+- **Workday Recruiting:** [workday.com](https://www.workday.com)
+- **Oracle Taleo and HCM Cloud Recruiting:** [oracle.com](https://www.oracle.com)
+- **SAP SuccessFactors Recruiting:** [sap.com](https://www.sap.com)
+- **iCIMS Talent Cloud:** [icims.com](https://www.icims.com)
+- **Greenhouse:** [greenhouse.io](https://www.greenhouse.io)
+- **SmartRecruiters:** [smartrecruiters.com](https://www.smartrecruiters.com)
+
+Licence names referenced in this guide are issued and defined by civil aviation authorities:
+
+- **EASA Part-FCL** (pilot licences): Commission Regulation (EU) No 1178/2011
+- **EASA Part-66** (B1 engineer licence): Commission Regulation (EU) No 1321/2014, Annex III
+- **EASA Part-CC** (cabin crew attestation): Commission Regulation (EU) No 1178/2011
+- **FAA A&P certificate:** 14 CFR Part 65 Subpart D
+- **ICAO language proficiency rating:** Annex 1 to the Chicago Convention, [icao.int](https://www.icao.int)
+
+Hiring and photo expectations by region come from each employer's job advert - follow those first.
