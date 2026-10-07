@@ -5,15 +5,10 @@
 {% block subnav %}{% endblock %}
 {% block main %}
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="{{ asset('static/hero-hangar-photo.png') }}" alt="">
+  </div>
   <div class="wrap hero-inner">
-    <div class="hero-copy">
-      <h1>Every aviation job, on one board.</h1>
-      {% if stats.jobs %}
-      <p class="hero-sub"><strong>{{ "{:,}".format(stats.jobs) }}</strong> pilot, cabin crew, engineering and airport roles from <strong>{{ stats.companies }}</strong> employers in <strong>{{ stats.countries }}</strong> {{ 'country' if stats.countries == 1 else 'countries' }}.</p>
-      {% else %}
-      <p class="hero-sub">Pilot, cabin crew, engineering and airport roles from employers worldwide. The first jobs are on their way.</p>
-      {% endif %}
-    </div>
     <div class="hero-search">
       <form class="search-pill" role="search" data-search-form>
         {{ icon("search") }}
@@ -24,6 +19,14 @@
       <nav class="chips" aria-label="Job roles">
         {% for key, label in role_short.items() %}<a class="chip" href="{{ link('roles/' ~ key) }}">{{ label }}{% if role_counts[key] %} <span class="n">{{ role_counts[key] }}</span>{% endif %}</a>{% endfor %}
       </nav>
+    </div>
+    <div class="hero-copy">
+      <h1>Every aviation job, on one board.</h1>
+      {% if stats.jobs %}
+      <p class="hero-sub"><strong>{{ "{:,}".format(stats.jobs) }}</strong> pilot, cabin crew, engineering and airport roles from <strong>{{ stats.companies }}</strong> employers in <strong>{{ stats.countries }}</strong> {{ 'country' if stats.countries == 1 else 'countries' }}.</p>
+      {% else %}
+      <p class="hero-sub">Pilot, cabin crew, engineering and airport roles from employers worldwide. The first jobs are on their way.</p>
+      {% endif %}
     </div>
   </div>
 </section>
