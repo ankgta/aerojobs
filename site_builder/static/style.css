@@ -92,7 +92,7 @@ h3 { font-size: 1.1rem; font-weight: 600; }
 .hero h1 { font-size: clamp(2rem,3.6vw,3.2rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.05; margin-bottom: 12px; }
 .hero-sub { font-size: clamp(.88rem,1.15vw,1rem); color: #1F3A5C; margin: 0; max-width: 46ch; }
 .hero-sub strong { color: var(--ink); font-variant-numeric: tabular-nums; }
-.hero-search { display: flex; flex-direction: column; gap: 14px; background: rgba(255,255,255,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 16px; border: 1px solid rgba(255,255,255,.75); box-shadow: 0 4px 32px rgba(15,31,48,.10), 0 1px 0 rgba(255,255,255,.6) inset; padding: 20px 20px 18px; align-self: start; margin-left: auto; max-width: 420px; width: 100%; }
+.hero-search { display: flex; flex-direction: column; gap: 14px; align-self: start; margin-left: auto; max-width: 520px; width: 100%; padding: 0; }
 .search-pill {
   display: flex; align-items: center; gap: 6px; padding: 6px; width: 100%;
   background: var(--surface); border-radius: 999px; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, .7);
@@ -115,7 +115,7 @@ h3 { font-size: 1.1rem; font-weight: 600; }
 .btn-ghost { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
 .btn-ghost:hover { background: var(--bg); }
 .hero .chips { margin-top: 0; flex-wrap: wrap; overflow: visible; }
-.hero .chip { background: rgba(255,255,255,.92); border-color: rgba(200,220,240,.9); }
+.hero .chip { background: rgba(255,255,255,.88); border-color: rgba(180,210,235,.85); box-shadow: 0 1px 4px rgba(15,31,48,.07); }
 
 /* ---------- finder ---------- */
 .finder { display: grid; grid-template-columns: 272px minmax(0, 1fr); gap: 28px; align-items: start; padding-block: 8px 24px; }
@@ -327,7 +327,7 @@ select:hover { border-color: #B9CDE3; }
   .hero-inner { grid-template-columns: 1fr; gap: 20px; padding-bottom: clamp(28px,4vw,48px); }
   .hero-copy { padding-right: 0; }
   .hero h1 { font-size: 1.9rem; }
-  .hero-search { max-width: 100%; margin-left: 0; }
+  .hero-search { max-width: 100%; margin-left: 0; padding: 0; }
   .job-card { grid-template-columns: 40px minmax(0, 1fr); padding: 14px; gap: 12px; align-items: start; }
   .avatar { width: 40px; height: 40px; border-radius: 10px; font-size: .82rem; }
   .job-side { grid-column: 2; display: flex; flex-wrap: wrap-reverse; justify-content: space-between; align-items: center; justify-items: start; gap: 8px; }
