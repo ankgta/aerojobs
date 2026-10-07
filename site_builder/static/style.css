@@ -86,26 +86,15 @@ h3 { font-size: 1.1rem; font-weight: 600; }
 .subnav .chip { box-shadow: none; background: var(--bg); }
 
 /* ---------- hero ---------- */
-.hero { position: relative; overflow: hidden; isolation: isolate; background: var(--sky-mid); }
-/* The hangar picture is a background: it fills the hero, with the aircraft to the right.
-   A sky-blue wash over the left keeps the headline and search easy to read. */
-.hero-art { position: absolute; inset: 0; z-index: -2; }
-.hero-art img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 77% 100%; }
-.hero::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    linear-gradient(0deg, var(--bg) 0%, rgba(244, 248, 252, 0) 12%),
-    linear-gradient(180deg, rgba(143, 208, 246, .5) 0%, rgba(143, 208, 246, 0) 50%),
-    linear-gradient(90deg, rgba(214, 237, 252, .97) 0%, rgba(214, 237, 252, .9) 36%, rgba(214, 237, 252, .4) 56%, rgba(214, 237, 252, 0) 70%);
-}
-.hero-inner { padding-block: clamp(30px, 4vw, 52px) clamp(34px, 4vw, 52px); }
-.hero-copy { max-width: 600px; }
-.hero h1 { font-size: clamp(2.1rem, 4.2vw, 3.3rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.05; margin-bottom: 12px; }
-.hero-sub { font-size: clamp(1rem, 1.5vw, 1.12rem); color: #1F3A5C; margin: 0 0 20px; max-width: 52ch; }
+.hero { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, var(--sky-mid) 0%, var(--sky-btm) 100%); }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 0; padding: clamp(32px,4vw,60px) clamp(16px,4vw,56px) clamp(28px,3vw,48px); }
+.hero-copy { display: flex; flex-direction: column; justify-content: flex-start; padding-top: 4px; padding-right: 24px; }
+.hero h1 { font-size: clamp(2rem,3.6vw,3.2rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.05; margin-bottom: 12px; }
+.hero-sub { font-size: clamp(.88rem,1.15vw,1rem); color: #1F3A5C; margin: 0; max-width: 46ch; }
 .hero-sub strong { color: var(--ink); font-variant-numeric: tabular-nums; }
-.search-pill { width: 100%; max-width: 640px; }
+.hero-search { display: flex; flex-direction: column; gap: 14px; background: rgba(255,255,255,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 16px; border: 1px solid rgba(255,255,255,.75); box-shadow: 0 4px 32px rgba(15,31,48,.10), 0 1px 0 rgba(255,255,255,.6) inset; padding: 20px 20px 18px; align-self: start; margin-left: auto; max-width: 420px; width: 100%; }
 .search-pill {
-  display: flex; align-items: center; gap: 6px; padding: 6px; max-width: 600px;
+  display: flex; align-items: center; gap: 6px; padding: 6px; width: 100%;
   background: var(--surface); border-radius: 999px; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, .7);
 }
 .search-pill .icon { margin-left: 14px; color: var(--ink-3); font-size: 1.15rem; }
@@ -125,8 +114,8 @@ h3 { font-size: 1.1rem; font-weight: 600; }
 .btn:active { transform: scale(.98); }
 .btn-ghost { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
 .btn-ghost:hover { background: var(--bg); }
-.hero .chips { margin-top: 16px; flex-wrap: wrap; overflow: visible; }
-.hero .chip { background: rgba(255, 255, 255, .86); border-color: rgba(255, 255, 255, .9); }
+.hero .chips { margin-top: 0; flex-wrap: wrap; overflow: visible; }
+.hero .chip { background: rgba(255,255,255,.92); border-color: rgba(200,220,240,.9); }
 
 /* ---------- finder ---------- */
 .finder { display: grid; grid-template-columns: 272px minmax(0, 1fr); gap: 28px; align-items: start; padding-block: 8px 24px; }
@@ -334,15 +323,11 @@ select:hover { border-color: #B9CDE3; }
   .search-pill .icon { display: none; }
   .search-pill input { flex: 1 1 100%; padding: 12px 12px; }
   .search-pill .btn { flex: 1 1 100%; border-radius: 12px; min-height: 48px; }
-  .hero .chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); }
-  /* phones: the whole aircraft sits along the bottom of the hero, centred, under the quick filters */
-  .hero-art img { position: absolute; bottom: 0; left: 50%; width: 340%; height: auto; max-width: none; object-fit: fill; transform: translateX(-73.66%); }
-  .hero::before {
-    background:
-      linear-gradient(0deg, var(--bg) 0%, rgba(244, 248, 252, 0) 8%),
-      linear-gradient(180deg, rgba(214, 237, 252, .97) 0%, rgba(214, 237, 252, .9) 52%, rgba(214, 237, 252, .25) 82%, rgba(214, 237, 252, 0) 100%);
-  }
-  .hero-inner { padding-block: 26px 104px; }
+  .hero .chips { flex-wrap: wrap; overflow: visible; }
+  .hero-inner { grid-template-columns: 1fr; gap: 20px; padding-bottom: clamp(28px,4vw,48px); }
+  .hero-copy { padding-right: 0; }
+  .hero h1 { font-size: 1.9rem; }
+  .hero-search { max-width: 100%; margin-left: 0; }
   .job-card { grid-template-columns: 40px minmax(0, 1fr); padding: 14px; gap: 12px; align-items: start; }
   .avatar { width: 40px; height: 40px; border-radius: 10px; font-size: .82rem; }
   .job-side { grid-column: 2; display: flex; flex-wrap: wrap-reverse; justify-content: space-between; align-items: center; justify-items: start; gap: 8px; }

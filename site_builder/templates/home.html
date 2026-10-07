@@ -5,17 +5,16 @@
 {% block subnav %}{% endblock %}
 {% block main %}
 <section class="hero">
-  <div class="hero-art" aria-hidden="true">
-    <img src="{{ asset(site.hero_image or 'static/hero-hangar.svg') }}" alt="" width="2240" height="485" fetchpriority="high" decoding="async">
-  </div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <h1>Every aviation job, on one board.</h1>
       {% if stats.jobs %}
-      <p class="hero-sub"><strong>{{ "{:,}".format(stats.jobs) }}</strong> pilot, cabin crew, engineering and airport roles from <strong>{{ stats.companies }}</strong> employers in <strong>{{ stats.countries }}</strong> {{ 'country' if stats.countries == 1 else 'countries' }}, collected twice a day.</p>
+      <p class="hero-sub"><strong>{{ "{:,}".format(stats.jobs) }}</strong> pilot, cabin crew, engineering and airport roles from <strong>{{ stats.companies }}</strong> employers in <strong>{{ stats.countries }}</strong> {{ 'country' if stats.countries == 1 else 'countries' }}.</p>
       {% else %}
       <p class="hero-sub">Pilot, cabin crew, engineering and airport roles from employers worldwide. The first jobs are on their way.</p>
       {% endif %}
+    </div>
+    <div class="hero-search">
       <form class="search-pill" role="search" data-search-form>
         {{ icon("search") }}
         <label for="q" class="visually-hidden">Search jobs</label>
