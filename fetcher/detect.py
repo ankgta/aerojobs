@@ -49,8 +49,9 @@ def suggest(url: str, page: str) -> list[str]:
         elif name == "taleo":
             found.append(f'source: {{ats: taleo, host: "{m[1]}"}}   # section defaults to "2"; set section: "1" if needed')
         elif name == "icims":
-            host = urllib.parse.urlsplit(url).netloc
-            found.append(f'source: {{ats: icims, url: "https://{host}"}}')
+            # m[1] is the captured *.icims.com subdomain found in the page source.
+            # Use it directly — it is the actual iCIMS portal, not the company's main domain.
+            found.append(f'source: {{ats: icims, url: "https://{m[1]}"}}')
         elif name == "breezy":
             found.append(f'source: {{ats: breezy, company: "{m[1]}"}}')
         elif name == "gupy":

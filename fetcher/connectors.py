@@ -609,28 +609,33 @@ def fetch_taleo(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[d
 
 
 # ------------------------------------------------------------------ iCIMS
-class _ICIMSJobParser(HTMLParser):
-    """Parse iCIMS /api/jobs JSON response or HTML listing page."""
-    # iCIMS sites may expose JSON at /api/jobs or HTML at /jobs/search
-    pass  # handled inline in fetch_icims
-
-
 def fetch_icims(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
-    """iCIMS job listings via the /api/jobs JSON endpoint.
+    """iCIMS job listings.
+
+    Tries three approaches in order:
+    1. /api/jobs JSON endpoint — works for custom-domain iCIMS portals (e.g. careers.alaskaair.com).
+    2. /jobs/search?ss=1&in_iframe=1 HTML listing — server-rendered pages on *.icims.com portals;
+       paginates via searchPage=N until no new jobs appear.
+    3. /sitemaps/index.xml sitemap — original fallback.
+
+    Errors from each approach are collected and raised if all three return nothing,
+    so verify_report.json shows the actual failure reason instead of silent zeros.
 
     Source shape:
+        source: {ats: icims, url: "https://careers-example.icims.com"}
         source: {ats: icims, url: "https://careers.example.com"}
-    The connector first tries the /api/jobs JSON endpoint (used by iCIMS career sites).
-    If that returns no results, falls back to the sitemap.
     """
     base = src["url"].rstrip("/")
     jobs: list[dict] = []
+    errors: list[str] = []
 
-    # Try the JSON API first
+    # ── Approach 1: JSON /api/jobs (custom-domain portals like careers.alaskaair.com) ──
     api_url = f"{base}/api/jobs"
     try:
         data = client.get_json(api_url)
-        job_list = data if isinstance(data, list) else (data.get("jobs") or data.get("results") or [])
+        job_list = data if isinstance(data, list) else (
+            data.get("jobs") or data.get("results") or data.get("data") or []
+        )
         for j in job_list:
             title = j.get("title") or j.get("job_title") or j.get("name") or ""
             if not title:
@@ -657,15 +662,74 @@ def fetch_icims(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[d
             })
         if jobs:
             return jobs[:max_jobs]
-    except Exception:
-        pass
+    except Exception as e:
+        errors.append(f"api/jobs: {e}")
 
-    # Fallback: sitemap-based discovery (returns stub records for detail fetching)
+    # ── Approach 2: Server-rendered HTML at /jobs/search (*.icims.com hosted portals) ──
+    # iCIMS renders job listings server-side at /jobs/search?ss=1&in_iframe=1.
+    # Job title links follow: <a class="iCIMS_jobTitle" href="/jobs/ID/slug/job">Title</a>
+    # Pagination: add &searchPage=N (stops when a page returns no new jobs).
+    try:
+        seen: set[str] = set()
+        for page_num in range(1, 200):  # safety cap at 199 pages
+            search_url = f"{base}/jobs/search?ss=1&in_iframe=1&searchPage={page_num}"
+            html = client.get_text(search_url)
+
+            # Primary pattern: href before class
+            matches = re.findall(
+                r'href="(/jobs/\d+/[^"]+/job)"[^>]*class="iCIMS_jobTitle"[^>]*>\s*([^<]+)',
+                html,
+            )
+            # Secondary pattern: class before href
+            if not matches:
+                matches = re.findall(
+                    r'class="iCIMS_jobTitle"[^>]*href="(/jobs/\d+/[^"]+/job)"[^>]*>\s*([^<]+)',
+                    html,
+                )
+            # Tertiary: any /jobs/NNN/.../job link with visible label (no class required)
+            if not matches:
+                matches = re.findall(
+                    r'href="(/jobs/\d+/[^"#"]+/job)"[^>]*>\s*([^<\n]{5,120})',
+                    html,
+                )
+
+            new_on_page = 0
+            for path, raw_title in matches:
+                path = path.strip()
+                title = raw_title.strip()
+                if not path or not title or path in seen:
+                    continue
+                seen.add(path)
+                job_url = f"{base}{path}" if path.startswith("/") else path
+                m = re.search(r"/jobs/(\d+)/", path)
+                jobs.append({
+                    "source_id": m.group(1) if m else path,
+                    "title": title,
+                    "url": job_url,
+                    "location": "",
+                    "posted_estimated": True,
+                    "needs_detail": True,
+                    "detail_url": job_url,
+                })
+                new_on_page += 1
+                if len(jobs) >= max_jobs:
+                    break
+
+            if new_on_page == 0:
+                break  # Empty page → pagination complete
+            if len(jobs) >= max_jobs:
+                break
+
+        if jobs:
+            return jobs[:max_jobs]
+    except Exception as e:
+        errors.append(f"html_search: {e}")
+
+    # ── Approach 3: Sitemap (original fallback) ──
     sitemap_url = f"{base}/sitemaps/index.xml"
     try:
         sitemap_xml = client.get_text(sitemap_url)
         urls = re.findall(r"<loc>([^<]+)</loc>", sitemap_xml)
-        # For sitemap index, fetch sub-sitemaps
         sub_urls: list[str] = []
         for u in urls:
             if "sitemap" in u.lower() and u.endswith(".xml"):
@@ -677,7 +741,6 @@ def fetch_icims(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[d
         all_urls = sub_urls or urls
         for url in all_urls:
             if "/jobs/" in url and url not in [j.get("url") for j in jobs]:
-                # Extract ID from URL pattern like /jobs/12345/
                 m = re.search(r"/jobs/(\d+)", url)
                 job_id = m.group(1) if m else url
                 jobs.append({
@@ -690,8 +753,12 @@ def fetch_icims(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[d
                 })
             if len(jobs) >= max_jobs:
                 break
-    except Exception:
-        pass
+    except Exception as e:
+        errors.append(f"sitemap: {e}")
+
+    # Surface errors so verify_report.json shows the real failure, not silent zeros
+    if not jobs and errors:
+        raise Exception("; ".join(errors))
 
     return jobs[:max_jobs]
 
