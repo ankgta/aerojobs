@@ -18,7 +18,7 @@ https://dubaiaerospace.com/careers/
   no known hiring system found on dubaiaerospace.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.sita.aero/careers/
-  source: {ats: icims, url: "https://www.sita.aero"}
+  source: {ats: icims, url: "https://www.icims.com"}
 
 https://careers.amadeus.com/
   no known hiring system found on careers.amadeus.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
@@ -51,7 +51,7 @@ https://www.netjets.com/careers/
   no known hiring system found on www.netjets.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.vistajet.com/careers/
-  source: {ats: icims, url: "https://www.vistajet.com"}
+  source: {ats: icims, url: "https://hub-vistaglobal.icims.com"}
 
 https://www.signatureaviation.com/careers
   could not open: HTTP 404 from https://www.signatureaviation.com/careers
@@ -72,7 +72,7 @@ https://www.thalesgroup.com/en/careers
   no known hiring system found on www.thalesgroup.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://careers.spiritaero.com/
-  source: {ats: icims, url: "https://careers.spiritaero.com"}
+  source: {ats: icims, url: "https://careers-spiritaero.icims.com"}
 
 https://www.gknaerospace.com/en/our-company/careers/
   could not open: HTTP 403 from https://www.gknaerospace.com/en/our-company/careers/
@@ -87,7 +87,7 @@ https://www.dassault-aviation.com/en/dassault-aviation/careers/
   no known hiring system found on www.dassault-aviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.jobyaviation.com/careers/
-  source: {ats: icims, url: "https://www.jobyaviation.com"}
+  source: {ats: icims, url: "https://careers-jobyaviation.icims.com"}
 
 https://vertical-aerospace.com/careers/
   no known hiring system found on vertical-aerospace.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.

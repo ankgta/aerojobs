@@ -1,5 +1,5 @@
 {
- "run": "2026-10-07T18:19:41+00:00",
+ "run": "2026-10-07T18:56:42+00:00",
  "results": [
   {
    "name": "VistaJet",
@@ -9,8 +9,7 @@
     "url": "https://careers-vistaglobal.icims.com"
    },
    "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "error": "Exception: api/jobs: HTTP 404 from https://careers-vistaglobal.icims.com/api/jobs; sitemap: HTTP 404 from https://careers-vistaglobal.icims.com/sitemaps/index.xml"
   },
   {
    "name": "Joby Aviation",
@@ -20,8 +19,7 @@
     "url": "https://careers-jobyaviation.icims.com"
    },
    "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "error": "Exception: api/jobs: HTTP 404 from https://careers-jobyaviation.icims.com/api/jobs; sitemap: HTTP 404 from https://careers-jobyaviation.icims.com/sitemaps/index.xml"
   },
   {
    "name": "SITA",
@@ -31,8 +29,7 @@
     "url": "https://careers-sita.icims.com"
    },
    "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "error": "Exception: api/jobs: robots.txt does not allow https://careers-sita.icims.com/api/jobs; html_search: robots.txt does not allow https://careers-sita.icims.com/jobs/search?ss=1&in_iframe=1&searchPage=1; sitemap: r"
   },
   {
    "name": "dnata",
@@ -42,8 +39,7 @@
     "url": "https://careers-dnata.icims.com"
    },
    "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "error": "Exception: api/jobs: HTTP 404 from https://careers-dnata.icims.com/api/jobs; html_search: HTTP 404 from https://careers-dnata.icims.com/jobs/search?ss=1&in_iframe=1&searchPage=1; sitemap: HTTP 404 from https://c"
   },
   {
    "name": "easyJet",
