@@ -1,37 +1,23 @@
-# Round 4-5 candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
+# Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
+# 7 Oct 2026: Expanded with new aviation-ecosystem candidates whose hiring systems
+# were detected on their public careers pages via fetcher.detect.
 employers:
-  # ---- Taleo Enterprise ----
-  - {name: easyJet, slug: easyjet, type: airline, country: GB, source: {ats: taleo, host: "easyjet.taleo.net", section: "2"}}
-  - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "2"}}
-
-  # ---- Oracle Fusion (ORC) ----
-  # Qatar Airways: taleo.net DNS fails — try their ORC site instead
-  - {name: Qatar Airways, slug: qatar-airways, type: airline, country: QA, source: {ats: oracle, host: "qatarairways.fa.em4.oraclecloud.com", site: "CX_1"}}
-  - {name: Qatar Airways Alt, slug: qatar-airways-alt, type: airline, country: QA, source: {ats: oracle, host: "qatarairways.fa.em2.oraclecloud.com", site: "CX_1"}}
-  # Menzies Aviation: Oracle-based global portal under jmenzies.com
-  - {name: Menzies Aviation, slug: menzies-aviation, type: ground_services, country: GB, source: {ats: oracle, host: "menziesaviation.fa.em2.oraclecloud.com", site: "CX_1"}}
-
   # ---- iCIMS ----
-  - {name: Alaska Airlines, slug: alaska-airlines, type: airline, country: US, source: {ats: icims, url: "https://careers.alaskaair.com"}}
-  # dnata: fix — use pr=1 (not pr=0) for listing; careers-dnata.icims.com
+  - {name: SITA, slug: sita, type: other, country: CH, source: {ats: icims, url: "https://www.sita.aero"}}
+  - {name: VistaJet, slug: vistajet, type: other, country: CH, source: {ats: icims, url: "https://www.vistajet.com"}}
+  - {name: Spirit AeroSystems, slug: spirit-aerosystems, type: manufacturer, country: US, source: {ats: icims, url: "https://careers.spiritaero.com"}}
+  - {name: Joby Aviation, slug: joby-aviation, type: manufacturer, country: US, source: {ats: icims, url: "https://www.jobyaviation.com"}}
+  # also carry the previous detection work:
   - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}}
 
-  # ---- SuccessFactors (SAP) ----
-  - {name: Singapore Airlines, slug: singapore-airlines, type: airline, country: SG, source: {ats: successfactors, url: "https://singaporeair.sapsf.com"}}
-  # ST Engineering: fix site param — try STE instead of STENG
-  - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, source: {ats: successfactors, url: "https://stengg.sapsf.com"}}
+  # ---- Workday ----
+  - {name: Cirium, slug: cirium, type: other, country: GB, source: {ats: workday, url: "https://relx.wd3.myworkdayjobs.com/ciriumcareers"}}
+  - {name: gategroup, slug: gategroup, type: other, country: CH, source: {ats: workday, url: "https://gategroup.wd3.myworkdayjobs.com/GateGroup_External_Careers"}}
+  - {name: World Fuel Services, slug: world-fuel-services, type: other, country: US, source: {ats: workday, url: "https://wfscorp.wd5.myworkdayjobs.com/wfscareers"}}
 
-  # ---- SmartRecruiters ----
-  - {name: Lufthansa Group, slug: lufthansa-group, type: airline, country: DE, source: {ats: smartrecruiters, company: "lufthansa"}}
-
-  # ---- Phenom People (sitemap-based) ----
-  - {name: Southwest Airlines, slug: southwest-airlines, type: airline, country: US, source: {ats: phenom, url: "https://careers.southwestair.com", country: "US"}}
-  - {name: Air Canada, slug: air-canada, type: airline, country: CA, source: {ats: phenom, url: "https://careers.aircanada.com", country: "CA"}}
+  # ---- Older candidates kept to re-check ----
+  - {name: easyJet, slug: easyjet, type: airline, country: GB, source: {ats: taleo, host: "easyjet.taleo.net", section: "2"}}
+  - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "2"}}
   - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, source: {ats: phenom, url: "https://jobs.virginaustralia.com", country: "AU"}}
   - {name: DFW Airport, slug: dfw-airport, type: airport, country: US, source: {ats: phenom, url: "https://dfwcareers.org", country: "US"}}
-
-  # ---- Breezy HR ----
-  - {name: Embraer, slug: embraer, type: manufacturer, country: US, source: {ats: breezy, company: "embraer"}}
-
-  # ---- Gupy (Brazilian ATS) ----
   - {name: Azul Airlines, slug: azul-airlines, type: airline, country: BR, source: {ats: gupy, company_id: "voeazul"}}
