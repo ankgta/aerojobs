@@ -5,7 +5,8 @@ employers:
   # ---- iCIMS - corrected portal URLs ----
   - {name: VistaJet, slug: vistajet, type: other, country: CH, source: {ats: icims, url: "https://careers-vistaglobal.icims.com"}}
   - {name: Joby Aviation, slug: joby-aviation, type: manufacturer, country: US, source: {ats: icims, url: "https://careers-jobyaviation.icims.com"}}
-  - {name: SITA, slug: sita, type: other, country: CH, source: {ats: icims, url: "https://careers-sita.icims.com"}}
+  # careers-sita.icims.com is robots-blocked; trying custom-domain frontend instead
+  - {name: SITA, slug: sita, type: other, country: CH, source: {ats: icims, url: "https://careers.sita.aero"}}
   - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}}
 
   # ---- Older candidates kept to re-check ----
