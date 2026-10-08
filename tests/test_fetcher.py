@@ -506,3 +506,42 @@ def test_gupy_connector():
     assert jobs[0]["country_code"] == "BR"
     assert jobs[0]["employment_type"] == "full_time"
     assert jobs[0]["url"] == "https://voeazul.gupy.io/job/11111"
+
+
+def test_workable_connector():
+    """Workable connector fetches from public REST API."""
+    company = "ryanair"
+    page1 = {
+        "jobs": [
+            {
+                "id": "001",
+                "title": "Cabin Crew (F/M/X)",
+                "url": "https://ryanair.workable.com/jobs/new/001",
+                "location": {
+                    "city": "Dublin",
+                    "country": "Ireland",
+                },
+                "employment_type": "full_time",
+            },
+            {
+                "id": "002",
+                "title": "Ramp Agent",
+                "url": "https://ryanair.workable.com/jobs/new/002",
+                "location": {
+                    "city": "Barcelona",
+                    "country": "Spain",
+                },
+                "employment_type": "contract",
+            },
+        ]
+    }
+    client = FakeClient({"https://www.workable.com/api/v1/companies/ryanair/jobs": page1})
+    jobs = c.fetch_workable(client, {"company": company})
+    assert len(jobs) == 2
+    assert jobs[0]["source_id"] == "001"
+    assert jobs[0]["title"] == "Cabin Crew (F/M/X)"
+    assert jobs[0]["location"] == "Dublin, Ireland"
+    assert jobs[0]["country_code"] == "IE"
+    assert jobs[0]["employment_type"] == "full_time"
+    assert jobs[1]["employment_type"] == "contract"
+    assert jobs[1]["country_code"] == "ES"

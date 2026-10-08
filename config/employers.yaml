@@ -53,7 +53,7 @@ employers:
   - {name: Virgin Atlantic, slug: virgin-atlantic, type: airline, country: GB, source: {ats: oracle, host: "iagime.fa.ocs.oraclecloud.com", site: "CX_1"}, enabled: true}
   - {name: easyJet, slug: easyjet, type: airline, country: GB, enabled: false}
   - {name: Wizz Air, slug: wizz-air, type: airline, country: HU, source: {ats: successfactors, url: "https://careers.wizzair.com"}, enabled: true}
-  - {name: Ryanair, slug: ryanair, type: airline, country: IE, enabled: false}
+  - {name: Ryanair, slug: ryanair, type: airline, country: IE, source: {ats: workable, company: "ryanair"}, enabled: true}
   - {name: Aer Lingus, slug: aer-lingus, type: airline, country: IE, enabled: false}
   - {name: Lufthansa Group, slug: lufthansa-group, type: airline, country: DE, enabled: false}
   - {name: KLM, slug: klm, type: airline, country: NL, enabled: false}

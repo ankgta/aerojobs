@@ -994,6 +994,87 @@ def fetch_gupy(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[di
     return jobs[:max_jobs]
 
 
+# ------------------------------------------------------------------ Workable
+def fetch_workable(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """Workable ATS via public REST API.
+
+    Source shape:
+        source: {ats: workable, company: "ryanair"}  # subdomain of workable.com
+
+    Workable exposes a public JSON API for published positions.
+    No authentication required.
+    """
+    company = src["company"]
+    base_url = f"https://www.workable.com/api/v1/companies/{company}/jobs"
+    jobs: list[dict] = []
+    page = 0
+
+    while len(jobs) < max_jobs:
+        try:
+            data = client.get_json(base_url, params={
+                "state": "published",
+                "limit": 100,
+                "offset": page * 100,
+            })
+        except Exception:
+            break
+
+        postings = data.get("jobs") or []
+        if not postings:
+            break
+
+        for item in postings:
+            if not isinstance(item, dict):
+                continue
+            job_id = str(item.get("id", ""))
+            if not job_id:
+                continue
+
+            # Location parsing
+            location_obj = item.get("location") or {}
+            location = ""
+            country_code = None
+            if isinstance(location_obj, dict):
+                city = location_obj.get("city", "")
+                country = location_obj.get("country", "")
+                if city and country:
+                    location = f"{city}, {country}"
+                elif country:
+                    location = country
+                elif city:
+                    location = city
+                country_code = lookup_country(country) if country else None
+
+            # Employment type
+            employment_type = None
+            employment_raw = item.get("employment_type", "").lower()
+            if "full" in employment_raw:
+                employment_type = "full_time"
+            elif "part" in employment_raw:
+                employment_type = "part_time"
+            elif "contract" in employment_raw:
+                employment_type = "contract"
+
+            jobs.append({
+                "source_id": job_id,
+                "title": item.get("title", "").strip(),
+                "url": item.get("url", ""),
+                "location": location,
+                "country_code": country_code,
+                "posted_date": None,
+                "posted_estimated": True,
+                "employment_type": employment_type,
+            })
+            if len(jobs) >= max_jobs:
+                break
+
+        if len(postings) < 100:
+            break  # Last page
+        page += 1
+
+    return jobs[:max_jobs]
+
+
 CONNECTORS = {
     "workday": (fetch_workday, workday_detail),
     "greenhouse": (fetch_greenhouse, None),
@@ -1007,4 +1088,5 @@ CONNECTORS = {
     "phenom": (fetch_phenom, jsonld_detail),
     "breezy": (fetch_breezy, None),
     "gupy": (fetch_gupy, None),
+    "workable": (fetch_workable, None),
 }
