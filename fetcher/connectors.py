@@ -920,76 +920,141 @@ def fetch_breezy(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[
 def fetch_gupy(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
     """Gupy ATS via public REST API.
 
-    Source shape:
-        source: {ats: gupy, company_id: "voeazul"}  # subdomain of gupy.io
+    Source shape (old API, company_id numeric):
+        source: {ats: gupy, company_id: "12345"}  # numeric ID
 
-    Gupy exposes a public pagination API with no auth for published positions.
+    Source shape (new API, career page name):
+        source: {ats: gupy, career_page_name: "voeazul"}  # subdomain or career page name
+
+    Gupy exposes public job APIs with pagination, no auth required.
+    API changed in 2026; tries new endpoint first, falls back to old.
     """
-    company_id = src["company_id"]
-    base_url = f"https://portal.api.gupy.io/api/v1/jobs"
     jobs: list[dict] = []
-    page = 1
+    career_page_name = src.get("career_page_name")
+    company_id = src.get("company_id")
 
-    while len(jobs) < max_jobs:
-        try:
-            data = client.get_json(base_url, params={
-                "companyId": company_id,
-                "isRemoteWork": "false",
-                "limit": 100,
-                "offset": (page - 1) * 100,
-            })
-        except Exception:
-            break
-
-        items = data if isinstance(data, list) else (data.get("data") or data.get("jobs") or [])
-        if not items:
-            break
-
-        for item in items:
-            if not isinstance(item, dict):
-                continue
-            job_id = str(item.get("id", ""))
-            if not job_id:
-                continue
-            job_url = item.get("jobUrl") or f"https://{company_id}.gupy.io/job/{job_id}"
-            location_parts = []
-            city = item.get("city") or ""
-            state = item.get("state") or ""
-            if city:
-                location_parts.append(city)
-            if state and state != city:
-                location_parts.append(state)
-            location = ", ".join(location_parts)
-            # Gupy is Brazil-based; default BR unless specified
-            country_code = src.get("country", "BR").upper()
-
-            work_type = (item.get("type") or "").lower()
-            employment_type = None
-            if "effective" in work_type or "full" in work_type or "clt" in work_type:
-                employment_type = "full_time"
-            elif "part" in work_type:
-                employment_type = "part_time"
-            elif "intern" in work_type or "estagi" in work_type:
-                employment_type = "internship"
-
-            jobs.append({
-                "source_id": job_id,
-                "title": item.get("name", ""),
-                "url": job_url,
-                "location": location,
-                "country_code": country_code,
-                "posted_date": item.get("publishedDate"),
-                "posted_estimated": False,
-                "closing_date": item.get("applicationDeadline"),
-                "work_mode": None,
-                "employment_type": employment_type,
-            })
-            if len(jobs) >= max_jobs:
+    # Determine which API to use
+    if career_page_name:
+        # New API: portal.gupy.io/api/job-search/jobs?careerPageName=...
+        base_url = "https://portal.gupy.io/api/job-search/jobs"
+        page = 0
+        while len(jobs) < max_jobs:
+            try:
+                data = client.get_json(base_url, params={
+                    "careerPageName": career_page_name,
+                    "limit": 100,
+                    "offset": page * 100,
+                })
+            except Exception:
                 break
 
-        if len(items) < 100:
-            break  # Last page
-        page += 1
+            items = data if isinstance(data, list) else (data.get("data") or data.get("jobs") or [])
+            if not items:
+                break
+
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                job_id = str(item.get("id", ""))
+                if not job_id:
+                    continue
+                job_url = item.get("jobUrl") or f"https://{career_page_name}.gupy.io/job/{job_id}"
+                location_parts = []
+                city = item.get("city") or ""
+                state = item.get("state") or ""
+                if city:
+                    location_parts.append(city)
+                if state and state != city:
+                    location_parts.append(state)
+                location = ", ".join(location_parts)
+                country_code = src.get("country", "BR").upper()
+
+                work_type = (item.get("type") or "").lower()
+                employment_type = None
+                if "effective" in work_type or "full" in work_type or "clt" in work_type:
+                    employment_type = "full_time"
+                elif "part" in work_type:
+                    employment_type = "part_time"
+                elif "intern" in work_type or "estagi" in work_type:
+                    employment_type = "internship"
+
+                jobs.append({
+                    "source_id": job_id,
+                    "title": item.get("name", ""),
+                    "url": job_url,
+                    "location": location,
+                    "country_code": country_code,
+                    "posted_date": item.get("publishedDate"),
+                    "posted_estimated": False,
+                    "employment_type": employment_type,
+                })
+                if len(jobs) >= max_jobs:
+                    break
+
+            if len(items) < 100:
+                break
+            page += 1
+
+    elif company_id:
+        # Old API: portal.api.gupy.io/api/v1/jobs?companyId=... (deprecated)
+        base_url = "https://portal.api.gupy.io/api/v1/jobs"
+        page = 1
+        while len(jobs) < max_jobs:
+            try:
+                data = client.get_json(base_url, params={
+                    "companyId": company_id,
+                    "limit": 100,
+                    "offset": (page - 1) * 100,
+                })
+            except Exception:
+                break
+
+            items = data if isinstance(data, list) else (data.get("data") or data.get("jobs") or [])
+            if not items:
+                break
+
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                job_id = str(item.get("id", ""))
+                if not job_id:
+                    continue
+                job_url = item.get("jobUrl") or ""
+                location_parts = []
+                city = item.get("city") or ""
+                state = item.get("state") or ""
+                if city:
+                    location_parts.append(city)
+                if state and state != city:
+                    location_parts.append(state)
+                location = ", ".join(location_parts)
+                country_code = src.get("country", "BR").upper()
+
+                work_type = (item.get("type") or "").lower()
+                employment_type = None
+                if "effective" in work_type or "full" in work_type or "clt" in work_type:
+                    employment_type = "full_time"
+                elif "part" in work_type:
+                    employment_type = "part_time"
+                elif "intern" in work_type or "estagi" in work_type:
+                    employment_type = "internship"
+
+                jobs.append({
+                    "source_id": job_id,
+                    "title": item.get("name", ""),
+                    "url": job_url,
+                    "location": location,
+                    "country_code": country_code,
+                    "posted_date": item.get("publishedDate"),
+                    "posted_estimated": False,
+                    "employment_type": employment_type,
+                })
+                if len(jobs) >= max_jobs:
+                    break
+
+            if len(items) < 100:
+                break
+            page += 1
 
     return jobs[:max_jobs]
 

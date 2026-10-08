@@ -46,7 +46,7 @@ employers:
   - {name: Avianca, slug: avianca, type: airline, country: CO, enabled: false}
   - {name: Copa Airlines, slug: copa-airlines, type: airline, country: PA, enabled: false}
   - {name: Aeroméxico, slug: aeromexico, type: airline, country: MX, enabled: false}
-  - {name: Azul, slug: azul, type: airline, country: BR, enabled: false}
+  - {name: Azul, slug: azul, type: airline, country: BR, source: {ats: gupy, career_page_name: "voeazul"}, enabled: true}
 
   # ---------- Airlines: Europe ----------
   - {name: British Airways, slug: british-airways, type: airline, country: GB, enabled: false}
