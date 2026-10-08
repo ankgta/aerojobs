@@ -1140,6 +1140,100 @@ def fetch_workable(client: PoliteClient, src: dict, max_jobs: int = 3000) -> lis
     return jobs[:max_jobs]
 
 
+def fetch_cornerstone(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """Cornerstone OnDemand ATS via public REST API.
+
+    Source shape:
+        source: {ats: cornerstone, url: "https://jobs.company.com"}
+
+    Cornerstone exposes public job APIs with pagination, no auth required.
+    """
+    jobs: list[dict] = []
+    base_url = src["url"].rstrip("/") + "/api/v1/jobs"  # Try standard endpoint
+    page = 1
+
+    while len(jobs) < max_jobs:
+        try:
+            data = client.get_json(base_url, params={
+                "pageNumber": page,
+                "pageSize": 50,
+            })
+        except Exception:
+            break
+
+        results = data.get("results") or []
+        if not results:
+            break
+
+        for item in results:
+            if not isinstance(item, dict):
+                continue
+            job_id = str(item.get("id") or item.get("requisitionId", ""))
+            if not job_id:
+                continue
+
+            # URL: may be relative or absolute
+            job_url = item.get("jobUrl") or ""
+            if job_url and not job_url.startswith("http"):
+                job_url = src["url"].rstrip("/") + job_url
+            elif not job_url:
+                job_url = f"{src['url'].rstrip('/')}/jobs/{job_id}"
+
+            # Location parsing
+            location_obj = item.get("location") or {}
+            city = location_obj.get("city") or ""
+            state = location_obj.get("state") or ""
+            location_parts = []
+            if city:
+                location_parts.append(city)
+            if state and state != city:
+                location_parts.append(state)
+            location = ", ".join(location_parts)
+
+            # Country from location or fallback to source
+            country_code = location_obj.get("country") or src.get("country", "AU")
+            if len(country_code) > 2:
+                country_code = country_code[:2].upper()
+            else:
+                country_code = country_code.upper()
+
+            # Employment type
+            job_type = (item.get("jobType") or "").lower()
+            employment_type = None
+            if "full" in job_type or "permanent" in job_type:
+                employment_type = "full_time"
+            elif "part" in job_type:
+                employment_type = "part_time"
+            elif "contract" in job_type or "fixed" in job_type:
+                employment_type = "contract"
+            elif "intern" in job_type:
+                employment_type = "internship"
+
+            jobs.append({
+                "source_id": job_id,
+                "title": item.get("title", ""),
+                "url": job_url,
+                "location": location,
+                "country_code": country_code,
+                "posted_date": item.get("postedDate"),
+                "posted_estimated": False,
+                "employment_type": employment_type,
+            })
+            if len(jobs) >= max_jobs:
+                break
+
+        # Check pagination info
+        paging = data.get("paging") or {}
+        total_results = paging.get("totalResults", 0)
+        page_size = paging.get("pageSize", 50)
+        if not total_results or (page * page_size) >= total_results:
+            break
+
+        page += 1
+
+    return jobs
+
+
 CONNECTORS = {
     "workday": (fetch_workday, workday_detail),
     "greenhouse": (fetch_greenhouse, None),
@@ -1154,4 +1248,5 @@ CONNECTORS = {
     "breezy": (fetch_breezy, None),
     "gupy": (fetch_gupy, None),
     "workable": (fetch_workable, None),
+    "cornerstone": (fetch_cornerstone, None),
 }

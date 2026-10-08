@@ -1,5 +1,6 @@
 # Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
 # 8 Oct 2026 - Full employer research round. VistaJet & Joby tested + live.
+# 8 Oct 2026 - Cornerstone connector built; Virgin Australia added to testable.
 # Notes on failures below.
 employers:
   # ---- TESTABLE: corrected URLs after research ----
@@ -7,11 +8,11 @@ employers:
   - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "sv_externalcareersection"}, notes: "section corrected from '2' to 'sv_externalcareersection'"}
   - {name: DFW Airport, slug: dfw-airport, type: airport, country: US, source: {ats: phenom, url: "https://careers.dfwairport.com", country: "US"}, notes: "URL corrected from dfwcareers.org to careers.dfwairport.com"}
   - {name: Ryanair, slug: ryanair, type: airline, country: IE, source: {ats: workable, company: "ryanair"}, notes: "ATS confirmed as Workable; testing if connector exists"}
+  - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, source: {ats: cornerstone, url: "https://jobs.virginaustralia.com"}, notes: "Cornerstone connector built and tested"}
 
   # ---- NOT TESTABLE: blocked or unsupported ATS ----
   # SITA - JavaScript-rendered frontend on careers.sita.aero, backend blocked at careers-sita.icims.com (robots.txt)
   # easyJet - Taleo section "2" is correct; issue is connector logic or no jobs posted (debug needed)
-  # Virgin Australia - Uses Cornerstone OnDemand, not Phenom (needs new connector)
   # Azul Airlines - Gupy API changed; needs updated connector (portal.gupy.io/api/job-search/jobs endpoint)
   # Turkish Airlines - Custom HRPeak backend (no standard ATS support)
   # Kenya Airways - Oracle iRecruitment on-premise (no public API)
