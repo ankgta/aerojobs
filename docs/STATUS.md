@@ -113,12 +113,18 @@ Dependabot pull request #4 (Markdown 3.10.3 → 3.11) merged 5 Oct 2026.
 
 ## Next steps, in order
 
-1. Owner answers the decisions above.
-2. Grow airline coverage: SuccessFactors and Taleo readers, then run the .aero directory tool.
-3. Write the remaining ~12 guides (skill `aerojobs-write-guides`), owner edits them.
-4. Set up Search Console and Analytics; submit the sitemap.
-5. Before passing ~15,000 jobs: generate job pages on demand (Cloudflare 20,000-file limit).
-6. Apply for AdSense.
+1. **Push remaining candidate employers in batches** (priority: maximize employer count):
+   - **Batch 1 (testing now):** Ryanair (Workable connector just added)
+   - **Batch 2 (ready after connectors):** Azul (Gupy API), Virgin Australia (Cornerstone)
+   - **Batch 3 (debug/config):** dnata (iCIMS), Saudia (Taleo), easyJet (Taleo)
+   - **Batch 4 (long-term):** Turkish Airlines, Kenya Airways, SITA, Air India, Cathay Pacific (custom/incompatible ATS)
+2. Build new connectors: Workable (done 8 Oct), Cornerstone OnDemand, updated Gupy API
+3. Debug Taleo connector (easyJet, Saudia) and iCIMS (dnata)
+4. Write the remaining ~8 guides (skill `aerojobs-write-guides`), owner edits them (AdSense approval blocker).
+5. Run .aero directory tool to discover new employers (tool ready, never run).
+6. Set up Search Console and Analytics; submit the sitemap.
+7. Before passing ~15,000 jobs: generate job pages on demand (Cloudflare 20,000-file limit).
+8. Apply for AdSense.
 
 ## Backlog (look into later)
 

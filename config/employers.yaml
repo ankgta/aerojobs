@@ -51,7 +51,7 @@ employers:
   # ---------- Airlines: Europe ----------
   - {name: British Airways, slug: british-airways, type: airline, country: GB, enabled: false}
   - {name: Virgin Atlantic, slug: virgin-atlantic, type: airline, country: GB, source: {ats: oracle, host: "iagime.fa.ocs.oraclecloud.com", site: "CX_1"}, enabled: true}
-  - {name: easyJet, slug: easyjet, type: airline, country: GB, enabled: false}
+  - {name: easyJet, slug: easyjet, type: airline, country: GB, source: {ats: taleo, host: "easyjet.taleo.net", section: "2"}, enabled: true}
   - {name: Wizz Air, slug: wizz-air, type: airline, country: HU, source: {ats: successfactors, url: "https://careers.wizzair.com"}, enabled: true}
   - {name: Ryanair, slug: ryanair, type: airline, country: IE, source: {ats: workable, company: "ryanair"}, enabled: true}
   - {name: Aer Lingus, slug: aer-lingus, type: airline, country: IE, enabled: false}
@@ -64,7 +64,7 @@ employers:
   - {name: Etihad Airways, slug: etihad, type: airline, country: AE, enabled: false}
   - {name: flydubai, slug: flydubai, type: airline, country: AE, enabled: false}
   - {name: Qatar Airways, slug: qatar-airways, type: airline, country: QA, enabled: false}
-  - {name: Saudia, slug: saudia, type: airline, country: SA, enabled: false}
+  - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "sv_externalcareersection"}, enabled: true}
   - {name: Ethiopian Airlines, slug: ethiopian-airlines, type: airline, country: ET, enabled: false}
   - {name: Kenya Airways, slug: kenya-airways, type: airline, country: KE, enabled: false}
   - {name: South African Airways, slug: south-african-airways, type: airline, country: ZA, enabled: false}
@@ -89,7 +89,7 @@ employers:
   - {name: StandardAero, slug: standardaero, type: mro, country: US, source: {ats: oracle, host: "cva.fa.us1.oraclecloud.com", site: "CX_3"}, enabled: true}
   - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, enabled: false}
   - {name: AAR, slug: aar, type: mro, country: US, enabled: false}
-  - {name: dnata, slug: dnata, type: ground_services, country: AE, enabled: false}
+  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, enabled: true}
   - {name: Swissport, slug: swissport, type: ground_services, country: CH, source: {ats: successfactors, url: "https://jobs.swissport.com"}, enabled: true}
   - {name: Menzies Aviation, slug: menzies-aviation, type: ground_services, country: GB, enabled: false}
 
