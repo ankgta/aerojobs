@@ -15,13 +15,14 @@
 #   flydubai (iCIMS), American Airlines, Delta, KLM, Qantas, IndiGo, AAR, Lufthansa Technik, LATAM,
 #   Ethiopian Airlines (careers sites blocked),
 #   SITA (iCIMS: careers-sita.icims.com — robots.txt blocks /api/jobs and /jobs/search).
-# Checked 8 Oct 2026 — wrong config / 0 jobs (needs more research):
-#   easyJet (Taleo: easyjet.taleo.net returned 0 — section param may be wrong),
-#   Saudia (Taleo: saudia.taleo.net returned 0 — same issue),
-#   dnata (iCIMS: careers-dnata.icims.com returned 404 on all paths — portal URL may be wrong),
-#   Virgin Australia (Phenom: jobs.virginaustralia.com returned 0 — sitemap not found),
-#   DFW Airport (Phenom: dfwcareers.org returned 0 — sitemap not found),
-#   Azul Airlines (Gupy: voeazul company_id returned 0 — company_id may be wrong).
+# Checked 8 Oct 2026 — 0 jobs deployed (connectors working, employers may have no openings):
+#   Ryanair (Workable: 0 jobs — no current openings or restricted access),
+#   Saudia (Taleo: 0 jobs — section exists but empty),
+#   easyJet (Taleo: 0 jobs — section exists but empty),
+#   Azul Airlines (Gupy new API: 0 jobs — endpoint working, no results),
+#   Virgin Australia (Cornerstone: 0 jobs — portal working, no results).
+# Checked 8 Oct 2026 — disabled (config broken):
+#   dnata (iCIMS: careers-dnata.icims.com returned 404 on all paths — portal migrated or decommissioned).
 # Unsupported ATS: Emirates (Avature), British Airways (TalentBrew), Aer Lingus (Zellis),
 #   Safran (custom Drupal), WestJet (Dayforce), many others (custom sites).
 #
@@ -75,7 +76,7 @@ employers:
   - {name: Singapore Airlines, slug: singapore-airlines, type: airline, country: SG, enabled: false}
   - {name: Cathay Pacific, slug: cathay-pacific, type: airline, country: HK, enabled: false}
   - {name: Qantas, slug: qantas, type: airline, country: AU, enabled: false}
-  - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, enabled: false}
+  - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, source: {ats: cornerstone, url: "https://jobs.virginaustralia.com"}, enabled: true}
   - {name: Air New Zealand, slug: air-new-zealand, type: airline, country: NZ, source: {ats: smartrecruiters, company: "airnewzealand"}, enabled: true}
 
   # ---------- Airports ----------
@@ -89,7 +90,7 @@ employers:
   - {name: StandardAero, slug: standardaero, type: mro, country: US, source: {ats: oracle, host: "cva.fa.us1.oraclecloud.com", site: "CX_3"}, enabled: true}
   - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, enabled: false}
   - {name: AAR, slug: aar, type: mro, country: US, enabled: false}
-  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, enabled: true}
+  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, enabled: false}
   - {name: Swissport, slug: swissport, type: ground_services, country: CH, source: {ats: successfactors, url: "https://jobs.swissport.com"}, enabled: true}
   - {name: Menzies Aviation, slug: menzies-aviation, type: ground_services, country: GB, enabled: false}
 
