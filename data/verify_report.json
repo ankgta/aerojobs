@@ -1,5 +1,5 @@
 {
- "run": "2026-10-07T19:34:25+00:00",
+ "run": "2026-10-08T02:37:34+00:00",
  "results": [
   {
    "name": "VistaJet",
@@ -65,25 +65,25 @@
     "url": "https://careers-jobyaviation.icims.com"
    },
    "ok": true,
-   "jobs_found": 158,
+   "jobs_found": 156,
    "sample": [
     {
      "title": "Aircraft Integration Assembly Technician",
      "location": "Marina, CA, US",
      "url": "https://careers-jobyaviation.icims.com/jobs/5248/aircraft-integration-assembly-technician/job",
-     "posted": "2024-10-07"
+     "posted": "2024-10-08"
     },
     {
      "title": "Aircraft Maintenance Training Manager",
      "location": "Marina, CA, US",
      "url": "https://careers-jobyaviation.icims.com/jobs/4815/aircraft-maintenance-training-manager/job",
-     "posted": "2024-10-07"
+     "posted": "2024-10-08"
     },
     {
      "title": "Aircraft Mechanic",
      "location": "Marina, CA, US",
      "url": "https://careers-jobyaviation.icims.com/jobs/4526/aircraft-mechanic/job",
-     "posted": "2024-10-07"
+     "posted": "2024-10-08"
     },
     {
      "title": "Aircraft Technical Project Manager",
@@ -106,8 +106,8 @@
    ],
    "detail_sample": {
     "country_code": "US",
-    "posted_date": "2024-10-07",
-    "closing_date": "2027-10-07",
+    "posted_date": "2024-10-08",
+    "closing_date": "2027-10-08",
     "work_mode": null,
     "employment_type": "FULL_TIME",
     "location": "Marina, CA, US"
@@ -118,10 +118,10 @@
    "slug": "sita",
    "source": {
     "ats": "icims",
-    "url": "https://careers-sita.icims.com"
+    "url": "https://careers.sita.aero"
    },
    "ok": false,
-   "error": "Exception: api/jobs: robots.txt does not allow https://careers-sita.icims.com/api/jobs; html_search: robots.txt does not allow https://careers-sita.icims.com/jobs/search?ss=1&in_iframe=1; sitemap: robots.txt doe"
+   "error": "Exception: html_search: HTTP 404 from https://careers.sita.aero/jobs/search?ss=1&in_iframe=1"
   },
   {
    "name": "dnata",
