@@ -82,7 +82,7 @@ employers:
   - {name: Heathrow Airport, slug: heathrow, type: airport, country: GB, source: {ats: oracle, host: "encd.fa.em3.oraclecloud.com", site: "CX_3001"}, enabled: true}
   - {name: Dubai Airports, slug: dubai-airports, type: airport, country: AE, enabled: false}
   - {name: Changi Airport Group, slug: changi-airport-group, type: airport, country: SG, source: {ats: successfactors, url: "https://jobs.changiairport.com"}, enabled: true}
-  - {name: Dallas Fort Worth International Airport, slug: dfw-airport, type: airport, country: US, enabled: false}
+  - {name: Dallas Fort Worth International Airport, slug: dfw-airport, type: airport, country: US, source: {ats: phenom, url: "https://careers.dfwairport.com", country: "US"}, enabled: true}
 
   # ---------- Maintenance (MRO) and ground services ----------
   - {name: Lufthansa Technik, slug: lufthansa-technik, type: mro, country: DE, enabled: false}

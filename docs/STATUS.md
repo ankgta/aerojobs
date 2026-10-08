@@ -1,36 +1,33 @@
 # Status
 
-Last updated: 7 October 2026. Update this file whenever something changes.
+Last updated: 8 October 2026. Update this file whenever something changes.
 
 ## In one line
 
-AeroJobs is **live at https://aerojobs.work** with jobs from **25 employers**, refreshed twice a day.
-7 Oct 2026: Breezy HR, iCIMS and Phenom connectors deployed — Southwest Airlines, Alaska Airlines,
-Air Canada and Embraer switched on (+221 jobs).
+AeroJobs is **live at https://aerojobs.work** with jobs from **26 employers**, refreshed twice a day.
+8 Oct 2026: DFW Airport (Phenom) switched on (+75 jobs). Full employer research completed; remaining candidates blocked or need new connectors (Workable, Cornerstone, updated Gupy, Taleo debug).
 
-## Live numbers (6 Oct 2026, 05:07 UTC fetch — next fetch will include new employers)
+## Live numbers (8 Oct 2026 after DFW switch-on — next full fetch in progress)
 
 | Measure | Value |
 | --- | --- |
-| Live jobs | 4,373 |
-| Employers switched on | 21 fetching + 1 blocked (Air New Zealand) = 22 enabled, of 65 listed |
-| Countries with jobs | 46 |
-| Jobs with a known country | 93% |
-| Jobs whose role is unclear (shown as Corporate) | 33% |
+| Live jobs (estimated) | ~4,448 |
+| Employers switched on | 26 live, of 65 listed |
+| Countries with jobs | 46+ |
+| Jobs with a known country | 93%+ |
+| Jobs whose role is unclear (shown as Corporate) | ~33% |
 | Pilot jobs / cabin crew jobs | 7 / 0 |
 | Guides written | 7 of about 15 |
-| Website test runs passing | 116 of 117 (1 known Safari analytics item) |
-| Security tests passing | 28 of 29 (1 not run on purpose: DDoS) |
 
 Full detail: `docs/reports/AeroJobs-Test-Report.xlsx`.
 
 ## Employers
 
-**Live and fetching (25):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
+**Live and fetching (26):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
 Rolls-Royce (459), Swissport (400), CAE (365), StandardAero (198), Embraer (73), Archer Aviation (149),
 Air Canada (57), ICAO (98), Changi Airport Group (82), Southwest Airlines (51), Wizz Air (70),
-JetBlue (60), Alaska Airlines (40), NAV Canada (26), Skyryse (19), Heathrow Airport (18), Supernal (7),
-Heart Aerospace (6), Wisk Aero (3), Virgin Atlantic (3).
+JetBlue (60), Alaska Airlines (40), NAV Canada (26), Skyryse (19), Heathrow Airport (18), DFW Airport (75),
+Supernal (7), Heart Aerospace (6), Wisk Aero (3), Virgin Atlantic (3).
 
 **Enabled but failing — in backlog (1):** Air New Zealand (SmartRecruiters). Our fetcher's user agent
 is blocked by `api.smartrecruiters.com/robots.txt`. Kept enabled so we remember to look into it. See
@@ -48,6 +45,21 @@ SuccessFactors employer.
 
 **New 7 Oct 2026, batch 4 (4 live):** Southwest Airlines (51), Alaska Airlines (40), Air Canada (57) —
 all via new Phenom/iCIMS connectors. Embraer (73 jobs) — Breezy HR connector. Net ~+221 jobs.
+
+**New 8 Oct 2026, batch 5 (1 live):** DFW Airport (75 jobs, Phenom).
+
+**Candidates researched 8 Oct 2026 - results:**
+- ✓ **DFW Airport (75)** - switched on
+- ✗ **dnata** - iCIMS portal exists but still returns 0 jobs (needs debugging)
+- ✗ **Saudia** - Taleo section corrected to `sv_externalcareersection` but still 0 jobs (or migrated away)
+- ✗ **Ryanair** - Confirmed Workable ATS but no Workable connector available
+- ✗ **Virgin Australia** - Uses Cornerstone OnDemand (not Phenom); needs new connector
+- ✗ **Azul Airlines** - Gupy API changed; existing connector outdated
+- ✗ **SITA** - JS-rendered frontend + robots-blocked backend; unreachable
+- ✗ **easyJet** - Taleo section correct but 0 jobs (needs investigation)
+- ✗ **Turkish Airlines, Kenya Airways** - Custom/on-prem ATS (no connectors)
+- ✗ **Air India** - SuccessFactors with unique `/aix/` template (incompatible with existing SF connector)
+- ? **Cathay Pacific** - Likely Phenom but needs browser network inspection to confirm tenant ID
 
 **Blocked by their own rules (robots.txt), so left off:** American Airlines, Delta, KLM, Qantas, IndiGo,
 LATAM, Ethiopian, AAR, Lufthansa Technik (careers sites); Etihad (SmartRecruiters API); Qatar Airways,
