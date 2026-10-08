@@ -1,5 +1,5 @@
 {
- "run": "2026-10-08T15:02:45+00:00",
+ "run": "2026-10-08T15:54:20+00:00",
  "results": [
   {
    "name": "dnata",
@@ -86,6 +86,17 @@
    "source": {
     "ats": "workable",
     "company": "ryanair"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Virgin Australia",
+   "slug": "virgin-australia",
+   "source": {
+    "ats": "cornerstone",
+    "url": "https://jobs.virginaustralia.com"
    },
    "ok": false,
    "jobs_found": 0,
