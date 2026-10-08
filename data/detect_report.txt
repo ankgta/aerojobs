@@ -33,7 +33,7 @@ https://www.navblue.aero/careers/
   no known hiring system found on www.navblue.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://ibsplc.com/careers/
-  no known hiring system found on ibsplc.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+  could not open: HTTP 404 from https://ibsplc.com/careers/
 
 https://www.cirium.com/careers/
   source: {ats: workday, url: "https://relx.wd3.myworkdayjobs.com/ciriumcareers"}

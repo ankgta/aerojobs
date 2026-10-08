@@ -1,128 +1,6 @@
 {
- "run": "2026-10-08T02:37:34+00:00",
+ "run": "2026-10-08T14:43:36+00:00",
  "results": [
-  {
-   "name": "VistaJet",
-   "slug": "vistajet",
-   "source": {
-    "ats": "icims",
-    "url": "https://careers-vistaglobal.icims.com"
-   },
-   "ok": true,
-   "jobs_found": 53,
-   "sample": [
-    {
-     "title": "Technical Preparation Engineer",
-     "location": "",
-     "url": "https://careers-vistaglobal.icims.com/jobs/6145/technical-preparation-engineer/job",
-     "posted": null
-    },
-    {
-     "title": "Maintenance Operations Controller",
-     "location": "",
-     "url": "https://careers-vistaglobal.icims.com/jobs/6144/maintenance-operations-controller/job",
-     "posted": null
-    },
-    {
-     "title": "Supply Chain Manager",
-     "location": "",
-     "url": "https://careers-vistaglobal.icims.com/jobs/6140/supply-chain-manager/job",
-     "posted": null
-    },
-    {
-     "title": "Head of Risk and Controls",
-     "location": "",
-     "url": "https://careers-vistaglobal.icims.com/jobs/6131/head-of-risk-and-controls/job",
-     "posted": null
-    },
-    {
-     "title": "Aircraft Mechanic",
-     "location": "",
-     "url": "https://careers-vistaglobal.icims.com/jobs/6129/aircraft-mechanic/job",
-     "posted": null
-    },
-    {
-     "title": "Fleet Sales Executive",
-     "location": "",
-     "url": "https://careers-vistaglobal.icims.com/jobs/6119/fleet-sales-executive/job",
-     "posted": null
-    }
-   ],
-   "detail_sample": {
-    "country_code": null,
-    "posted_date": null,
-    "closing_date": null,
-    "work_mode": null,
-    "employment_type": null,
-    "location": null
-   }
-  },
-  {
-   "name": "Joby Aviation",
-   "slug": "joby-aviation",
-   "source": {
-    "ats": "icims",
-    "url": "https://careers-jobyaviation.icims.com"
-   },
-   "ok": true,
-   "jobs_found": 156,
-   "sample": [
-    {
-     "title": "Aircraft Integration Assembly Technician",
-     "location": "Marina, CA, US",
-     "url": "https://careers-jobyaviation.icims.com/jobs/5248/aircraft-integration-assembly-technician/job",
-     "posted": "2024-10-08"
-    },
-    {
-     "title": "Aircraft Maintenance Training Manager",
-     "location": "Marina, CA, US",
-     "url": "https://careers-jobyaviation.icims.com/jobs/4815/aircraft-maintenance-training-manager/job",
-     "posted": "2024-10-08"
-    },
-    {
-     "title": "Aircraft Mechanic",
-     "location": "Marina, CA, US",
-     "url": "https://careers-jobyaviation.icims.com/jobs/4526/aircraft-mechanic/job",
-     "posted": "2024-10-08"
-    },
-    {
-     "title": "Aircraft Technical Project Manager",
-     "location": "",
-     "url": "https://careers-jobyaviation.icims.com/jobs/5324/aircraft-technical-project-manager/job",
-     "posted": null
-    },
-    {
-     "title": "Aircraft Technical Support Engineer",
-     "location": "",
-     "url": "https://careers-jobyaviation.icims.com/jobs/5419/aircraft-technical-support-engineer/job",
-     "posted": null
-    },
-    {
-     "title": "Autonomous Aircraft Systems Engineering Manager",
-     "location": "",
-     "url": "https://careers-jobyaviation.icims.com/jobs/5448/autonomous-aircraft-systems-engineering-manager/job",
-     "posted": null
-    }
-   ],
-   "detail_sample": {
-    "country_code": "US",
-    "posted_date": "2024-10-08",
-    "closing_date": "2027-10-08",
-    "work_mode": null,
-    "employment_type": "FULL_TIME",
-    "location": "Marina, CA, US"
-   }
-  },
-  {
-   "name": "SITA",
-   "slug": "sita",
-   "source": {
-    "ats": "icims",
-    "url": "https://careers.sita.aero"
-   },
-   "ok": false,
-   "error": "Exception: html_search: HTTP 404 from https://careers.sita.aero/jobs/search?ss=1&in_iframe=1"
-  },
   {
    "name": "dnata",
    "slug": "dnata",
@@ -134,36 +12,12 @@
    "error": "Exception: api/jobs: HTTP 404 from https://careers-dnata.icims.com/api/jobs; html_search: HTTP 404 from https://careers-dnata.icims.com/jobs/search?ss=1&in_iframe=1; sitemap: HTTP 404 from https://careers-dnata."
   },
   {
-   "name": "easyJet",
-   "slug": "easyjet",
-   "source": {
-    "ats": "taleo",
-    "host": "easyjet.taleo.net",
-    "section": "2"
-   },
-   "ok": false,
-   "jobs_found": 0,
-   "sample": []
-  },
-  {
    "name": "Saudia",
    "slug": "saudia",
    "source": {
     "ats": "taleo",
     "host": "saudia.taleo.net",
-    "section": "2"
-   },
-   "ok": false,
-   "jobs_found": 0,
-   "sample": []
-  },
-  {
-   "name": "Virgin Australia",
-   "slug": "virgin-australia",
-   "source": {
-    "ats": "phenom",
-    "url": "https://jobs.virginaustralia.com",
-    "country": "AU"
+    "section": "sv_externalcareersection"
    },
    "ok": false,
    "jobs_found": 0,
@@ -174,23 +28,67 @@
    "slug": "dfw-airport",
    "source": {
     "ats": "phenom",
-    "url": "https://dfwcareers.org",
+    "url": "https://careers.dfwairport.com",
     "country": "US"
    },
-   "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "ok": true,
+   "jobs_found": 75,
+   "sample": [
+    {
+     "title": "2027 Undergraduate Summer Internship- Technology Project Management",
+     "location": "DFW Airport, Texas, United States of America",
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102111EXTERNALENUS/2027-Undergraduate-Summer-Internship-Technology-Project-Management",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "2027 Undergraduate Internship - Geospatial Data",
+     "location": "DFW Airport, Texas, United States of America",
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102119EXTERNALENUS/2027-Undergraduate-Internship-Geospatial-Data",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "2027 Undergraduate Internship - Marketing",
+     "location": "DFW Airport, Texas, United States of America",
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102135EXTERNALENUS/2027-Undergraduate-Internship-Marketing",
+     "posted": "2026-10-05"
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102139EXTERNALENUS/2027-Undergraduate-Internship-Airport-Facilities-Maintenance",
+     "posted": null
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR101993EXTERNALENUS/Senior-Associate-Full-Stack-Engineer-Appian-Salesforce",
+     "posted": null
+    },
+    {
+     "title": "",
+     "location": null,
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102047EXTERNALENUS/Environmental-Project-Manager-Noise",
+     "posted": null
+    }
+   ],
+   "detail_sample": {
+    "country_code": "US",
+    "posted_date": "2026-10-05",
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": "FULL_TIME",
+    "location": "DFW Airport, Texas, United States of America"
+   }
   },
   {
-   "name": "Azul Airlines",
-   "slug": "azul-airlines",
+   "name": "Ryanair",
+   "slug": "ryanair",
    "source": {
-    "ats": "gupy",
-    "company_id": "voeazul"
+    "ats": "workable",
+    "company": "ryanair"
    },
    "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "error": "unknown hiring system 'workable'"
   }
  ]
 }
