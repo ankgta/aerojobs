@@ -1,17 +1,19 @@
 # Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
-# 7 Oct 2026: Round 2 - corrected iCIMS URLs for VistaJet, Joby, trying SITA.
-# Spirit AeroSystems dropped - Boeing completed acquisition Dec 2025, jobs moving to Boeing portal.
+# 8 Oct 2026 - Full employer research round. VistaJet & Joby tested + live.
+# Notes on failures below.
 employers:
-  # ---- iCIMS - corrected portal URLs ----
-  - {name: VistaJet, slug: vistajet, type: other, country: CH, source: {ats: icims, url: "https://careers-vistaglobal.icims.com"}}
-  - {name: Joby Aviation, slug: joby-aviation, type: manufacturer, country: US, source: {ats: icims, url: "https://careers-jobyaviation.icims.com"}}
-  # careers-sita.icims.com is robots-blocked; trying custom-domain frontend instead
-  - {name: SITA, slug: sita, type: other, country: CH, source: {ats: icims, url: "https://careers.sita.aero"}}
-  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}}
+  # ---- TESTABLE: corrected URLs after research ----
+  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, notes: "iCIMS portal is correct; re-testing after endpoint fix"}
+  - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "sv_externalcareersection"}, notes: "section corrected from '2' to 'sv_externalcareersection'"}
+  - {name: DFW Airport, slug: dfw-airport, type: airport, country: US, source: {ats: phenom, url: "https://careers.dfwairport.com", country: "US"}, notes: "URL corrected from dfwcareers.org to careers.dfwairport.com"}
+  - {name: Ryanair, slug: ryanair, type: airline, country: IE, source: {ats: workable, company: "ryanair"}, notes: "ATS confirmed as Workable; testing if connector exists"}
 
-  # ---- Older candidates kept to re-check ----
-  - {name: easyJet, slug: easyjet, type: airline, country: GB, source: {ats: taleo, host: "easyjet.taleo.net", section: "2"}}
-  - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "2"}}
-  - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, source: {ats: phenom, url: "https://jobs.virginaustralia.com", country: "AU"}}
-  - {name: DFW Airport, slug: dfw-airport, type: airport, country: US, source: {ats: phenom, url: "https://dfwcareers.org", country: "US"}}
-  - {name: Azul Airlines, slug: azul-airlines, type: airline, country: BR, source: {ats: gupy, company_id: "voeazul"}}
+  # ---- NOT TESTABLE: blocked or unsupported ATS ----
+  # SITA - JavaScript-rendered frontend on careers.sita.aero, backend blocked at careers-sita.icims.com (robots.txt)
+  # easyJet - Taleo section "2" is correct; issue is connector logic or no jobs posted (debug needed)
+  # Virgin Australia - Uses Cornerstone OnDemand, not Phenom (needs new connector)
+  # Azul Airlines - Gupy API changed; needs updated connector (portal.gupy.io/api/job-search/jobs endpoint)
+  # Turkish Airlines - Custom HRPeak backend (no standard ATS support)
+  # Kenya Airways - Oracle iRecruitment on-premise (no public API)
+  # Air India - SuccessFactors with unique /aix/ template (existing SF connector incompatible)
+  # Cathay Pacific - Likely Phenom but needs browser network inspection to confirm tenant ID
