@@ -17,7 +17,7 @@ AeroJobs is **live at https://aerojobs.work** with jobs from **26 employers**, r
 | Jobs with a known country | 93%+ |
 | Jobs whose role is unclear (shown as Corporate) | ~33% |
 | Pilot jobs / cabin crew jobs | 7 / 0 |
-| Guides written | 4 of about 15 |
+| Guides written | 7 of about 15 |
 
 Full detail: `docs/reports/AeroJobs-Test-Report.xlsx`.
 
@@ -96,6 +96,12 @@ Qatar Airways/Turkish Airlines/Saudia/Ethiopian/Kenya Airways/Lufthansa Group/Ai
    covers the critical skill gaps in aviation (pilots, technicians, cabin crew, controllers), why the shortage exists, 
    career paths in each role, and how job matching serves industry growth. ~1,200 words, original, optimized for AdSense 
    and SEO. Owner to review and add feedback/voice before final publication.
+6. **Batch 1 guides published 11 Oct 2026** (2 guides from "Airline Terminologies" topic):
+   - Career-focused: "Airline Operations Basics: Interline, Codeshare, Inventory, and Passenger Journey" (2,239 words)
+   - Technical: "Airline GDS and Inventory Systems: Technical Architecture, Data Structures, and APIs" (3,042 words)
+7. **Batch 2 guides published 11 Oct 2026** (2 guides from "Aircraft Maintenance" topic):
+   - Career-focused: "Aircraft Maintenance Fundamentals: What Gets Fixed vs Replaced, Maintenance Cycles, and the Path to Certification" (2,600+ words)
+   - Technical: "Aircraft Maintenance Engineering: Life-Limited Parts, Assemblies, Maintenance Planning, and Regulatory Compliance" (3,500+ words)
 
 ## Role sorting (5 Oct 2026)
 
@@ -124,7 +130,7 @@ Dependabot pull request #4 (Markdown 3.10.3 → 3.11) merged 5 Oct 2026.
    - **Batch 4 (long-term):** Turkish Airlines, Kenya Airways, SITA, Air India, Cathay Pacific (custom/incompatible ATS)
 2. Build new connectors: Workable (done 8 Oct), Cornerstone OnDemand, updated Gupy API
 3. Debug Taleo connector (easyJet, Saudia) and iCIMS (dnata)
-4. Write the remaining ~8 guides (skill `aerojobs-write-guides`), owner edits them (AdSense approval blocker).
+4. Write the remaining ~8 guides (Batch 3–5: Aircraft Leasing Contracts, Aircraft Leasing Industry, Aviation Finance; 2 guides per topic for career + technical depth). Skill `aerojobs-write-guides` ready. Owner to edit and add voice (AdSense approval blocker).
 5. Run .aero directory tool to discover new employers (tool ready, never run).
 6. Set up Search Console and Analytics; submit the sitemap.
 7. Before passing ~15,000 jobs: generate job pages on demand (Cloudflare 20,000-file limit).
