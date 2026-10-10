@@ -243,9 +243,10 @@ class Builder:
         common = dict(stats=stats, updated=human_date(self.updated_at[:10]) if self.updated_at else None)
 
         # home + search
+        all_cities = self._build_cities_list(jobs)
         self.render("home.html", "", jobs=jobs[:25], regions=regions, guides=guides[:6],
                     role_counts=Counter(j["role"] for j in jobs),
-                    type_counts=Counter(j["company_type"] for j in jobs), **common)
+                    type_counts=Counter(j["company_type"] for j in jobs), all_cities=all_cities, **common)
         # job pages
         for j in jobs:
             similar = [x for x in by_role[j["role"]] if x["id"] != j["id"]][:5]
@@ -315,6 +316,31 @@ class Builder:
                 f"{len({j['employer'] for j in lst})} employers in {n_c} "
                 f"{'country' if n_c == 1 else 'countries'}, newest first.")
 
+    def _extract_city(self, location: str) -> str:
+        """Extract city name from location (first part before comma)."""
+        if not location:
+            return ""
+        return location.split(",")[0].strip()
+
+    def _build_cities_list(self, jobs: list[dict]) -> list[dict]:
+        """Build a list of all unique cities by country from jobs."""
+        cities_by_country = defaultdict(set)
+        for j in jobs:
+            city = self._extract_city(j.get("location"))
+            if city and j.get("country_code"):
+                cities_by_country[j["country_code"]].add(city)
+
+        # Flatten into a list of dicts
+        cities = []
+        for country_code in sorted(cities_by_country.keys()):
+            for city_name in sorted(cities_by_country[country_code]):
+                cities.append({
+                    "name": city_name,
+                    "country_code": country_code,
+                    "country": country_name(country_code),
+                })
+        return cities
+
     def load_guides(self) -> list[dict]:
         guides = []
         for path in sorted((CONTENT / "guides").glob("*.md")):
@@ -330,7 +356,7 @@ class Builder:
         rows = [{
             "i": j["id"], "t": j["title"], "c": j["company"], "cs": j["employer"], "ct": j["company_type"],
             "r": j["role"], "cc": j.get("country_code") or "", "cn": j.get("country") or "",
-            "rg": j.get("region") or "", "l": j.get("location") or "", "w": j["work_mode"],
+            "rg": j.get("region") or "", "l": j.get("location") or "", "cy": self._extract_city(j.get("location")) or "", "w": j["work_mode"],
             "p": j["posted_date"], "x": j.get("closing_date") or "", "u": j["path"],
             "a": j["initials"], "o": j["tone"],
         } for j in jobs]

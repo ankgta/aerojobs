@@ -44,17 +44,17 @@
   function readState() {
     var modes = [].map.call(finder.querySelectorAll("[name=mode]:checked"), function (b) { return b.value; });
     return {
-      q: qInput.value.trim().toLowerCase(), country: field("country").value, role: field("role").value,
-      modes: modes, posted: field("posted").value, type: field("type").value, sort: field("sort").value
+      q: qInput.value.trim().toLowerCase(), country: field("country").value, city: field("city").value,
+      role: field("role").value, modes: modes, posted: field("posted").value, type: field("type").value, sort: field("sort").value
     };
   }
 
   function applyUrl() {
     var p = new URLSearchParams(location.search);
     qInput.value = p.get("q") || "";
-    ["country", "role", "posted", "type", "sort"].forEach(function (k) {
+    ["country", "role", "posted", "type", "sort", "city"].forEach(function (k) {
       var v = p.get(k);
-      if (v && field(k).querySelector('option[value="' + cssEscape(v) + '"]')) field(k).value = v;
+      if (v && field(k) && field(k).querySelector('option[value="' + cssEscape(v) + '"]')) field(k).value = v;
     });
     var modes = (p.get("mode") || "").split(",");
     [].forEach.call(finder.querySelectorAll("[name=mode]"), function (b) { b.checked = modes.indexOf(b.value) > -1; });
@@ -64,7 +64,7 @@
   function writeUrl(s) {
     var p = new URLSearchParams();
     if (s.q) p.set("q", qInput.value.trim());
-    ["country", "role", "posted", "type"].forEach(function (k) { if (s[k]) p.set(k, s[k]); });
+    ["country", "city", "role", "posted", "type"].forEach(function (k) { if (s[k]) p.set(k, s[k]); });
     if (s.modes.length) p.set("mode", s.modes.join(","));
     if (s.sort !== "new") p.set("sort", s.sort);
     if (company) p.set("company", company);
@@ -78,6 +78,11 @@
     if (s.country) {
       if (s.country.indexOf("region:") === 0) { if (j.rg !== s.country.slice(7)) return false; }
       else if (j.cc !== s.country) return false;
+    }
+    if (s.city) {
+      // City filter only works if a specific country is selected
+      if (!s.country || s.country.indexOf("region:") === 0) return false;
+      if (j.cy !== s.city) return false;
     }
     if (s.role && j.r !== s.role) return false;
     if (s.type && j.ct !== s.type) return false;
@@ -149,12 +154,73 @@
     opt.disabled = n === 0 && !selected;
   }
 
+  function updateCityFilter(s) {
+    var citySelect = field("city");
+    var allCitiesOption = citySelect.options[0];
+
+    // If no country selected or region selected, disable city filter and reset
+    if (!s.country || s.country.indexOf("region:") === 0) {
+      citySelect.disabled = true;
+      citySelect.value = "";
+      allCitiesOption.textContent = "Please select Country";
+      // Hide all city options except the placeholder
+      [].forEach.call(citySelect.options, function (opt, idx) {
+        if (idx > 0) opt.style.display = "none";
+      });
+      return;
+    }
+
+    // Country is selected - enable city filter and populate cities
+    citySelect.disabled = false;
+    allCitiesOption.textContent = "All cities";
+
+    // Get all cities for the selected country
+    var citiesForCountry = {};
+    jobs.forEach(function (j) {
+      if (j.cc === s.country && j.cy) {
+        citiesForCountry[j.cy] = (citiesForCountry[j.cy] || 0) + 1;
+      }
+    });
+
+    // Update city options
+    var selectedCity = citySelect.value;
+    var selectedCityExists = false;
+
+    [].forEach.call(citySelect.options, function (opt, idx) {
+      if (idx === 0) {
+        // Placeholder option
+        opt.style.display = "block";
+        return;
+      }
+      var cityName = opt.getAttribute("data-city-name") || opt.value;
+      var cityCount = citiesForCountry[opt.value] || 0;
+
+      if (cityCount > 0) {
+        opt.style.display = "block";
+        var label = opt.getAttribute("data-label");
+        opt.textContent = label + " (" + cityCount.toLocaleString() + ")";
+        opt.disabled = false;
+        if (opt.value === selectedCity) selectedCityExists = true;
+      } else {
+        opt.style.display = "none";
+        opt.disabled = true;
+      }
+    });
+
+    // If previously selected city is not available in new country, reset city selection
+    if (!selectedCityExists) {
+      citySelect.value = "";
+    }
+  }
+
   function updateCounts(s) {
     var pool;
     // country and region
     pool = jobs.filter(function (j) { return matchesState(j, without(s, "country")); });
     var byCountry = tally(pool, function (j) { return [j.cc, "region:" + j.rg]; });
     [].forEach.call(field("country").options, function (o) { setOption(o, byCountry[o.value] || 0, o.value === s.country); });
+    // city (dependent on country)
+    updateCityFilter(s);
     // role
     pool = jobs.filter(function (j) { return matchesState(j, without(s, "role")); });
     var byRole = tally(pool, function (j) { return [j.r]; });
@@ -182,7 +248,7 @@
   }
 
   function activeFilters(s) {
-    return (s.country ? 1 : 0) + (s.role ? 1 : 0) + (s.posted ? 1 : 0) + (s.type ? 1 : 0) + s.modes.length + (company ? 1 : 0);
+    return (s.country ? 1 : 0) + (s.city ? 1 : 0) + (s.role ? 1 : 0) + (s.posted ? 1 : 0) + (s.type ? 1 : 0) + s.modes.length + (company ? 1 : 0);
   }
 
   function update() {

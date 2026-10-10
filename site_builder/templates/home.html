@@ -47,6 +47,14 @@
           {% endfor %}
         </select>
       </label>
+      <label class="field"><span>City</span>
+        <select name="city" id="f-city" disabled>
+          <option value="">Please select Country</option>
+          {% for city_data in all_cities %}
+          <option value="{{ city_data.name }}" data-country="{{ city_data.country_code }}" data-label="{{ city_data.name }}">{{ city_data.name }}</option>
+          {% endfor %}
+        </select>
+      </label>
       <label class="field"><span>Job role</span>
         <select name="role" id="f-role">
           <option value="">All roles</option>
