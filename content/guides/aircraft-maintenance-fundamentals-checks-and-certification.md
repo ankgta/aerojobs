@@ -258,51 +258,44 @@ If anything goes wrong after that signature, the engineer is **personally liable
 ## The Complete Maintenance Flowchart
 
 ```
-Aircraft arrives for scheduled maintenance
-        ↓
-Maintenance plan retrieved from database
-(Which check? A, B, C, or D?)
-        ↓
-┌─────────────────────────────────┐
-│ A-CHECK (1-2 hours)             │
-│ - Visual inspection              │
-│ - Fluid levels                   │
-│ - Light testing                  │
-│ Release to service               │
-└─────────────────────────────────┘
-        ↓ (repeat every 400-600 hours)
-┌─────────────────────────────────┐
-│ B-CHECK (10-20 hours)           │
-│ - Detailed component inspection  │
-│ - Lubrication                    │
-│ - Seal checks                    │
-│ Release to service               │
-└─────────────────────────────────┘
-        ↓ (repeat every 1,200-2,000 hours)
-┌─────────────────────────────────┐
-│ C-CHECK (1-4 weeks)             │
-│ - Remove engines, landing gear   │
-│ - Structural inspection          │
-│ - Component overhauls            │
-│ - Cabin refurbishment            │
-│ Release to service               │
-└─────────────────────────────────┘
-        ↓ (repeat every 18-24 months)
-┌─────────────────────────────────┐
-│ D-CHECK (1-3 months)            │
-│ - Complete fuselage inspection   │
-│ - Major component replacements   │
-│ - Systems modernization          │
-│ Re-certify as airworthy          │
-└─────────────────────────────────┘
-        ↓ (repeat every 6-10 years)
+┌─────────────────────────────────────────────────────────────┐
+│ AIRCRAFT ARRIVES FOR SCHEDULED MAINTENANCE                  │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+                     ↓
+┌─────────────────────────────────────────────────────────────┐
+│ MAINTENANCE PLAN RETRIEVED FROM DATABASE                    │
+│ Question: Which check? A, B, C, or D?                       │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+        ┌────────────┴────────────┬──────────────┬────────────┐
+        │                         │              │            │
+        ↓                         ↓              ↓            ↓
+   ┌─────────────┐         ┌─────────────┐ ┌────────────┐ ┌─────────────┐
+   │ A-CHECK     │         │ B-CHECK     │ │ C-CHECK    │ │ D-CHECK     │
+   │ (1-2 hrs)   │         │ (10-20 hrs) │ │ (1-4 wks)  │ │ (1-3 mths)  │
+   │             │         │             │ │            │ │             │
+   │ Visual      │         │ Detailed    │ │ Remove     │ │ Complete    │
+   │ inspection  │         │ component   │ │ engines    │ │ fuselage    │
+   │ Fluid check │         │ Lubrication │ │ Landing    │ │ inspection  │
+   │ Light test  │         │ Seal check  │ │ gear       │ │ Major       │
+   │ Release     │         │ Release     │ │ Structural │ │ overhauls   │
+   │ to service  │         │ to service  │ │ inspect    │ │ Re-certify  │
+   └──────┬──────┘         └──────┬──────┘ │ Cabin      │ │ airworthy   │
+          │                       │        │ refurbish  │ │             │
+          │                       │        │ Release    │ │             │
+          │                       │        │ to service │ │             │
+   Every 400–600             Every 1,200–  └────┬──────┘ └──────┬──────┘
+   flight hours              2,000 hours    Every 18–24      Every 6–10
+   (~1–2 weeks)              (~2–4 months)  months            years
 
-During all checks:
-↳ Life-limited parts tracked and replaced as needed
-↳ Defects from pilots logged and addressed
-↳ Components requiring repair sent to shops
-↳ Non-repairable components scrapped and replaced
-↳ Final inspection and sign-off by lead engineer
+
+DURING ALL CHECKS:
+├─ Life-limited parts (LLPs) tracked and replaced as needed
+├─ Pilot-reported defects logged and addressed
+├─ Components sent to repair shops (if repairable)
+├─ Non-repairable components scrapped and replaced
+└─ Final inspection and sign-off by lead engineer (Certificate of Release to Service)
 ```
 
 ---

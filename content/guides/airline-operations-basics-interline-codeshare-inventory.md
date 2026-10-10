@@ -8,17 +8,52 @@ If you're starting a job at an airline, a reservations center, or a GDS (Global 
 
 ## The Passenger Journey: Where These Terms Matter
 
-Before diving into definitions, here's the flow:
+Before diving into definitions, here's the complete flow:
 
-1. **Passenger searches** for a flight on a website or through a travel agent (powered by a GDS)
-2. **Inventory system** checks seat availability
-3. **Booking is created** — a Passenger Name Record (PNR) is generated
-4. **Ticket is issued** — either on a single airline or shared via codeshare/interline
-5. **Passenger checks in** — system assigns seat, tags baggage
-6. **Flight operates** — airlines cooperate (interline) or share flights (codeshare)
-7. **Passenger arrives** — baggage transferred if needed (interline only)
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ PASSENGER SEARCHES FOR FLIGHT                                   │
+│ (Website, travel agent, GDS like Sabre or Amadeus)              │
+└────────────────────┬────────────────────────────────────────────┘
+                     │
+                     ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ INVENTORY SYSTEM CHECKS SEAT AVAILABILITY                       │
+│ (Airline's real-time seat database)                             │
+└────────────────────┬────────────────────────────────────────────┘
+                     │
+                     ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ BOOKING CREATED: PASSENGER NAME RECORD (PNR) GENERATED          │
+│ (Holds: passenger names, itinerary, contact, special requests)  │
+└────────────────────┬────────────────────────────────────────────┘
+                     │
+                     ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ TICKET ISSUED                                                    │
+│ Single airline ticket OR Codeshare/Interline ticket             │
+└────────────────────┬────────────────────────────────────────────┘
+                     │
+                     ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ PASSENGER CHECKS IN AT AIRPORT                                  │
+│ (Seat assigned, baggage tagged, boarding pass issued)           │
+└────────────────────┬────────────────────────────────────────────┘
+                     │
+                     ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ FLIGHT OPERATES                                                  │
+│ Airlines cooperate (interline) or share the flight (codeshare)  │
+└────────────────────┬────────────────────────────────────────────┘
+                     │
+                     ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ PASSENGER ARRIVES AT DESTINATION                                │
+│ Baggage transferred if connecting (interline) or picked up      │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-Most of your daily work involves steps 2–4. Understanding the full journey helps you troubleshoot when things break.
+**Your role:** Most daily work happens at steps 2–4 (inventory, booking, ticketing). Understanding the full journey helps troubleshoot when connections fail, baggage goes missing, or passengers are rebooked.
 
 ## Interline: When Two Different Airlines Work Together
 
@@ -262,36 +297,70 @@ You're a reservations agent at United Airlines. A customer calls:
 
 > "I want to book San Francisco to Berlin. I'll fly United to Chicago, then Lufthansa to Berlin."
 
-**Step 1: Search**
-- You search the GDS (Sabre or Amadeus) for flights
-- GDS checks inventory on both airlines
-- Result: UA123 SFO-ORD (Economy seats open), LH401 ORD-BER (codeshare marketed as United, inventory available)
+```
+┌───────────────────────────────────────────────────────────────────┐
+│ CUSTOMER REQUEST: SFO → ORD (United) → BER (Lufthansa)            │
+└─────────────────────┬───────────────────────────────────────────┘
+                      │
+                      ↓
+┌───────────────────────────────────────────────────────────────────┐
+│ STEP 1: SEARCH IN GDS (Sabre/Amadeus)                             │
+│ - Query: SFO-ORD economy, ORD-BER economy                         │
+│ - GDS checks United AND Lufthansa inventory servers               │
+│ - Result: UA123 available, LH401 codeshare available              │
+└─────────────────────┬───────────────────────────────────────────┘
+                      │
+                      ↓
+┌───────────────────────────────────────────────────────────────────┐
+│ STEP 2: VERIFY CODESHARE TERMS (IATA Resolution 723)              │
+│ - LH401 is LUFTHANSA-OPERATED, sold by United                     │
+│ - United marketing carrier code: UA9401                           │
+│ - Confirm with customer: "Berlin leg is LH but on United ticket"  │
+└─────────────────────┬───────────────────────────────────────────┘
+                      │
+                      ↓
+┌───────────────────────────────────────────────────────────────────┐
+│ STEP 3: CHECK INTERLINE AGREEMENT (IATA Resolution 722)           │
+│ - United ↔ Lufthansa = ACTIVE INTERLINE AGREEMENT                │
+│ - If passenger misses LH401 in Chicago → Lufthansa honors ticket  │
+└─────────────────────┬───────────────────────────────────────────┘
+                      │
+                      ↓
+┌───────────────────────────────────────────────────────────────────┐
+│ STEP 4: CREATE PNR & ALLOCATE SEATS                               │
+│ - PNR ID: ABC456                                                  │
+│ - Seat 15A: SFO-ORD (UA123)                                       │
+│ - Seat 32B: ORD-BER (LH401/UA9401)                               │
+│ - Inventory: UA123 -1, LH401 -1                                   │
+└─────────────────────┬───────────────────────────────────────────┘
+                      │
+                      ↓
+┌───────────────────────────────────────────────────────────────────┐
+│ STEP 5: ISSUE TICKET                                              │
+│ - Ticket #: 0011234567890 (United numbering)                      │
+│ - Price: $1,200 (roundtrip SFO-BER)                              │
+│ - Single ticket covers both legs                                  │
+└─────────────────────┬───────────────────────────────────────────┘
+                      │
+                      ↓
+┌───────────────────────────────────────────────────────────────────┐
+│ STEP 6: PASSENGER TRAVELS                                         │
+│ - Departs SFO on UA123, arrives ORD 4:00 PM                      │
+│ - Transfers to ORD gate (Lufthansa crew)                          │
+│ - Boards LH401, departs ORD 6:00 PM                              │
+│ - Baggage automatically transferred (interline baggage handling)  │
+│ - Arrives BER 8:00 AM next day                                   │
+└───────────────────────────────────────────────────────────────────┘
+```
 
-**Step 2: Check Codeshare Terms**
-- LH401 is a **Lufthansa-operated codeshare** sold by United
-- You confirm with the customer: "The Berlin leg is operated by Lufthansa, but you'll be on a United ticket"
+**Key integrations:**
+- **Inventory system:** Real-time seat counts on both airlines
+- **Codeshare agreement (IATA 723):** Defines revenue split, seat allocation, pricing
+- **Interline agreement (IATA 722):** Covers ticket acceptance, baggage transfer, rebooking
+- **PNR system:** Single record holds both flights, seats, and customer details
+- **Ticketing:** One ticket (United number) covers entire itinerary
 
-**Step 3: Check Interline Rules**
-- United and Lufthansa have an **interline agreement**
-- If the passenger misses the Lufthansa connection due to a delay, Lufthansa will honor the ticket
-
-**Step 4: Create the PNR**
-- You create a PNR with both flights
-- System allocates seats: 15A (SFO-ORD), 32B (ORD-BER)
-- Inventory decreases by 1 on UA123 and LH401
-
-**Step 5: Issue Ticket**
-- One ticket covers both flights
-- Ticket number: 0011234567890 (United's numbering)
-- Cost: $1,200
-
-**Step 6: Passenger Travels**
-- Arrives in Chicago on time for the Lufthansa flight
-- Lufthansa agent scans the United ticket (interline agreement in action)
-- Baggage auto-transfers to Berlin (interline baggage handling)
-- Passenger arrives in Berlin
-
-This entire flow depends on inventory systems, codeshare partnerships, and interline agreements working together seamlessly.
+This integration is why the passenger can book, pay once, check baggage through to Berlin, and if they miss the connection, be reboked on the next available flight—all seamlessly.
 
 ---
 
