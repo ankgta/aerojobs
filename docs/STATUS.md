@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 8 October 2026. Update this file whenever something changes.
+Last updated: 11 October 2026. Update this file whenever something changes.
 
 ## In one line
 
@@ -17,7 +17,7 @@ AeroJobs is **live at https://aerojobs.work** with jobs from **26 employers**, r
 | Jobs with a known country | 93%+ |
 | Jobs whose role is unclear (shown as Corporate) | ~33% |
 | Pilot jobs / cabin crew jobs | 7 / 0 |
-| Guides written | 7 of about 15 |
+| Guides written | 4 of about 15 |
 
 Full detail: `docs/reports/AeroJobs-Test-Report.xlsx`.
 
@@ -92,6 +92,10 @@ Qatar Airways/Turkish Airlines/Saudia/Ethiopian/Kenya Airways/Lufthansa Group/Ai
    built and 3 employers live (JetBlue, Wizz Air, Changi Airport). Taleo still needed.
 4. **Four new guides drafted 7 Oct 2026** (not yet pushed): commercial pilot in India, cabin crew for
    Gulf airlines, Part-66 B1 vs B2, cadet pilot programmes. Owner to read and add their own voice.
+5. **New guide published 11 Oct 2026**: "Why Aviation Needs Specialized Talent—And How to Find Your Role" 
+   covers the critical skill gaps in aviation (pilots, technicians, cabin crew, controllers), why the shortage exists, 
+   career paths in each role, and how job matching serves industry growth. ~1,200 words, original, optimized for AdSense 
+   and SEO. Owner to review and add feedback/voice before final publication.
 
 ## Role sorting (5 Oct 2026)
 
