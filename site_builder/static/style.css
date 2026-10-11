@@ -257,6 +257,21 @@ select:hover { border-color: #B9CDE3; }
 .prose h2 { margin-top: 1.8em; }
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; width: 100%; margin: 16px 0; font-size: .98rem; }
 .prose th, .prose td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.prose pre {
+  background: #0B1424; color: #D9E6F5; border: 1px solid #1E3252; border-radius: 10px;
+  padding: 18px 20px; margin: 22px 0; overflow-x: auto; box-shadow: var(--shadow-sm);
+  font: 400 .92rem/1.6 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  -webkit-overflow-scrolling: touch; tab-size: 2;
+}
+.prose pre code { background: none; border: 0; padding: 0; color: inherit; font-size: inherit; white-space: pre; }
+.prose :not(pre) > code {
+  background: var(--sky-pale); color: var(--ink); border: 1px solid var(--line);
+  padding: .15em .45em; border-radius: 5px; font-size: .92em;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+@media (min-width: 860px) {
+  .prose pre { max-width: 900px; margin-left: calc((720px - 900px) / 2); }
+}
 .prose-cta { margin-top: 40px; }
 
 /* ---------- footer ---------- */

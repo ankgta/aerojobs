@@ -288,7 +288,7 @@ class Builder:
             vars_ = dict(site=self.site, updated=human_date(self.ref_date.isoformat()), link=self.linker(path.stem))
             body = self.env.from_string(body).render(**vars_)
             meta = {k: self.env.from_string(v).render(**vars_) for k, v in meta.items()}
-            page = {**meta, "html": Markup(markdown.markdown(body, extensions=["tables"]))}
+            page = {**meta, "html": Markup(markdown.markdown(body, extensions=["tables", "fenced_code"]))}
             self.render("article.html", path.stem, page=page, kind="page", **common)
         self.render("404.html", "404.html", sitemap=False, **common)
 
@@ -348,7 +348,7 @@ class Builder:
             body = self.env.from_string(body).render(site=self.site, link=self.linker(f"guides/{path.stem}"))
             words = len(re.findall(r"\w+", body))
             guides.append({**meta, "slug": path.stem, "words": words, "minutes": max(1, round(words / 220)),
-                           "html": Markup(markdown.markdown(body, extensions=["tables"]))})
+                           "html": Markup(markdown.markdown(body, extensions=["tables", "fenced_code"]))})
         guides.sort(key=lambda g: g.get("date", ""), reverse=True)
         return guides
 
