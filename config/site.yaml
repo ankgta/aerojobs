@@ -9,7 +9,7 @@ owner_name: ""                             # optional, shown on the About page
 
 # Google services. Leave empty until you have them.
 adsense_client: ""        # looks like ca-pub-1234567890123456 (from AdSense)
-google_analytics_id: ""   # looks like G-ABC123XYZ (from Google Analytics)
+google_analytics_id: "G-7FXN3CX3WZ"   # looks like G-ABC123XYZ (from Google Analytics)
 search_console_verification: ""  # optional: the code from Search Console's "HTML tag" option
 
 # Job fetcher behaviour
