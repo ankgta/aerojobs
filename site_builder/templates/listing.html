@@ -9,12 +9,13 @@
 </div></div>
 <section class="wrap listing">
   {% if jobs %}
+    <div class="listing-header">
+      <a href="{{ link('') }}?{{ search_query }}#jobs" class="btn btn-filter">Filter these jobs</a>
+      {% if total > jobs|length %}
+      <p class="listing-count">Showing the newest {{ jobs|length }} of {{ total }} jobs</p>
+      {% endif %}
+    </div>
     {{ board(jobs, link) }}
-    {% if total > jobs|length %}
-    <p class="see-more">Showing the newest {{ jobs|length }} of {{ total }}. <a href="{{ link('') }}?{{ search_query }}#jobs">See all {{ total }} with filters</a></p>
-    {% else %}
-    <p class="see-more"><a href="{{ link('') }}?{{ search_query }}#jobs">Filter these jobs</a></p>
-    {% endif %}
   {% else %}
     <p class="empty">Nothing open right now. <a href="{{ link('') }}#jobs">Browse all jobs</a></p>
   {% endif %}

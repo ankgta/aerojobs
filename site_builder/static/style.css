@@ -214,6 +214,9 @@ select:hover { border-color: #B9CDE3; }
 .page-head h1 { margin-bottom: 12px; }
 .lede { font-size: 1.08rem; color: var(--ink-2); max-width: 62ch; margin: 0; line-height: 1.6; }
 .listing { padding-block: 12px 64px; }
+.listing-header { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+.btn-filter { min-height: 44px; padding: 0 20px; font-size: 0.95rem; flex: 0 0 auto; }
+.listing-count { margin: 0; font-size: 0.95rem; color: var(--ink-2); font-weight: 600; }
 .see-more { margin-top: 18px; font-weight: 600; }
 .index-grid { list-style: none; padding: 0; margin: 0 0 8px; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
 .index-grid a {
