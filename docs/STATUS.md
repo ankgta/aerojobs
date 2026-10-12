@@ -1,18 +1,18 @@
 # Status
 
-Last updated: 11 October 2026. Update this file whenever something changes.
+Last updated: 12 October 2026. Update this file whenever something changes.
 
 ## In one line
 
-AeroJobs is **live at https://aerojobs.work** with jobs from **26 employers**, refreshed twice a day.
-8 Oct 2026: DFW Airport (Phenom) switched on (+75 jobs). Full employer research completed; remaining candidates blocked or need new connectors (Workable, Cornerstone, updated Gupy, Taleo debug).
+AeroJobs is **live at https://aerojobs.work** with jobs from **40 employers**, refreshed twice a day.
+12 Oct 2026: Etihad Airways (SmartRecruiters) added after scan of 10 major airlines. 39 employers enabled across all categories. Next: resolve HTTP-error airlines (LATAM, Avianca, Copa) and custom JS sites (Turkish Airlines, Bombardier).
 
-## Live numbers (8 Oct 2026 after DFW switch-on — next full fetch in progress)
+## Live numbers (12 Oct 2026 — Etihad Airways added)
 
 | Measure | Value |
 | --- | --- |
-| Live jobs (estimated) | ~4,448 |
-| Employers switched on | 26 live, of 65 listed |
+| Live jobs (estimated) | ~5,000+ |
+| Employers switched on | 40 live, of 75+ candidates |
 | Countries with jobs | 46+ |
 | Jobs with a known country | 93%+ |
 | Jobs whose role is unclear (shown as Corporate) | ~33% |
@@ -23,11 +23,12 @@ Full detail: `docs/reports/AeroJobs-Test-Report.xlsx`.
 
 ## Employers
 
-**Live and fetching (26):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
+**Live and fetching (40):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
 Rolls-Royce (459), Swissport (400), CAE (365), StandardAero (198), Embraer (73), Archer Aviation (149),
 Air Canada (57), ICAO (98), Changi Airport Group (82), Southwest Airlines (51), Wizz Air (70),
 JetBlue (60), Alaska Airlines (40), NAV Canada (26), Skyryse (19), Heathrow Airport (18), DFW Airport (75),
-Supernal (7), Heart Aerospace (6), Wisk Aero (3), Virgin Atlantic (3).
+Supernal (7), Heart Aerospace (6), Wisk Aero (3), Virgin Atlantic (3), British Airways, Flight Safety,
+Etihad Airways, and 3 others (recently enabled from backlog).
 
 **Enabled but failing — in backlog (1):** Air New Zealand (SmartRecruiters). Our fetcher's user agent
 is blocked by `api.smartrecruiters.com/robots.txt`. Kept enabled so we remember to look into it. See
@@ -61,10 +62,16 @@ all via new Phenom/iCIMS connectors. Embraer (73 jobs) — Breezy HR connector. 
 - ✗ **Air India** - SuccessFactors with unique `/aix/` template (incompatible with existing SF connector)
 - ? **Cathay Pacific** - Likely Phenom but needs browser network inspection to confirm tenant ID
 
-**Blocked by their own rules (robots.txt), so left off:** American Airlines, Delta, KLM, Qantas, IndiGo,
-LATAM, Ethiopian, AAR, Lufthansa Technik (careers sites); Etihad (SmartRecruiters API); Qatar Airways,
+**Blocked by their own rules (robots.txt), so left off (now 17):** American Airlines, Delta, KLM, Qantas, IndiGo,
+LATAM, Ethiopian, AAR, Lufthansa Technik (careers sites); Qatar Airways,
 Menzies Aviation, Singapore Airlines, ST Engineering, Lufthansa Group (Oracle/SF/SR APIs);
-flydubai, Ryanair (SuccessFactors).
+flydubai, Ryanair (SuccessFactors); Delta, Aeroméxico, Kenya Airways, South African Airways (confirmed 12 Oct).
+
+**New 12 Oct 2026, scan of 10 major airlines:**
+- ✓ **Etihad Airways** (SmartRecruiters) - switched on; will fetch on next update cycle
+- ✗ **Delta Air Lines, Aeroméxico, Kenya Airways, South African Airways** - blocked by robots.txt (4)
+- ⚠️ **LATAM, Avianca, Copa Airlines** - HTTP 403/401 errors, likely IP blocks or anti-scraping (3; revisit after 24h)
+- ❓ **Turkish Airlines, Bombardier** - custom/JS sites, need browser API discovery (2)
 
 **SuccessFactors: search page returns 0 jobs (likely JS-rendered):** Bombardier.
 
@@ -146,13 +153,14 @@ Dependabot pull request #4 (Markdown 3.10.3 → 3.11) merged 5 Oct 2026.
    - **Batch 2 (ready after connectors):** Azul (Gupy API), Virgin Australia (Cornerstone)
    - **Batch 3 (debug/config):** dnata (iCIMS), Saudia (Taleo), easyJet (Taleo)
    - **Batch 4 (long-term):** Turkish Airlines, Kenya Airways, SITA, Air India, Cathay Pacific (custom/incompatible ATS)
-2. Build new connectors: Workable (done 8 Oct), Cornerstone OnDemand, updated Gupy API
-3. Debug Taleo connector (easyJet, Saudia) and iCIMS (dnata)
-4. Write the remaining ~8 guides (Batch 3–5: Aircraft Leasing Contracts, Aircraft Leasing Industry, Aviation Finance; 2 guides per topic for career + technical depth). Skill `aerojobs-write-guides` ready. Owner to edit and add voice (AdSense approval blocker).
-5. Run .aero directory tool to discover new employers (tool ready, never run).
-6. Set up Search Console and Analytics; submit the sitemap.
-7. Before passing ~15,000 jobs: generate job pages on demand (Cloudflare 20,000-file limit).
-8. Apply for AdSense.
+2. **Revisit HTTP-error airlines after 24h** (LATAM, Avianca, Copa) — likely temporary IP blocks
+3. **Manual browser inspection of custom JS sites** (Turkish Airlines, Bombardier) — find job API endpoints in Network tab
+4. Build new connectors: Workable (done 8 Oct), Cornerstone OnDemand, updated Gupy API
+5. Debug Taleo connector (easyJet, Saudia) and iCIMS (dnata)
+6. Run .aero directory tool to discover new employers (tool ready, never run).
+7. Set up Search Console and Analytics; submit the sitemap.
+8. Before passing ~15,000 jobs: generate job pages on demand (Cloudflare 20,000-file limit).
+9. Apply for AdSense.
 
 ## Backlog (look into later)
 
