@@ -53,3 +53,16 @@ https://beta.team/careers/
 
 # ----- ANSPs -----
 https://careers.nats.aero/
+
+# ----- Major airlines (batch add attempt 12 Oct 2026) -----
+https://careers.united.com
+https://careers.emirates.com
+https://careers.lufthansagroup.com
+https://careers.ba.com
+https://careers.cathaypacific.com
+https://careers.singaporeair.com
+https://careers.airindia.in
+
+# ----- Major airports -----
+https://careers.schiphol.nl
+https://careers.dubaiairports.ae
