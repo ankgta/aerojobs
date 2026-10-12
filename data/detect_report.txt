@@ -33,7 +33,7 @@ https://www.navblue.aero/careers/
   no known hiring system found on www.navblue.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://ibsplc.com/careers/
-  could not open: HTTP 404 from https://ibsplc.com/careers/
+  no known hiring system found on ibsplc.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.cirium.com/careers/
   source: {ats: workday, url: "https://relx.wd3.myworkdayjobs.com/ciriumcareers"}
@@ -90,7 +90,7 @@ https://www.jobyaviation.com/careers/
   source: {ats: icims, url: "https://careers-jobyaviation.icims.com"}
 
 https://vertical-aerospace.com/careers/
-  source: {ats: cornerstone, url: "https://jobs.ashbyhq.com"}
+  no known hiring system found on vertical-aerospace.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://beta.team/careers/
   no known hiring system found on beta.team. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
@@ -124,3 +124,34 @@ https://careers.schiphol.nl
 
 https://careers.dubaiairports.ae
   no known hiring system found on careers.dubaiairports.ae. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://careers.delta.com
+  could not open: robots.txt does not allow https://careers.delta.com
+
+https://latam.com/en/careers
+  could not open: HTTP 403 from https://latam.com/en/careers
+
+https://www.avianca.com/en/careers
+  could not open: HTTP 403 from https://www.avianca.com/en/careers
+
+https://www.copaair.com/en/employment
+  could not open: HTTP 401 from https://www.copaair.com/en/employment
+
+https://www.aeromexico.com/en-US/careers
+  could not open: robots.txt does not allow https://www.aeromexico.com/en-US/careers
+
+https://careers.turkishairlines.com
+  no known hiring system found on careers.turkishairlines.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://careers.etihad.com
+  source: {ats: smartrecruiters, company: "my-applications"}
+  source: {ats: cornerstone, url: "https://jobs.smartrecruiters.com"}
+
+https://careers.kenyaairways.com
+  could not open: robots.txt does not allow https://careers.kenyaairways.com
+
+https://careers.flysaa.com
+  could not open: robots.txt does not allow https://careers.flysaa.com
+
+https://careers.bombardier.com
+  no known hiring system found on careers.bombardier.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
