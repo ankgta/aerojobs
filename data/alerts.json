@@ -5,12 +5,20 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
+   "employer": "British Airways",
+   "problem": "Returned zero jobs. Its careers page may have changed."
+  },
+  {
    "employer": "easyJet",
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
    "employer": "Ryanair",
    "problem": "Returned zero jobs. Its careers page may have changed."
+  },
+  {
+   "employer": "Etihad Airways",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/my-applications/postings?limit=100&offset=0"
   },
   {
    "employer": "Saudia",
@@ -26,8 +34,12 @@
   },
   {
    "employer": "Supernal",
+   "problem": "Could not read jobs: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/supernal/jobs"
+  },
+  {
+   "employer": "Flight Safety International",
    "problem": "Returned zero jobs. Its careers page may have changed."
   }
  ],
- "run": "2026-10-12T05:47:25+00:00"
+ "run": "2026-10-12T17:53:58+00:00"
 }
