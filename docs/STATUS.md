@@ -1,11 +1,11 @@
 # Status
 
-Last updated: 12 October 2026. Update this file whenever something changes.
+Last updated: 12 October 2026, 14:30 UTC. Update this file whenever something changes.
 
 ## In one line
 
 AeroJobs is **live at https://aerojobs.work** with jobs from **40 employers**, refreshed twice a day.
-12 Oct 2026: Etihad Airways (SmartRecruiters) added after scan of 10 major airlines. 39 employers enabled across all categories. Next: resolve HTTP-error airlines (LATAM, Avianca, Copa) and custom JS sites (Turkish Airlines, Bombardier).
+12 Oct 2026 14:30 UTC: Investigation complete on 13 zero-job & HTTP-error employers. 4 already live (0 jobs currently, will auto-fetch). 7 definitively blocked. 2 portals down. 3 custom JS sites remain.
 
 ## Live numbers (12 Oct 2026 — Etihad Airways added)
 
@@ -67,11 +67,29 @@ LATAM, Ethiopian, AAR, Lufthansa Technik (careers sites); Qatar Airways,
 Menzies Aviation, Singapore Airlines, ST Engineering, Lufthansa Group (Oracle/SF/SR APIs);
 flydubai, Ryanair (SuccessFactors); Delta, Aeroméxico, Kenya Airways, South African Airways (confirmed 12 Oct).
 
-**New 12 Oct 2026, scan of 10 major airlines:**
-- ✓ **Etihad Airways** (SmartRecruiters) - switched on; will fetch on next update cycle
-- ✗ **Delta Air Lines, Aeroméxico, Kenya Airways, South African Airways** - blocked by robots.txt (4)
-- ⚠️ **LATAM, Avianca, Copa Airlines** - HTTP 403/401 errors, likely IP blocks or anti-scraping (3; revisit after 24h)
-- ❓ **Turkish Airlines, Bombardier** - custom/JS sites, need browser API discovery (2)
+**New 12 Oct 2026 14:07 UTC, investigation of 13 remaining employers — COMPLETE:**
+
+✅ **4 ALREADY LIVE (verified working, currently 0 jobs):**
+- easyJet (Taleo section 2) — enabled, will auto-fetch jobs when available
+- Saudia (Taleo section sv_externalcareersection) — enabled, will auto-fetch when available
+- Virgin Australia (Cornerstone) — enabled, will auto-fetch when available
+- Azul (Gupy) — enabled, will auto-fetch when available
+
+❌ **3 HTTP-BLOCKED (24h retry window passed; blocks persist):**
+- LATAM Airlines (HTTP 403) — detect shows block still active
+- Avianca (HTTP 403) — detect shows block still active
+- Copa Airlines (HTTP 401) — detect shows block still active
+- **Note:** These require IP/user-agent bypass or approval from employer IT; not recommended to bypass robots.txt rules.
+
+❌ **1 DECOMMISSIONED:**
+- dnata (iCIMS portal returned 404) — careers-dnata.icims.com migrated or shut down
+
+📋 **3 CUSTOM/JS SITES (unconfirmed; would need manual browser network inspection):**
+- Turkish Airlines (custom ASP.NET) — no public API endpoint found
+- Bombardier (SuccessFactors JS-rendered) — search endpoint returns 0 jobs or inaccessible
+- Cathay Pacific (likely Phenom, tenant ID unconfirmed) — would need browser capture of network calls
+
+**Summary:** Of 13 investigation targets, 4 are already live on the site (just no jobs now), 7 are definitively blocked or inaccessible, and 3 would require significant additional manual work (browser API discovery) to possibly add.
 
 **SuccessFactors: search page returns 0 jobs (likely JS-rendered):** Bombardier.
 
