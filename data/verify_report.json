@@ -1,15 +1,17 @@
 {
- "run": "2026-10-12T12:58:35+00:00",
+ "run": "2026-10-12T14:07:05+00:00",
  "results": [
   {
-   "name": "dnata",
-   "slug": "dnata",
+   "name": "easyJet",
+   "slug": "easyjet",
    "source": {
-    "ats": "icims",
-    "url": "https://careers-dnata.icims.com"
+    "ats": "taleo",
+    "host": "easyjet.taleo.net",
+    "section": "2"
    },
    "ok": false,
-   "error": "Exception: api/jobs: HTTP 404 from https://careers-dnata.icims.com/api/jobs; html_search: HTTP 404 from https://careers-dnata.icims.com/jobs/search?ss=1&in_iframe=1; sitemap: HTTP 404 from https://careers-dnata."
+   "jobs_found": 0,
+   "sample": []
   },
   {
    "name": "Saudia",
@@ -24,72 +26,14 @@
    "sample": []
   },
   {
-   "name": "DFW Airport",
-   "slug": "dfw-airport",
+   "name": "dnata",
+   "slug": "dnata",
    "source": {
-    "ats": "phenom",
-    "url": "https://careers.dfwairport.com",
-    "country": "US"
-   },
-   "ok": true,
-   "jobs_found": 79,
-   "sample": [
-    {
-     "title": "2027 Undergraduate Summer Internship- Technology Project Management",
-     "location": "DFW Airport, Texas, United States of America",
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102111EXTERNALENUS/2027-Undergraduate-Summer-Internship-Technology-Project-Management",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "2027 Undergraduate Internship - Geospatial Data",
-     "location": "DFW Airport, Texas, United States of America",
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102119EXTERNALENUS/2027-Undergraduate-Internship-Geospatial-Data",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "2027 Undergraduate Internship - Marketing",
-     "location": "DFW Airport, Texas, United States of America",
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102135EXTERNALENUS/2027-Undergraduate-Internship-Marketing",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102139EXTERNALENUS/2027-Undergraduate-Internship-Airport-Facilities-Maintenance",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR101993EXTERNALENUS/Senior-Associate-Full-Stack-Engineer-Appian-Salesforce",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102047EXTERNALENUS/Environmental-Project-Manager-Noise",
-     "posted": null
-    }
-   ],
-   "detail_sample": {
-    "country_code": "US",
-    "posted_date": "2026-10-05",
-    "closing_date": null,
-    "work_mode": null,
-    "employment_type": "FULL_TIME",
-    "location": "DFW Airport, Texas, United States of America"
-   }
-  },
-  {
-   "name": "Ryanair",
-   "slug": "ryanair",
-   "source": {
-    "ats": "workable",
-    "company": "ryanair"
+    "ats": "icims",
+    "url": "https://careers-dnata.icims.com"
    },
    "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "error": "Exception: api/jobs: HTTP 404 from https://careers-dnata.icims.com/api/jobs; html_search: HTTP 404 from https://careers-dnata.icims.com/jobs/search?ss=1&in_iframe=1; sitemap: HTTP 404 from https://careers-dnata."
   },
   {
    "name": "Virgin Australia",
@@ -97,6 +41,53 @@
    "source": {
     "ats": "cornerstone",
     "url": "https://jobs.virginaustralia.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Azul",
+   "slug": "azul",
+   "source": {
+    "ats": "gupy",
+    "career_page_name": "voeazul"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "LATAM Airlines",
+   "slug": "latam",
+   "source": {
+    "ats": "taleo",
+    "host": "latam.taleo.net",
+    "section": "External"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Avianca",
+   "slug": "avianca",
+   "source": {
+    "ats": "taleo",
+    "host": "avianca.taleo.net",
+    "section": "External"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Copa Airlines",
+   "slug": "copa-airlines",
+   "source": {
+    "ats": "taleo",
+    "host": "copa.taleo.net",
+    "section": "External"
    },
    "ok": false,
    "jobs_found": 0,
