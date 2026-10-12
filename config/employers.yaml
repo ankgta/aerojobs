@@ -21,16 +21,22 @@
 #   LATAM Airlines (HTTP 403), Avianca (HTTP 403), Copa Airlines (HTTP 401).
 # Checked 12 Oct 2026 — custom/JS sites (require browser inspection):
 #   Turkish Airlines, Bombardier.
-# Checked 8 Oct 2026 — 0 jobs deployed (connectors working, employers may have no openings):
-#   Ryanair (Workable: 0 jobs — no current openings or restricted access),
-#   Saudia (Taleo: 0 jobs — section exists but empty),
-#   easyJet (Taleo: 0 jobs — section exists but empty),
-#   Azul Airlines (Gupy new API: 0 jobs — endpoint working, no results),
-#   Virgin Australia (Cornerstone: 0 jobs — portal working, no results).
-# Checked 8 Oct 2026 — disabled (config broken):
+# Checked 12 Oct 2026 — retested 0-jobs employers: all 4 now enabled (verified 12 Oct 14:07 UTC):
+#   Ryanair (Workable: 0 jobs — enabled, no current openings),
+#   Saudia (Taleo section sv_externalcareersection: 0 jobs — enabled, no current openings),
+#   easyJet (Taleo section 2: 0 jobs — enabled, no current openings),
+#   Azul Airlines (Gupy: 0 jobs — enabled, no current openings),
+#   Virgin Australia (Cornerstone: 0 jobs — enabled, no current openings).
+#   These are live but return no jobs currently; fetcher will auto-pick up jobs when employers hire.
+# Checked 12 Oct 2026 — HTTP errors retry (24h window passed): all still blocked or inaccessible:
+#   LATAM Airlines (HTTP 403 block persists), Avianca (HTTP 403 block persists), Copa Airlines (HTTP 401 block persists)
+#   Note: detect_report shows these still return HTTP errors when accessed; cannot be added without bypassing blocks.
+# Checked 12 Oct 2026 — portal decommissioned:
 #   dnata (iCIMS: careers-dnata.icims.com returned 404 on all paths — portal migrated or decommissioned).
+# Custom/JS sites requiring browser API discovery (not yet attempted):
+#   Turkish Airlines (custom ASP.NET), Bombardier (SuccessFactors JS-rendered), Cathay Pacific (likely Phenom, tenant ID unknown).
 # Unsupported ATS: Emirates (Avature), British Airways (TalentBrew), Aer Lingus (Zellis),
-#   Safran (custom Drupal), WestJet (Dayforce), many others (custom sites).
+#   Safran (custom Drupal), WestJet (Dayforce), Kenya Airways (Oracle iRecruitment on-premise), many others (custom sites).
 #
 # Source examples (copy the shape that matches the hiring system):
 #   source: {ats: workday, url: "https://company.wd3.myworkdayjobs.com/SiteName"}
