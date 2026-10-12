@@ -12,3 +12,4 @@ wait_and_parse_detect.py
 data/eligibility_analysis.json
 data/detect_results_parsed.json
 backlog.xlsx
+backlog_updated_*.xlsx
