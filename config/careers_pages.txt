@@ -66,3 +66,16 @@ https://careers.airindia.in
 # ----- Major airports -----
 https://careers.schiphol.nl
 https://careers.dubaiairports.ae
+
+# ----- Additional major airlines (JavaScript-rendered, needs detection retry) -----
+# Batch added 12 Oct 2026 after backlog analysis
+https://careers.delta.com
+https://latam.com/en/careers
+https://www.avianca.com/en/careers
+https://www.copaair.com/en/employment
+https://www.aeromexico.com/en-US/careers
+https://careers.turkishairlines.com
+https://careers.etihad.com
+https://careers.kenyaairways.com
+https://careers.flysaa.com
+https://careers.bombardier.com
