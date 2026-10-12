@@ -1,14 +1,18 @@
 # Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
-# 8 Oct 2026 - Full employer research round. VistaJet & Joby tested + live.
-# 8 Oct 2026 - Cornerstone connector built; Virgin Australia added to testable.
-# Notes on failures below.
+# 12 Oct 2026 14:04 UTC - Investigation push: re-test 5 zero-job employers, retry 3 HTTP-error airlines after 24h window
 employers:
-  # ---- TESTABLE: corrected URLs after research ----
-  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, notes: "iCIMS portal is correct; re-testing after endpoint fix"}
-  - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "sv_externalcareersection"}, notes: "section corrected from '2' to 'sv_externalcareersection'"}
-  - {name: DFW Airport, slug: dfw-airport, type: airport, country: US, source: {ats: phenom, url: "https://careers.dfwairport.com", country: "US"}, notes: "URL corrected from dfwcareers.org to careers.dfwairport.com"}
-  - {name: Ryanair, slug: ryanair, type: airline, country: IE, source: {ats: workable, company: "ryanair"}, notes: "ATS confirmed as Workable; testing if connector exists"}
-  - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, source: {ats: cornerstone, url: "https://jobs.virginaustralia.com"}, notes: "Cornerstone connector built and tested"}
+  # ---- TESTABLE: config investigation (0 jobs, connectors working) ----
+  - {name: easyJet, slug: easyjet, type: airline, country: GB, source: {ats: taleo, host: "easyjet.taleo.net", section: "2"}, notes: "Section confirmed as '2' via careers page; may have no current openings"}
+  - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "sv_externalcareersection"}, notes: "Section confirmed; re-testing for jobs"}
+  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, notes: "URL returned 404 on 8 Oct; re-testing migration status"}
+  - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, source: {ats: cornerstone, url: "https://jobs.virginaustralia.com"}, notes: "Cornerstone working; retesting for jobs"}
+  - {name: Azul, slug: azul, type: airline, country: BR, source: {ats: gupy, career_page_name: "voeazul"}, notes: "Gupy API endpoint; retesting after recent changes"}
+
+  # ---- TESTABLE: HTTP-error airlines (retry after 24h window) ----
+  # 12 Oct 14:00 UTC: HTTP 403/401 blocks reported. 24h window now open (12 Oct 14:04 UTC).
+  - {name: LATAM Airlines, slug: latam, type: airline, country: CL, source: {ats: taleo, host: "latam.taleo.net", section: "External"}, notes: "HTTP 403 on 12 Oct; retrying after 24h block window"}
+  - {name: Avianca, slug: avianca, type: airline, country: CO, source: {ats: taleo, host: "avianca.taleo.net", section: "External"}, notes: "HTTP 403 on 12 Oct; retrying after 24h block window"}
+  - {name: Copa Airlines, slug: copa-airlines, type: airline, country: PA, source: {ats: taleo, host: "copa.taleo.net", section: "External"}, notes: "HTTP 401 on 12 Oct; retrying after 24h block window"}
 
   # ---- NOT TESTABLE: blocked or unsupported ATS ----
   # SITA - JavaScript-rendered frontend on careers.sita.aero, backend blocked at careers-sita.icims.com (robots.txt)
