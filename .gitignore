@@ -6,3 +6,9 @@ __pycache__/
 *.tmp
 .env
 data/sample/
+# Analysis and research scripts
+analyze_disabled_employers.py
+wait_and_parse_detect.py
+data/eligibility_analysis.json
+data/detect_results_parsed.json
+backlog.xlsx
