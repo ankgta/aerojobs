@@ -46,6 +46,25 @@ SECURITY_HEADERS = """/*
   Cache-Control: public, max-age=600
 """
 
+# AI-training crawlers to block in robots.txt. These are advisory (a crawler must choose to obey
+# robots.txt) but the companies behind these ones generally do. Googlebot/Bingbot (search, needed
+# for SEO) are NOT in this list on purpose - only AI-training/scraping bots are blocked.
+AI_CRAWLER_BLOCKLIST = [
+    "GPTBot", "ChatGPT-User", "OAI-SearchBot",       # OpenAI
+    "CCBot",                                          # Common Crawl (widely used for LLM training sets)
+    "Google-Extended",                                # Google's AI-training opt-out (separate from Googlebot search)
+    "Applebot-Extended",                              # Apple's AI-training opt-out (separate from Applebot search)
+    "Bytespider",                                     # ByteDance / TikTok
+    "PerplexityBot", "Perplexity-User",               # Perplexity AI
+    "Amazonbot",                                      # Amazon
+    "FacebookBot", "Meta-ExternalAgent",              # Meta
+    "ClaudeBot", "Claude-Web", "anthropic-ai",        # Anthropic (blocked too, for consistency - no exceptions)
+    "Diffbot",                                        # Diffbot (resells scraped data)
+    "Omgili", "Omgilibot",                            # webz.io (resells scraped data for AI training)
+    "YouBot",                                         # You.com
+    "Timpibot",                                       # Timpi
+]
+
 
 # ------------------------------------------------------------------ helpers
 def human_date(iso: str | None) -> str:
@@ -380,7 +399,9 @@ class Builder:
         (self.out / "sitemap.xml").write_text(
             f'<?xml version="1.0" encoding="UTF-8"?>\n'
             f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n', encoding="utf-8")
-        (self.out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {base}/sitemap.xml\n")
+        ai_blocks = "".join(f"User-agent: {bot}\nDisallow: /\n\n" for bot in AI_CRAWLER_BLOCKLIST)
+        (self.out / "robots.txt").write_text(
+            f"User-agent: *\nAllow: /\n\n{ai_blocks}Sitemap: {base}/sitemap.xml\n")
         if not self.preview:
             (self.out / "_headers").write_text(SECURITY_HEADERS)
         client = self.site.get("adsense_client", "")
