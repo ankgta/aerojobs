@@ -11,10 +11,16 @@
 #
 # Checked 8 Oct 2026 — robots.txt blocks (never attempt to work around these):
 #   Qatar Airways (Oracle Fusion API), Menzies Aviation (Oracle Fusion API), Singapore Airlines (SuccessFactors),
-#   ST Engineering (SuccessFactors), Lufthansa Group (SmartRecruiters API), Etihad (SmartRecruiters API),
+#   ST Engineering (SuccessFactors), Lufthansa Group (SmartRecruiters API),
 #   flydubai (iCIMS), American Airlines, Delta, KLM, Qantas, IndiGo, AAR, Lufthansa Technik, LATAM,
 #   Ethiopian Airlines (careers sites blocked),
 #   SITA (iCIMS: careers-sita.icims.com — robots.txt blocks /api/jobs and /jobs/search).
+# Checked 12 Oct 2026 — robots.txt blocks (fresh scan):
+#   Delta Air Lines, Aeroméxico, Kenya Airways, South African Airways.
+# Checked 12 Oct 2026 — HTTP errors (403/401 suggest IP blocks or anti-scraping):
+#   LATAM Airlines (HTTP 403), Avianca (HTTP 403), Copa Airlines (HTTP 401).
+# Checked 12 Oct 2026 — custom/JS sites (require browser inspection):
+#   Turkish Airlines, Bombardier.
 # Checked 8 Oct 2026 — 0 jobs deployed (connectors working, employers may have no openings):
 #   Ryanair (Workable: 0 jobs — no current openings or restricted access),
 #   Saudia (Taleo: 0 jobs — section exists but empty),
@@ -62,7 +68,7 @@ employers:
 
   # ---------- Airlines: Middle East and Africa ----------
   - {name: Emirates, slug: emirates, type: airline, country: AE, enabled: false}
-  - {name: Etihad Airways, slug: etihad, type: airline, country: AE, enabled: false}
+  - {name: Etihad Airways, slug: etihad, type: airline, country: AE, source: {ats: smartrecruiters, company: "my-applications"}, enabled: true}
   - {name: flydubai, slug: flydubai, type: airline, country: AE, enabled: false}
   - {name: Qatar Airways, slug: qatar-airways, type: airline, country: QA, enabled: false}
   - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "sv_externalcareersection"}, enabled: true}
