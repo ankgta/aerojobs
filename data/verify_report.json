@@ -1,5 +1,5 @@
 {
- "run": "2026-10-08T15:54:20+00:00",
+ "run": "2026-10-12T11:55:33+00:00",
  "results": [
   {
    "name": "dnata",
@@ -32,42 +32,42 @@
     "country": "US"
    },
    "ok": true,
-   "jobs_found": 75,
+   "jobs_found": 79,
    "sample": [
     {
-     "title": "2027 Undergraduate Summer Internship- Technology Project Management",
+     "title": "Facilities Maintenance Technician",
      "location": "DFW Airport, Texas, United States of America",
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102111EXTERNALENUS/2027-Undergraduate-Summer-Internship-Technology-Project-Management",
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102013EXTERNALENUS/Facilities-Maintenance-Technician",
      "posted": "2026-10-05"
     },
     {
-     "title": "2027 Undergraduate Internship - Geospatial Data",
+     "title": "Airport Customer Experience Specialist",
      "location": "DFW Airport, Texas, United States of America",
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102119EXTERNALENUS/2027-Undergraduate-Internship-Geospatial-Data",
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102142EXTERNALENUS/Airport-Customer-Experience-Specialist",
      "posted": "2026-10-05"
     },
     {
-     "title": "2027 Undergraduate Internship - Marketing",
+     "title": "Senior Associate, Airfield Apprentice Electrician Non-CDL",
      "location": "DFW Airport, Texas, United States of America",
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102135EXTERNALENUS/2027-Undergraduate-Internship-Marketing",
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102092EXTERNALENUS/Senior-Associate-Airfield-Apprentice-Electrician-Non-CDL",
      "posted": "2026-10-05"
     },
     {
      "title": "",
      "location": null,
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102139EXTERNALENUS/2027-Undergraduate-Internship-Airport-Facilities-Maintenance",
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102106EXTERNALENUS/Transportation-Business-Analyst",
      "posted": null
     },
     {
      "title": "",
      "location": null,
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR101993EXTERNALENUS/Senior-Associate-Full-Stack-Engineer-Appian-Salesforce",
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR101823EXTERNALENUS/TEMP-Contract-Administrator-PMM-Construction",
      "posted": null
     },
     {
      "title": "",
      "location": null,
-     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102047EXTERNALENUS/Environmental-Project-Manager-Noise",
+     "url": "https://careers.dfwairport.com/us/en/job/DFWDIAUSJR102187EXTERNALENUS/Senior-Associate-Change-Management-Partner",
      "posted": null
     }
    ],

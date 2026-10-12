@@ -97,3 +97,30 @@ https://beta.team/careers/
 
 https://careers.nats.aero/
   could not open: robots.txt does not allow https://careers.nats.aero/
+
+https://careers.united.com
+  no known hiring system found on careers.united.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://careers.emirates.com
+  could not open: robots.txt does not allow https://careers.emirates.com
+
+https://careers.lufthansagroup.com
+  could not open: robots.txt does not allow https://careers.lufthansagroup.com
+
+https://careers.ba.com
+  source: {ats: cornerstone, url: "https://jobs.ba.com"}
+
+https://careers.cathaypacific.com
+  no known hiring system found on careers.cathaypacific.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://careers.singaporeair.com
+  no known hiring system found on careers.singaporeair.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://careers.airindia.in
+  could not open: robots.txt does not allow https://careers.airindia.in
+
+https://careers.schiphol.nl
+  could not open: robots.txt does not allow https://careers.schiphol.nl
+
+https://careers.dubaiairports.ae
+  no known hiring system found on careers.dubaiairports.ae. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
