@@ -79,3 +79,8 @@ https://careers.etihad.com
 https://careers.kenyaairways.com
 https://careers.flysaa.com
 https://careers.bombardier.com
+
+# ----- Additional detection (13 Oct 2026) -----
+https://www.flyfrontier.com/careers
+https://suncountry.com/careers
+https://lilium.com/careers

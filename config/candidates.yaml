@@ -1,24 +1,24 @@
 # Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
-# 12 Oct 2026 14:04 UTC - Investigation push: re-test 5 zero-job employers, retry 3 HTTP-error airlines after 24h window
+# 13 Oct 2026 — Batch onboarding: 9 new employer candidates with confirmed ATS
 employers:
-  # ---- TESTABLE: config investigation (0 jobs, connectors working) ----
-  - {name: easyJet, slug: easyjet, type: airline, country: GB, source: {ats: taleo, host: "easyjet.taleo.net", section: "2"}, notes: "Section confirmed as '2' via careers page; may have no current openings"}
-  - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "sv_externalcareersection"}, notes: "Section confirmed; re-testing for jobs"}
-  - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, notes: "URL returned 404 on 8 Oct; re-testing migration status"}
-  - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, source: {ats: cornerstone, url: "https://jobs.virginaustralia.com"}, notes: "Cornerstone working; retesting for jobs"}
-  - {name: Azul, slug: azul, type: airline, country: BR, source: {ats: gupy, career_page_name: "voeazul"}, notes: "Gupy API endpoint; retesting after recent changes"}
+  # ---- eVTOL / Advanced Air Mobility / Next-gen aircraft ----
+  - {name: Beta Technologies, slug: beta-technologies, type: manufacturer, country: US, source: {ats: greenhouse, board: "betatechnologiesinc"}, notes: "eVTOL/electric aircraft; Greenhouse confirmed via job-boards.greenhouse.io/betatechnologiesinc"}
+  - {name: Boom Supersonic, slug: boom-supersonic, type: manufacturer, country: US, source: {ats: greenhouse, board: "boomsupersonic"}, notes: "Supersonic aircraft; Greenhouse confirmed via job-boards.greenhouse.io/boomsupersonic"}
+  - {name: JetZero, slug: jetzero, type: manufacturer, country: US, source: {ats: greenhouse, board: "jetzero"}, notes: "Blended wing body aircraft; Greenhouse confirmed via job-boards.greenhouse.io/jetzero"}
+  - {name: Hermeus, slug: hermeus, type: manufacturer, country: US, source: {ats: lever, company: "hermeus"}, notes: "Hypersonic aircraft; Lever confirmed via jobs.lever.co/hermeus"}
 
-  # ---- TESTABLE: HTTP-error airlines (retry after 24h window) ----
-  # 12 Oct 14:00 UTC: HTTP 403/401 blocks reported. 24h window now open (12 Oct 14:04 UTC).
-  - {name: LATAM Airlines, slug: latam, type: airline, country: CL, source: {ats: taleo, host: "latam.taleo.net", section: "External"}, notes: "HTTP 403 on 12 Oct; retrying after 24h block window"}
-  - {name: Avianca, slug: avianca, type: airline, country: CO, source: {ats: taleo, host: "avianca.taleo.net", section: "External"}, notes: "HTTP 403 on 12 Oct; retrying after 24h block window"}
-  - {name: Copa Airlines, slug: copa-airlines, type: airline, country: PA, source: {ats: taleo, host: "copa.taleo.net", section: "External"}, notes: "HTTP 401 on 12 Oct; retrying after 24h block window"}
+  # ---- Airlines ----
+  - {name: Breeze Airways, slug: breeze-airways, type: airline, country: US, source: {ats: greenhouse, board: "breezeairways"}, notes: "US low-cost airline; Greenhouse confirmed via job-boards.greenhouse.io/breezeairways"}
 
-  # ---- NOT TESTABLE: blocked or unsupported ATS ----
-  # SITA - JavaScript-rendered frontend on careers.sita.aero, backend blocked at careers-sita.icims.com (robots.txt)
-  # easyJet - Taleo section "2" is correct; issue is connector logic or no jobs posted (debug needed)
-  # Azul Airlines - Gupy API changed; needs updated connector (portal.gupy.io/api/job-search/jobs endpoint)
-  # Turkish Airlines - Custom HRPeak backend (no standard ATS support)
-  # Kenya Airways - Oracle iRecruitment on-premise (no public API)
-  # Air India - SuccessFactors with unique /aix/ template (existing SF connector incompatible)
-  # Cathay Pacific - Likely Phenom but needs browser network inspection to confirm tenant ID
+  # ---- Hydrogen / sustainable aviation ----
+  - {name: ZeroAvia, slug: zeroavia, type: manufacturer, country: GB, source: {ats: workable, company: "zeroavia"}, notes: "Hydrogen-electric aviation; Workable confirmed via apply.workable.com/zeroavia/"}
+
+  # ---- MRO ----
+  - {name: Joramco, slug: joramco, type: mro, country: JO, source: {ats: workable, company: "joramco"}, notes: "MRO in Jordan; Workable confirmed via apply.workable.com/joramco/"}
+
+  # ---- Aerospace suppliers / aerostructures ----
+  - {name: Spirit AeroSystems, slug: spirit-aerosystems, type: manufacturer, country: US, source: {ats: icims, url: "https://careers-spiritaero.icims.com"}, notes: "Aerostructures manufacturer; iCIMS confirmed via detect_report.txt"}
+
+  # ---- Additional detection candidates (add careers URLs to careers_pages.txt) ----
+  # Frontier Airlines — flyfrontier.com/careers (ATS unknown, needs detection)
+  # Sun Country Airlines — suncountry.com/careers (ATS unknown, needs detection)
