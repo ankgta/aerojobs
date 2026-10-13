@@ -36,10 +36,11 @@ def load_site_config() -> dict:
 def load_version() -> dict:
     """Load version info from config/version.yaml."""
     v = load_yaml(CONFIG_DIR / "version.yaml")
-    ver = v.get("version", "v1.0")
+    major = v.get("major", 1)
+    minor = v.get("minor", 1)
     patch = v.get("patch", "")
     return {
-        "version": ver + ("." + patch if patch else ""),
+        "version": f"v{major}.{minor}{patch}",
         "updated_at": v.get("updated_at", ""),
     }
 
