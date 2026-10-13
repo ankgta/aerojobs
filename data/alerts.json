@@ -37,9 +37,13 @@
    "problem": "Could not read jobs: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/supernal/jobs"
   },
   {
+   "employer": "RTX (Collins Aerospace, Pratt & Whitney)",
+   "problem": "Could not read jobs: HTTP 520 from https://globalhr.wd5.myworkdayjobs.com/wday/cxs/globalhr/REC_RTX_Ext_Gateway/jobs"
+  },
+  {
    "employer": "Flight Safety International",
    "problem": "Returned zero jobs. Its careers page may have changed."
   }
  ],
- "run": "2026-10-12T18:15:52+00:00"
+ "run": "2026-10-13T05:50:11+00:00"
 }
