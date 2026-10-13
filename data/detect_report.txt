@@ -155,3 +155,12 @@ https://careers.flysaa.com
 
 https://careers.bombardier.com
   no known hiring system found on careers.bombardier.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.flyfrontier.com/careers
+  no known hiring system found on www.flyfrontier.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://suncountry.com/careers
+  no known hiring system found on suncountry.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://lilium.com/careers
+  could not open: robots.txt does not allow https://lilium.com/careers
