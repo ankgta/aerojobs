@@ -103,6 +103,7 @@ employers:
   - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, enabled: false}
   - {name: AAR, slug: aar, type: mro, country: US, enabled: false}
   - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, enabled: false}
+  - {name: Joramco, slug: joramco, type: mro, country: JO, source: {ats: workable, company: "joramco"}, enabled: true}
   - {name: Swissport, slug: swissport, type: ground_services, country: CH, source: {ats: successfactors, url: "https://jobs.swissport.com"}, enabled: true}
   - {name: Menzies Aviation, slug: menzies-aviation, type: ground_services, country: GB, enabled: false}
 
@@ -123,6 +124,12 @@ employers:
   - {name: Bombardier, slug: bombardier, type: manufacturer, country: CA, enabled: false}
   - {name: "RTX (Collins Aerospace, Pratt & Whitney)", slug: rtx, type: manufacturer, country: US, source: {ats: workday, url: "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway"}, enabled: true}
   - {name: Joby Aviation, slug: joby-aviation, type: manufacturer, country: US, source: {ats: icims, url: "https://careers-jobyaviation.icims.com"}, enabled: true}
+  - {name: Beta Technologies, slug: beta-technologies, type: manufacturer, country: US, source: {ats: greenhouse, board: "betatechnologiesinc"}, enabled: true}
+  - {name: JetZero, slug: jetzero, type: manufacturer, country: US, source: {ats: greenhouse, board: "jetzero"}, enabled: true}
+  - {name: Hermeus, slug: hermeus, type: manufacturer, country: US, source: {ats: lever, company: "hermeus"}, enabled: true}
+  - {name: Pivotal, slug: pivotal, type: manufacturer, country: US, source: {ats: lever, company: "pivotal"}, enabled: true}
+  - {name: Zipline, slug: zipline, type: manufacturer, country: US, source: {ats: greenhouse, board: "flyzipline"}, enabled: true}
+  - {name: ZeroAvia, slug: zeroavia, type: manufacturer, country: GB, source: {ats: workable, company: "zeroavia"}, enabled: true}
 
   # ---------- Other aviation organisations ----------
   - {name: NAV Canada, slug: nav-canada, type: other, country: CA, source: {ats: workday, url: "https://navcanada.wd10.myworkdayjobs.com/NAV_Careers"}, enabled: true}
