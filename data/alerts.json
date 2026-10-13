@@ -33,17 +33,21 @@
    "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/airnewzealand/postings?limit=100&offset=0"
   },
   {
+   "employer": "Joramco",
+   "problem": "Returned zero jobs. Its careers page may have changed."
+  },
+  {
    "employer": "Supernal",
    "problem": "Could not read jobs: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/supernal/jobs"
   },
   {
-   "employer": "RTX (Collins Aerospace, Pratt & Whitney)",
-   "problem": "Could not read jobs: HTTP 520 from https://globalhr.wd5.myworkdayjobs.com/wday/cxs/globalhr/REC_RTX_Ext_Gateway/jobs"
+   "employer": "ZeroAvia",
+   "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
    "employer": "Flight Safety International",
    "problem": "Returned zero jobs. Its careers page may have changed."
   }
  ],
- "run": "2026-10-13T05:50:11+00:00"
+ "run": "2026-10-13T07:47:48+00:00"
 }
