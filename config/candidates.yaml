@@ -1,24 +1,20 @@
 # Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
-# 13 Oct 2026 — Batch onboarding: 9 new employer candidates with confirmed ATS
+# 13 Oct 2026 — Batch onboarding: new employer candidates with confirmed ATS
 employers:
-  # ---- eVTOL / Advanced Air Mobility / Next-gen aircraft ----
-  - {name: Beta Technologies, slug: beta-technologies, type: manufacturer, country: US, source: {ats: greenhouse, board: "betatechnologiesinc"}, notes: "eVTOL/electric aircraft; Greenhouse confirmed via job-boards.greenhouse.io/betatechnologiesinc"}
-  - {name: Boom Supersonic, slug: boom-supersonic, type: manufacturer, country: US, source: {ats: greenhouse, board: "boomsupersonic"}, notes: "Supersonic aircraft; Greenhouse confirmed via job-boards.greenhouse.io/boomsupersonic"}
-  - {name: JetZero, slug: jetzero, type: manufacturer, country: US, source: {ats: greenhouse, board: "jetzero"}, notes: "Blended wing body aircraft; Greenhouse confirmed via job-boards.greenhouse.io/jetzero"}
-  - {name: Hermeus, slug: hermeus, type: manufacturer, country: US, source: {ats: lever, company: "hermeus"}, notes: "Hypersonic aircraft; Lever confirmed via jobs.lever.co/hermeus"}
+  # ---- VERIFIED OK (from first verify run) ----
+  - {name: Beta Technologies, slug: beta-technologies, type: manufacturer, country: US, source: {ats: greenhouse, board: "betatechnologiesinc"}, notes: "eVTOL/electric aircraft; 124 jobs verified"}
+  - {name: JetZero, slug: jetzero, type: manufacturer, country: US, source: {ats: greenhouse, board: "jetzero"}, notes: "Blended wing body aircraft; 22 jobs verified"}
+  - {name: Hermeus, slug: hermeus, type: manufacturer, country: US, source: {ats: lever, company: "hermeus"}, notes: "Hypersonic aircraft; 81 jobs verified"}
 
-  # ---- Airlines ----
-  - {name: Breeze Airways, slug: breeze-airways, type: airline, country: US, source: {ats: greenhouse, board: "breezeairways"}, notes: "US low-cost airline; Greenhouse confirmed via job-boards.greenhouse.io/breezeairways"}
+  # ---- VERIFIED 0 JOBS (working but no current openings) ----
+  - {name: ZeroAvia, slug: zeroavia, type: manufacturer, country: GB, source: {ats: workable, company: "zeroavia"}, notes: "Hydrogen-electric aviation; verified OK, 0 jobs currently"}
+  - {name: Joramco, slug: joramco, type: mro, country: JO, source: {ats: workable, company: "joramco"}, notes: "MRO in Jordan; verified OK, 0 jobs currently"}
 
-  # ---- Hydrogen / sustainable aviation ----
-  - {name: ZeroAvia, slug: zeroavia, type: manufacturer, country: GB, source: {ats: workable, company: "zeroavia"}, notes: "Hydrogen-electric aviation; Workable confirmed via apply.workable.com/zeroavia/"}
+  # ---- NEW CANDIDATES (need verify) ----
+  - {name: Pivotal, slug: pivotal, type: manufacturer, country: US, source: {ats: lever, company: "pivotal"}, notes: "eVTOL personal aircraft (formerly Opener); Lever confirmed via jobs.lever.co/pivotal"}
+  - {name: Zipline, slug: zipline, type: manufacturer, country: US, source: {ats: greenhouse, board: "flyzipline"}, notes: "Drone delivery; Greenhouse confirmed via boards.greenhouse.io/flyzipline"}
 
-  # ---- MRO ----
-  - {name: Joramco, slug: joramco, type: mro, country: JO, source: {ats: workable, company: "joramco"}, notes: "MRO in Jordan; Workable confirmed via apply.workable.com/joramco/"}
-
-  # ---- Aerospace suppliers / aerostructures ----
-  - {name: Spirit AeroSystems, slug: spirit-aerosystems, type: manufacturer, country: US, source: {ats: icims, url: "https://careers-spiritaero.icims.com"}, notes: "Aerostructures manufacturer; iCIMS confirmed via detect_report.txt"}
-
-  # ---- Additional detection candidates (add careers URLs to careers_pages.txt) ----
-  # Frontier Airlines — flyfrontier.com/careers (ATS unknown, needs detection)
-  # Sun Country Airlines — suncountry.com/careers (ATS unknown, needs detection)
+  # ---- FAILED (do not re-test) ----
+  # Boom Supersonic — greenhouse board 'boomsupersonic' returns HTTP 404 on boards-api (may use newer Greenhouse API)
+  # Breeze Airways — greenhouse board 'breezeairways' returns HTTP 404 on boards-api (may use newer Greenhouse API)
+  # Spirit AeroSystems — robots.txt blocks iCIMS API
