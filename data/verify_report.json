@@ -1,5 +1,5 @@
 {
- "run": "2026-10-13T06:57:58+00:00",
+ "run": "2026-10-13T07:06:30+00:00",
  "results": [
   {
    "name": "Beta Technologies",
@@ -48,16 +48,6 @@
      "posted": "2026-04-28"
     }
    ]
-  },
-  {
-   "name": "Boom Supersonic",
-   "slug": "boom-supersonic",
-   "source": {
-    "ats": "greenhouse",
-    "board": "boomsupersonic"
-   },
-   "ok": false,
-   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/boomsupersonic/jobs"
   },
   {
    "name": "JetZero",
@@ -156,16 +146,6 @@
    ]
   },
   {
-   "name": "Breeze Airways",
-   "slug": "breeze-airways",
-   "source": {
-    "ats": "greenhouse",
-    "board": "breezeairways"
-   },
-   "ok": false,
-   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/breezeairways/jobs"
-  },
-  {
    "name": "ZeroAvia",
    "slug": "zeroavia",
    "source": {
@@ -188,14 +168,100 @@
    "sample": []
   },
   {
-   "name": "Spirit AeroSystems",
-   "slug": "spirit-aerosystems",
+   "name": "Pivotal",
+   "slug": "pivotal",
    "source": {
-    "ats": "icims",
-    "url": "https://careers-spiritaero.icims.com"
+    "ats": "lever",
+    "company": "pivotal"
    },
-   "ok": false,
-   "error": "Exception: api/jobs: robots.txt does not allow https://careers-spiritaero.icims.com/api/jobs; html_search: robots.txt does not allow https://careers-spiritaero.icims.com/jobs/search?ss=1&in_iframe=1; sitemap: ro"
+   "ok": true,
+   "jobs_found": 25,
+   "sample": [
+    {
+     "title": "Autonomy Engineer II - Robotics",
+     "location": "Palo Alto, CA or Miami, Florida",
+     "url": "https://jobs.lever.co/pivotal/69119185-2d5b-4b54-8a87-8ea040c9e482",
+     "posted": "2026-06-11"
+    },
+    {
+     "title": "Battery Test Engineer",
+     "location": "Palo Alto, CA",
+     "url": "https://jobs.lever.co/pivotal/0238f5f2-c0cf-4e97-a4be-0bc50b904f74",
+     "posted": "2026-10-02"
+    },
+    {
+     "title": "Computer Vision Engineer – Autonomy & Perception",
+     "location": "Palo Alto, CA",
+     "url": "https://jobs.lever.co/pivotal/9fe618b9-cf87-4418-9953-31c5e4da56be",
+     "posted": "2026-06-02"
+    },
+    {
+     "title": "Data Engineer - Flight Data (contract)",
+     "location": "Palo Alto, CA",
+     "url": "https://jobs.lever.co/pivotal/eb8100f9-b79a-43d8-b6d8-bdc578542b5d",
+     "posted": "2026-08-18"
+    },
+    {
+     "title": "eVTOL Flight Instructor I",
+     "location": "Palo Alto, CA",
+     "url": "https://jobs.lever.co/pivotal/3731fd31-8ea3-45aa-a598-172a30cc821e",
+     "posted": "2026-10-06"
+    },
+    {
+     "title": "Flight Operations Support Specialist II",
+     "location": "Palo Alto, CA",
+     "url": "https://jobs.lever.co/pivotal/20cd3dc8-74ef-4dd4-a50f-af9ddaeee1f7",
+     "posted": "2026-06-04"
+    }
+   ]
+  },
+  {
+   "name": "Zipline",
+   "slug": "zipline",
+   "source": {
+    "ats": "greenhouse",
+    "board": "flyzipline"
+   },
+   "ok": true,
+   "jobs_found": 354,
+   "sample": [
+    {
+     "title": "Account Executive",
+     "location": "Houston, Texas, USA",
+     "url": "https://www.zipline.com/open-roles/7895360003?gh_jid=7895360003",
+     "posted": "2026-08-18"
+    },
+    {
+     "title": "Account Executive, Sales & Partner Success",
+     "location": "Pea Ridge, Arkansas, USA",
+     "url": "https://www.zipline.com/open-roles/8004990003?gh_jid=8004990003",
+     "posted": "2026-09-28"
+    },
+    {
+     "title": "Accounting Intern (Spring 2027)",
+     "location": "South San Francisco, California, USA",
+     "url": "https://www.zipline.com/open-roles/7893921003?gh_jid=7893921003",
+     "posted": "2026-08-18"
+    },
+    {
+     "title": "Accounting Intern (Summer 2027)",
+     "location": "South San Francisco, California, USA",
+     "url": "https://www.zipline.com/open-roles/7894364003?gh_jid=7894364003",
+     "posted": "2026-08-19"
+    },
+    {
+     "title": "Accounts Payable Analyst",
+     "location": "Abidjan, Côte d’Ivoire",
+     "url": "https://www.zipline.com/open-roles/8020785003?gh_jid=8020785003",
+     "posted": "2026-10-10"
+    },
+    {
+     "title": "Aerodynamics Intern (Spring 2027)",
+     "location": "South San Francisco, California, USA",
+     "url": "https://www.zipline.com/open-roles/7904002003?gh_jid=7904002003",
+     "posted": "2026-08-19"
+    }
+   ]
   }
  ]
 }
