@@ -20,7 +20,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markupsafe import Markup
 
 from fetcher.common import (COMPANY_TYPES, CONFIG_DIR, DATA_DIR, ROOT, load_employers,
-                            load_site_config, read_json, slugify, today)
+                            load_site_config, load_version, read_json, slugify, today)
 from fetcher.geo import REGION_ORDER, country_name
 from fetcher.roles import ROLE_SHORT, ROLES
 from fetcher.run import is_visible
@@ -159,7 +159,10 @@ def read_markdown(path: Path) -> tuple[dict, str]:
     text = path.read_text(encoding="utf-8")
     meta = {}
     if text.startswith("---"):
-        _, fm, text = text.split("---", 2)
+        parts = text.split("---", 2)
+        if len(parts) < 3:
+            return meta, text.strip()
+        _, fm, text = parts
         for line in fm.strip().splitlines():
             if ":" in line:
                 k, v = line.split(":", 1)
@@ -194,8 +197,10 @@ class Builder:
             j["tone"] = tone(j["employer"])
         self.env = Environment(loader=FileSystemLoader(HERE / "templates"),
                                autoescape=select_autoescape(["html"]), trim_blocks=True, lstrip_blocks=True)
+        self.version_info = load_version()
         self.env.globals.update(site=self.site, roles=ROLES, role_short=ROLE_SHORT, company_types=COMPANY_TYPES,
-                                preview=self.preview, human_date=human_date, year=self.ref_date.year)
+                                preview=self.preview, human_date=human_date, year=self.ref_date.year,
+                                version_info=self.version_info)
         self.pages: list[str] = []   # paths for the sitemap
 
     # links: absolute "/x/" on the live site; relative "../x/index.html" in preview files

@@ -288,6 +288,7 @@ select:hover { border-color: #B9CDE3; }
 .site-foot a { color: #fff; text-decoration: none; }
 .site-foot a:hover { text-decoration: underline; }
 .copyright { margin-top: 32px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .12); color: #8C9BB0; }
+.version-stamp { margin-top: 6px; font-size: .7rem; color: #636e80; text-align: right; }
 
 /* ================= tablets and phones ================= */
 @media (max-width: 960px) {

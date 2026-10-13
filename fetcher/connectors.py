@@ -905,7 +905,7 @@ def fetch_breezy(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[
             "location": location,
             "country_code": country_code,
             "posted_date": None,
-            "posted_estimated": False,
+            "posted_estimated": True,
             "closing_date": None,
             "work_mode": None,
             "employment_type": employment_type,
@@ -985,7 +985,7 @@ def fetch_gupy(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[di
                     "location": location,
                     "country_code": country_code,
                     "posted_date": item.get("publishedDate"),
-                    "posted_estimated": False,
+                    "posted_estimated": not bool(item.get("publishedDate")),
                     "employment_type": employment_type,
                 })
                 if len(jobs) >= max_jobs:
@@ -1046,7 +1046,7 @@ def fetch_gupy(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[di
                     "location": location,
                     "country_code": country_code,
                     "posted_date": item.get("publishedDate"),
-                    "posted_estimated": False,
+                    "posted_estimated": not bool(item.get("publishedDate")),
                     "employment_type": employment_type,
                 })
                 if len(jobs) >= max_jobs:
@@ -1204,7 +1204,7 @@ def fetch_cornerstone(client: PoliteClient, src: dict, max_jobs: int = 3000) -> 
                 location = ", ".join(location_parts)
 
                 # Country from location or fallback to source
-                country_code = location_obj.get("country") or src.get("country", "AU")
+                country_code = location_obj.get("country") or src.get("country", "")
                 if len(country_code) > 2:
                     country_code = country_code[:2].upper()
                 else:

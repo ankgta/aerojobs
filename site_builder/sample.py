@@ -68,7 +68,7 @@ def main() -> None:
                     "posted_date": (run_date - dt.timedelta(days=age)).isoformat(),
                     "posted_estimated": rnd.random() < .2,
                     "closing_date": closing.isoformat() if closing else None,
-                    "employment_type": rnd.choice(["Full time", "Full time", "Full time", "Contract", "Part time"]),
+                    "employment_type": rnd.choice(["Full-time", "Full-time", "Full-time", "Contract", "Part-time"]),
                 })
         merge_employer_jobs(jobs, emp, raws, run_date.isoformat())
     for j in jobs.values():

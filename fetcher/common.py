@@ -33,6 +33,17 @@ def load_site_config() -> dict:
     return load_yaml(CONFIG_DIR / "site.yaml")
 
 
+def load_version() -> dict:
+    """Load version info from config/version.yaml."""
+    v = load_yaml(CONFIG_DIR / "version.yaml")
+    ver = v.get("version", "v1.0")
+    patch = v.get("patch", "")
+    return {
+        "version": ver + ("." + patch if patch else ""),
+        "updated_at": v.get("updated_at", ""),
+    }
+
+
 def load_employers(path: Path | None = None) -> list[dict]:
     data = load_yaml(path or CONFIG_DIR / "employers.yaml")
     employers = data.get("employers") or []

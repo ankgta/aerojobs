@@ -174,9 +174,10 @@
     citySelect.disabled = false;
     allCitiesOption.textContent = "All cities";
 
-    // Get all cities for the selected country
+    // Get cities for the selected country, filtered by other active filters
+    var cityPool = jobs.filter(function (j) { return matchesState(j, without(s, "city")); });
     var citiesForCountry = {};
-    jobs.forEach(function (j) {
+    cityPool.forEach(function (j) {
       if (j.cc === s.country && j.cy) {
         citiesForCountry[j.cy] = (citiesForCountry[j.cy] || 0) + 1;
       }

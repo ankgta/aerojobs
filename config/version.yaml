@@ -1,0 +1,5 @@
+# AeroJobs version tracking
+# Updated automatically on each deployment
+version: "v1.1"
+patch: ""
+updated_at: "2026-10-13T13:00:00+05:30"
