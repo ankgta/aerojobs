@@ -1252,6 +1252,133 @@ def fetch_cornerstone(client: PoliteClient, src: dict, max_jobs: int = 3000) -> 
     return []
 
 
+# ------------------------------------------------------------------ Air Works (custom HTML)
+class _AirWorksParser(HTMLParser):
+    """Parse Air Works careers page job listings from HTML.
+
+    Air Works uses a custom site structure where each job is in a <region> element
+    with a heading, posted date, job ID, location/type/dept list, and a "More Details" link.
+    """
+    def __init__(self):
+        super().__init__()
+        self.jobs = []
+        self.in_region = False
+        self.current_job = {}
+        self.heading_buffer = []
+        self.in_heading = False
+        self.in_list_item = False
+        self.list_items = []
+        self.text_buffer = []
+        self.base_url = ""
+        self.max_jobs = 3000
+
+    def handle_starttag(self, tag, attrs):
+        attrs_dict = dict(attrs)
+
+        if tag == 'region':
+            self.in_region = True
+            self.current_job = {}
+            self.list_items = []
+            self.text_buffer = []
+
+        elif tag in ('h2', 'h3') and self.in_region:
+            self.in_heading = True
+            self.heading_buffer = []
+
+        elif tag == 'li' and self.in_region:
+            self.in_list_item = True
+
+        elif tag == 'a' and self.in_region:
+            href = attrs_dict.get('href', '')
+            # Check if this is a "More Details" link
+            if href and ('More Details' in ''.join(self.heading_buffer) or self.in_region):
+                if not href.startswith('http'):
+                    href = urllib.parse.urljoin(self.base_url, href)
+                self.current_job['url'] = href
+
+    def handle_endtag(self, tag):
+        if tag == 'region' and self.in_region:
+            # Finalize job
+            if self.current_job.get('title') and self.current_job.get('url'):
+                # Extract source_id from text buffer (contains "Job ID: XXXXX")
+                job_id = None
+                for text in self.text_buffer:
+                    if 'Job ID:' in text:
+                        try:
+                            job_id = text.split('Job ID:')[1].strip().split()[0]
+                            break
+                        except:
+                            pass
+
+                self.current_job['source_id'] = job_id or self.current_job['title'].lower().replace(' ', '-')[:20]
+
+                # Assign list items
+                if len(self.list_items) >= 1:
+                    self.current_job['location'] = self.list_items[0]
+                if len(self.list_items) >= 2:
+                    self.current_job['employment_type'] = self.list_items[1]
+                if len(self.list_items) >= 3:
+                    self.current_job['department'] = self.list_items[2]
+
+                # Extract posted date
+                for text in self.text_buffer:
+                    if 'Posted' in text:
+                        posted_date, estimated = posted_on_to_date(text)
+                        if posted_date:
+                            self.current_job['posted_date'] = posted_date
+                            self.current_job['posted_estimated'] = estimated
+                        break
+
+                if len(self.jobs) < self.max_jobs:
+                    self.jobs.append(self.current_job)
+
+            self.in_region = False
+
+        elif tag in ('h2', 'h3') and self.in_heading:
+            self.in_heading = False
+            title = ''.join(self.heading_buffer).strip()
+            if title and not any(skip in title.lower() for skip in ['don\'t see', 'beware', 'explore']):
+                self.current_job['title'] = title
+
+        elif tag == 'li' and self.in_list_item:
+            self.in_list_item = False
+            text = ''.join(self.text_buffer).strip()
+            if text:
+                self.list_items.append(text)
+            self.text_buffer = []
+
+    def handle_data(self, data):
+        data = data.strip()
+        if not data:
+            return
+
+        if self.in_heading:
+            self.heading_buffer.append(data)
+        elif self.in_list_item:
+            self.text_buffer.append(data)
+        elif self.in_region:
+            self.text_buffer.append(data)
+
+
+def fetch_airworks(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """Fetch job listings from Air Works careers page (custom HTML site)."""
+    base_url = src.get("url", "https://airworks.aero/careers/open-positions")
+    html_content = client.get(base_url)
+    if not html_content:
+        return []
+
+    parser = _AirWorksParser()
+    parser.base_url = base_url
+    parser.max_jobs = max_jobs
+    try:
+        parser.feed(html_content)
+    except Exception:
+        # If parsing fails, return what we have so far
+        pass
+
+    return parser.jobs[:max_jobs]
+
+
 CONNECTORS = {
     "workday": (fetch_workday, workday_detail),
     "greenhouse": (fetch_greenhouse, None),
@@ -1267,4 +1394,5 @@ CONNECTORS = {
     "gupy": (fetch_gupy, None),
     "workable": (fetch_workable, None),
     "cornerstone": (fetch_cornerstone, None),
+    "airworks": (fetch_airworks, None),  # Custom HTML parser for Air Works MRO
 }
