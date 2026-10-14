@@ -142,14 +142,35 @@ def job_posting_jsonld(job: dict, site: dict, page_url: str) -> str | None:
         data["validThrough"] = job["closing_date"] + "T23:59:59"
     if job.get("employment_type") in EMPLOYMENT_SCHEMA:
         data["employmentType"] = EMPLOYMENT_SCHEMA[job["employment_type"]]
+
     address = {"@type": "PostalAddress", "addressCountry": job["country_code"]}
     if locality and locality.lower() != (job.get("country") or "").lower():
         address["addressLocality"] = locality
+    if job.get("addressRegion"):
+        address["addressRegion"] = job["addressRegion"]
+    if job.get("postalCode"):
+        address["postalCode"] = job["postalCode"]
+    if job.get("streetAddress"):
+        address["streetAddress"] = job["streetAddress"]
+
     if job.get("work_mode") == "Remote":
         data["jobLocationType"] = "TELECOMMUTE"
         data["applicantLocationRequirements"] = {"@type": "Country", "name": job["country"]}
     else:
         data["jobLocation"] = {"@type": "Place", "address": address}
+
+    # Add salary if available
+    if job.get("baseSalary"):
+        data["baseSalary"] = {
+            "@type": "PriceSpecification",
+            "priceCurrency": job.get("salaryCurrency", "USD"),
+            "price": job["baseSalary"]
+        }
+
+    # Add employment type indicator
+    if not job.get("employment_type"):
+        data["employmentType"] = "FULL_TIME"  # Default to full-time if not specified
+
     # Escape < > & so nothing inside the data can close the script block or add markup.
     return (json.dumps(data, ensure_ascii=False)
             .replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026"))
