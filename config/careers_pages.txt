@@ -88,3 +88,9 @@ https://job-boards.greenhouse.io/breezeairways
 https://job-boards.greenhouse.io/boomsupersonic
 https://www.kratosdefense.com/careers/open-roles
 https://harbourair.com/careers/
+
+# ----- Remaining disabled employers detection (14 Oct 2026) -----
+https://www.aarcorp.com/careers
+https://www.stengg.com/careers
+https://menziesaviation.com/careers/
+https://www.safran-group.com/en/careers
