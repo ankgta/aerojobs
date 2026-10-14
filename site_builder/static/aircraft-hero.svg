@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <defs>
+    <filter id="aircraft-fade">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+    </filter>
+  </defs>
+
+  <!-- Faded aircraft silhouette (bird's eye view) -->
+  <g opacity="0.08" filter="url(#aircraft-fade)">
+    <!-- Fuselage (main body) -->
+    <ellipse cx="200" cy="200" rx="35" ry="180" fill="#0A66E8" />
+
+    <!-- Wing left -->
+    <ellipse cx="80" cy="200" rx="120" ry="40" fill="#0A66E8" />
+
+    <!-- Wing right -->
+    <ellipse cx="320" cy="200" rx="120" ry="40" fill="#0A66E8" />
+
+    <!-- Cockpit (nose) -->
+    <circle cx="200" cy="40" r="20" fill="#0A66E8" />
+
+    <!-- Tail fin left -->
+    <path d="M 160 360 L 140 400 L 160 390 Z" fill="#0A66E8" />
+
+    <!-- Tail fin right -->
+    <path d="M 240 360 L 260 400 L 240 390 Z" fill="#0A66E8" />
+
+    <!-- Horizontal stabilizer (tail wings) -->
+    <ellipse cx="200" cy="380" rx="80" ry="25" fill="#0A66E8" />
+  </g>
+</svg>
