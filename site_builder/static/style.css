@@ -58,13 +58,13 @@ h3 { font-size: 1.1rem; font-weight: 600; }
 .site-head {
   position: sticky; top: 0; z-index: 40;
   padding-top: env(safe-area-inset-top);
-  background: rgba(255, 255, 255, .94); border-bottom: 1px solid var(--line);
+  background: #151B54; border-bottom: 1px solid #0d1240;
 }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .site-head { background: rgba(255, 255, 255, .78); -webkit-backdrop-filter: saturate(180%) blur(14px); backdrop-filter: saturate(180%) blur(14px); }
+  .site-head { background: #151B54; }
 }
 .head-row { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font: 700 1.08rem/1 var(--display); letter-spacing: -.02em; white-space: nowrap; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font: 700 1.08rem/1 var(--display); letter-spacing: -.02em; white-space: nowrap; }
 .brand-mark { width: 32px; height: 32px; flex: none; }
 .brand-with-aircraft { display: flex; align-items: center; gap: 12px; }
 .aircraft-container { position: relative; width: 120px; height: 40px; flex: none; }
@@ -72,33 +72,33 @@ h3 { font-size: 1.1rem; font-weight: 600; }
 /* Aircraft navigation lights — red beacon and green nav lights alternate on/off each second */
 .nav-light {
   position: absolute;
-  width: 5px;
-  height: 5px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   pointer-events: none;
 }
-/* Red anti-collision beacon: above cockpit (nose, top of fuselage, right side of image) */
+/* Red anti-collision beacon: above cockpit, front of fuselage crown */
 .nav-light--red {
   background: #FF1A1A;
-  box-shadow: 0 0 5px 1px rgba(255, 30, 30, 0.9);
-  top: 16px;
-  left: 87px;
+  box-shadow: 0 0 7px 4px rgba(255, 30, 30, 0.85);
+  top: 18px;
+  left: 103px;
   animation: nav-red 2s steps(1, end) infinite;
 }
-/* Green nav light: tip of tail fin (top-left of image) */
+/* Green nav light: tip of tail fin (top of vertical stabilizer) */
 .nav-light--tail {
   background: #00E676;
-  box-shadow: 0 0 5px 1px rgba(0, 230, 118, 0.9);
-  top: 2px;
-  left: 3px;
+  box-shadow: 0 0 7px 4px rgba(0, 230, 118, 0.85);
+  top: 5px;
+  left: 8px;
   animation: nav-green 2s steps(1, end) infinite;
 }
-/* Green nav light: wing tip edge (mid-right, bottom area of fuselage/wing) */
+/* Green nav light: wing trailing edge */
 .nav-light--wing {
   background: #00E676;
-  box-shadow: 0 0 5px 1px rgba(0, 230, 118, 0.9);
-  top: 28px;
-  left: 72px;
+  box-shadow: 0 0 7px 4px rgba(0, 230, 118, 0.85);
+  top: 30px;
+  left: 55px;
   animation: nav-green 2s steps(1, end) infinite;
 }
 /* Red on for first second, off for second second */
@@ -117,8 +117,8 @@ h3 { font-size: 1.1rem; font-weight: 600; }
   .nav-light { animation: none; opacity: 1; }
 }
 .top-nav { display: flex; align-items: center; gap: 4px; }
-.top-nav a { color: var(--ink-2); text-decoration: none; font-weight: 600; font-size: .95rem; padding: 8px 12px; border-radius: 999px; }
-.top-nav a:hover, .top-nav a[aria-current="page"] { color: var(--ink); background: var(--primary-soft); }
+.top-nav a { color: rgba(255,255,255,.85); text-decoration: none; font-weight: 600; font-size: .95rem; padding: 8px 12px; border-radius: 999px; }
+.top-nav a:hover, .top-nav a[aria-current="page"] { color: #fff; background: rgba(255,255,255,.15); }
 .top-nav a[href*="guides"] {
   background: var(--primary);
   color: #fff;
@@ -401,8 +401,8 @@ select:hover { border-color: #B9CDE3; }
     background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: var(--shadow-md);
   }
   .top-nav.is-open a { padding: 12px; font-size: 1rem; border-radius: 10px; }
-  .menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 12px; background: transparent; cursor: pointer; color: var(--ink); }
-  .menu-btn:hover { background: var(--bg); }
+  .menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 12px; background: transparent; cursor: pointer; color: #fff; }
+  .menu-btn:hover { background: rgba(255,255,255,.15); }
   .search-pill { border-radius: 16px; flex-wrap: wrap; padding: 6px; }
   .search-pill .icon { display: none; }
   .search-pill input { flex: 1 1 100%; padding: 12px 12px; }
