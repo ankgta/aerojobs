@@ -1,7 +1,7 @@
 # Website settings. Change the values on the right, keep the names on the left.
 
 site_name: "AeroJobs"
-tagline: "Airline, airport and aerospace jobs from employers worldwide, in one place."
+tagline: "Airline and Aviation Jobs worldwide, all in one place."
 hero_image: ""                             # optional: your own banner photo, e.g. static/hero.jpg (leave empty for the hangar illustration)
 site_url: "https://aerojobs.work"         # your domain (no slash at the end)
 contact_email: "hello@aerojobs.work"      # forwarded to the site Gmail by Cloudflare Email Routing; shown on the Contact page
