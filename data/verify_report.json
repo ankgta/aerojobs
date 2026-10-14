@@ -1,267 +1,168 @@
 {
- "run": "2026-10-13T07:06:30+00:00",
+ "run": "2026-10-14T03:38:15+00:00",
  "results": [
   {
-   "name": "Beta Technologies",
-   "slug": "beta-technologies",
+   "name": "Cathay Pacific",
+   "slug": "cathay-pacific",
    "source": {
-    "ats": "greenhouse",
-    "board": "betatechnologiesinc"
+    "ats": "phenom",
+    "url": "https://careers.cathaypacific.com",
+    "country": "HK"
    },
    "ok": true,
-   "jobs_found": 124,
+   "jobs_found": 210,
    "sample": [
     {
-     "title": "Accounts Payable Specialist - Finance",
-     "location": "South Burlington, Vermont, United States",
-     "url": "https://job-boards.greenhouse.io/betatechnologiesinc/jobs/4422395009",
-     "posted": "2026-09-28"
+     "title": "",
+     "location": null,
+     "url": "https://careers.cathaypacific.com/zh/careers/jobs/australia/pr-social-media-manager-oceania-32395",
+     "posted": null
     },
     {
-     "title": "Aerodynamics Engineer - Flight Sciences",
-     "location": "Plattsburgh, New York, United States; Raleigh, North Carolina, United States; South Burlington, Vermont, United States",
-     "url": "https://job-boards.greenhouse.io/betatechnologiesinc/jobs/4429901009",
-     "posted": "2026-10-01"
+     "title": "",
+     "location": null,
+     "url": "https://careers.cathaypacific.com/zh/careers/jobs/cambodia/senior-airport-lead-32310",
+     "posted": null
     },
     {
-     "title": "AI / ML Engineer – Advanced Concepts",
-     "location": "Plattsburgh, New York, United States; Raleigh, North Carolina, United States; South Burlington, Vermont, United States",
-     "url": "https://job-boards.greenhouse.io/betatechnologiesinc/jobs/4425520009",
-     "posted": "2026-10-02"
+     "title": "",
+     "location": null,
+     "url": "https://careers.cathaypacific.com/zh/careers/jobs/china/airport-lead-32123",
+     "posted": null
     },
     {
-     "title": "Aircraft Design Engineer - Advanced Concepts",
-     "location": "Plattsburgh, New York, United States; Raleigh, North Carolina, United States; South Burlington, Vermont, United States",
-     "url": "https://job-boards.greenhouse.io/betatechnologiesinc/jobs/4429150009",
-     "posted": "2026-10-02"
+     "title": "",
+     "location": null,
+     "url": "https://careers.cathaypacific.com/zh/careers/jobs/china/airport-lead-32126",
+     "posted": null
     },
     {
-     "title": "Aircraft Development Engineer - Advanced Concepts",
-     "location": "Plattsburgh, New York, United States; Raleigh, North Carolina, United States; South Burlington, Vermont, United States",
-     "url": "https://job-boards.greenhouse.io/betatechnologiesinc/jobs/4429154009",
-     "posted": "2026-10-02"
+     "title": "",
+     "location": null,
+     "url": "https://careers.cathaypacific.com/zh/careers/jobs/china/cargo-officer-wuhan-2-year-contract-32011",
+     "posted": null
     },
     {
-     "title": "Aircraft Dynamics Engineer | Flight Sciences",
-     "location": "South Burlington, Vermont, United States",
-     "url": "https://job-boards.greenhouse.io/betatechnologiesinc/jobs/4218469009",
-     "posted": "2026-04-28"
+     "title": "",
+     "location": null,
+     "url": "https://careers.cathaypacific.com/zh/careers/jobs/china/cargo-service-specialist-32107",
+     "posted": null
     }
-   ]
+   ],
+   "detail_sample": {
+    "country_code": null,
+    "posted_date": null,
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": null,
+    "location": null
+   }
   },
   {
-   "name": "JetZero",
-   "slug": "jetzero",
+   "name": "Bombardier",
+   "slug": "bombardier",
    "source": {
-    "ats": "greenhouse",
-    "board": "jetzero"
-   },
-   "ok": true,
-   "jobs_found": 22,
-   "sample": [
-    {
-     "title": "2027 Business Summer Internship",
-     "location": "Long Beach, CA",
-     "url": "https://job-boards.greenhouse.io/jetzero/jobs/5437093008",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "2027 Engineering Summer Internship",
-     "location": "Long Beach, CA; Greensboro, NC",
-     "url": "https://job-boards.greenhouse.io/jetzero/jobs/5437110008",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "2027 IT Summer Internship",
-     "location": "Long Beach, CA",
-     "url": "https://job-boards.greenhouse.io/jetzero/jobs/5437118008",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "2027 People Operations Summer Internship",
-     "location": "Long Beach, CA; Greensboro, NC",
-     "url": "https://job-boards.greenhouse.io/jetzero/jobs/5437123008",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "2027 Product & Design Summer Internship",
-     "location": "Long Beach, CA",
-     "url": "https://job-boards.greenhouse.io/jetzero/jobs/5437126008",
-     "posted": "2026-10-05"
-    },
-    {
-     "title": "2027 Supply Chain Summer Internship",
-     "location": "Long Beach, CA; Greensboro, NC",
-     "url": "https://job-boards.greenhouse.io/jetzero/jobs/5437127008",
-     "posted": "2026-10-05"
-    }
-   ]
-  },
-  {
-   "name": "Hermeus",
-   "slug": "hermeus",
-   "source": {
-    "ats": "lever",
-    "company": "hermeus"
-   },
-   "ok": true,
-   "jobs_found": 81,
-   "sample": [
-    {
-     "title": "Aerodynamics Engineer",
-     "location": "Los Angeles, CA",
-     "url": "https://jobs.lever.co/hermeus/c9187245-a6b2-415a-ae4c-14aa18bb4207",
-     "posted": "2025-12-12"
-    },
-    {
-     "title": "Autonomy Software Engineer",
-     "location": "Los Angeles, CA",
-     "url": "https://jobs.lever.co/hermeus/4b1f62d7-4a70-4d79-b83d-f8a6cae6ccaa",
-     "posted": "2026-08-28"
-    },
-    {
-     "title": "Avionics Electrical Engineer",
-     "location": "Los Angeles, CA",
-     "url": "https://jobs.lever.co/hermeus/483be3c4-99f8-4dba-89f6-b2643cf9aa8e",
-     "posted": "2026-10-09"
-    },
-    {
-     "title": "Avionics Electrical Engineer",
-     "location": "Atlanta, GA",
-     "url": "https://jobs.lever.co/hermeus/64350d64-adbe-4129-9dae-b1de6f0f1d24",
-     "posted": "2026-06-22"
-    },
-    {
-     "title": "Avionics Electrical Engineering Intern - Spring/Summer 2027",
-     "location": "Atlanta, GA",
-     "url": "https://jobs.lever.co/hermeus/b7babdb5-64ee-49ad-a193-918d6a31c462",
-     "posted": "2026-09-09"
-    },
-    {
-     "title": "Avionics Manufacturing Engineer",
-     "location": "Atlanta, GA",
-     "url": "https://jobs.lever.co/hermeus/6a817380-3349-41ee-bcc7-6bca6c63648d",
-     "posted": "2026-02-23"
-    }
-   ]
-  },
-  {
-   "name": "ZeroAvia",
-   "slug": "zeroavia",
-   "source": {
-    "ats": "workable",
-    "company": "zeroavia"
+    "ats": "successfactors",
+    "host": "jobs.bombardier.com"
    },
    "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "error": "KeyError: 'url'"
   },
   {
-   "name": "Joramco",
-   "slug": "joramco",
+   "name": "Menzies Aviation",
+   "slug": "menzies-aviation",
    "source": {
-    "ats": "workable",
-    "company": "joramco"
+    "ats": "smartrecruiters",
+    "company": "Menzies Aviation"
    },
    "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/Menzies Aviation/postings?limit=100&offset=0"
   },
   {
-   "name": "Pivotal",
-   "slug": "pivotal",
+   "name": "Menzies Aviation v2",
+   "slug": "menzies-aviation-v2",
    "source": {
-    "ats": "lever",
-    "company": "pivotal"
+    "ats": "smartrecruiters",
+    "company": "MenziesAviation"
    },
-   "ok": true,
-   "jobs_found": 25,
-   "sample": [
-    {
-     "title": "Autonomy Engineer II - Robotics",
-     "location": "Palo Alto, CA or Miami, Florida",
-     "url": "https://jobs.lever.co/pivotal/69119185-2d5b-4b54-8a87-8ea040c9e482",
-     "posted": "2026-06-11"
-    },
-    {
-     "title": "Battery Test Engineer",
-     "location": "Palo Alto, CA",
-     "url": "https://jobs.lever.co/pivotal/0238f5f2-c0cf-4e97-a4be-0bc50b904f74",
-     "posted": "2026-10-02"
-    },
-    {
-     "title": "Computer Vision Engineer – Autonomy & Perception",
-     "location": "Palo Alto, CA",
-     "url": "https://jobs.lever.co/pivotal/9fe618b9-cf87-4418-9953-31c5e4da56be",
-     "posted": "2026-06-02"
-    },
-    {
-     "title": "Data Engineer - Flight Data (contract)",
-     "location": "Palo Alto, CA",
-     "url": "https://jobs.lever.co/pivotal/eb8100f9-b79a-43d8-b6d8-bdc578542b5d",
-     "posted": "2026-08-18"
-    },
-    {
-     "title": "eVTOL Flight Instructor I",
-     "location": "Palo Alto, CA",
-     "url": "https://jobs.lever.co/pivotal/3731fd31-8ea3-45aa-a598-172a30cc821e",
-     "posted": "2026-10-06"
-    },
-    {
-     "title": "Flight Operations Support Specialist II",
-     "location": "Palo Alto, CA",
-     "url": "https://jobs.lever.co/pivotal/20cd3dc8-74ef-4dd4-a50f-af9ddaeee1f7",
-     "posted": "2026-06-04"
-    }
-   ]
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/MenziesAviation/postings?limit=100&offset=0"
   },
   {
-   "name": "Zipline",
-   "slug": "zipline",
+   "name": "AAR",
+   "slug": "aar",
    "source": {
-    "ats": "greenhouse",
-    "board": "flyzipline"
+    "ats": "workday",
+    "url": "https://aar.wd1.myworkdayjobs.com/AAR_External_Careers"
    },
-   "ok": true,
-   "jobs_found": 354,
-   "sample": [
-    {
-     "title": "Account Executive",
-     "location": "Houston, Texas, USA",
-     "url": "https://www.zipline.com/open-roles/7895360003?gh_jid=7895360003",
-     "posted": "2026-08-18"
-    },
-    {
-     "title": "Account Executive, Sales & Partner Success",
-     "location": "Pea Ridge, Arkansas, USA",
-     "url": "https://www.zipline.com/open-roles/8004990003?gh_jid=8004990003",
-     "posted": "2026-09-28"
-    },
-    {
-     "title": "Accounting Intern (Spring 2027)",
-     "location": "South San Francisco, California, USA",
-     "url": "https://www.zipline.com/open-roles/7893921003?gh_jid=7893921003",
-     "posted": "2026-08-18"
-    },
-    {
-     "title": "Accounting Intern (Summer 2027)",
-     "location": "South San Francisco, California, USA",
-     "url": "https://www.zipline.com/open-roles/7894364003?gh_jid=7894364003",
-     "posted": "2026-08-19"
-    },
-    {
-     "title": "Accounts Payable Analyst",
-     "location": "Abidjan, Côte d’Ivoire",
-     "url": "https://www.zipline.com/open-roles/8020785003?gh_jid=8020785003",
-     "posted": "2026-10-10"
-    },
-    {
-     "title": "Aerodynamics Intern (Spring 2027)",
-     "location": "South San Francisco, California, USA",
-     "url": "https://www.zipline.com/open-roles/7904002003?gh_jid=7904002003",
-     "posted": "2026-08-19"
-    }
-   ]
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://aar.wd1.myworkdayjobs.com/wday/cxs/aar/AAR_External_Careers/jobs"
+  },
+  {
+   "name": "AAR v2",
+   "slug": "aar-v2",
+   "source": {
+    "ats": "workday",
+    "url": "https://aar.wd5.myworkdayjobs.com/AAR_External_Careers"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 422 from https://aar.wd5.myworkdayjobs.com/wday/cxs/aar/AAR_External_Careers/jobs"
+  },
+  {
+   "name": "ST Engineering",
+   "slug": "st-engineering",
+   "source": {
+    "ats": "oracle",
+    "host": "ehuc.fa.ap1.oraclecloud.com",
+    "site": "CX_1"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://ehuc.fa.ap1.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
+  },
+  {
+   "name": "ST Engineering v2",
+   "slug": "st-engineering-v2",
+   "source": {
+    "ats": "oracle",
+    "host": "ehuc.fa.ap2.oraclecloud.com",
+    "site": "CX_1"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://ehuc.fa.ap2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
+  },
+  {
+   "name": "Dubai Airports",
+   "slug": "dubai-airports",
+   "source": {
+    "ats": "oracle",
+    "host": "dubaiairports.fa.em2.oraclecloud.com",
+    "site": "CX_1"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://dubaiairports.fa.em2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
+  },
+  {
+   "name": "Dubai Airports v2",
+   "slug": "dubai-airports-v2",
+   "source": {
+    "ats": "successfactors",
+    "host": "careers.dubaiairports.ae"
+   },
+   "ok": false,
+   "error": "KeyError: 'url'"
+  },
+  {
+   "name": "Safran",
+   "slug": "safran",
+   "source": {
+    "ats": "jsonld",
+    "listing_url": "https://www.safran-group.com/jobs?page={page}",
+    "job_link_pattern": "/jobs/",
+    "max_pages": 5,
+    "strip_query": true
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 403 from https://www.safran-group.com/jobs?page=0"
   }
  ]
 }
