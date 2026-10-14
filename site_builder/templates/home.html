@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% from "_macros.html" import board %}
 {% from "_icons.html" import icon %}
-{% block title %}{{ site.site_name }}: pilot, cabin crew and aviation jobs worldwide{% endblock %}
+{% block title %}Aviation Jobs, Airline Jobs &amp; Aerospace Careers | {{ site.site_name }}{% endblock %}
+{% block description %}Find aviation jobs, airline jobs and aerospace careers in one place. Pilot, cabin crew, MRO, airport and aerospace roles from top employers worldwide, updated twice daily.{% endblock %}
+{% block head %}<script type="application/ld+json">{{ website_jsonld }}</script>{% endblock %}
 {% block subnav %}{% endblock %}
 {% block main %}
 <section class="hero">
@@ -18,11 +20,11 @@
       </nav>
     </div>
     <div class="hero-copy">
-      <h1>Every aviation job, on one board.</h1>
+      <h1>Aviation Jobs &amp; Airline Careers Worldwide</h1>
       {% if stats.jobs %}
-      <p class="hero-sub"><strong>{{ "{:,}".format(stats.jobs) }}</strong> pilot, cabin crew, engineering and airport roles from <strong>{{ stats.companies }}</strong> employers in <strong>{{ stats.countries }}</strong> {{ 'country' if stats.countries == 1 else 'countries' }}.</p>
+      <p class="hero-sub"><strong>{{ "{:,}".format(stats.jobs) }}</strong> aviation, airline and aerospace jobs from <strong>{{ stats.companies }}</strong> employers in <strong>{{ stats.countries }}</strong> {{ 'country' if stats.countries == 1 else 'countries' }}, updated twice a day.</p>
       {% else %}
-      <p class="hero-sub">Pilot, cabin crew, engineering and airport roles from employers worldwide. The first jobs are on their way.</p>
+      <p class="hero-sub">Pilot, cabin crew, engineering, MRO and airport roles from airlines and aerospace employers worldwide. Jobs are on their way.</p>
       {% endif %}
     </div>
   </div>

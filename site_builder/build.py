@@ -176,6 +176,42 @@ def job_posting_jsonld(job: dict, site: dict, page_url: str) -> str | None:
             .replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026"))
 
 
+def website_jsonld(site: dict) -> str:
+    """JSON-LD for the home page: WebSite (with SearchAction) + Organization."""
+    base = site["site_url"].rstrip("/")
+    data = [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": site["site_name"],
+            "url": base + "/",
+            "description": site.get("tagline", ""),
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": f"{base}/?q={{search_term_string}}#jobs"
+                },
+                "query-input": "required name=search_term_string"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": site["site_name"],
+            "url": base + "/",
+            "logo": f"{base}/static/icon-512.png",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": site.get("contact_email", ""),
+                "contactType": "customer support"
+            }
+        }
+    ]
+    return (json.dumps(data, ensure_ascii=False)
+            .replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026"))
+
+
 def read_markdown(path: Path) -> tuple[dict, str]:
     text = path.read_text(encoding="utf-8")
     meta = {}
@@ -291,7 +327,8 @@ class Builder:
         all_cities = self._build_cities_list(jobs)
         self.render("home.html", "", jobs=jobs[:25], regions=regions, guides=guides[:6],
                     role_counts=Counter(j["role"] for j in jobs),
-                    type_counts=Counter(j["company_type"] for j in jobs), all_cities=all_cities, **common)
+                    type_counts=Counter(j["company_type"] for j in jobs), all_cities=all_cities,
+                    website_jsonld=Markup(website_jsonld(self.site)), **common)
         # job pages
         for j in jobs:
             similar = [x for x in by_role[j["role"]] if x["id"] != j["id"]][:5]
@@ -314,15 +351,29 @@ class Builder:
             intro = (f"{len(lst)} open aviation {'job' if len(lst) == 1 else 'jobs'} in {c['name']} from "
                      f"{len({j['employer'] for j in lst})} employers. The most common area right now is "
                      f"{ROLES[top].split(' (')[0].lower()}.")
+            meta_title = f"Aviation Jobs in {c['name']} – Airline & Aerospace Careers"
+            meta_desc = (f"Browse {len(lst)} aviation, airline and aerospace {'job' if len(lst) == 1 else 'jobs'} "
+                         f"in {c['name']}. Pilot, cabin crew, MRO and airport roles from "
+                         f"{len({j['employer'] for j in lst})} employers. Apply directly on the employer's site.")
             self.render("listing.html", f"countries/{c['slug']}", heading=f"Aviation jobs in {c['name']}",
-                        intro=intro, jobs=lst[:MAX_ROWS_ON_LIST_PAGES], total=len(lst),
+                        intro=intro, meta_title=meta_title, meta_desc=meta_desc[:155],
+                        jobs=lst[:MAX_ROWS_ON_LIST_PAGES], total=len(lst),
                         search_query=f"country={c['code']}", **common)
         # roles (always all eight, so the menu never leads nowhere)
         for key, label in ROLES.items():
             lst = by_role.get(key, [])
             intro = self.role_intro(key, lst)
-            self.render("listing.html", f"roles/{key}", heading=f"{label.split(' (')[0]} jobs",
-                        intro=intro, jobs=lst[:MAX_ROWS_ON_LIST_PAGES], total=len(lst),
+            role_name = label.split(" (")[0]
+            meta_title = f"{role_name} Jobs – Airline & Aviation Careers"
+            n_e = len({j["employer"] for j in lst}) if lst else 0
+            meta_desc = (f"Find {role_name.lower()} jobs at airlines and aviation employers worldwide. "
+                         f"{len(lst)} open {'vacancy' if len(lst) == 1 else 'vacancies'} from {n_e} employers, "
+                         f"updated twice daily. Apply on the employer's own site." if lst else
+                         f"Browse {role_name.lower()} jobs at airlines and aviation employers worldwide. "
+                         f"New roles added twice daily.")
+            self.render("listing.html", f"roles/{key}", heading=f"{role_name} jobs",
+                        intro=intro, meta_title=meta_title, meta_desc=meta_desc[:155],
+                        jobs=lst[:MAX_ROWS_ON_LIST_PAGES], total=len(lst),
                         search_query=f"role={key}", **common)
         # guides and fixed pages
         self.render("guides.html", "guides", guides=guides, section="guides", **common)
@@ -421,10 +472,32 @@ class Builder:
         }
         (self.out / "site.webmanifest").write_text(json.dumps(manifest, indent=1))
         base = self.site["site_url"]
-        urls = "\n".join(f"  <url><loc>{base}/{p + '/' if p else ''}</loc></url>" for p in self.pages)
+        today_str = self.ref_date.isoformat()
+
+        def _url_entry(p: str) -> str:
+            loc = f"{base}/{p + '/' if p else ''}"
+            # Assign priority: home=1.0, roles/countries=0.8, jobs=0.6, companies/guides/pages=0.5
+            if p == "":
+                priority, freq = "1.0", "daily"
+            elif p.startswith("roles/") or p.startswith("countries/"):
+                priority, freq = "0.8", "daily"
+            elif p.startswith("jobs/"):
+                priority, freq = "0.6", "weekly"
+            else:
+                priority, freq = "0.5", "weekly"
+            return (f"  <url><loc>{loc}</loc>"
+                    f"<lastmod>{today_str}</lastmod>"
+                    f"<changefreq>{freq}</changefreq>"
+                    f"<priority>{priority}</priority></url>")
+
+        urls = "\n".join(_url_entry(p) for p in self.pages)
         (self.out / "sitemap.xml").write_text(
             f'<?xml version="1.0" encoding="UTF-8"?>\n'
-            f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n', encoding="utf-8")
+            f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
+            f'        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n'
+            f'        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 '
+            f'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n'
+            f'{urls}\n</urlset>\n', encoding="utf-8")
         ai_blocks = "".join(f"User-agent: {bot}\nDisallow: /\n\n" for bot in AI_CRAWLER_BLOCKLIST)
         (self.out / "robots.txt").write_text(
             f"User-agent: *\nAllow: /\n\n{ai_blocks}Sitemap: {base}/sitemap.xml\n")
