@@ -1,11 +1,11 @@
 # Status
 
-Last updated: 14 October 2026, 16:03 UTC (confirmed against a real fetch, not a config guess). Update this file whenever something changes.
+Last updated: 14 October 2026, 11:15 UTC (design updates deployed to production). Update this file whenever something changes.
 
 ## In one line
 
-AeroJobs is **live at https://aerojobs.work** with jobs from **45 employers that are actually fetching right now** (v1.1b), refreshed twice a day. This number is counted from the last completed fetch (`data/jobs.json`), not from how many are merely switched on in config.
-14 Oct 2026: Two onboarding batches run via the new `aerojobs-onboard-and-report` skill against the original 224-employer research list (7 Oct). 8 real additions this session: Travelport, Accelya, Gogo Business Aviation, Moog, Crane Aerospace, Cirrus Aircraft, Woodward, Thales. Rejected 1 false positive (Chubb Aerospace). `data/master_employer_list.csv` is now the running single source of truth for every employer ever researched — future onboarding runs update it in place rather than starting a fresh spreadsheet each time.
+AeroJobs is **live at https://aerojobs.work** with jobs from **45 employers that are actually fetching right now** (v1.1c), refreshed twice a day. This number is counted from the last completed fetch (`data/jobs.json`), not from how many are merely switched on in config.
+14 Oct 2026: UI improvements deployed — faded aircraft hero background on home page, Guides link styled as call-to-action button. Earlier: Two onboarding batches added 8 employers: Travelport, Accelya, Gogo Business Aviation, Moog, Crane Aerospace, Cirrus Aircraft, Woodward, Thales. Rejected 1 false positive (Chubb Aerospace). `data/master_employer_list.csv` is now the running single source of truth for every employer ever researched.
 
 ## Live numbers (14 Oct 2026, after fetch run 38524287543)
 
@@ -19,7 +19,7 @@ AeroJobs is **live at https://aerojobs.work** with jobs from **45 employers that
 | Jobs with a known country | 93%+ |
 | Jobs whose role is unclear (shown as Corporate) | ~33% |
 | Guides written | 15 of 15 ✓ |
-| Version | v1.1b |
+| Version | v1.1c |
 
 **A note on counting employers honestly:** "Live" means the employer has jobs in the most recent fetch, not just `enabled: true` in config. An employer can be correctly configured and still show 0 jobs. Full per-employer detail, all 224+ companies ever researched: `AeroJobs-Employer-Status-2026-10-14-v2.xlsx`, generated from `data/master_employer_list.csv`.
 
