@@ -419,9 +419,10 @@ select:hover { border-color: #B9CDE3; }
   .top-nav { display: none; }
   .top-nav.is-open {
     display: grid; position: absolute; left: 0; right: 0; top: 100%; gap: 2px; padding: 8px var(--gutter) 14px;
-    background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: var(--shadow-md);
+    background: #151B54; border-bottom: 1px solid #0d1240; box-shadow: var(--shadow-md);
   }
-  .top-nav.is-open a { padding: 12px; font-size: 1rem; border-radius: 10px; }
+  .top-nav.is-open a { padding: 12px; font-size: 1rem; border-radius: 10px; color: rgba(255,255,255,.85); }
+  .top-nav.is-open a:hover, .top-nav.is-open a[aria-current="page"] { color: #fff; background: rgba(255,255,255,.15); }
   .menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 12px; background: transparent; cursor: pointer; color: #fff; }
   .menu-btn:hover { background: rgba(255,255,255,.15); }
   .search-pill { border-radius: 16px; flex-wrap: wrap; padding: 6px; }
