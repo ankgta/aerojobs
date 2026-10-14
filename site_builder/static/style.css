@@ -66,6 +66,24 @@ h3 { font-size: 1.1rem; font-weight: 600; }
 .head-row { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font: 700 1.08rem/1 var(--display); letter-spacing: -.02em; white-space: nowrap; }
 .brand-mark { width: 32px; height: 32px; flex: none; }
+.brand-with-aircraft { display: flex; align-items: center; gap: 12px; }
+.aircraft-container { position: relative; width: 120px; height: 40px; flex: none; }
+.aircraft-image { width: 100%; height: 100%; object-fit: contain; object-position: center; }
+.cockpit-beacon {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #FF0000;
+  border-radius: 50%;
+  top: 8px;
+  left: 18px;
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.8);
+  animation: beacon-blink 2s infinite;
+}
+@keyframes beacon-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
 .top-nav { display: flex; align-items: center; gap: 4px; }
 .top-nav a { color: var(--ink-2); text-decoration: none; font-weight: 600; font-size: .95rem; padding: 8px 12px; border-radius: 999px; }
 .top-nav a:hover, .top-nav a[aria-current="page"] { color: var(--ink); background: var(--primary-soft); }
