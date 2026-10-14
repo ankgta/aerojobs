@@ -603,3 +603,54 @@ https://www.mhi.com/recruit
 
 https://global.kawasaki.com/corp/recruit/
   could not open: HTTP 404 from https://global.kawasaki.com/corp/recruit/
+
+https://www.aiasl.in/careers
+  could not open: HTTP 404 from https://www.aiasl.in/careers
+
+https://celebiaviation.com/india/careers
+  no known hiring system found on celebiaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://careers.ihcltata.com/TajSATS
+  no known hiring system found on careers.ihcltata.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.bluedartaviation.com/join-our-team
+  could not open: robots.txt does not allow https://www.bluedartaviation.com/join-our-team
+
+https://www.gmrgroup.in/careers
+  could not open: robots.txt does not allow https://www.gmrgroup.in/careers
+
+https://careers.adani.com
+  no known hiring system found on careers.adani.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.indamer.com/careers
+  could not open: HTTP 404 from https://www.indamer.com/careers
+
+https://airworks.aero/careers
+  no known hiring system found on airworks.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.aiesl.in/Doc/Careers
+  could not open: HTTP 404 from https://www.aiesl.in/Doc/Careers
+
+https://www.iocl.com/careers
+  no known hiring system found on www.iocl.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.bharatpetroleum.in/careers
+  could not open: HTTP 403 from https://www.bharatpetroleum.in/careers
+
+https://www.hindustanpetroleum.com/careers
+  could not open: HTTP 403 from https://www.hindustanpetroleum.com/careers
+
+https://www.sheoreydigital.com/careers
+  could not open: robots.txt does not allow https://www.sheoreydigital.com/careers
+
+https://www.bengaluruairport.com/careers
+  no known hiring system found on www.bengaluruairport.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.cial.aero/careers
+  no known hiring system found on www.cial.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://birdgroup.co.in/careers
+  no known hiring system found on birdgroup.co.in. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.aai.aero/en/careers
+  could not open: HTTP 404 from https://www.aai.aero/en/careers
