@@ -43,8 +43,20 @@
 #   Bombardier (SuccessFactors KeyError — missing url field), Dubai Airports v2 (same).
 # Custom/JS sites (not yet attempted):
 #   Turkish Airlines (custom ASP.NET).
-# Unsupported ATS: Emirates (Avature), British Airways (TalentBrew), Aer Lingus (Zellis),
+# Unsupported ATS: Emirates (Avature), Aer Lingus (Zellis),
 #   WestJet (Dayforce), Kenya Airways (Oracle iRecruitment on-premise), many others (custom sites).
+#   (British Airways corrected 14 Oct 2026: uses Cornerstone, already enabled above — comment was stale.)
+# Checked 14 Oct 2026 — master-list sweep (224 employers researched, 145 never-before-checked candidates
+# detected against): 6 verified and enabled (Travelport, Accelya, Gogo Business Aviation, Moog,
+# Crane Aerospace, Cirrus Aircraft). Rejected: Chubb Aerospace (400 "jobs" were Chubb's entire global
+# insurance job board — not an aerospace-specific feed; samples included "Chubb Life HK", "Underwriter,
+# Marine & Specialty" — excluded to avoid polluting the site with non-aviation roles).
+# Still blocked/no-jobs from this sweep: Spirit AeroSystems (robots.txt on iCIMS), Arup, Jet Aviation,
+# ExxonMobil, TotalEnergies, Neste, Aon Aerospace (all returned 0 jobs — site exists but ATS detection
+# found an empty or wrong endpoint), OAG (HTTP 404, Greenhouse board name was a guess).
+# 104 of the 145 never-checked candidates had no detectable public hiring system at all (most are
+# lessors, consulting firms, insurers and ANSPs likely using LinkedIn/Indeed only, or JS-rendered portals
+# with no public API) — see docs/STATUS.md for the full breakdown.
 #
 # Source examples (copy the shape that matches the hiring system):
 #   source: {ats: workday, url: "https://company.wd3.myworkdayjobs.com/SiteName"}
@@ -154,3 +166,10 @@ employers:
   - {name: VistaJet, slug: vistajet, type: other, country: CH, source: {ats: icims, url: "https://careers-vistaglobal.icims.com"}, enabled: true}
   # Training / simulation (added 12 Oct 2026 after Cornerstone connector verification)
   - {name: Flight Safety International, slug: flight-safety-international, type: other, country: US, source: {ats: cornerstone, url: "https://jobs.flightsafety.com"}, enabled: true}
+  # Added 14 Oct 2026 after master-list detection sweep + verify (224-employer research)
+  - {name: Travelport, slug: travelport, type: other, country: GB, source: {ats: oracle, host: "ejzg.fa.us6.oraclecloud.com", site: "CX_1"}, enabled: true}
+  - {name: Accelya, slug: accelya, type: other, country: ES, source: {ats: workday, url: "https://accelya.wd103.myworkdayjobs.com/Careers"}, enabled: true}
+  - {name: Gogo Business Aviation, slug: gogo-business-aviation, type: other, country: US, source: {ats: workday, url: "https://gogo.wd503.myworkdayjobs.com/careers"}, enabled: true}
+  - {name: Moog, slug: moog, type: manufacturer, country: US, source: {ats: workday, url: "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site"}, enabled: true}
+  - {name: Crane Aerospace, slug: crane-aerospace, type: manufacturer, country: US, source: {ats: workday, url: "https://cranecompany.wd5.myworkdayjobs.com/Careers"}, enabled: true}
+  - {name: Cirrus Aircraft, slug: cirrus-aircraft, type: manufacturer, country: US, source: {ats: icims, url: "https://careers-cirrusaircraft.icims.com"}, enabled: true}
