@@ -37,7 +37,7 @@ def test_build_with_no_jobs(tmp_path):
     empty.write_text('{"jobs": {}}')
     out = tmp_path / "site"
     Builder(out, False, empty, CONFIG_DIR / "employers.yaml").build()
-    assert "first jobs are on their way" in (out / "index.html").read_text()
+    assert "Jobs are on their way" in (out / "index.html").read_text()
     assert (out / "sitemap.xml").exists() and (out / "robots.txt").exists()
 
 
