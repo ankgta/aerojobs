@@ -1,168 +1,28 @@
 {
- "run": "2026-10-14T03:38:15+00:00",
+ "run": "2026-10-14T03:48:01+00:00",
  "results": [
-  {
-   "name": "Cathay Pacific",
-   "slug": "cathay-pacific",
-   "source": {
-    "ats": "phenom",
-    "url": "https://careers.cathaypacific.com",
-    "country": "HK"
-   },
-   "ok": true,
-   "jobs_found": 210,
-   "sample": [
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.cathaypacific.com/zh/careers/jobs/australia/pr-social-media-manager-oceania-32395",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.cathaypacific.com/zh/careers/jobs/cambodia/senior-airport-lead-32310",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.cathaypacific.com/zh/careers/jobs/china/airport-lead-32123",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.cathaypacific.com/zh/careers/jobs/china/airport-lead-32126",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.cathaypacific.com/zh/careers/jobs/china/cargo-officer-wuhan-2-year-contract-32011",
-     "posted": null
-    },
-    {
-     "title": "",
-     "location": null,
-     "url": "https://careers.cathaypacific.com/zh/careers/jobs/china/cargo-service-specialist-32107",
-     "posted": null
-    }
-   ],
-   "detail_sample": {
-    "country_code": null,
-    "posted_date": null,
-    "closing_date": null,
-    "work_mode": null,
-    "employment_type": null,
-    "location": null
-   }
-  },
-  {
-   "name": "Bombardier",
-   "slug": "bombardier",
-   "source": {
-    "ats": "successfactors",
-    "host": "jobs.bombardier.com"
-   },
-   "ok": false,
-   "error": "KeyError: 'url'"
-  },
-  {
-   "name": "Menzies Aviation",
-   "slug": "menzies-aviation",
-   "source": {
-    "ats": "smartrecruiters",
-    "company": "Menzies Aviation"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/Menzies Aviation/postings?limit=100&offset=0"
-  },
-  {
-   "name": "Menzies Aviation v2",
-   "slug": "menzies-aviation-v2",
-   "source": {
-    "ats": "smartrecruiters",
-    "company": "MenziesAviation"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/MenziesAviation/postings?limit=100&offset=0"
-  },
   {
    "name": "AAR",
    "slug": "aar",
    "source": {
-    "ats": "workday",
-    "url": "https://aar.wd1.myworkdayjobs.com/AAR_External_Careers"
+    "ats": "taleo",
+    "host": "aarcorp.taleo.net"
    },
    "ok": false,
-   "error": "FetchError: HTTP 422 from https://aar.wd1.myworkdayjobs.com/wday/cxs/aar/AAR_External_Careers/jobs"
+   "jobs_found": 0,
+   "sample": []
   },
   {
    "name": "AAR v2",
    "slug": "aar-v2",
    "source": {
-    "ats": "workday",
-    "url": "https://aar.wd5.myworkdayjobs.com/AAR_External_Careers"
+    "ats": "taleo",
+    "host": "aarcorp.taleo.net",
+    "section": "1"
    },
    "ok": false,
-   "error": "FetchError: HTTP 422 from https://aar.wd5.myworkdayjobs.com/wday/cxs/aar/AAR_External_Careers/jobs"
-  },
-  {
-   "name": "ST Engineering",
-   "slug": "st-engineering",
-   "source": {
-    "ats": "oracle",
-    "host": "ehuc.fa.ap1.oraclecloud.com",
-    "site": "CX_1"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://ehuc.fa.ap1.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
-  },
-  {
-   "name": "ST Engineering v2",
-   "slug": "st-engineering-v2",
-   "source": {
-    "ats": "oracle",
-    "host": "ehuc.fa.ap2.oraclecloud.com",
-    "site": "CX_1"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://ehuc.fa.ap2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
-  },
-  {
-   "name": "Dubai Airports",
-   "slug": "dubai-airports",
-   "source": {
-    "ats": "oracle",
-    "host": "dubaiairports.fa.em2.oraclecloud.com",
-    "site": "CX_1"
-   },
-   "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://dubaiairports.fa.em2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC"
-  },
-  {
-   "name": "Dubai Airports v2",
-   "slug": "dubai-airports-v2",
-   "source": {
-    "ats": "successfactors",
-    "host": "careers.dubaiairports.ae"
-   },
-   "ok": false,
-   "error": "KeyError: 'url'"
-  },
-  {
-   "name": "Safran",
-   "slug": "safran",
-   "source": {
-    "ats": "jsonld",
-    "listing_url": "https://www.safran-group.com/jobs?page={page}",
-    "job_link_pattern": "/jobs/",
-    "max_pages": 5,
-    "strip_query": true
-   },
-   "ok": false,
-   "error": "FetchError: HTTP 403 from https://www.safran-group.com/jobs?page=0"
+   "jobs_found": 0,
+   "sample": []
   }
  ]
 }

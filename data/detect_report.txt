@@ -33,7 +33,7 @@ https://www.navblue.aero/careers/
   no known hiring system found on www.navblue.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://ibsplc.com/careers/
-  could not open: HTTP 404 from https://ibsplc.com/careers/
+  no known hiring system found on ibsplc.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.cirium.com/careers/
   source: {ats: workday, url: "https://relx.wd3.myworkdayjobs.com/ciriumcareers"}
@@ -90,7 +90,7 @@ https://www.jobyaviation.com/careers/
   source: {ats: icims, url: "https://careers-jobyaviation.icims.com"}
 
 https://vertical-aerospace.com/careers/
-  source: {ats: cornerstone, url: "https://jobs.ashbyhq.com"}
+  no known hiring system found on vertical-aerospace.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://beta.team/careers/
   no known hiring system found on beta.team. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
