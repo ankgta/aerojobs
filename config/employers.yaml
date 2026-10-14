@@ -57,6 +57,14 @@
 # 104 of the 145 never-checked candidates had no detectable public hiring system at all (most are
 # lessors, consulting firms, insurers and ANSPs likely using LinkedIn/Indeed only, or JS-rendered portals
 # with no public API) — see docs/STATUS.md for the full breakdown.
+# Batch 2, 14 Oct 2026 (refined URLs via web search for manufacturers/ANSPs/business aviation):
+#   Woodward (Workday, 188 jobs, clean) and Thales (Workday, 400 jobs, mixed group-wide feed — kept,
+#   see note above) enabled. Pilatus Aircraft (SF detection was a false positive, 404 on real fetch)
+#   and Textron (Taleo detected but returned 0 jobs) not added.
+#   Still no public ATS found: Dassault Aviation, Leonardo, Eurocontrol (robots.txt), DFS, ENAIRE,
+#   Airservices Australia, Airways NZ (HTTP 403), NetJets, Flexjet, Wheels Up, Diehl, Mitsubishi Heavy
+#   Industries, Kawasaki Heavy Industries. These are likely JS-rendered portals or use systems without
+#   a public API; would need browser network inspection to find a real endpoint, if one exists.
 #
 # Source examples (copy the shape that matches the hiring system):
 #   source: {ats: workday, url: "https://company.wd3.myworkdayjobs.com/SiteName"}
@@ -173,3 +181,8 @@ employers:
   - {name: Moog, slug: moog, type: manufacturer, country: US, source: {ats: workday, url: "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site"}, enabled: true}
   - {name: Crane Aerospace, slug: crane-aerospace, type: manufacturer, country: US, source: {ats: workday, url: "https://cranecompany.wd5.myworkdayjobs.com/Careers"}, enabled: true}
   - {name: Cirrus Aircraft, slug: cirrus-aircraft, type: manufacturer, country: US, source: {ats: icims, url: "https://careers-cirrusaircraft.icims.com"}, enabled: true}
+  # Added 14 Oct 2026, batch 2 (refined URLs for manufacturers/ANSPs/business aviation)
+  - {name: Woodward, slug: woodward, type: manufacturer, country: US, source: {ats: workday, url: "https://woodward.wd5.myworkdayjobs.com/woodward"}, enabled: true}
+  # Thales posts a mixed group-wide feed (aerospace, defense, security, transport); kept per the
+  # owner's existing precedent with Honeywell/RTX (large diversified industrials, filter titles not employer)
+  - {name: Thales, slug: thales, type: manufacturer, country: FR, source: {ats: workday, url: "https://thales.wd3.myworkdayjobs.com/Careers"}, enabled: true}
