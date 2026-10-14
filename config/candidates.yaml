@@ -1,38 +1,16 @@
 # Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
-# 14 Oct 2026 — Batch: remaining disabled employers with possible supported ATS
+# 14 Oct 2026 — Re-test: AAR as Taleo (detected), Bombardier SF with url
 employers:
-  # ---- Phenom candidates ----
-  - {name: Cathay Pacific, slug: cathay-pacific, type: airline, country: HK, source: {ats: phenom, url: "https://careers.cathaypacific.com", country: "HK"}, notes: "Likely Phenom, needs verify"}
+  # ---- Taleo candidates (detected by fetcher.detect) ----
+  - {name: AAR, slug: aar, type: mro, country: US, source: {ats: taleo, host: "aarcorp.taleo.net"}, notes: "Detected as Taleo"}
+  - {name: AAR v2, slug: aar-v2, type: mro, country: US, source: {ats: taleo, host: "aarcorp.taleo.net", section: "1"}, notes: "Taleo section 1"}
 
-  # ---- SuccessFactors candidates ----
-  - {name: Bombardier, slug: bombardier, type: manufacturer, country: CA, source: {ats: successfactors, host: "jobs.bombardier.com"}, notes: "SuccessFactors career site builder"}
-
-  # ---- SmartRecruiters candidates ----
-  - {name: Menzies Aviation, slug: menzies-aviation, type: ground_services, country: GB, source: {ats: smartrecruiters, company: "Menzies Aviation"}, notes: "Try SmartRecruiters"}
-  - {name: Menzies Aviation v2, slug: menzies-aviation-v2, type: ground_services, country: GB, source: {ats: smartrecruiters, company: "MenziesAviation"}, notes: "Alt SmartRecruiters company name"}
-
-  # ---- Workday candidates ----
-  - {name: AAR, slug: aar, type: mro, country: US, source: {ats: workday, url: "https://aar.wd1.myworkdayjobs.com/AAR_External_Careers"}, notes: "Guess workday tenant"}
-  - {name: AAR v2, slug: aar-v2, type: mro, country: US, source: {ats: workday, url: "https://aar.wd5.myworkdayjobs.com/AAR_External_Careers"}, notes: "Alt workday domain"}
-
-  # ---- Oracle candidates ----
-  - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, source: {ats: oracle, host: "ehuc.fa.ap1.oraclecloud.com", site: "CX_1"}, notes: "Guess Oracle AP1"}
-  - {name: ST Engineering v2, slug: st-engineering-v2, type: mro, country: SG, source: {ats: oracle, host: "ehuc.fa.ap2.oraclecloud.com", site: "CX_1"}, notes: "Alt Oracle AP2"}
-
-  # ---- Dubai Airports ----
-  - {name: Dubai Airports, slug: dubai-airports, type: airport, country: AE, source: {ats: oracle, host: "dubaiairports.fa.em2.oraclecloud.com", site: "CX_1"}, notes: "Guess Oracle EM2"}
-  - {name: Dubai Airports v2, slug: dubai-airports-v2, type: airport, country: AE, source: {ats: successfactors, host: "careers.dubaiairports.ae"}, notes: "Try SF"}
-
-  # ---- JSON-LD candidates ----
-  - {name: Safran, slug: safran, type: manufacturer, country: FR, source: {ats: jsonld, listing_url: "https://www.safran-group.com/jobs?page={page}", job_link_pattern: "/jobs/", max_pages: 5, strip_query: true}, notes: "Custom Drupal site, try JSON-LD scrape"}
+  # ---- PASSED (do not re-test) ----
+  # Cathay Pacific — Phenom, 210 jobs, PASSED
 
   # ---- FAILED (do not re-test) ----
-  # Boom Supersonic — greenhouse board 'boomsupersonic' returns HTTP 404
-  # Breeze Airways — greenhouse board 'breezeairways' returns HTTP 404
-  # Spirit AeroSystems — robots.txt blocks iCIMS API
-  # Emirates — Avature ATS (no connector)
-  # Aer Lingus — Zellis ATS (no connector)
-  # WestJet — Dayforce/Ceridian ATS (no connector)
-  # United Airlines — custom careers site (no connector)
-  # Turkish Airlines — custom ASP.NET (no connector)
-  # Air India — custom SuccessFactors template (incompatible)
+  # Bombardier — SuccessFactors KeyError 'url' (needs custom SF URL, can't detect)
+  # Menzies Aviation — robots.txt blocks SmartRecruiters API
+  # ST Engineering — robots.txt blocks Oracle
+  # Dubai Airports — robots.txt blocks Oracle + SF KeyError
+  # Safran — HTTP 403

@@ -33,10 +33,18 @@
 #   Note: detect_report shows these still return HTTP errors when accessed; cannot be added without bypassing blocks.
 # Checked 12 Oct 2026 — portal decommissioned:
 #   dnata (iCIMS: careers-dnata.icims.com returned 404 on all paths — portal migrated or decommissioned).
-# Custom/JS sites requiring browser API discovery (not yet attempted):
-#   Turkish Airlines (custom ASP.NET), Bombardier (SuccessFactors JS-rendered), Cathay Pacific (likely Phenom, tenant ID unknown).
+# Checked 14 Oct 2026 — verified and enabled:
+#   Cathay Pacific (Phenom, 210 jobs).
+# Checked 14 Oct 2026 — robots.txt blocks:
+#   Menzies Aviation (SmartRecruiters API), ST Engineering (Oracle), Dubai Airports (Oracle).
+# Checked 14 Oct 2026 — HTTP errors:
+#   Safran (HTTP 403), AAR Workday (HTTP 422 — retesting as Taleo).
+# Checked 14 Oct 2026 — SF connector incompatible:
+#   Bombardier (SuccessFactors KeyError — missing url field), Dubai Airports v2 (same).
+# Custom/JS sites (not yet attempted):
+#   Turkish Airlines (custom ASP.NET).
 # Unsupported ATS: Emirates (Avature), British Airways (TalentBrew), Aer Lingus (Zellis),
-#   Safran (custom Drupal), WestJet (Dayforce), Kenya Airways (Oracle iRecruitment on-premise), many others (custom sites).
+#   WestJet (Dayforce), Kenya Airways (Oracle iRecruitment on-premise), many others (custom sites).
 #
 # Source examples (copy the shape that matches the hiring system):
 #   source: {ats: workday, url: "https://company.wd3.myworkdayjobs.com/SiteName"}
@@ -86,7 +94,7 @@ employers:
   - {name: IndiGo, slug: indigo, type: airline, country: IN, enabled: false}
   - {name: Air India, slug: air-india, type: airline, country: IN, enabled: false}
   - {name: Singapore Airlines, slug: singapore-airlines, type: airline, country: SG, enabled: false}
-  - {name: Cathay Pacific, slug: cathay-pacific, type: airline, country: HK, enabled: false}
+  - {name: Cathay Pacific, slug: cathay-pacific, type: airline, country: HK, source: {ats: phenom, url: "https://careers.cathaypacific.com", country: "HK"}, enabled: true}
   - {name: Qantas, slug: qantas, type: airline, country: AU, enabled: false}
   - {name: Virgin Australia, slug: virgin-australia, type: airline, country: AU, source: {ats: cornerstone, url: "https://jobs.virginaustralia.com"}, enabled: true}
   - {name: Air New Zealand, slug: air-new-zealand, type: airline, country: NZ, source: {ats: smartrecruiters, company: "airnewzealand"}, enabled: true}
