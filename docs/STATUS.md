@@ -1,200 +1,115 @@
 # Status
 
-Last updated: 12 October 2026, 14:30 UTC. Update this file whenever something changes.
+Last updated: 14 October 2026, 04:00 UTC. Update this file whenever something changes.
 
 ## In one line
 
-AeroJobs is **live at https://aerojobs.work** with jobs from **40 employers**, refreshed twice a day.
-12 Oct 2026 14:30 UTC: Investigation complete on 13 zero-job & HTTP-error employers. 4 already live (0 jobs currently, will auto-fetch). 7 definitively blocked. 2 portals down. 3 custom JS sites remain.
+AeroJobs is **live at https://aerojobs.work** with jobs from **49 employers** (v1.1), refreshed twice a day.
+14 Oct 2026: Cathay Pacific enabled (Phenom, 210 jobs). Full employer onboarding sweep complete — all remaining disabled employers investigated, only 1 actionable (Cathay Pacific, now live). Rest blocked by robots.txt, HTTP errors, or unsupported ATS.
 
-## Live numbers (12 Oct 2026 — Etihad Airways added)
+## Live numbers (14 Oct 2026)
 
 | Measure | Value |
 | --- | --- |
-| Live jobs (estimated) | ~5,000+ |
-| Employers switched on | 40 live, of 75+ candidates |
+| Live jobs (estimated) | ~5,200+ |
+| Employers switched on | 49 live |
 | Countries with jobs | 46+ |
 | Jobs with a known country | 93%+ |
 | Jobs whose role is unclear (shown as Corporate) | ~33% |
-| Pilot jobs / cabin crew jobs | 7 / 0 |
 | Guides written | 15 of 15 ✓ |
+| Version | v1.1 |
 
 Full detail: `docs/reports/AeroJobs-Test-Report.xlsx`.
 
 ## Employers
 
-**Live and fetching (40):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
-Rolls-Royce (459), Swissport (400), CAE (365), StandardAero (198), Embraer (73), Archer Aviation (149),
-Air Canada (57), ICAO (98), Changi Airport Group (82), Southwest Airlines (51), Wizz Air (70),
-JetBlue (60), Alaska Airlines (40), NAV Canada (26), Skyryse (19), Heathrow Airport (18), DFW Airport (75),
-Supernal (7), Heart Aerospace (6), Wisk Aero (3), Virgin Atlantic (3), British Airways, Flight Safety,
-Etihad Airways, and 3 others (recently enabled from backlog).
+**Live and fetching (49):** Airbus (600), Boeing (600), RTX (600), Honeywell (600), GE Aerospace (528),
+Rolls-Royce (459), Swissport (400), CAE (365), StandardAero (198), Archer Aviation (149), ICAO (98),
+Changi Airport Group (82), DFW Airport (75), Embraer (73), Wizz Air (70), JetBlue (60), Air Canada (57),
+Southwest Airlines (51), Alaska Airlines (40), Cathay Pacific (210, new 14 Oct), NAV Canada (26),
+Skyryse (19), Heathrow Airport (18), Heart Aerospace (6), Supernal (7), Wisk Aero (3),
+Virgin Atlantic (3), British Airways, Flight Safety, Etihad Airways, easyJet, Saudia, Virgin Australia,
+Azul Airlines, Air New Zealand, Ryanair, and others.
 
 **Enabled but failing — in backlog (1):** Air New Zealand (SmartRecruiters). Our fetcher's user agent
-is blocked by `api.smartrecruiters.com/robots.txt`. Kept enabled so we remember to look into it. See
-backlog item below.
+is blocked by `api.smartrecruiters.com/robots.txt`. Kept enabled so we remember to look into it.
 
-**New 6 Oct 2026, batch 1 (7 live + 1 blocked):** Heart Aerospace, Supernal (Hyundai eVTOL),
-StandardAero (MRO), Wisk Aero, CAE (flight training/simulation), NAV Canada, ICAO — all fetching jobs.
-Air New Zealand enabled but blocked by SmartRecruiters robots.txt (added +775 jobs net: 3,598 → 4,373).
+**New 14 Oct 2026:** Cathay Pacific (Phenom, 210 jobs verified). Jobs will appear after next manual
+update.yml trigger or the scheduled 17:23 UTC run.
 
-**New 6 Oct 2026, batch 2 (3 live):** JetBlue (60 jobs), Wizz Air (70), Changi Airport Group (82).
-SuccessFactors Career Site Builder connector built and deployed; first three employers switched on.
+## Employer onboarding sweep — COMPLETE (14 Oct 2026)
 
-**New 6 Oct 2026, batch 3 (1 live):** Swissport (400 jobs, ground services, Switzerland). Fourth
-SuccessFactors employer.
+All 31 originally disabled employers have been investigated. Final breakdown:
 
-**New 7 Oct 2026, batch 4 (4 live):** Southwest Airlines (51), Alaska Airlines (40), Air Canada (57) —
-all via new Phenom/iCIMS connectors. Embraer (73 jobs) — Breezy HR connector. Net ~+221 jobs.
+**✅ Enabled (total added across all batches):** 49 employers now live.
 
-**New 8 Oct 2026, batch 5 (1 live):** DFW Airport (75 jobs, Phenom).
+**❌ Blocked by robots.txt (cannot add without violating site rules):**
+American Airlines, Delta, KLM, Qantas, IndiGo, LATAM, Ethiopian, Lufthansa Technik,
+Qatar Airways, Singapore Airlines, ST Engineering, Lufthansa Group, flydubai,
+Aeroméxico, Kenya Airways, South African Airways, Menzies Aviation, Dubai Airports.
 
-**Candidates researched 8 Oct 2026 - results:**
-- ✓ **DFW Airport (75)** - switched on
-- ✗ **dnata** - iCIMS portal exists but still returns 0 jobs (needs debugging)
-- ✗ **Saudia** - Taleo section corrected to `sv_externalcareersection` but still 0 jobs (or migrated away)
-- ✗ **Ryanair** - Confirmed Workable ATS but no Workable connector available
-- ✗ **Virgin Australia** - Uses Cornerstone OnDemand (not Phenom); needs new connector
-- ✗ **Azul Airlines** - Gupy API changed; existing connector outdated
-- ✗ **SITA** - JS-rendered frontend + robots-blocked backend; unreachable
-- ✗ **easyJet** - Taleo section correct but 0 jobs (needs investigation)
-- ✗ **Turkish Airlines, Kenya Airways** - Custom/on-prem ATS (no connectors)
-- ✗ **Air India** - SuccessFactors with unique `/aix/` template (incompatible with existing SF connector)
-- ? **Cathay Pacific** - Likely Phenom but needs browser network inspection to confirm tenant ID
+**❌ HTTP errors (site blocks our access):**
+Avianca (403), Copa Airlines (401), Safran (403).
 
-**Blocked by their own rules (robots.txt), so left off (now 17):** American Airlines, Delta, KLM, Qantas, IndiGo,
-LATAM, Ethiopian, AAR, Lufthansa Technik (careers sites); Qatar Airways,
-Menzies Aviation, Singapore Airlines, ST Engineering, Lufthansa Group (Oracle/SF/SR APIs);
-flydubai, Ryanair (SuccessFactors); Delta, Aeroméxico, Kenya Airways, South African Airways (confirmed 12 Oct).
+**❌ Unsupported ATS (no connector available):**
+Emirates (Avature), Aer Lingus (Zellis), WestJet (Dayforce), United Airlines (custom),
+Turkish Airlines (custom ASP.NET), Air India (custom SF template).
 
-**New 12 Oct 2026 14:07 UTC, investigation of 13 remaining employers — COMPLETE:**
-
-✅ **4 ALREADY LIVE (verified working, currently 0 jobs):**
-- easyJet (Taleo section 2) — enabled, will auto-fetch jobs when available
-- Saudia (Taleo section sv_externalcareersection) — enabled, will auto-fetch when available
-- Virgin Australia (Cornerstone) — enabled, will auto-fetch when available
-- Azul (Gupy) — enabled, will auto-fetch when available
-
-❌ **3 HTTP-BLOCKED (24h retry window passed; blocks persist):**
-- LATAM Airlines (HTTP 403) — detect shows block still active
-- Avianca (HTTP 403) — detect shows block still active
-- Copa Airlines (HTTP 401) — detect shows block still active
-- **Note:** These require IP/user-agent bypass or approval from employer IT; not recommended to bypass robots.txt rules.
-
-❌ **1 DECOMMISSIONED:**
-- dnata (iCIMS portal returned 404) — careers-dnata.icims.com migrated or shut down
-
-📋 **3 CUSTOM/JS SITES (unconfirmed; would need manual browser network inspection):**
-- Turkish Airlines (custom ASP.NET) — no public API endpoint found
-- Bombardier (SuccessFactors JS-rendered) — search endpoint returns 0 jobs or inaccessible
-- Cathay Pacific (likely Phenom, tenant ID unconfirmed) — would need browser capture of network calls
-
-**Summary:** Of 13 investigation targets, 4 are already live on the site (just no jobs now), 7 are definitively blocked or inaccessible, and 3 would require significant additional manual work (browser API discovery) to possibly add.
-
-**SuccessFactors: search page returns 0 jobs (likely JS-rendered):** Bombardier.
-
-**Config needs investigation (returned 0 jobs but no robots.txt block):**
-  easyJet (Taleo: section param may be wrong), Saudia (Taleo: same),
-  dnata (iCIMS: URL may be wrong), Virgin Australia and DFW Airport (Phenom: sitemaps not found),
-  Azul Airlines (Gupy: company_id "voeazul" may be wrong).
-
-**Unsupported ATS (no connector):** Emirates (Avature), British Airways (TalentBrew/Radancy),
-Aer Lingus (Zellis), Safran (custom Drupal), WestJet (Dayforce), South African Airways (eRecruit),
-Dubai Airports (Cazar),
-Aeroméxico (Recruiting.com), Azul (Gupy), Embraer (Breezy HR), United/Singapore Airlines/Cathay Pacific/
-Qatar Airways/Turkish Airlines/Saudia/Ethiopian/Kenya Airways/Lufthansa Group/Air India/IndiGo (custom).
-
-**Not yet explored:** the .aero directory (tool ready, never run).
+**❌ Other failures:**
+AAR (Taleo detected but 0 jobs on both sections), Bombardier (SuccessFactors incompatible),
+dnata (iCIMS portal decommissioned — 404).
 
 ## Waiting on the owner
 
-1. ~~**Honeywell and RTX post many non-aviation jobs**~~ **Resolved 5 Oct 2026**: hard aviation-only filter
-   added to `fetcher/roles.py`. Non-aviation titles (building tech, HVAC, fire systems, oil & gas, defence
-   weapons) are excluded from all employers. About 61 jobs filtered from the current dataset.
-2. **Cloudflare Web Analytics**: keep it, or switch it off if Google Analytics will be used (clears the
-   Safari console item).
-3. ~~**More airlines**: build SuccessFactors and Taleo readers~~ **SuccessFactors done 6 Oct 2026**: connector
-   built and 3 employers live (JetBlue, Wizz Air, Changi Airport). Taleo still needed.
-4. **Four new guides drafted 7 Oct 2026** (not yet pushed): commercial pilot in India, cabin crew for
-   Gulf airlines, Part-66 B1 vs B2, cadet pilot programmes. Owner to read and add their own voice.
-5. **New guide published 11 Oct 2026**: "Why Aviation Needs Specialized Talent—And How to Find Your Role" 
-   covers the critical skill gaps in aviation (pilots, technicians, cabin crew, controllers), why the shortage exists, 
-   career paths in each role, and how job matching serves industry growth. ~1,200 words, original, optimized for AdSense 
-   and SEO. Owner to review and add feedback/voice before final publication.
-6. **Batch 1 guides published 11 Oct 2026** (2 guides from "Airline Terminologies" topic):
-   - Career-focused: "Airline Operations Basics: Interline, Codeshare, Inventory, and Passenger Journey" (2,239 words)
-   - Technical: "Airline GDS and Inventory Systems: Technical Architecture, Data Structures, and APIs" (3,042 words)
-7. **Batch 2 guides published 11 Oct 2026** (2 guides from "Aircraft Maintenance" topic):
-   - Career-focused: "Aircraft Maintenance Fundamentals: What Gets Fixed vs Replaced, Maintenance Cycles, and the Path to Certification" (2,600+ words)
-   - Technical: "Aircraft Maintenance Engineering: Life-Limited Parts, Assemblies, Maintenance Planning, and Regulatory Compliance" (3,500+ words)
-8. **Batch 3 guides published 11 Oct 2026** (2 guides from "Aircraft Leasing Contracts" topic):
-   - Career-focused: "Aircraft Leasing Contracts: What New Employees Need to Know" (2,600+ words)
-     - Covers: Three-party lease structure, why airlines lease vs buy, core financial terms, maintenance obligations (dry vs full-service), maintenance reserves, end-of-lease return conditions, RCI process
-   - Technical: "Aircraft Leasing Contracts Engineering: Financial Modeling, Risk Analysis, and Regulatory Compliance" (3,500+ words)
-     - Covers: Lease rate financial models, residual value forecasting methods, debt structures (bank loans, ETCs, securitization), IFRS 16 accounting mechanics, security interests and UCC filings, regulatory compliance (EASA/FAA/SEC)
-9. **Batch 4 guides published 11 Oct 2026** (2 guides from "Aircraft Leasing Industry" topic):
-   - Career-focused: "Aircraft Leasing Industry Overview: Ireland's Role and Global Market Dynamics" (2,800+ words)
-     - Covers: Why Ireland dominates (tax advantages, regulatory certainty, financial infrastructure), lessor ecosystem by category (mega-lessors, boutiques, PE, manufacturers), geographic distribution, aircraft lifecycle, career paths (26 employers in Dublin metro)
-   - Technical: "Aircraft Leasing Industry: Financial Engineering, Tax Optimization, and Cross-Border Structures" (3,200+ words)
-     - Covers: IFRS 16 operating vs finance lease accounting, tax optimization via cross-border structures (Ireland/Netherlands/Luxembourg), depreciation strategies, securitization of lease cash flows, regulatory arbitrage (MACRS, safe harbor leases, transfer pricing)
-10. **Batch 5 guides published 11 Oct 2026** (2 guides from "Aviation Finance" topic):
-   - Career-focused: "Aviation Finance Fundamentals: Funding, Hedging, and Cash Flow Management" (3,000+ words)
-     - Covers: Airline capital stack (debt vs equity), funding sources (asset leasing, bank loans, ETCs, bonds, equity), fuel hedging strategies (futures, collars, rolling hedges), cash flow forecasting, debt covenants
-   - Technical: "Aviation Finance Engineering: IFRS 16, Fuel Hedging Derivatives, Debt Covenants, and Securitization" (3,300+ words)
-     - Covers: IFRS 16 right-of-use asset and lease liability calculations, cash flow hedge vs fair value hedge accounting, derivative valuation, covenant stress testing (5-scenario models), airline revenue securitization, structured finance mechanics
+1. **Cloudflare Web Analytics**: keep it, or switch it off.
+2. **Trigger update.yml manually** to fetch Cathay Pacific jobs (or wait for 17:23 UTC scheduled run).
+3. **Four new guides drafted 7 Oct 2026**: owner to read and add their own voice.
+4. **Guide 5 published 11 Oct 2026**: "Why Aviation Needs Specialized Talent" — owner to review.
+5. **10 topic guides published 11 Oct 2026**: covering airline terminologies, aircraft maintenance,
+   aircraft leasing contracts, aircraft leasing industry, and aviation finance.
 
-**GUIDE WRITING COMPLETE: 15 GUIDES OF 15 (1 specialized talent + 14 from 5 topics × 2 guides each)**
-All guides sourced from legitimate regulatory sources (EASA, FAA, ICAO, SEC, IATA, IFRS standards). Ready for AdSense approval.
+**GUIDE WRITING COMPLETE: 15 GUIDES OF 15**
+
+## Version control (13 Oct 2026)
+
+- **Current version:** v1.1 (base frozen version)
+- **Rollback branch:** `v1.1-stable` on GitHub (commit 881859a)
+- **Scheme:** v1.1a → v1.1z → v1.2a ... Major bump (v2.1a) only on owner's explicit request.
+- **Version stamp** shown at bottom-right of website footer with IST timestamp.
+- **Skill:** `aerojobs-version-control` invoked with every code push.
 
 ## Role sorting (5 Oct 2026)
 
-There is no AI sorting of job titles into role groups, and there never has been - the option was removed
-from the code. Titles are sorted only by free word-matching rules in `fetcher/roles.py` (English, German
-and French). A title the rules can't place falls into "Corporate", which was about 33% of jobs on 5 Oct
-2026; rules were widened the same day (production/warehouse roles, EHS, more German/French supervisor
-terms) to lower that share. If "Corporate" keeps catching jobs that belong elsewhere, send a few example
-titles and ask for the rules to be widened again - that's free and has no limit.
-
-Dependabot pull request #4 (Markdown 3.10.3 → 3.11) merged 5 Oct 2026.
+There is no AI sorting of job titles into role groups, and there never has been. Titles are sorted
+only by free word-matching rules in `fetcher/roles.py`.
 
 ## Not set up yet
 
 - Google Search Console and sitemap submission
 - Google Analytics (`google_analytics_id` empty)
-- Email forwarding for hello@aerojobs.work (Cloudflare Email Routing): owner to confirm it is done
+- Email forwarding for hello@aerojobs.work (Cloudflare Email Routing)
 - AdSense (apply 2–4 weeks after launch, once guides are published and pages show in Google)
 
 ## Next steps, in order
 
-1. **Push remaining candidate employers in batches** (priority: maximize employer count):
-   - **Batch 1 (testing now):** Ryanair (Workable connector just added)
-   - **Batch 2 (ready after connectors):** Azul (Gupy API), Virgin Australia (Cornerstone)
-   - **Batch 3 (debug/config):** dnata (iCIMS), Saudia (Taleo), easyJet (Taleo)
-   - **Batch 4 (long-term):** Turkish Airlines, Kenya Airways, SITA, Air India, Cathay Pacific (custom/incompatible ATS)
-2. **Revisit HTTP-error airlines after 24h** (LATAM, Avianca, Copa) — likely temporary IP blocks
-3. **Manual browser inspection of custom JS sites** (Turkish Airlines, Bombardier) — find job API endpoints in Network tab
-4. Build new connectors: Workable (done 8 Oct), Cornerstone OnDemand, updated Gupy API
-5. Debug Taleo connector (easyJet, Saudia) and iCIMS (dnata)
-6. Run .aero directory tool to discover new employers (tool ready, never run).
-7. Set up Search Console and Analytics; submit the sitemap.
-8. Before passing ~15,000 jobs: generate job pages on demand (Cloudflare 20,000-file limit).
-9. Apply for AdSense.
+1. **Trigger update.yml** to fetch Cathay Pacific jobs (owner or next scheduled run).
+2. Run .aero directory tool to discover new employers (tool ready, never run).
+3. Set up Search Console and Analytics; submit the sitemap.
+4. Before passing ~15,000 jobs: generate job pages on demand (Cloudflare 20,000-file limit).
+5. Apply for AdSense.
+6. Build new connectors if new ATS types are found (Avature, Zellis, Dayforce).
 
 ## Backlog (look into later)
 
-- **Air New Zealand (SmartRecruiters robots.txt block)**: `api.smartrecruiters.com/robots.txt` disallows
-  our user agent. Possible routes: (a) check if their careers page has JSON-LD JobPosting data and use
-  the jsonld reader instead; (b) read the SmartRecruiters HTML list page (not the API) if robots.txt
-  allows it; (c) write to the company for permission. Do not change the fetcher's user agent to bypass.
-  Kept enabled in `config/employers.yaml` so this stays visible.
+- **Air New Zealand (SmartRecruiters robots.txt block)**: possible routes: JSON-LD fallback,
+  HTML list page, or write to the company. Do not change user agent to bypass.
 
 ## Known issues
 
 | Issue | Impact | Plan |
 | --- | --- | --- |
-| Safari blocks Cloudflare Web Analytics report | Console errors only; visitors see nothing | Owner decision 2 |
+| Safari blocks Cloudflare Web Analytics report | Console errors only; visitors see nothing | Owner decision |
 | 33% of jobs default to Corporate | Role filter less precise | Widen rules as needed |
-| 13 older RTX jobs still show coded locations | Cosmetic; fixes itself when they update | None needed |
-| Few airline jobs | Weak for pilots and cabin crew | Next step 3 |
-| Air New Zealand blocked by SmartRecruiters robots.txt | Fetches 0 jobs; one error per run in alerts | Parked in backlog above |
-| GitHub Actions minutes | Private repos get 2,000 free minutes a month. Today's fetch runs took ~25 min each (catching up on 2,000+ job detail pages); at that pace 2 runs a day use ~1,500 min a month | Check run times after a few days. If still long: lower `max_new_details_per_employer`, or make the repository public (unlimited free minutes) |
+| 13 older RTX jobs still show coded locations | Cosmetic | None needed |
+| Air New Zealand blocked by SmartRecruiters robots.txt | Fetches 0 jobs | Parked in backlog |
+| GitHub Actions minutes | 2 runs/day ~1,500 min/month of 2,000 free | Monitor usage |

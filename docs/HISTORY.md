@@ -2,6 +2,16 @@
 
 What was done, newest first. For why, see `DECISIONS.md`.
 
+## 14 October 2026
+
+- **Cathay Pacific enabled:** Phenom connector, 210 jobs verified. First new employer since Etihad (12 Oct).
+- **Full employer onboarding sweep complete:** All 31 originally disabled employers investigated.
+  AAR re-tested as Taleo (detected by fetcher.detect) — 0 jobs on both sections, left off.
+  Menzies Aviation, ST Engineering, Dubai Airports blocked by robots.txt. Safran HTTP 403.
+  Bombardier SuccessFactors incompatible. No further actionable employers remain.
+- **Version v1.1 frozen (13 Oct):** Code reviewed, 6 bugs fixed, version stamp added to footer.
+  Rollback branch `v1.1-stable` on GitHub. Version control skill created.
+
 ## 6 October 2026
 
 - **Swissport enabled (batch 3):** 400 ground-services jobs from Switzerland, the fourth SuccessFactors
