@@ -83,7 +83,7 @@ h3 { font-size: 1.1rem; font-weight: 600; }
   box-shadow: 0 0 7px 4px rgba(255, 30, 30, 0.85);
   top: 18px;
   left: 103px;
-  animation: nav-red 4s steps(1, end) infinite;
+  animation: nav-red 1.4s steps(1, end) infinite;
 }
 /* Green nav light: tip of tail fin (top of vertical stabilizer) */
 .nav-light--tail {
@@ -91,7 +91,7 @@ h3 { font-size: 1.1rem; font-weight: 600; }
   box-shadow: 0 0 7px 4px rgba(0, 230, 118, 0.85);
   top: 5px;
   left: 8px;
-  animation: nav-green 4s steps(1, end) infinite;
+  animation: nav-green 1.4s steps(1, end) infinite;
 }
 /* Green nav light: wing trailing edge */
 .nav-light--wing {
@@ -99,35 +99,41 @@ h3 { font-size: 1.1rem; font-weight: 600; }
   box-shadow: 0 0 7px 4px rgba(0, 230, 118, 0.85);
   top: 30px;
   left: 55px;
-  animation: nav-green 4s steps(1, end) infinite;
+  animation: nav-green 1.4s steps(1, end) infinite;
 }
 /*
-  4-second cycle, 8 equal steps (each step = 0.5s):
-  Red:   ON  OFF  ON  OFF | off off off off
-  Green: off off off off  | ON  OFF  ON  OFF
-  Steps at 0%, 12.5%, 25%, 37.5%, 50%, 62.5%, 75%, 87.5%
+  1.4s cycle with steps(1,end) — each keyframe holds until the next:
+  0.00s  (  0%) red ON
+  0.20s  ( 14%) red OFF
+  0.30s  ( 21%) red ON  (2nd flash)
+  0.50s  ( 36%) red OFF — gap starts
+  0.70s  ( 50%) green ON
+  0.90s  ( 64%) green OFF
+  1.00s  ( 71%) green ON  (2nd flash)
+  1.12s  ( 80%) green OFF — gap before repeat
+  1.40s  (100%) loop
 */
 @keyframes nav-red {
-  0%    { opacity: 1; }   /* blink 1 on  */
-  12.5% { opacity: 0; }   /* blink 1 off */
-  25%   { opacity: 1; }   /* blink 2 on  */
-  37.5% { opacity: 0; }   /* blink 2 off — red done */
-  50%   { opacity: 0; }   /* green's turn */
-  62.5% { opacity: 0; }
-  75%   { opacity: 0; }
-  87.5% { opacity: 0; }
-  100%  { opacity: 1; }   /* next cycle starts */
+  0%   { opacity: 1; }
+  14%  { opacity: 0; }
+  21%  { opacity: 1; }
+  36%  { opacity: 0; }
+  50%  { opacity: 0; }
+  64%  { opacity: 0; }
+  71%  { opacity: 0; }
+  80%  { opacity: 0; }
+  100% { opacity: 1; }
 }
 @keyframes nav-green {
-  0%    { opacity: 0; }   /* red's turn */
-  12.5% { opacity: 0; }
-  25%   { opacity: 0; }
-  37.5% { opacity: 0; }
-  50%   { opacity: 1; }   /* blink 1 on  */
-  62.5% { opacity: 0; }   /* blink 1 off */
-  75%   { opacity: 1; }   /* blink 2 on  */
-  87.5% { opacity: 0; }   /* blink 2 off — green done */
-  100%  { opacity: 0; }
+  0%   { opacity: 0; }
+  14%  { opacity: 0; }
+  21%  { opacity: 0; }
+  36%  { opacity: 0; }
+  50%  { opacity: 1; }
+  64%  { opacity: 0; }
+  71%  { opacity: 1; }
+  80%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-light { animation: none; opacity: 1; }
