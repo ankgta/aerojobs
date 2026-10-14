@@ -53,7 +53,9 @@ gtag('consent', 'default', {ad_storage: 'granted', ad_user_data: 'granted', ad_p
       <a class="brand" href="{{ link('') }}">{{ brand_mark() }}<span>{{ site.site_name }}</span></a>
       <div class="aircraft-container">
         <img src="{{ asset('static/aircraft-header.png') }}" alt="Aircraft" class="aircraft-image">
-        <div class="cockpit-beacon"></div>
+        <div class="nav-light nav-light--red"></div>
+        <div class="nav-light nav-light--green nav-light--tail"></div>
+        <div class="nav-light nav-light--green nav-light--wing"></div>
       </div>
     </div>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="top-nav" data-menu>{{ icon("menu") }}<span class="visually-hidden">Menu</span></button>
