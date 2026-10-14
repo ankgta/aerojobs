@@ -2,7 +2,27 @@
 
 What was done, newest first. For why, see `DECISIONS.md`.
 
-## 14 October 2026 (full 224-employer master-list sweep)
+## 14 October 2026 (onboarding skill created, batch 2 pushed live)
+
+- **New skill `aerojobs-onboard-and-report`**: a repeatable detect → verify → enable → fetch →
+  refresh-spreadsheet pipeline, invoked whenever the owner asks to onboard employers or push ready ones
+  live. Replaces one-off ad hoc spreadsheets with `data/master_employer_list.csv` as a running, committed
+  single source of truth that each run updates in place.
+- **Batch 2 (refined career URLs via web search, not blind guessing)** for large manufacturers, ANSPs
+  and business aviation that failed in batch 1's generic guesses. Found real leads for Thales, Pilatus,
+  Textron, Woodward.
+- **Enabled: Woodward** (Workday, 187 jobs, clean aerospace manufacturing) and **Thales** (Workday, 600
+  jobs — a group-wide feed spanning aerospace/defense/security/transport, kept per the owner's existing
+  precedent of filtering titles rather than excluding large diversified industrials like Honeywell/RTX).
+- **Rejected: Pilatus Aircraft** (SuccessFactors detection was a false positive — the real fetch 404'd)
+  and **Textron** (Taleo detected, but a real fetch returned 0 jobs).
+- **Fetch confirmed live:** 45 employers, 11,678 jobs (run 38524287543).
+- Still unresolved from this pass: Dassault Aviation, Leonardo, Eurocontrol (robots.txt), DFS, ENAIRE,
+  Airservices Australia, Airways NZ (HTTP 403), NetJets, Flexjet, Wheels Up, Diehl, Mitsubishi Heavy
+  Industries, Kawasaki Heavy Industries — all need browser network inspection to find a real job-feed
+  endpoint, if one exists; most are likely JS-rendered with no public API.
+
+## 14 October 2026 (full 224-employer master-list sweep, earlier same day)
 
 - **Reconciled against the original 7 Oct consolidated research list (224 employers).** The owner
   flagged that claimed "live" counts didn't match what the website actually showed — correct: config

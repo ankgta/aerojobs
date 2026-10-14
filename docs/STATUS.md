@@ -1,27 +1,27 @@
 # Status
 
-Last updated: 14 October 2026, 06:10 UTC (confirmed against a real fetch, not a config guess). Update this file whenever something changes.
+Last updated: 14 October 2026, 07:10 UTC (confirmed against a real fetch, not a config guess). Update this file whenever something changes.
 
 ## In one line
 
-AeroJobs is **live at https://aerojobs.work** with jobs from **43 employers that are actually fetching right now** (v1.1), refreshed twice a day. This number is counted from the last completed fetch (`data/jobs.json`), not from how many are merely switched on in config — those two numbers had drifted apart before and will be kept in sync going forward.
-14 Oct 2026: Full sweep against the original 224-employer research list (7 Oct). Detected 15 new candidates, verified 6 real additions (Travelport, Accelya, Gogo Business Aviation, Moog, Crane Aerospace, Cirrus Aircraft), rejected 1 false positive (Chubb Aerospace — its "jobs" were Chubb's general insurance board, not aerospace-specific). Cathay Pacific's first fetch landed 202 jobs.
+AeroJobs is **live at https://aerojobs.work** with jobs from **45 employers that are actually fetching right now** (v1.1b), refreshed twice a day. This number is counted from the last completed fetch (`data/jobs.json`), not from how many are merely switched on in config.
+14 Oct 2026: Two onboarding batches run via the new `aerojobs-onboard-and-report` skill against the original 224-employer research list (7 Oct). 8 real additions this session: Travelport, Accelya, Gogo Business Aviation, Moog, Crane Aerospace, Cirrus Aircraft, Woodward, Thales. Rejected 1 false positive (Chubb Aerospace). `data/master_employer_list.csv` is now the running single source of truth for every employer ever researched — future onboarding runs update it in place rather than starting a fresh spreadsheet each time.
 
-## Live numbers (14 Oct 2026, after fetch run 38513999934)
+## Live numbers (14 Oct 2026, after fetch run 38524287543)
 
 | Measure | Value |
 | --- | --- |
-| Live jobs (confirmed in data/jobs.json) | **10,848** |
-| Employers actually fetching jobs right now | **43** |
+| Live jobs (confirmed in data/jobs.json) | **11,678** |
+| Employers actually fetching jobs right now | **45** |
 | Employers switched on in config but returning 0 jobs | 8 (correctly configured, no current openings) |
-| Employers disabled (blocked/unsupported/error) | 30+ (see full breakdown below) |
+| Employers disabled (blocked/unsupported/error) | 43 (see full breakdown in the spreadsheet) |
 | Countries with jobs | 46+ |
 | Jobs with a known country | 93%+ |
 | Jobs whose role is unclear (shown as Corporate) | ~33% |
 | Guides written | 15 of 15 ✓ |
-| Version | v1.1 |
+| Version | v1.1b |
 
-**A note on counting employers honestly:** "Live" below means the employer has jobs in the most recent fetch, not just `enabled: true` in config. An employer can be correctly configured and still show 0 jobs (no current openings, or awaiting its first scheduled fetch) — those are labelled separately. Full per-employer detail, including every one of the 224 companies ever researched: `AeroJobs-Employer-Status-Complete-2026-10-14.xlsx`.
+**A note on counting employers honestly:** "Live" means the employer has jobs in the most recent fetch, not just `enabled: true` in config. An employer can be correctly configured and still show 0 jobs. Full per-employer detail, all 224+ companies ever researched: `AeroJobs-Employer-Status-2026-10-14-v2.xlsx`, generated from `data/master_employer_list.csv`.
 
 Full detail: `docs/reports/AeroJobs-Test-Report.xlsx`.
 
