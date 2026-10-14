@@ -1,16 +1,27 @@
 # Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
-# 14 Oct 2026 — Re-test: AAR as Taleo (detected), Bombardier SF with url
+# 14 Oct 2026 — Batch from 7 Oct master list (224-employer research), detected via fetcher.detect
 employers:
-  # ---- Taleo candidates (detected by fetcher.detect) ----
-  - {name: AAR, slug: aar, type: mro, country: US, source: {ats: taleo, host: "aarcorp.taleo.net"}, notes: "Detected as Taleo"}
-  - {name: AAR v2, slug: aar-v2, type: mro, country: US, source: {ats: taleo, host: "aarcorp.taleo.net", section: "1"}, notes: "Taleo section 1"}
+  - {name: Spirit AeroSystems, slug: spirit-aerosystems, type: manufacturer, country: US, source: {ats: icims, url: "https://careers-spiritaero.icims.com"}, notes: "Detected iCIMS"}
+  - {name: Travelport, slug: travelport, type: other, country: GB, source: {ats: oracle, host: "ejzg.fa.us6.oraclecloud.com", site: "CX_1"}, notes: "Detected Oracle"}
+  - {name: Accelya, slug: accelya, type: other, country: ES, source: {ats: workday, url: "https://accelya.wd103.myworkdayjobs.com/Careers"}, notes: "Detected Workday"}
+  - {name: Gogo Business Aviation, slug: gogo-business-aviation, type: other, country: US, source: {ats: workday, url: "https://gogo.wd503.myworkdayjobs.com/careers"}, notes: "Detected Workday"}
+  - {name: Arup, slug: arup, type: other, country: GB, source: {ats: cornerstone, url: "https://jobs.arup.com"}, notes: "Detected Cornerstone"}
+  - {name: Jet Aviation, slug: jet-aviation, type: ground_services, country: CH, source: {ats: cornerstone, url: "https://jobs.jetaviation.com"}, notes: "Detected Cornerstone"}
+  - {name: ExxonMobil Aviation, slug: exxonmobil-aviation, type: other, country: US, source: {ats: cornerstone, url: "https://jobs.exxonmobil.com"}, notes: "Detected Cornerstone"}
+  - {name: TotalEnergies Aviation, slug: totalenergies-aviation, type: other, country: FR, source: {ats: cornerstone, url: "https://jobs.totalenergies.com"}, notes: "Detected Cornerstone"}
+  - {name: Neste, slug: neste, type: other, country: FI, source: {ats: cornerstone, url: "https://jobs.neste.com"}, notes: "Detected Cornerstone"}
+  - {name: Aon Aerospace, slug: aon-aerospace, type: other, country: GB, source: {ats: cornerstone, url: "https://jobs.aon.com"}, notes: "Detected Cornerstone"}
+  - {name: Chubb Aerospace, slug: chubb-aerospace, type: other, country: CH, source: {ats: oracle, host: "fa-ewgu-saasfaprod1.fa.ocs.oraclecloud.com", site: "CX_1"}, notes: "Detected Oracle, site number guessed"}
+  - {name: Moog, slug: moog, type: manufacturer, country: US, source: {ats: workday, url: "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site"}, notes: "Detected Workday"}
+  - {name: Crane Aerospace, slug: crane-aerospace, type: manufacturer, country: US, source: {ats: workday, url: "https://cranecompany.wd5.myworkdayjobs.com/Careers"}, notes: "Detected Workday"}
+  - {name: Cirrus Aircraft, slug: cirrus-aircraft, type: manufacturer, country: US, source: {ats: icims, url: "https://careers-cirrusaircraft.icims.com"}, notes: "Detected iCIMS"}
+  - {name: OAG Aviation Worldwide, slug: oag-aviation-worldwide, type: other, country: GB, source: {ats: greenhouse, board: "embed"}, notes: "Low-confidence detection, board name looks generic"}
 
-  # ---- PASSED (do not re-test) ----
-  # Cathay Pacific — Phenom, 210 jobs, PASSED
+  # ---- PASSED/ALREADY LIVE (confirmed by this detection run, no action needed) ----
+  # Cirium, FlightSafety, VistaJet, gategroup, World Fuel Services, Joby Aviation — already enabled & live
+  # British Airways — already enabled with correct source (Cornerstone), returning 0 jobs currently
 
-  # ---- FAILED (do not re-test) ----
-  # Bombardier — SuccessFactors KeyError 'url' (needs custom SF URL, can't detect)
-  # Menzies Aviation — robots.txt blocks SmartRecruiters API
-  # ST Engineering — robots.txt blocks Oracle
-  # Dubai Airports — robots.txt blocks Oracle + SF KeyError
-  # Safran — HTTP 403
+  # ---- FALSE POSITIVES (generic/widget URLs, not real job boards — skip) ----
+  # SITA, Inmarsat, Viasat, Aon (icims variant) — detected generic "www.icims.com" or cookie-script domain
+  # Etihad — detected smartrecruiters company "my-applications" (nonsense name, false positive)
+  # Vertical Aerospace — detected cornerstone url "jobs.ashbyhq.com" (mismatched ATS/URL, false positive)
