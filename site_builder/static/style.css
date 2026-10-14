@@ -102,37 +102,36 @@ h3 { font-size: 1.1rem; font-weight: 600; }
   animation: nav-green 1.4s steps(1, end) infinite;
 }
 /*
-  1.4s cycle with steps(1,end) — each keyframe holds until the next:
-  0.00s  (  0%) red ON
+  1.4s cycle — exact timing per spec:
+  0.00s  (  0%) red ON   — flash 1
   0.20s  ( 14%) red OFF
-  0.30s  ( 21%) red ON  (2nd flash)
-  0.50s  ( 36%) red OFF — gap starts
-  0.70s  ( 50%) green ON
+  0.30s  ( 21%) red ON   — flash 2
+  0.50s  ( 36%) red OFF  — 0.2s gap
+  0.70s  ( 50%) green ON — flash 1
   0.90s  ( 64%) green OFF
-  1.00s  ( 71%) green ON  (2nd flash)
-  1.12s  ( 80%) green OFF — gap before repeat
-  1.40s  (100%) loop
+  1.00s  ( 71%) green ON — flash 2
+  1.20s  ( 86%) green OFF — 0.2s gap then loop
 */
 @keyframes nav-red {
-  0%   { opacity: 1; }
-  14%  { opacity: 0; }
-  21%  { opacity: 1; }
-  36%  { opacity: 0; }
-  50%  { opacity: 0; }
+  0%   { opacity: 1; }   /* red flash 1 on  */
+  14%  { opacity: 0; }   /* red flash 1 off */
+  21%  { opacity: 1; }   /* red flash 2 on  */
+  36%  { opacity: 0; }   /* red flash 2 off — gap */
+  50%  { opacity: 0; }   /* green's turn    */
   64%  { opacity: 0; }
   71%  { opacity: 0; }
-  80%  { opacity: 0; }
-  100% { opacity: 1; }
+  86%  { opacity: 0; }
+  100% { opacity: 1; }   /* red starts again */
 }
 @keyframes nav-green {
-  0%   { opacity: 0; }
+  0%   { opacity: 0; }   /* red's turn      */
   14%  { opacity: 0; }
   21%  { opacity: 0; }
   36%  { opacity: 0; }
-  50%  { opacity: 1; }
-  64%  { opacity: 0; }
-  71%  { opacity: 1; }
-  80%  { opacity: 0; }
+  50%  { opacity: 1; }   /* green flash 1 on  */
+  64%  { opacity: 0; }   /* green flash 1 off */
+  71%  { opacity: 1; }   /* green flash 2 on  */
+  86%  { opacity: 0; }   /* green flash 2 off — gap */
   100% { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
