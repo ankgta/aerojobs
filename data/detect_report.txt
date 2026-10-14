@@ -33,7 +33,7 @@ https://www.navblue.aero/careers/
   no known hiring system found on www.navblue.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://ibsplc.com/careers/
-  no known hiring system found on ibsplc.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+  could not open: HTTP 404 from https://ibsplc.com/careers/
 
 https://www.cirium.com/careers/
   source: {ats: workday, url: "https://relx.wd3.myworkdayjobs.com/ciriumcareers"}
@@ -90,7 +90,7 @@ https://www.jobyaviation.com/careers/
   source: {ats: icims, url: "https://careers-jobyaviation.icims.com"}
 
 https://vertical-aerospace.com/careers/
-  no known hiring system found on vertical-aerospace.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+  source: {ats: cornerstone, url: "https://jobs.ashbyhq.com"}
 
 https://beta.team/careers/
   no known hiring system found on beta.team. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
@@ -188,3 +188,361 @@ https://menziesaviation.com/careers/
 
 https://www.safran-group.com/en/careers
   could not open: HTTP 403 from https://www.safran-group.com/en/careers
+
+https://www.aercap.com/careers
+  no known hiring system found on www.aercap.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.smbc.aero/careers
+  no known hiring system found on www.smbc.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.avolon.aero/careers
+  no known hiring system found on www.avolon.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.bbam.com/careers
+  no known hiring system found on www.bbam.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.airleasecorp.com/careers
+  no known hiring system found on www.airleasecorp.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.bocaviation.com/careers
+  no known hiring system found on www.bocaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.dubaiaerospace.com/careers
+  no known hiring system found on www.dubaiaerospace.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.icbcleasing.com/en/careers
+  could not open: robots.txt does not allow https://www.icbcleasing.com/en/careers
+
+https://www.cdbaviation.aero/careers
+  no known hiring system found on www.cdbaviation.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.castlelake.com/careers
+  no known hiring system found on www.castlelake.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.carlyleaviation.com/careers
+  could not open: robots.txt does not allow https://www.carlyleaviation.com/careers
+
+https://www.aviationcapitalgroup.com/careers
+  no known hiring system found on www.aviationcapitalgroup.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.jsasset.com/careers
+  could not open: robots.txt does not allow https://www.jsasset.com/careers
+
+https://www.macquarie.com/careers
+  no known hiring system found on www.macquarie.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.griffinasset.com/careers
+  could not open: HTTP 404 from https://www.griffinasset.com/careers
+
+https://www.avation.net/careers
+  could not open: HTTP 404 from https://www.avation.net/careers
+
+https://www.novus.aero/careers
+  no known hiring system found on www.novus.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.orix.aero/careers
+  could not open: robots.txt does not allow https://www.orix.aero/careers
+
+https://www.skyworkscapital.com/careers
+  no known hiring system found on www.skyworkscapital.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.amadeus.com/en/careers
+  no known hiring system found on www.amadeus.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.sabre.com/careers
+  no known hiring system found on www.sabre.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.travelport.com/careers
+  source: {ats: oracle, host: "ejzg.fa.us6.oraclecloud.com", site: "CX_1"}
+
+https://www.ifs.com/careers
+  could not open: Gave up on https://www.ifs.com/careers: HTTP 429 from https://www.ifs.com/careers
+
+https://www.ramco.com/careers
+  no known hiring system found on www.ramco.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.trax.aero/careers
+  no known hiring system found on www.trax.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.rusada.com/careers
+  no known hiring system found on www.rusada.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.accelya.com/careers
+  source: {ats: workday, url: "https://accelya.wd103.myworkdayjobs.com/Careers"}
+
+https://www.hitit.com.tr/careers
+  could not open: HTTP 404 from https://www.hitit.com.tr/careers
+
+https://www.pros.com/careers
+  could not open: HTTP 404 from https://www.pros.com/careers
+
+https://www.comply365.com/careers
+  no known hiring system found on www.comply365.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.vistair.com/careers
+  no known hiring system found on www.vistair.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.smart4aviation.aero/careers
+  could not open: HTTP 404 from https://www.smart4aviation.aero/careers
+
+https://www.openairlines.com/careers
+  could not open: HTTP 404 from https://www.openairlines.com/careers
+
+https://www.apgdat.com/careers
+  could not open: robots.txt does not allow https://www.apgdat.com/careers
+
+https://www.flysatcom.com/careers
+  could not open: robots.txt does not allow https://www.flysatcom.com/careers
+
+https://www.flyht.com/careers
+  could not open: HTTP 404 from https://www.flyht.com/careers
+
+https://www.champ.aero/careers
+  no known hiring system found on www.champ.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.smartkargo.com/careers
+  could not open: HTTP 404 from https://www.smartkargo.com/careers
+
+https://www.panasonic.aero/careers
+  could not open: HTTP 404 from https://www.panasonic.aero/careers
+
+https://www.thalesgroup.com/en/careers
+  no known hiring system found on www.thalesgroup.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.inmarsat.com/careers
+  source: {ats: icims, url: "https://www.icims.com"}
+
+https://www.viasat.com/careers
+  source: {ats: icims, url: "https://www.icims.com"}
+
+https://www.gogoair.com/careers
+  source: {ats: workday, url: "https://gogo.wd503.myworkdayjobs.com/careers"}
+
+https://www.campsystems.com/careers
+  no known hiring system found on www.campsystems.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.avinode.com/careers
+  could not open: HTTP 404 from https://www.avinode.com/careers
+
+https://www.garmin.com/en-US/careers
+  no known hiring system found on www.garmin.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.oliverwyman.com/careers
+  no known hiring system found on www.oliverwyman.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.icfaviation.com/careers
+  could not open: robots.txt does not allow https://www.icfaviation.com/careers
+
+https://to70.com/careers
+  could not open: HTTP 404 from https://to70.com/careers
+
+https://www.intervistas.com/careers
+  no known hiring system found on www.intervistas.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.steergroup.com/careers
+  could not open: HTTP 403 from https://www.steergroup.com/careers
+
+https://www.mottmac.com/careers
+  no known hiring system found on www.mottmac.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.landrum-brown.com/careers
+  no known hiring system found on www.landrum-brown.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.arup.com/careers
+  source: {ats: cornerstone, url: "https://jobs.arup.com"}
+
+https://www.jacobs.com/careers
+  no known hiring system found on www.jacobs.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.wsp.com/careers
+  could not open: HTTP 403 from https://www.wsp.com/careers
+
+https://www.oag.com/careers
+  source: {ats: greenhouse, board: "embed"}
+
+https://www.ch-aviation.com/careers
+  no known hiring system found on www.ch-aviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.flightsafety.com/careers
+  source: {ats: cornerstone, url: "https://jobs.flightsafety.com"}
+
+https://www.panamacademy.com/careers
+  no known hiring system found on www.panamacademy.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://atpflightschool.com/careers
+  could not open: HTTP 404 from https://atpflightschool.com/careers
+
+https://www.trusimulation.com/careers
+  no known hiring system found on www.trusimulation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.loftdynamics.com/careers
+  no known hiring system found on www.loftdynamics.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.simaero.com/careers
+  could not open: robots.txt does not allow https://www.simaero.com/careers
+
+https://www.wfs.aero/careers
+  no known hiring system found on www.wfs.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.sats.com.sg/careers
+  no known hiring system found on www.sats.com.sg. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.celebiaviation.com/careers
+  no known hiring system found on www.celebiaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.havas.net/careers
+  could not open: HTTP 404 from https://www.havas.net/careers
+
+https://www.jetaviation.com/careers
+  source: {ats: cornerstone, url: "https://jobs.jetaviation.com"}
+
+https://www.luxaviation.com/careers
+  no known hiring system found on www.luxaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.jbtaerotech.com/careers
+  could not open: robots.txt does not allow https://www.jbtaerotech.com/careers
+
+https://www.oshkoshairport.com/careers
+  could not open: HTTP 404 from https://www.oshkoshairport.com/careers
+
+https://www.netjets.com/careers
+  no known hiring system found on www.netjets.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.flexjet.com/careers
+  no known hiring system found on www.flexjet.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.wheelsup.com/careers
+  no known hiring system found on www.wheelsup.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.tagaviation.com/careers
+  no known hiring system found on www.tagaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.lsg-group.com/careers
+  no known hiring system found on www.lsg-group.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.newrest.eu/careers
+  could not open: HTTP 404 from https://www.newrest.eu/careers
+
+https://www.doco.com/careers
+  could not open: HTTP 404 from https://www.doco.com/careers
+
+https://www.emirates-catering.com/careers
+  could not open: HTTP 404 from https://www.emirates-catering.com/careers
+
+https://www.flyingfoodgroup.com/careers
+  could not open: robots.txt does not allow https://www.flyingfoodgroup.com/careers
+
+https://www.avfuel.com/careers
+  no known hiring system found on www.avfuel.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.shell.com/careers
+  no known hiring system found on www.shell.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.bp.com/careers
+  could not open: HTTP 403 from https://www.bp.com/careers
+
+https://corporate.exxonmobil.com/careers
+  source: {ats: cornerstone, url: "https://jobs.exxonmobil.com"}
+
+https://www.totalenergies.com/careers
+  source: {ats: cornerstone, url: "https://jobs.totalenergies.com"}
+
+https://www.neste.com/careers
+  source: {ats: cornerstone, url: "https://jobs.neste.com"}
+
+https://www.marsh.com/careers
+  could not open: HTTP 404 from https://www.marsh.com/careers
+
+https://www.wtwco.com/careers
+  could not open: Gave up on https://www.wtwco.com/careers: HTTP 429 from https://www.wtwco.com/careers
+
+https://www.aon.com/careers
+  source: {ats: icims, url: "https://cookie-policy-scripts.icims.com"}
+  source: {ats: cornerstone, url: "https://jobs.aon.com"}
+
+https://careers.allianz.com
+  no known hiring system found on careers.allianz.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://careers.aig.com
+  could not open: robots.txt does not allow https://careers.aig.com
+
+https://www.chubb.com/careers
+  source: {ats: oracle, host: "fa-ewgu-saasfaprod1.fa.ocs.oraclecloud.com", site: "CX_1"}   # site number guessed
+
+https://www.global-aero.com/careers
+  no known hiring system found on www.global-aero.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.moog.com/careers
+  source: {ats: workday, url: "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site"}
+
+https://www.parker.com/careers
+  could not open: HTTP 403 from https://www.parker.com/careers
+
+https://www.eaton.com/careers
+  could not open: robots.txt does not allow https://www.eaton.com/careers
+
+https://www.craneaerospace.com/careers
+  source: {ats: workday, url: "https://cranecompany.wd5.myworkdayjobs.com/Careers"}
+
+https://www.diehl.com/careers
+  could not open: HTTP 401 from https://www.diehl.com/careers
+
+https://www.dassault-aviation.com/en/careers
+  no known hiring system found on www.dassault-aviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.txtav.com/careers
+  no known hiring system found on www.txtav.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.pilatus-aircraft.com/careers
+  could not open: HTTP 404 from https://www.pilatus-aircraft.com/careers
+
+https://www.daher.com/careers
+  no known hiring system found on www.daher.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.diamondaircraft.com/careers
+  could not open: HTTP 404 from https://www.diamondaircraft.com/careers
+
+https://www.cirrusaircraft.com/careers
+  source: {ats: icims, url: "https://careers-cirrusaircraft.icims.com"}
+
+https://www.piper.com/careers
+  no known hiring system found on www.piper.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.leonardo.com/en/careers
+  no known hiring system found on www.leonardo.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.mhi.com/careers
+  could not open: HTTP 404 from https://www.mhi.com/careers
+
+https://global.kawasaki.com/careers
+  could not open: HTTP 404 from https://global.kawasaki.com/careers
+
+https://lilium.com/careers
+  could not open: robots.txt does not allow https://lilium.com/careers
+
+https://vertical-aerospace.com/careers
+  source: {ats: cornerstone, url: "https://jobs.ashbyhq.com"}
+
+https://www.volocopter.com/careers
+  no known hiring system found on www.volocopter.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://eveairmobility.com/careers
+  no known hiring system found on eveairmobility.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.dfs.de/careers
+  could not open: HTTP 404 from https://www.dfs.de/careers
+
+https://www.enaire.es/careers
+  could not open: HTTP 404 from https://www.enaire.es/careers
+
+https://www.airservicesaustralia.com/careers
+  no known hiring system found on www.airservicesaustralia.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.airways.co.nz/careers
+  could not open: HTTP 403 from https://www.airways.co.nz/careers
+
+https://www.eurocontrol.int/careers
+  no known hiring system found on www.eurocontrol.int. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.ana.pt/careers
+  could not open: HTTP 404 from https://www.ana.pt/careers
