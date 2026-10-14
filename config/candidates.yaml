@@ -1,3 +1,7 @@
 # Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
-# Empty after 14 Oct 2026 master-list sweep — all candidates resolved (6 enabled, rest blocked/0-jobs/no-ATS).
-employers: []
+# 14 Oct 2026 — Batch 2 from master-list sweep, refined URLs
+employers:
+  - {name: Thales, slug: thales, type: manufacturer, country: FR, source: {ats: workday, url: "https://thales.wd3.myworkdayjobs.com/Careers"}, notes: "Detected Workday"}
+  - {name: Pilatus Aircraft, slug: pilatus-aircraft, type: manufacturer, country: CH, source: {ats: successfactors, url: "https://www.pilatus-aircraft.com"}, notes: "Weak SF detection, URL is main site not a tenant subdomain"}
+  - {name: Textron, slug: textron, type: manufacturer, country: US, source: {ats: taleo, host: "textron.taleo.net"}, notes: "CAUTION: this is Textron CORPORATE, covers all divisions (Textron Aviation/Cessna/Beechcraft, Bell Helicopter, Textron Systems defense, E-Z-GO golf carts, specialized vehicles) not just aviation. Check samples carefully before enabling."}
+  - {name: Woodward, slug: woodward, type: manufacturer, country: US, source: {ats: workday, url: "https://woodward.wd5.myworkdayjobs.com/woodward"}, notes: "Detected Workday"}
