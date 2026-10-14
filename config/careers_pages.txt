@@ -236,3 +236,25 @@ https://www.airservicesaustralia.com/careers
 https://www.airways.co.nz/careers
 https://www.eurocontrol.int/careers
 https://www.ana.pt/careers
+
+# ----- Batch 2, 14 Oct 2026: refined URLs for large manufacturers, ANSPs, business aviation -----
+# (previous guesses for these got "no system found" with wrong paths; corrected via web search)
+https://careers.thalesgroup.com/global/en/search-results
+https://www.dassault-aviation.com/en/group/careers/
+https://www.pilatus-aircraft.com/en/jobs
+https://www.leonardo.com/en/careers
+https://www.textron.com/Careers
+https://www.parker.com/us/en/about-parker/careers.html
+https://www.eaton.com/us/en-us/company/careers.html
+https://www.woodward.com/careers
+https://careers.eurocontrol.int
+https://www.dfs.de/dfs_homepage/en/career/
+https://www.enaire.es/en/corporate/employment
+https://www.airservicesaustralia.com/about-us/careers/
+https://www.airways.co.nz/careers/
+https://www.netjets.com/en-us/careers
+https://www.flexjet.com/careers
+https://www.wheelsup.com/careers
+https://www.diehl.com/en/career
+https://www.mhi.com/recruit
+https://global.kawasaki.com/corp/recruit/
