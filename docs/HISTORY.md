@@ -2,7 +2,25 @@
 
 What was done, newest first. For why, see `DECISIONS.md`.
 
-## 14 October 2026
+## 14 October 2026 (full 224-employer master-list sweep)
+
+- **Reconciled against the original 7 Oct consolidated research list (224 employers).** The owner
+  flagged that claimed "live" counts didn't match what the website actually showed — correct: config
+  having `enabled: true` is not the same as a real job actually appearing. Going forward, "live" counts
+  are read from `data/jobs.json` after a confirmed fetch, not from config state.
+- **145 never-before-checked candidates from the master list run through `fetcher.detect`.** 15
+  detected a plausible ATS; 6 verified real, aviation-relevant jobs and were enabled: Travelport (19),
+  Accelya (10), Gogo Business Aviation (28), Moog (441), Crane Aerospace (307), Cirrus Aircraft (72).
+- **Rejected Chubb Aerospace** despite 400 "jobs" detected — samples ("Chubb Life HK", "Underwriter,
+  Marine & Specialty") showed this was Chubb's entire global insurance job board, not an
+  aerospace-specific feed. Excluded to keep the board aviation-only.
+- **Fetch triggered and confirmed:** 43 employers now live with 10,848 real jobs (run 38513999934,
+  completed ~06:00 UTC). Full per-employer status (all 224 ever researched) exported to
+  `AeroJobs-Employer-Status-Complete-2026-10-14.xlsx` with Status / Reason / Suggested Workaround columns.
+- 137 of the 224 have no detectable public hiring system at all (mostly lessors, insurers, consultancies
+  and ANSPs — likely LinkedIn/Indeed-only or JS-rendered with no API).
+
+## 14 October 2026 (earlier same day)
 
 - **Cathay Pacific enabled:** Phenom connector, 210 jobs verified. First new employer since Etihad (12 Oct).
 - **Full employer onboarding sweep complete:** All 31 originally disabled employers investigated.
