@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 14 October 2026, 07:10 UTC (confirmed against a real fetch, not a config guess). Update this file whenever something changes.
+Last updated: 14 October 2026, 16:03 UTC (confirmed against a real fetch, not a config guess). Update this file whenever something changes.
 
 ## In one line
 
@@ -63,13 +63,25 @@ Turkish Airlines (custom ASP.NET), Air India (custom SF template).
 AAR (Taleo detected but 0 jobs on both sections), Bombardier (SuccessFactors incompatible),
 dnata (iCIMS portal decommissioned — 404).
 
+## India Ecosystem Investigation (14 Oct 2026, 16:03 UTC)
+
+Browser inspection of India batch found:
+- **GMR Group** (airport operator): SuccessFactors CSB, ~70 jobs ✓ Added to config, enabled, fetch triggered
+- **Air Works** (MRO, India): Custom HTML parser built, ~5 jobs ✓ Added to config, enabled, fetch triggered
+- **Celebi** (ground handling): No public job board (LinkedIn only) ❌ Cannot add
+- **Adani**, **Sheorey**, others: Likely similar; most large Indian employers use JS-rendered portals with no public API
+
+**Note:** Fetch run 38543733382 (both employers added) completed successfully, but returned 0 jobs — GitHub Actions likely blocked from reaching Indian career pages. Employers are enabled; jobs will appear when the fetcher can reach them.
+
 ## Waiting on the owner
 
 1. **Cloudflare Web Analytics**: keep it, or switch it off.
-2. **Trigger update.yml manually** to fetch Cathay Pacific jobs (or wait for 17:23 UTC scheduled run).
-3. **Four new guides drafted 7 Oct 2026**: owner to read and add their own voice.
-4. **Guide 5 published 11 Oct 2026**: "Why Aviation Needs Specialized Talent" — owner to review.
-5. **10 topic guides published 11 Oct 2026**: covering airline terminologies, aircraft maintenance,
+2. **GMR Group & Air Works fetch status**: Jobs not fetched yet (likely network blocked from GitHub Actions). Consider: (A) Monitor next scheduled run (05:23 UTC 15 Oct), or (B) Trigger manually from within India after network unblocked.
+3. **India employers without public APIs**: GMR/Air Works succeed where Celebi, Adani, Sheorey fail (no public job boards). Strategy: focus on employers with discoverable APIs; JS-rendered portals require browser automation or manual partnerships.
+4. **Cloudflare Web Analytics**: keep it, or switch it off.
+5. **Four new guides drafted 7 Oct 2026**: owner to read and add their own voice.
+6. **Guide 5 published 11 Oct 2026**: "Why Aviation Needs Specialized Talent" — owner to review.
+7. **10 topic guides published 11 Oct 2026**: covering airline terminologies, aircraft maintenance,
    aircraft leasing contracts, aircraft leasing industry, and aviation finance.
 
 **GUIDE WRITING COMPLETE: 15 GUIDES OF 15**
