@@ -346,7 +346,7 @@ https://www.mottmac.com/careers
   no known hiring system found on www.mottmac.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.landrum-brown.com/careers
-  no known hiring system found on www.landrum-brown.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+  could not open: robots.txt does not allow https://www.landrum-brown.com/careers
 
 https://www.arup.com/careers
   source: {ats: cornerstone, url: "https://jobs.arup.com"}

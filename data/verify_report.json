@@ -1,28 +1,469 @@
 {
- "run": "2026-10-14T04:23:38+00:00",
+ "run": "2026-10-14T04:40:29+00:00",
  "results": [
   {
-   "name": "AAR",
-   "slug": "aar",
+   "name": "Spirit AeroSystems",
+   "slug": "spirit-aerosystems",
    "source": {
-    "ats": "taleo",
-    "host": "aarcorp.taleo.net"
+    "ats": "icims",
+    "url": "https://careers-spiritaero.icims.com"
+   },
+   "ok": false,
+   "error": "Exception: api/jobs: robots.txt does not allow https://careers-spiritaero.icims.com/api/jobs; html_search: robots.txt does not allow https://careers-spiritaero.icims.com/jobs/search?ss=1&in_iframe=1; sitemap: ro"
+  },
+  {
+   "name": "Travelport",
+   "slug": "travelport",
+   "source": {
+    "ats": "oracle",
+    "host": "ejzg.fa.us6.oraclecloud.com",
+    "site": "CX_1"
+   },
+   "ok": true,
+   "jobs_found": 19,
+   "sample": [
+    {
+     "title": "API Tech Lead",
+     "location": "United States",
+     "url": "https://ejzg.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2791",
+     "posted": "2026-10-13"
+    },
+    {
+     "title": "Customer Success Manager I",
+     "location": "Cairo, Egypt",
+     "url": "https://ejzg.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2787",
+     "posted": "2026-10-09"
+    },
+    {
+     "title": "Product Manager",
+     "location": "LONDON, United Kingdom",
+     "url": "https://ejzg.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2796",
+     "posted": "2026-10-09"
+    },
+    {
+     "title": "Senior Product Manager",
+     "location": "LANGLEY, BERKSHIRE, United Kingdom",
+     "url": "https://ejzg.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2790",
+     "posted": "2026-10-08"
+    },
+    {
+     "title": "Customer Support Analyst",
+     "location": "Manila, NCR, Philippines",
+     "url": "https://ejzg.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2746",
+     "posted": "2026-09-10"
+    },
+    {
+     "title": "Principal Security Engineer",
+     "location": "LANGLEY, BERKSHIRE, United Kingdom",
+     "url": "https://ejzg.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2771",
+     "posted": "2026-08-25"
+    }
+   ]
+  },
+  {
+   "name": "Accelya",
+   "slug": "accelya",
+   "source": {
+    "ats": "workday",
+    "url": "https://accelya.wd103.myworkdayjobs.com/Careers"
+   },
+   "ok": true,
+   "jobs_found": 10,
+   "sample": [
+    {
+     "title": "Senior Engineer - Cloud Security Engineering",
+     "location": "Colombia, Bogota",
+     "url": "https://accelya.wd103.myworkdayjobs.com/Careers/job/Colombia-Bogota/Senior-Engineer---Cloud-Engineering_JRS0041",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Engineer II - Test Automation",
+     "location": "India, Pune COE",
+     "url": "https://accelya.wd103.myworkdayjobs.com/Careers/job/India-Pune-COE/Engineer-II---Test-Automation_JR102509",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Senior Analyst - Regional Finance",
+     "location": "India, Mumbai",
+     "url": "https://accelya.wd103.myworkdayjobs.com/Careers/job/India-Mumbai/Senior-Analyst---Regional-Finance_JR102407",
+     "posted": "2026-10-10"
+    },
+    {
+     "title": "Specialist - AIML Software Development",
+     "location": "India, Mumbai",
+     "url": "https://accelya.wd103.myworkdayjobs.com/Careers/job/India-Mumbai/Senior-Engineer---Software-Development_JR102533",
+     "posted": "2026-10-07"
+    },
+    {
+     "title": "Engineer II - Software Development",
+     "location": "India, Pune COE",
+     "url": "https://accelya.wd103.myworkdayjobs.com/Careers/job/India-Pune-COE/Engineer-II---Software-Development_JR102586",
+     "posted": "2026-10-07"
+    },
+    {
+     "title": "Head of Partners – Delivery & Ecosystem",
+     "location": "",
+     "url": "https://accelya.wd103.myworkdayjobs.com/Careers/job/UK-Windsor/Head-of-Partners---Delivery---Ecosystem_JR102560",
+     "posted": "2026-10-06"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "CO",
+    "posted_date": "2026-10-13",
+    "closing_date": null,
+    "work_mode": "Hybrid",
+    "employment_type": "Full time",
+    "location": "Colombia, Bogota"
+   }
+  },
+  {
+   "name": "Gogo Business Aviation",
+   "slug": "gogo-business-aviation",
+   "source": {
+    "ats": "workday",
+    "url": "https://gogo.wd503.myworkdayjobs.com/careers"
+   },
+   "ok": true,
+   "jobs_found": 28,
+   "sample": [
+    {
+     "title": "Senior Software Engineer",
+     "location": "Ottawa, Canada",
+     "url": "https://gogo.wd503.myworkdayjobs.com/careers/job/Ottawa-Canada/Senior-Software-Engineer_R4271",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Regional Aftermarket Channel Sales Manager – Middle East & Africa",
+     "location": "Dubai, United Arab Emirates",
+     "url": "https://gogo.wd503.myworkdayjobs.com/careers/job/Dubai-United-Arab-Emirates/Regional-Channel-Sales-Manager---Middle-East---Africa_R4269-1",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Senior Director, Aftermarket Channel-North America",
+     "location": "Remote - United States",
+     "url": "https://gogo.wd503.myworkdayjobs.com/careers/job/Remote---United-States/Senior-Director--Aftermarket-Channel-North-America_R4270-1",
+     "posted": "2026-10-13"
+    },
+    {
+     "title": "Senior Airborne Platform Software Engineer",
+     "location": "Broomfield, CO United States",
+     "url": "https://gogo.wd503.myworkdayjobs.com/careers/job/Broomfield-CO-United-States/Senior-Airborne-Platform-Software-Engineer_R4255",
+     "posted": "2026-10-10"
+    },
+    {
+     "title": "Senior Accountant",
+     "location": "Broomfield (105 Edgeview Dr)",
+     "url": "https://gogo.wd503.myworkdayjobs.com/careers/job/Broomfield-105-Edgeview-Dr/Senior-Accountant_R4261-1",
+     "posted": "2026-10-10"
+    },
+    {
+     "title": "Senior Salesforce Analyst",
+     "location": "Broomfield, CO United States",
+     "url": "https://gogo.wd503.myworkdayjobs.com/careers/job/Broomfield-CO-United-States/Salesforce-Analyst-III_R4260-1",
+     "posted": "2026-10-10"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "CA",
+    "posted_date": "2026-10-13",
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": "Full time",
+    "location": "Ottawa, Canada"
+   }
+  },
+  {
+   "name": "Arup",
+   "slug": "arup",
+   "source": {
+    "ats": "cornerstone",
+    "url": "https://jobs.arup.com"
    },
    "ok": false,
    "jobs_found": 0,
    "sample": []
   },
   {
-   "name": "AAR v2",
-   "slug": "aar-v2",
+   "name": "Jet Aviation",
+   "slug": "jet-aviation",
    "source": {
-    "ats": "taleo",
-    "host": "aarcorp.taleo.net",
-    "section": "1"
+    "ats": "cornerstone",
+    "url": "https://jobs.jetaviation.com"
    },
    "ok": false,
    "jobs_found": 0,
    "sample": []
+  },
+  {
+   "name": "ExxonMobil Aviation",
+   "slug": "exxonmobil-aviation",
+   "source": {
+    "ats": "cornerstone",
+    "url": "https://jobs.exxonmobil.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "TotalEnergies Aviation",
+   "slug": "totalenergies-aviation",
+   "source": {
+    "ats": "cornerstone",
+    "url": "https://jobs.totalenergies.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Neste",
+   "slug": "neste",
+   "source": {
+    "ats": "cornerstone",
+    "url": "https://jobs.neste.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Aon Aerospace",
+   "slug": "aon-aerospace",
+   "source": {
+    "ats": "cornerstone",
+    "url": "https://jobs.aon.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Chubb Aerospace",
+   "slug": "chubb-aerospace",
+   "source": {
+    "ats": "oracle",
+    "host": "fa-ewgu-saasfaprod1.fa.ocs.oraclecloud.com",
+    "site": "CX_1"
+   },
+   "ok": true,
+   "jobs_found": 400,
+   "sample": [
+    {
+     "title": "Chubb Life HK - Manager, Product Pricing",
+     "location": "Hong Kong",
+     "url": "https://fa-ewgu-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/37200",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Rayong Branch Manager, Independent Distribution Partners",
+     "location": "Rayong, Thailand",
+     "url": "https://fa-ewgu-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/37398",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Underwriter, Marine & Specialty",
+     "location": "Hong Kong",
+     "url": "https://fa-ewgu-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/37508",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Officer , Policyowner Service",
+     "location": "Hong Kong",
+     "url": "https://fa-ewgu-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/37562",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Collection-IDP Officer",
+     "location": "Thailand",
+     "url": "https://fa-ewgu-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/37564",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "AP & Treasury Finance",
+     "location": "Bangkok, Thailand",
+     "url": "https://fa-ewgu-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/37565",
+     "posted": "2026-10-14"
+    }
+   ]
+  },
+  {
+   "name": "Moog",
+   "slug": "moog",
+   "source": {
+    "ats": "workday",
+    "url": "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site"
+   },
+   "ok": true,
+   "jobs_found": 400,
+   "sample": [
+    {
+     "title": "Business Unit Director, Commercial Aftermarket Airframe",
+     "location": "Buffalo, NY",
+     "url": "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site/job/Buffalo-NY/Business-Unit-Director--Commercial-Aftermarket-Airframe_R-26-20533-1",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Intern, Design Engineering - Test Equipment",
+     "location": "Buffalo, NY",
+     "url": "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site/job/Buffalo-NY/Intern--Design-Engineering---Test-Equipment_R-26-20608",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Senior Production Portfolio Manager",
+     "location": "Salt Lake City, UT",
+     "url": "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site/job/Salt-Lake-City-UT/Senior-Production-Portfolio-Manager_R-26-20212-1",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "2nd Shift Manufacturing Engineer",
+     "location": "Blacksburg, VA",
+     "url": "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site/job/Blacksburg-VA/XMLNAME-2nd-Shift-Manufacturing-Engineer_R-26-20506",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "A&T Technician II",
+     "location": "Buffalo, NY",
+     "url": "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site/job/Buffalo-NY/A-T-Technician-II_R-26-20673",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Final Acceptance Inspector",
+     "location": "Tewkesbury, GBR",
+     "url": "https://moog.wd5.myworkdayjobs.com/MOOG_External_Career_Site/job/Tewkesbury-GBR/Final-Acceptance-Inspector_R-26-20012",
+     "posted": "2026-10-14"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "US",
+    "posted_date": "2026-10-13",
+    "closing_date": "2026-11-14",
+    "work_mode": "Onsite",
+    "employment_type": "Full time",
+    "location": "Buffalo, NY"
+   }
+  },
+  {
+   "name": "Crane Aerospace",
+   "slug": "crane-aerospace",
+   "source": {
+    "ats": "workday",
+    "url": "https://cranecompany.wd5.myworkdayjobs.com/Careers"
+   },
+   "ok": true,
+   "jobs_found": 308,
+   "sample": [
+    {
+     "title": "Supplier Quality Engineer II/III",
+     "location": "Lynnwood, Washington",
+     "url": "https://cranecompany.wd5.myworkdayjobs.com/Careers/job/Lynnwood-Washington/Supplier-Quality-Engineer-II-III_JR102342-1",
+     "posted": "2026-10-14"
+    },
+    {
+     "title": "Assembler III/IV (IPC Certification Required)",
+     "location": "Fort Walton Beach, Florida",
+     "url": "https://cranecompany.wd5.myworkdayjobs.com/Careers/job/Fort-Walton-Beach-Florida/Assembler-III-IV--IPC-Certification-Required-_JR102679",
+     "posted": "2026-10-13"
+    },
+    {
+     "title": "HR Generalist",
+     "location": "Montgomery, Texas",
+     "url": "https://cranecompany.wd5.myworkdayjobs.com/Careers/job/Montgomery-Texas/HR-Generalist_JR102173",
+     "posted": "2026-10-10"
+    },
+    {
+     "title": "Global Business Line Manager (Upstream)",
+     "location": "",
+     "url": "https://cranecompany.wd5.myworkdayjobs.com/Careers/job/70900-USA7900-VS-USA_TWINSBURG-OH/UPSTREAM-PRODUCT-LINE-LEADER--PLL-_JR102322",
+     "posted": "2026-10-09"
+    },
+    {
+     "title": "Fabricator - 2nd Shift",
+     "location": "Montgomery, Texas",
+     "url": "https://cranecompany.wd5.myworkdayjobs.com/Careers/job/Montgomery-Texas/Fabricator---2nd-Shift_JR102705",
+     "posted": "2026-10-07"
+    },
+    {
+     "title": "TIG Welder - 2nd Shift",
+     "location": "Montgomery, Texas",
+     "url": "https://cranecompany.wd5.myworkdayjobs.com/Careers/job/Montgomery-Texas/TIG-Welder---2nd-Shift_JR102704",
+     "posted": "2026-10-07"
+    }
+   ],
+   "detail_sample": {
+    "country_code": "US",
+    "posted_date": "2026-10-13",
+    "closing_date": null,
+    "work_mode": "Onsite",
+    "employment_type": "Full time",
+    "location": "Lynnwood, Washington"
+   }
+  },
+  {
+   "name": "Cirrus Aircraft",
+   "slug": "cirrus-aircraft",
+   "source": {
+    "ats": "icims",
+    "url": "https://careers-cirrusaircraft.icims.com"
+   },
+   "ok": true,
+   "jobs_found": 72,
+   "sample": [
+    {
+     "title": "Body Shop Technician Level I - First Shift",
+     "location": "Duluth, MN, US",
+     "url": "https://careers-cirrusaircraft.icims.com/jobs/5896/body-shop-technician-level-i---first-shift/job",
+     "posted": "2026-10-12"
+    },
+    {
+     "title": "Body Shop Technician in Training - Second Shift",
+     "location": "Duluth, MN, US",
+     "url": "https://careers-cirrusaircraft.icims.com/jobs/5895/body-shop-technician-in-training---second-shift/job",
+     "posted": "2026-10-12"
+    },
+    {
+     "title": "Body Shop Technician in Training - First Shift",
+     "location": "Duluth, MN, US",
+     "url": "https://careers-cirrusaircraft.icims.com/jobs/5894/body-shop-technician-in-training---first-shift/job",
+     "posted": "2026-10-12"
+    },
+    {
+     "title": "Assembler Technician Level III - Weekend Shift",
+     "location": "",
+     "url": "https://careers-cirrusaircraft.icims.com/jobs/5893/assembler-technician-level-iii---weekend-shift/job",
+     "posted": null
+    },
+    {
+     "title": "Assembler Technician Level III - Second Shift",
+     "location": "",
+     "url": "https://careers-cirrusaircraft.icims.com/jobs/5892/assembler-technician-level-iii---second-shift/job",
+     "posted": null
+    },
+    {
+     "title": "Assembler Technician Level III - First Shift",
+     "location": "",
+     "url": "https://careers-cirrusaircraft.icims.com/jobs/5891/assembler-technician-level-iii---first-shift/job",
+     "posted": null
+    }
+   ],
+   "detail_sample": {
+    "country_code": "US",
+    "posted_date": "2026-10-12",
+    "closing_date": "2027-10-12",
+    "work_mode": null,
+    "employment_type": "FULL_TIME",
+    "location": "Duluth, MN, US"
+   }
+  },
+  {
+   "name": "OAG Aviation Worldwide",
+   "slug": "oag-aviation-worldwide",
+   "source": {
+    "ats": "greenhouse",
+    "board": "embed"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/embed/jobs"
   }
  ]
 }
