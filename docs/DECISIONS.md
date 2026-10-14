@@ -5,6 +5,7 @@ might later question. "Why" is the part that matters.
 
 | Date | Decision | Why |
 | --- | --- | --- |
+| 14 Oct 2026 | **No public ATS required to add an employer.** If a career page exists, find a way to fetch it legally — browser inspection for hidden APIs, JSON-LD markup, HTML parsing, custom connectors. Workarounds and monitoring are acceptable; we aim for all aviation employers with public careers pages, not just those with open hiring systems. Only LinkedIn, Indeed, third-party job boards, and sites that explicitly forbid scraping are off-limits. | Owner directive: maximize employer coverage beyond what public APIs alone allow. Career pages are fair game if they're meant for humans to read. |
 | 5 Oct 2026 | Filter counts recalculate from the other active filters; choices with 0 jobs are greyed out | Owner found static counts misleading (India showed 225 with Remote ticked) |
 | 5 Oct 2026 | Test with 10 real employers and a full test round before growing | Owner's choice: prove the whole system end to end first |
 | 5 Oct 2026 | Respect robots.txt even when it blocks major airlines | Legal and reputational safety; also a project rule from day one |
