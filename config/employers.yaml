@@ -124,10 +124,12 @@ employers:
   - {name: Dubai Airports, slug: dubai-airports, type: airport, country: AE, enabled: false}
   - {name: Changi Airport Group, slug: changi-airport-group, type: airport, country: SG, source: {ats: successfactors, url: "https://jobs.changiairport.com"}, enabled: true}
   - {name: Dallas Fort Worth International Airport, slug: dfw-airport, type: airport, country: US, source: {ats: phenom, url: "https://careers.dfwairport.com", country: "US"}, enabled: true}
+  - {name: GMR Group, slug: gmr-group, type: airport, country: IN, source: {ats: successfactors, url: "https://careers.gmrgroup.in"}, enabled: true}
 
   # ---------- Maintenance (MRO) and ground services ----------
   - {name: Lufthansa Technik, slug: lufthansa-technik, type: mro, country: DE, enabled: false}
   - {name: StandardAero, slug: standardaero, type: mro, country: US, source: {ats: oracle, host: "cva.fa.us1.oraclecloud.com", site: "CX_3"}, enabled: true}
+  - {name: Air Works, slug: air-works, type: mro, country: IN, source: {ats: airworks, url: "https://airworks.aero/careers/open-positions"}, enabled: true}
   - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, enabled: false}
   - {name: AAR, slug: aar, type: mro, country: US, enabled: false}
   - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, enabled: false}
