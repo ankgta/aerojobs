@@ -115,10 +115,53 @@ only by free word-matching rules in `fetcher/roles.py`.
 5. Apply for AdSense.
 6. Build new connectors if new ATS types are found (Avature, Zellis, Dayforce).
 
+## Israel & Russia Aviation Employer Investigation (15 Oct 2026)
+
+Two full verify rounds run against 20 candidates (8 Israeli, 12 Russian). **Zero employers could be added.**
+
+**ISRAEL — results:**
+| Employer | Result | Reason |
+| --- | --- | --- |
+| El Al | ❌ HTTP 492 | Blocks GitHub Actions IPs (Cloudflare shield) |
+| Arkia | ❌ HTTP 403 | Blocks scrapers |
+| Israir | ❌ robots.txt | Disallows crawlers |
+| Israel Airports Authority (IAA) | ❌ HTTP 404 | No public job-listing URL found |
+| Israel Aerospace Industries (IAI) | ❌ 0 jobs | Page loads but jobs rendered by JavaScript only |
+| Elbit Systems | ❌ robots.txt | Careers subdomain disallows crawlers |
+| Rafael Advanced Defense Systems | ❌ 0 jobs | Page loads but jobs rendered by JavaScript only |
+
+**RUSSIA — results:**
+| Employer | Result | Reason |
+| --- | --- | --- |
+| Aeroflot | ❌ 0 jobs | Jobs rendered by JavaScript; no API endpoint found |
+| Rossiya Airlines | ❌ robots.txt | Disallows crawlers |
+| Pobeda Airlines | ❌ HTTP 404 | No English careers URL; Russian-only job board (hh.ru) |
+| S7 Airlines | ❌ HTTP 403 | Blocks scrapers |
+| Ural Airlines | ❌ HTTP 404 | No careers API found; posts on hh.ru |
+| Utair | ❌ HTTP 401 | Authentication required |
+| Sheremetyevo (SVO) | ❌ 0 jobs | Page loads but jobs rendered by JavaScript only |
+| Vnukovo (VKO) | ❌ 0 jobs | Page loads but jobs rendered by JavaScript only |
+| Pulkovo (LED) | ❌ robots.txt | Disallows crawlers |
+| Domodedovo (DME) | ❌ robots.txt | Disallows crawlers |
+| Koltsovo (SVX) | ❌ robots.txt | Disallows crawlers |
+
+**Root causes:**
+1. **Russian aviation employers** overwhelmingly post on [hh.ru](https://hh.ru) (HeadHunter) — Russia's national job board — not on their own scrapable career pages. Their own sites either block crawlers via robots.txt or render jobs with JavaScript.
+2. **Israeli employers** use JavaScript-rendered job portals (IAI, Rafael, Aeroflot) or actively block GitHub Actions IPs (El Al, Elbit Systems).
+3. **robots.txt compliance** is non-negotiable per site rules — 5 employers immediately disqualified.
+
+**What would unlock these:**
+- A **hh.ru connector** would give access to most Russian airlines/airports (hh.ru is publicly accessible and likely scraper-friendly). This is a new ATS type that doesn't exist in the fetcher yet.
+- A **JavaScript-rendering step** (Playwright/headless browser) would help IAI, Rafael, Aeroflot, SVO, VKO — but this significantly increases infrastructure complexity and cost.
+- **Direct partnerships** with El Al, IAI, Elbit could provide a data feed.
+
+**Decision needed:** Building a hh.ru connector is the most cost-effective path to Russian aviation jobs. Requires a new `fetch_hhru()` connector in `fetcher/connectors.py` + detector pattern. Owner to decide whether to pursue.
+
 ## Backlog (look into later)
 
 - **Air New Zealand (SmartRecruiters robots.txt block)**: possible routes: JSON-LD fallback,
   HTML list page, or write to the company. Do not change user agent to bypass.
+- **hh.ru connector**: Would unlock Russian aviation jobs (Aeroflot, S7, SVO, VKO, and many more). hh.ru has a public API at `https://api.hh.ru/vacancies` — build `fetch_hhru()` in connectors.py.
 
 ## Known issues
 
