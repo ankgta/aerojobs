@@ -1,94 +1,126 @@
 {
- "run": "2026-10-15T03:06:18+00:00",
+ "run": "2026-10-15T03:22:04+00:00",
  "results": [
   {
    "name": "El Al",
    "slug": "elal",
    "source": {
-    "ats": "workday",
-    "url": "https://careers.elal.co.il"
+    "ats": "jsonld",
+    "listing_url": "https://www.elal.com/en/careers/job-search?page={page}",
+    "job_link_pattern": "/careers/job/",
+    "max_pages": 5,
+    "strip_query": true
    },
    "ok": false,
-   "error": "ValueError: Workday url needs the site name at the end: https://careers.elal.co.il"
+   "error": "FetchError: HTTP 492 from https://www.elal.com/en/careers/job-search?page=0"
   },
   {
-   "name": "Arkia",
-   "slug": "arkia",
+   "name": "Israel Airports Authority",
+   "slug": "israel-airports-authority",
    "source": {
     "ats": "jsonld",
-    "listing_url": "https://arkia.com/en/careers?page={page}",
-    "job_link_pattern": "/job/",
+    "listing_url": "https://www.iaa.gov.il/en/human-resources/vacancies/?page={page}",
+    "job_link_pattern": "/vacancy/",
     "max_pages": 5
    },
    "ok": false,
-   "error": "FetchError: HTTP 403 from https://arkia.com/en/careers?page=0"
+   "error": "FetchError: HTTP 404 from https://www.iaa.gov.il/en/human-resources/vacancies/?page=0"
   },
   {
-   "name": "Israir",
-   "slug": "israir",
+   "name": "Israel Aerospace Industries",
+   "slug": "israel-aerospace-industries",
    "source": {
     "ats": "jsonld",
-    "listing_url": "https://www.israir.com/careers?page={page}",
-    "job_link_pattern": "/position/",
-    "max_pages": 5
+    "listing_url": "https://www.iai.co.il/en/careers?page={page}",
+    "job_link_pattern": "/en/careers/",
+    "max_pages": 10
    },
    "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://www.israir.com/careers?page=0"
+   "jobs_found": 0,
+   "sample": []
   },
   {
-   "name": "Ben Gurion Airport (BGI)",
-   "slug": "ben-gurion-airport",
+   "name": "Elbit Systems",
+   "slug": "elbit-systems",
    "source": {
     "ats": "jsonld",
-    "listing_url": "https://www.iaa.gov.il/careers?page={page}",
-    "job_link_pattern": "/job/",
-    "max_pages": 3
+    "listing_url": "https://careers.elbit-systems.com/search/jobs?page={page}",
+    "job_link_pattern": "/jobs/",
+    "max_pages": 8
    },
    "ok": false,
-   "error": "FetchError: HTTP 404 from https://www.iaa.gov.il/careers?page=0"
+   "error": "robots.txt blocks it: robots.txt does not allow https://careers.elbit-systems.com/search/jobs?page=0"
+  },
+  {
+   "name": "Rafael Advanced Defense Systems",
+   "slug": "rafael",
+   "source": {
+    "ats": "jsonld",
+    "listing_url": "https://rafael.co.il/careers/job-listings?page={page}",
+    "job_link_pattern": "/career/",
+    "max_pages": 8
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
   },
   {
    "name": "Aeroflot",
    "slug": "aeroflot",
    "source": {
-    "ats": "workday",
-    "url": "https://career.aeroflot.ru"
+    "ats": "jsonld",
+    "listing_url": "https://www.aeroflot.ru/ru-en/careers/vacancies?page={page}",
+    "job_link_pattern": "/careers/vacancy/",
+    "max_pages": 10
    },
    "ok": false,
-   "error": "ValueError: Workday url needs the site name at the end: https://career.aeroflot.ru"
+   "jobs_found": 0,
+   "sample": []
   },
   {
-   "name": "S7 Airlines",
-   "slug": "s7-airlines",
+   "name": "Rossiya Airlines",
+   "slug": "rossiya-airlines",
    "source": {
     "ats": "jsonld",
-    "listing_url": "https://www.s7.ru/about/career?page={page}",
-    "job_link_pattern": "/vacancy/",
+    "listing_url": "https://www.rossiya.ru/en/about/career?page={page}",
+    "job_link_pattern": "/career/vacancy/",
     "max_pages": 5
    },
    "ok": false,
-   "error": "FetchError: HTTP 403 from https://www.s7.ru/about/career?page=0"
+   "error": "robots.txt blocks it: robots.txt does not allow https://www.rossiya.ru/en/about/career?page=0"
   },
   {
-   "name": "Utair",
-   "slug": "utair",
+   "name": "Pobeda Airlines",
+   "slug": "pobeda-airlines",
    "source": {
     "ats": "jsonld",
-    "listing_url": "https://www.utair.ru/career?page={page}",
-    "job_link_pattern": "/job/",
+    "listing_url": "https://www.pobeda.aero/en/about/career?page={page}",
+    "job_link_pattern": "/career/",
     "max_pages": 5
    },
    "ok": false,
-   "error": "FetchError: HTTP 401 from https://www.utair.ru/career?page=0"
+   "error": "FetchError: HTTP 404 from https://www.pobeda.aero/en/about/career?page=0"
+  },
+  {
+   "name": "Ural Airlines",
+   "slug": "ural-airlines",
+   "source": {
+    "ats": "jsonld",
+    "listing_url": "https://www.uralairlines.ru/about/career/?page={page}",
+    "job_link_pattern": "/career/vacancy/",
+    "max_pages": 5
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://www.uralairlines.ru/about/career/?page=0"
   },
   {
    "name": "Sheremetyevo Airport (SVO)",
    "slug": "sheremetyevo-airport",
    "source": {
     "ats": "jsonld",
-    "listing_url": "https://www.svo.aero/careers?page={page}",
-    "job_link_pattern": "/job/",
-    "max_pages": 3
+    "listing_url": "https://www.svo.aero/en/about/career/?page={page}",
+    "job_link_pattern": "/career/vacancy/",
+    "max_pages": 5
    },
    "ok": false,
    "jobs_found": 0,
@@ -99,8 +131,8 @@
    "slug": "vnukovo-airport",
    "source": {
     "ats": "jsonld",
-    "listing_url": "https://www.vnukovo.ru/careers?page={page}",
-    "job_link_pattern": "/job/",
+    "listing_url": "https://www.vnukovo.ru/en/about/career/?page={page}",
+    "job_link_pattern": "/career/vacancy/",
     "max_pages": 3
    },
    "ok": false,
@@ -108,16 +140,28 @@
    "sample": []
   },
   {
-   "name": "Domodedovo Airport (DME)",
-   "slug": "domodedovo-airport",
+   "name": "Pulkovo Airport (LED)",
+   "slug": "pulkovo-airport",
    "source": {
     "ats": "jsonld",
-    "listing_url": "https://www.domodedovo.ru/careers?page={page}",
-    "job_link_pattern": "/job/",
+    "listing_url": "https://www.pulkovoavia.ru/en/career?page={page}",
+    "job_link_pattern": "/career/",
+    "max_pages": 5
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://www.pulkovoavia.ru/en/career?page=0"
+  },
+  {
+   "name": "Koltsovo Airport (SVX)",
+   "slug": "koltsovo-airport",
+   "source": {
+    "ats": "jsonld",
+    "listing_url": "https://www.koltsovo.ru/en/about/career/?page={page}",
+    "job_link_pattern": "/career/",
     "max_pages": 3
    },
    "ok": false,
-   "error": "robots.txt blocks it: robots.txt does not allow https://www.domodedovo.ru/careers?page=0"
+   "error": "robots.txt blocks it: robots.txt does not allow https://www.koltsovo.ru/en/about/career/?page=0"
   }
  ]
 }

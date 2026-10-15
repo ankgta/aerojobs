@@ -654,3 +654,63 @@ https://birdgroup.co.in/careers
 
 https://www.aai.aero/en/careers
   could not open: HTTP 404 from https://www.aai.aero/en/careers
+
+https://www.elal.com/en/careers
+  could not open: HTTP 492 from https://www.elal.com/en/careers
+
+https://www.elal.co.il/en/careers
+  no known hiring system found on www.elal.co.il. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.arkia.com/en/about/careers
+  could not open: HTTP 403 from https://www.arkia.com/en/about/careers
+
+https://www.israir.co.il/en/careers
+  no known hiring system found on www.israir.co.il. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.iaa.gov.il/en/human-resources/
+  could not open: HTTP 404 from https://www.iaa.gov.il/en/human-resources/
+
+https://www.iai.co.il/en/careers
+  no known hiring system found on www.iai.co.il. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://careers.elbit-systems.com
+  could not open: robots.txt does not allow https://careers.elbit-systems.com
+
+https://www.elbit-systems.com/careers
+  could not open: robots.txt does not allow https://www.elbit-systems.com/careers
+
+https://rafael.co.il/careers
+  no known hiring system found on rafael.co.il. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.aeroflot.ru/ru-en/careers
+  no known hiring system found on www.aeroflot.ru. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.rossiya.ru/en/about/career
+  could not open: robots.txt does not allow https://www.rossiya.ru/en/about/career
+
+https://www.pobeda.aero/en/about/career
+  could not open: HTTP 404 from https://www.pobeda.aero/en/about/career
+
+https://www.s7.ru/ru/about/job/
+  could not open: HTTP 403 from https://www.s7.ru/ru/about/job/
+
+https://www.uralairlines.ru/about/career/
+  could not open: HTTP 404 from https://www.uralairlines.ru/about/career/
+
+https://www.utair.ru/about/career/
+  could not open: HTTP 401 from https://www.utair.ru/about/career/
+
+https://www.svo.aero/en/about/career
+  no known hiring system found on www.svo.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.domodedovo.ru/en/company/career/
+  could not open: robots.txt does not allow https://www.domodedovo.ru/en/company/career/
+
+https://www.vnukovo.ru/en/about/career/
+  no known hiring system found on www.vnukovo.ru. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+
+https://www.pulkovoavia.ru/en/career
+  could not open: robots.txt does not allow https://www.pulkovoavia.ru/en/career
+
+https://www.koltsovo.ru/en/about/career/
+  could not open: robots.txt does not allow https://www.koltsovo.ru/en/about/career/
