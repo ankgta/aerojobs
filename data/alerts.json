@@ -45,6 +45,10 @@
    "problem": "Could not read jobs: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/supernal/jobs"
   },
   {
+   "employer": "Wisk Aero",
+   "problem": "Returned zero jobs. Its careers page may have changed."
+  },
+  {
    "employer": "ZeroAvia",
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
@@ -53,5 +57,5 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   }
  ],
- "run": "2026-10-14T18:14:47+00:00"
+ "run": "2026-10-15T06:10:48+00:00"
 }
