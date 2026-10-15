@@ -1252,6 +1252,167 @@ def fetch_cornerstone(client: PoliteClient, src: dict, max_jobs: int = 3000) -> 
     return []
 
 
+# ------------------------------------------------------------------ hh.ru (HeadHunter — Russian national job board)
+# hh.ru has a public REST API at https://api.hh.ru/vacancies.
+# No authentication required for reading public vacancies.
+# We filter by industry (aviation-related) and employer to stay relevant.
+#
+# Source shapes:
+#   # All aviation vacancies from a specific employer (by hh.ru employer_id):
+#   source: {ats: hhru, employer_id: "1455"}
+#
+#   # Aviation-industry vacancies (industry code 29 = Aviation/Space):
+#   source: {ats: hhru, industry: "29"}
+#
+# hh.ru API docs: https://api.hh.ru/openapi/redoc#tag/Vacancies/operation/get-vacancies
+#
+# Work schedule (schedule.id) mapping:
+#   fullDay -> full_time, shift -> full_time, flexible -> part_time,
+#   remote -> remote, flyInFlyOut -> full_time
+#
+# Employment type (employment.id) mapping:
+#   full -> full_time, part -> part_time, project -> contract,
+#   volunteer -> other, probation -> other
+
+_HHRU_SCHEDULE_MAP = {
+    "fullDay": "full_time",
+    "shift": "full_time",
+    "flexible": "part_time",
+    "remote": "remote",
+    "flyInFlyOut": "full_time",
+}
+
+_HHRU_EMPLOYMENT_MAP = {
+    "full": "full_time",
+    "part": "part_time",
+    "project": "contract",
+    "volunteer": "other",
+    "probation": "other",
+}
+
+_HHRU_WORK_MODE_FROM_SCHEDULE = {
+    "remote": "Remote",
+    "fullDay": "On-site",
+    "shift": "On-site",
+    "flexible": "Hybrid",
+    "flyInFlyOut": "On-site",
+}
+
+
+def fetch_hhru(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """HeadHunter (hh.ru) public REST API — Russian national job board.
+
+    Source shape (employer by hh.ru numeric employer_id):
+        source: {ats: hhru, employer_id: "1455"}
+
+    Source shape (aviation industry — industry code 29):
+        source: {ats: hhru, industry: "29"}
+
+    The API returns up to 2,000 vacancies per query (100 per page, 20 pages).
+    Results are sorted newest-first.  hh.ru employer pages link to vacancies
+    with a canonical URL of the form https://hh.ru/vacancy/<id>.
+    """
+    base = "https://api.hh.ru/vacancies"
+    # Build base query params
+    params: dict = {
+        "per_page": 100,
+        "order_by": "publication_time",
+        "locale": "EN",
+    }
+    if src.get("employer_id"):
+        params["employer_id"] = str(src["employer_id"])
+    if src.get("industry"):
+        params["industry"] = str(src["industry"])
+    if src.get("area"):
+        # hh.ru area code, e.g. 113 = Russia, 1 = Moscow, 2 = Saint Petersburg
+        params["area"] = str(src["area"])
+    if src.get("text"):
+        # Free-text search query
+        params["text"] = str(src["text"])
+
+    jobs: list[dict] = []
+    page = 0
+    total_pages = 1  # updated from first response
+
+    while page < total_pages and len(jobs) < max_jobs:
+        params["page"] = page
+        try:
+            data = client.get_json(base, params=params)
+        except Exception:
+            break
+
+        if not isinstance(data, dict):
+            break
+
+        items = data.get("items") or []
+        if page == 0:
+            found = data.get("found") or 0
+            pages = data.get("pages") or 1
+            # hh.ru caps at 2000 results (20 pages × 100); respect that
+            total_pages = min(pages, 20)
+
+        for v in items:
+            if not isinstance(v, dict):
+                continue
+            vacancy_id = str(v.get("id", ""))
+            if not vacancy_id:
+                continue
+            title = (v.get("name") or "").strip()
+            if not title:
+                continue
+
+            # URL — canonical hh.ru vacancy page (works without login for reading)
+            url = v.get("alternate_url") or f"https://hh.ru/vacancy/{vacancy_id}"
+
+            # Location: area.name gives city/region; address.city is more precise when set
+            area = v.get("area") or {}
+            address = v.get("address") or {}
+            location = (address.get("city") or area.get("name") or "").strip()
+
+            # Country: hh.ru is Russia-centric; employer's address may give a country code.
+            # For most vacancies the country is Russia (RU).
+            country_raw = (address.get("country") or src.get("country", "RU") or "RU").upper()
+            # hh.ru returns full country names in some fields; do a quick map for the common ones.
+            country_name_to_code = {
+                "RUSSIA": "RU", "RUSSIAN FEDERATION": "RU",
+                "KAZAKHSTAN": "KZ", "BELARUS": "BY", "UKRAINE": "UA",
+                "UZBEKISTAN": "UZ", "AZERBAIJAN": "AZ", "ARMENIA": "AM",
+                "GEORGIA": "GE", "KYRGYZSTAN": "KG", "TAJIKISTAN": "TJ",
+            }
+            if len(country_raw) > 2:
+                country_code = country_name_to_code.get(country_raw) or lookup_country(country_raw)
+            else:
+                country_code = country_raw
+
+            # Posted date: "published_at" is ISO 8601 with timezone
+            published_at = v.get("published_at") or v.get("created_at")
+            posted = parse_date(published_at) if published_at else None
+
+            # Schedule (work mode) and employment type
+            schedule = (v.get("schedule") or {}).get("id") or ""
+            employment = (v.get("employment") or {}).get("id") or ""
+            work_mode = _HHRU_WORK_MODE_FROM_SCHEDULE.get(schedule)
+            employment_type = _HHRU_EMPLOYMENT_MAP.get(employment)
+
+            jobs.append({
+                "source_id": vacancy_id,
+                "title": title,
+                "url": url,
+                "location": location,
+                "country_code": country_code,
+                "posted_date": posted,
+                "posted_estimated": posted is None,
+                "work_mode": work_mode,
+                "employment_type": employment_type,
+            })
+            if len(jobs) >= max_jobs:
+                break
+
+        page += 1
+
+    return jobs[:max_jobs]
+
+
 # ------------------------------------------------------------------ Air Works (custom HTML)
 class _AirWorksParser(HTMLParser):
     """Parse Air Works careers page job listings from HTML.
@@ -1395,4 +1556,5 @@ CONNECTORS = {
     "workable": (fetch_workable, None),
     "cornerstone": (fetch_cornerstone, None),
     "airworks": (fetch_airworks, None),  # Custom HTML parser for Air Works MRO
+    "hhru": (fetch_hhru, None),          # HeadHunter (hh.ru) — Russian national job board
 }

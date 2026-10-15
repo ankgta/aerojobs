@@ -24,6 +24,7 @@ PATTERNS = [
     ("gupy", re.compile(r"([a-z0-9-]+)\.gupy\.io")),
     ("workable", re.compile(r"(?:jobs\.|apply\.|careers\.)?([a-z0-9-]+)\.workable\.com")),
     ("cornerstone", re.compile(r"(https://jobs\.[a-z0-9-]+\.com)")),
+    ("hhru", re.compile(r"hh\.ru/employer/(\d+)")),
 ]
 
 
@@ -62,6 +63,8 @@ def suggest(url: str, page: str) -> list[str]:
             found.append(f'source: {{ats: workable, company: "{m[1]}"}}')
         elif name == "cornerstone":
             found.append(f'source: {{ats: cornerstone, url: "{m[1]}"}}')
+        elif name == "hhru":
+            found.append(f'source: {{ats: hhru, employer_id: "{m[1]}"}}   # hh.ru employer ID from hh.ru/employer/{m[1]}')
         else:
             found.append(f"# uses {name} ({m[1]}): no connector yet; try the jsonld reader or a custom reader")
     if extract_job_postings(page):

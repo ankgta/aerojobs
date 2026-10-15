@@ -545,3 +545,53 @@ def test_workable_connector():
     assert jobs[0]["employment_type"] == "full_time"
     assert jobs[1]["employment_type"] == "contract"
     assert jobs[1]["country_code"] == "ES"
+
+
+def test_hhru_connector():
+    """hh.ru connector fetches vacancies from public REST API."""
+    api_data = {
+        "found": 2,
+        "pages": 1,
+        "per_page": 100,
+        "page": 0,
+        "items": [
+            {
+                "id": "101",
+                "name": "Пилот / Pilot (Boeing 737)",
+                "alternate_url": "https://hh.ru/vacancy/101",
+                "area": {"id": "1", "name": "Москва"},
+                "address": {"city": "Москва", "country": ""},
+                "published_at": "2026-10-10T08:00:00+0300",
+                "schedule": {"id": "fullDay", "name": "Полный день"},
+                "employment": {"id": "full", "name": "Полная занятость"},
+            },
+            {
+                "id": "202",
+                "name": "Flight Attendant / Бортпроводник",
+                "alternate_url": "https://hh.ru/vacancy/202",
+                "area": {"id": "2", "name": "Санкт-Петербург"},
+                "address": {},
+                "published_at": "2026-10-09T10:00:00+0300",
+                "schedule": {"id": "remote", "name": "Удалённая работа"},
+                "employment": {"id": "part", "name": "Частичная занятость"},
+            },
+        ],
+    }
+    client = FakeClient({"https://api.hh.ru/vacancies": api_data})
+    jobs = c.fetch_hhru(client, {"employer_id": "1455", "country": "RU"})
+    assert len(jobs) == 2
+    # First vacancy: Moscow, full-time, on-site
+    assert jobs[0]["source_id"] == "101"
+    assert jobs[0]["title"] == "Пилот / Pilot (Boeing 737)"
+    assert jobs[0]["url"] == "https://hh.ru/vacancy/101"
+    assert jobs[0]["location"] == "Москва"
+    assert jobs[0]["country_code"] == "RU"
+    assert jobs[0]["posted_date"] == "2026-10-10"
+    assert jobs[0]["posted_estimated"] is False
+    assert jobs[0]["employment_type"] == "full_time"
+    assert jobs[0]["work_mode"] == "On-site"
+    # Second vacancy: Saint Petersburg, part-time, remote
+    assert jobs[1]["source_id"] == "202"
+    assert jobs[1]["location"] == "Санкт-Петербург"
+    assert jobs[1]["employment_type"] == "part_time"
+    assert jobs[1]["work_mode"] == "Remote"

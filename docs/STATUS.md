@@ -157,11 +157,30 @@ Two full verify rounds run against 20 candidates (8 Israeli, 12 Russian). **Zero
 
 **Decision needed:** Building a hh.ru connector is the most cost-effective path to Russian aviation jobs. Requires a new `fetch_hhru()` connector in `fetcher/connectors.py` + detector pattern. Owner to decide whether to pursue.
 
+## hh.ru Connector (15 Oct 2026)
+
+Built `fetch_hhru()` in `fetcher/connectors.py` — reads hh.ru's public REST API at `https://api.hh.ru/vacancies`. No authentication required. Supports `employer_id`, `industry`, `area`, `text` query params. Paginates up to 2,000 results (100/page × 20 pages). Detection pattern added to `fetcher/detect.py`. Unit test in `tests/test_fetcher.py`.
+
+**6 Russian aviation employers queued in `config/candidates.yaml` for verification:**
+| Employer | hh.ru ID | Type |
+| --- | --- | --- |
+| Aeroflot | 1373 | Airline |
+| Rossiya Airlines | 125493 | Airline |
+| S7 Airlines | 766468 | Airline |
+| Ural Airlines | 12115148 | Airline |
+| Utair | 12327122 | Airline |
+| Sheremetyevo Airport (SVO) | 229 | Airport |
+
+**Still to find:** Pobeda Airlines, Vnukovo (VKO), Pulkovo (LED) hh.ru employer IDs.
+
+Run `gh workflow run verify.yml` to test these candidates. If jobs are confirmed, move them to `config/employers.yaml` with `enabled: true`.
+
 ## Backlog (look into later)
 
 - **Air New Zealand (SmartRecruiters robots.txt block)**: possible routes: JSON-LD fallback,
   HTML list page, or write to the company. Do not change user agent to bypass.
-- **hh.ru connector**: Would unlock Russian aviation jobs (Aeroflot, S7, SVO, VKO, and many more). hh.ru has a public API at `https://api.hh.ru/vacancies` — build `fetch_hhru()` in connectors.py.
+- **hh.ru — remaining Russian employers**: Pobeda Airlines, Vnukovo (VKO), Pulkovo (LED) — employer IDs not yet confirmed. Search hh.ru directly.
+- **Israeli employers**: All failed (JS-rendered or robots.txt). Would need Playwright/headless browser or direct partnership to add El Al, IAI, Elbit, Rafael.
 
 ## Known issues
 
