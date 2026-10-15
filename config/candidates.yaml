@@ -1,65 +1,127 @@
 # Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
-# 15 Oct 2026: Israel and Russia batch — testing 15 candidates (7 Israeli, 8 Russian)
+# 15 Oct 2026 – Round 2: Israel + Russia batch
+# Previous run results:
+#   BLOCKED by robots.txt:  Israir (.com), Domodedovo
+#   HTTP 403 (blocks scraper): Arkia, S7 Airlines, Utair
+#   HTTP 401 (auth required): Utair (confirmed skip)
+#   Workday URL wrong format: El Al, Aeroflot (need tenant/site name)
+#   0 jobs (wrong URL): SVO, VKO
+#   404 (wrong URL): IAA
+# This round: corrected URLs + added new employers from web research.
 
 employers:
-  # ISRAEL AIRLINES & AIRPORTS
+  # ──────────────────────────────
+  # ISRAEL — AIRLINES
+  # ──────────────────────────────
+
+  # El Al: national carrier. Likely uses Workday — need to find tenant name.
+  # Trying JSON-LD on their main careers page first (they also post on Israeli job boards).
   - name: El Al
     slug: elal
     country: IL
     type: airline
-    source: {ats: workday, url: "https://careers.elal.co.il"}
+    source: {ats: jsonld, listing_url: "https://www.elal.com/en/careers/job-search?page={page}", job_link_pattern: "/careers/job/", max_pages: 5, strip_query: true}
 
-  - name: Arkia
-    slug: arkia
-    country: IL
-    type: airline
-    source: {ats: jsonld, listing_url: "https://arkia.com/en/careers?page={page}", job_link_pattern: "/job/", max_pages: 5}
+  # ──────────────────────────────
+  # ISRAEL — AIRPORTS
+  # ──────────────────────────────
 
-  - name: Israir
-    slug: israir
-    country: IL
-    type: airline
-    source: {ats: jsonld, listing_url: "https://www.israir.com/careers?page={page}", job_link_pattern: "/position/", max_pages: 5}
-
-  - name: Ben Gurion Airport (BGI)
-    slug: ben-gurion-airport
+  # Israel Airports Authority (IAA): Runs Ben Gurion, Ramon (Eilat), Haifa airports.
+  # Corrected URL — their careers section is under /en/human-resources/
+  - name: Israel Airports Authority
+    slug: israel-airports-authority
     country: IL
     type: airport
-    source: {ats: jsonld, listing_url: "https://www.iaa.gov.il/careers?page={page}", job_link_pattern: "/job/", max_pages: 3}
+    source: {ats: jsonld, listing_url: "https://www.iaa.gov.il/en/human-resources/vacancies/?page={page}", job_link_pattern: "/vacancy/", max_pages: 5}
 
-  # RUSSIA AIRLINES & AIRPORTS
+  # ──────────────────────────────
+  # ISRAEL — MRO / AEROSPACE
+  # ──────────────────────────────
+
+  # Israel Aerospace Industries (IAI): State-owned MRO/defence/aerospace giant.
+  # 16,000+ employees; uses their own careers portal.
+  - name: Israel Aerospace Industries
+    slug: israel-aerospace-industries
+    country: IL
+    type: mro
+    source: {ats: jsonld, listing_url: "https://www.iai.co.il/en/careers?page={page}", job_link_pattern: "/en/careers/", max_pages: 10}
+
+  # Elbit Systems: Defence electronics / avionics. Major Israeli employer.
+  # Trying their dedicated careers subdomain.
+  - name: Elbit Systems
+    slug: elbit-systems
+    country: IL
+    type: manufacturer
+    source: {ats: jsonld, listing_url: "https://careers.elbit-systems.com/search/jobs?page={page}", job_link_pattern: "/jobs/", max_pages: 8}
+
+  # Rafael Advanced Defense Systems: Missiles, avionics, aerospace systems.
+  - name: Rafael Advanced Defense Systems
+    slug: rafael
+    country: IL
+    type: manufacturer
+    source: {ats: jsonld, listing_url: "https://rafael.co.il/careers/job-listings?page={page}", job_link_pattern: "/career/", max_pages: 8}
+
+  # ──────────────────────────────
+  # RUSSIA — AIRLINES
+  # ──────────────────────────────
+
+  # Aeroflot: Russia's largest carrier and flag airline. Jobs on aeroflot.ru.
+  # Not Workday — they use their own portal. Testing JSON-LD scrape of their site.
   - name: Aeroflot
     slug: aeroflot
     country: RU
     type: airline
-    source: {ats: workday, url: "https://career.aeroflot.ru"}
+    source: {ats: jsonld, listing_url: "https://www.aeroflot.ru/ru-en/careers/vacancies?page={page}", job_link_pattern: "/careers/vacancy/", max_pages: 10}
 
-  - name: S7 Airlines
-    slug: s7-airlines
+  # Rossiya Airlines: Major airline (Aeroflot Group). St Petersburg base.
+  - name: Rossiya Airlines
+    slug: rossiya-airlines
     country: RU
     type: airline
-    source: {ats: jsonld, listing_url: "https://www.s7.ru/about/career?page={page}", job_link_pattern: "/vacancy/", max_pages: 5}
+    source: {ats: jsonld, listing_url: "https://www.rossiya.ru/en/about/career?page={page}", job_link_pattern: "/career/vacancy/", max_pages: 5}
 
-  - name: Utair
-    slug: utair
+  # Pobeda Airlines: Low-cost carrier, Aeroflot subsidiary. Moscow Vnukovo base.
+  - name: Pobeda Airlines
+    slug: pobeda-airlines
     country: RU
     type: airline
-    source: {ats: jsonld, listing_url: "https://www.utair.ru/career?page={page}", job_link_pattern: "/job/", max_pages: 5}
+    source: {ats: jsonld, listing_url: "https://www.pobeda.aero/en/about/career?page={page}", job_link_pattern: "/career/", max_pages: 5}
 
+  # Ural Airlines: Major regional airline based in Yekaterinburg.
+  - name: Ural Airlines
+    slug: ural-airlines
+    country: RU
+    type: airline
+    source: {ats: jsonld, listing_url: "https://www.uralairlines.ru/about/career/?page={page}", job_link_pattern: "/career/vacancy/", max_pages: 5}
+
+  # ──────────────────────────────
+  # RUSSIA — AIRPORTS
+  # ──────────────────────────────
+
+  # Sheremetyevo (SVO): Russia's busiest airport, Moscow. Corrected URL.
   - name: Sheremetyevo Airport (SVO)
     slug: sheremetyevo-airport
     country: RU
     type: airport
-    source: {ats: jsonld, listing_url: "https://www.svo.aero/careers?page={page}", job_link_pattern: "/job/", max_pages: 3}
+    source: {ats: jsonld, listing_url: "https://www.svo.aero/en/about/career/?page={page}", job_link_pattern: "/career/vacancy/", max_pages: 5}
 
+  # Vnukovo (VKO): Third Moscow airport. Corrected URL.
   - name: Vnukovo Airport (VKO)
     slug: vnukovo-airport
     country: RU
     type: airport
-    source: {ats: jsonld, listing_url: "https://www.vnukovo.ru/careers?page={page}", job_link_pattern: "/job/", max_pages: 3}
+    source: {ats: jsonld, listing_url: "https://www.vnukovo.ru/en/about/career/?page={page}", job_link_pattern: "/career/vacancy/", max_pages: 3}
 
-  - name: Domodedovo Airport (DME)
-    slug: domodedovo-airport
+  # Pulkovo Airport (LED): St Petersburg's only international airport.
+  - name: Pulkovo Airport (LED)
+    slug: pulkovo-airport
     country: RU
     type: airport
-    source: {ats: jsonld, listing_url: "https://www.domodedovo.ru/careers?page={page}", job_link_pattern: "/job/", max_pages: 3}
+    source: {ats: jsonld, listing_url: "https://www.pulkovoavia.ru/en/career?page={page}", job_link_pattern: "/career/", max_pages: 5}
+
+  # Koltsovo Airport (SVX): Yekaterinburg — Ural region hub.
+  - name: Koltsovo Airport (SVX)
+    slug: koltsovo-airport
+    country: RU
+    type: airport
+    source: {ats: jsonld, listing_url: "https://www.koltsovo.ru/en/about/career/?page={page}", job_link_pattern: "/career/", max_pages: 3}
