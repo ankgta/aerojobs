@@ -1,3 +1,65 @@
 # Candidate sources to TEST (python -m fetcher.verify). Nothing here is switched on.
-# Empty after 14 Oct 2026 batch 2 sweep — Woodward and Thales enabled, Pilatus/Textron rejected (no jobs).
-employers: []
+# 15 Oct 2026: Israel and Russia batch — testing 15 candidates (7 Israeli, 8 Russian)
+
+employers:
+  # ISRAEL AIRLINES & AIRPORTS
+  - name: El Al
+    slug: elal
+    country: IL
+    type: airline
+    source: {ats: workday, url: "https://careers.elal.co.il"}
+
+  - name: Arkia
+    slug: arkia
+    country: IL
+    type: airline
+    source: {ats: jsonld, listing_url: "https://arkia.com/en/careers?page={page}", job_link_pattern: "/job/", max_pages: 5}
+
+  - name: Israir
+    slug: israir
+    country: IL
+    type: airline
+    source: {ats: jsonld, listing_url: "https://www.israir.com/careers?page={page}", job_link_pattern: "/position/", max_pages: 5}
+
+  - name: Ben Gurion Airport (BGI)
+    slug: ben-gurion-airport
+    country: IL
+    type: airport
+    source: {ats: jsonld, listing_url: "https://www.iaa.gov.il/careers?page={page}", job_link_pattern: "/job/", max_pages: 3}
+
+  # RUSSIA AIRLINES & AIRPORTS
+  - name: Aeroflot
+    slug: aeroflot
+    country: RU
+    type: airline
+    source: {ats: workday, url: "https://career.aeroflot.ru"}
+
+  - name: S7 Airlines
+    slug: s7-airlines
+    country: RU
+    type: airline
+    source: {ats: jsonld, listing_url: "https://www.s7.ru/about/career?page={page}", job_link_pattern: "/vacancy/", max_pages: 5}
+
+  - name: Utair
+    slug: utair
+    country: RU
+    type: airline
+    source: {ats: jsonld, listing_url: "https://www.utair.ru/career?page={page}", job_link_pattern: "/job/", max_pages: 5}
+
+  - name: Sheremetyevo Airport (SVO)
+    slug: sheremetyevo-airport
+    country: RU
+    type: airport
+    source: {ats: jsonld, listing_url: "https://www.svo.aero/careers?page={page}", job_link_pattern: "/job/", max_pages: 3}
+
+  - name: Vnukovo Airport (VKO)
+    slug: vnukovo-airport
+    country: RU
+    type: airport
+    source: {ats: jsonld, listing_url: "https://www.vnukovo.ru/careers?page={page}", job_link_pattern: "/job/", max_pages: 3}
+
+  - name: Domodedovo Airport (DME)
+    slug: domodedovo-airport
+    country: RU
+    type: airport
+    source: {ats: jsonld, listing_url: "https://www.domodedovo.ru/careers?page={page}", job_link_pattern: "/job/", max_pages: 3}
