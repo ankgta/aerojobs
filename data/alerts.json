@@ -46,16 +46,24 @@
   },
   {
    "employer": "Wisk Aero",
-   "problem": "Returned zero jobs. Its careers page may have changed."
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://wisk.wd108.myworkdayjobs.com/wday/cxs/wisk/Wisk_Careers/jobs"
   },
   {
    "employer": "ZeroAvia",
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
+   "employer": "NAV Canada",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://navcanada.wd10.myworkdayjobs.com/wday/cxs/navcanada/NAV_Careers/jobs"
+  },
+  {
    "employer": "Flight Safety International",
    "problem": "Returned zero jobs. Its careers page may have changed."
+  },
+  {
+   "employer": "Gogo Business Aviation",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://gogo.wd503.myworkdayjobs.com/wday/cxs/gogo/careers/jobs"
   }
  ],
- "run": "2026-10-16T18:09:58+00:00"
+ "run": "2026-10-17T06:01:08+00:00"
 }
