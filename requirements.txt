@@ -3,7 +3,7 @@
 requests==2.34.2
 PyYAML==6.0.3
 Jinja2==3.1.6
-Markdown==3.11
+Markdown==3.11.1
 pycountry==26.2.16
 pytest==9.1.1
 geonamescache==3.0.2
