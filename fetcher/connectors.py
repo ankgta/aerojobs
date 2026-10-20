@@ -685,10 +685,17 @@ def fetch_avature(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list
 
     Source shape:
         source: {ats: avature, url: "https://careers.example.com/global/SearchJobs", page_size: 6}
+
+    Some Avature sites ignore the requested jobRecordsPerPage and always serve their
+    own fixed batch size, so this pages by how many jobs actually came back (not the
+    requested page_size), stops when a page comes back empty or repeats the previous
+    page's job IDs (the site looping back to page 1 instead of honouring the offset),
+    and advances the offset by the real batch size each time.
     """
     base = src["url"].rstrip("/")
     page_size = int(src.get("page_size", 25))
     jobs: list[dict] = []
+    seen_hrefs: set[str] = set()
     offset = 0
     while True:
         url = f"{base}/?jobRecordsPerPage={page_size}&jobOffset={offset}"
@@ -702,7 +709,14 @@ def fetch_avature(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list
         parser.close()
         if not parser.jobs:
             break
-        for j in parser.jobs:
+        new_on_page = [j for j in parser.jobs if j["href"] not in seen_hrefs]
+        if not new_on_page:
+            # The site served jobs we already have (e.g. it ignored the offset and
+            # looped back to page 1) - nothing more to gain from paging further.
+            break
+        for j in new_on_page:
+            seen_hrefs.add(j["href"])
+        for j in new_on_page:
             full_url = urllib.parse.urljoin(base + "/", j["href"])
             m = re.search(r"/(\d+)/?$", j["href"])
             source_id = m.group(1) if m else (j["id"] or j["href"])
@@ -722,10 +736,12 @@ def fetch_avature(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list
                 "posted_estimated": posted is None,
                 "closing_date": parse_date(j["closing"]),
             })
-        offset += page_size
-        if len(jobs) >= max_jobs:
-            break
-        if len(parser.jobs) < page_size:
+        # Advance by how many jobs this page actually returned, not the requested
+        # page_size - some Avature sites ignore jobRecordsPerPage and serve their
+        # own fixed batch (e.g. always 6 jobs), so using the real count keeps the
+        # offset in sync with the site's own pages instead of skipping or repeating.
+        offset += len(parser.jobs)
+        if len(jobs) >= max_jobs or len(parser.jobs) == 0:
             break
     return jobs[:max_jobs]
 

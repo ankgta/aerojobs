@@ -413,6 +413,49 @@ def test_avature_connector():
     assert jobs[2]["location"] == "London, United Kingdom"
 
 
+def test_avature_connector_ignores_requested_page_size():
+    """A real bug: Qatar Airways' Avature site ignores jobRecordsPerPage and always
+    serves its own fixed batch of 6 jobs per page, so comparing the returned count
+    against the *requested* page_size made fetch_avature stop after page 1 (saving
+    only 6 of ~186 real jobs). It must instead keep paging - using the real batch
+    size to advance the offset - until a page repeats jobs already seen."""
+    base = "https://careers.example-air.com/global/SearchJobs"
+    SITE_BATCH = 2  # the site's own fixed batch size, unrelated to page_size below
+
+    def card(n, href, title):
+        return f"""
+        <article id="article--{n}">
+          <div class="article__header"><div class="article__header__text">
+            <h3 class="article__header__text__title title title--h3">
+              <a class="link" href="{href}">{title}</a>
+            </h3>
+          </div></div>
+          <div class="article__content">
+            <span class="paragraph paragraph--inline">ID: J{n}</span>
+            <span class="paragraph paragraph--inline">Work locations: Qatar - Doha</span>
+            <span class="paragraph paragraph--inline">Posting date: 01-01-2026</span>
+          </div>
+        </article>"""
+
+    all_jobs = [
+        (1, f"{base}/JobDetail/a/1", "Job A"), (2, f"{base}/JobDetail/b/2", "Job B"),
+        (3, f"{base}/JobDetail/c/3", "Job C"), (4, f"{base}/JobDetail/d/4", "Job D"),
+        (5, f"{base}/JobDetail/e/5", "Job E"),
+    ]
+
+    def responder(url):
+        offset = int(url.split("jobOffset=")[1].split("&")[0])
+        batch = all_jobs[offset:offset + SITE_BATCH]  # ignores the requested page_size
+        if not batch:
+            return "<html><body></body></html>"
+        return "<html><body>" + "".join(card(n, href, title) for n, href, title in batch) + "</body></html>"
+
+    client = FakeClient({base: responder})
+    jobs = c.fetch_avature(client, {"url": base, "page_size": 25})  # requested size the site ignores
+    assert len(jobs) == 5, f"expected all 5 jobs, got {len(jobs)}"
+    assert [j["source_id"] for j in jobs] == ["1", "2", "3", "4", "5"]
+
+
 def test_icims_connector_json_api():
     """iCIMS connector uses /api/jobs JSON when available."""
     base = "https://careers.alaskaair.com"
