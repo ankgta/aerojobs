@@ -1,5 +1,5 @@
 {
- "run": "2026-10-20T08:01:52+00:00",
+ "run": "2026-10-20T17:03:35+00:00",
  "results": [
   {
    "name": "Aeroflot",
@@ -81,61 +81,81 @@
    "error": "FetchError: HTTP 492 from https://www.elal.com/en/careers/job-search?page=0"
   },
   {
-   "name": "United Airlines",
-   "slug": "united-airlines",
+   "name": "Volocopter",
+   "slug": "volocopter",
    "source": {
-    "ats": "phenom",
-    "url": "https://careers.united.com",
-    "country": "US"
+    "ats": "smartrecruiters",
+    "company": "VolocopterGmbH"
+   },
+   "ok": false,
+   "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/VolocopterGmbH/postings?limit=100&offset=0"
+  },
+  {
+   "name": "Wheels Up",
+   "slug": "wheels-up",
+   "source": {
+    "ats": "icims",
+    "url": "https://careers-wheelsup.icims.com"
    },
    "ok": true,
-   "jobs_found": 136,
+   "jobs_found": 10,
    "sample": [
     {
-     "title": "Senior Engineer – Identity & Access Management (Remote)",
-     "location": "Chicago, Illinois, United States",
-     "url": "https://careers.united.com/us/en/job/WHQ00026873/Senior-Engineer-Identity-Access-Management-Remote",
-     "posted": "2026-10-20"
+     "title": "AOG Specialist",
+     "location": "Chamblee, GA, US",
+     "url": "https://careers-wheelsup.icims.com/jobs/3679/aog-specialist/job",
+     "posted": "2024-10-20"
     },
     {
-     "title": "Sr. IT Manager - Supply Chain",
-     "location": "Chicago, Illinois, United States",
-     "url": "https://careers.united.com/us/en/job/WHQ00026344/Sr-IT-Manager-Supply-Chain",
-     "posted": "2026-10-19"
+     "title": "Business Development Director - Americas",
+     "location": "UNAVAILABLE, UNAVAILABLE, US",
+     "url": "https://careers-wheelsup.icims.com/jobs/3676/business-development-director---americas/job",
+     "posted": "2024-10-20"
     },
     {
-     "title": "Developer II",
-     "location": "Gurugram, Haryana, India",
-     "url": "https://careers.united.com/us/en/job/GGN00002691/Developer-II",
-     "posted": "2026-10-20"
+     "title": "Fleet Quoting Associate",
+     "location": "UNAVAILABLE, UNAVAILABLE, US",
+     "url": "https://careers-wheelsup.icims.com/jobs/3675/fleet-quoting-associate/job",
+     "posted": "2024-10-20"
     },
     {
-     "title": "",
-     "location": null,
-     "url": "https://careers.united.com/us/en/job/GGN00002620/Analyst-Data-Scientist-Machine-Learning",
+     "title": "Flight Controller",
+     "location": "",
+     "url": "https://careers-wheelsup.icims.com/jobs/3673/flight-controller/job",
      "posted": null
     },
     {
-     "title": "",
-     "location": null,
-     "url": "https://careers.united.com/us/en/job/WHQ00026682/Sr-Conversation-Designer",
+     "title": "Mobile Support Unit Aircraft Technician - ATL",
+     "location": "",
+     "url": "https://careers-wheelsup.icims.com/jobs/3671/mobile-support-unit-aircraft-technician---atl/job",
      "posted": null
     },
     {
-     "title": "",
-     "location": null,
-     "url": "https://careers.united.com/us/en/job/WHQ00026946/Director-Cargo-Sales-North-America",
+     "title": "Mobile Support Unit Aircraft Technician - CVG",
+     "location": "",
+     "url": "https://careers-wheelsup.icims.com/jobs/3670/mobile-support-unit-aircraft-technician---cvg/job",
      "posted": null
     }
    ],
    "detail_sample": {
     "country_code": "US",
-    "posted_date": "2026-10-20",
-    "closing_date": null,
+    "posted_date": "2024-10-20",
+    "closing_date": "2027-10-20",
     "work_mode": null,
     "employment_type": "FULL_TIME",
-    "location": "Chicago, Illinois, United States"
+    "location": "Chamblee, GA, US"
    }
+  },
+  {
+   "name": "AAR",
+   "slug": "aar",
+   "source": {
+    "ats": "taleo",
+    "host": "aarcorp.taleo.net"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
   }
  ]
 }
