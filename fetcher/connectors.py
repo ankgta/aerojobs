@@ -1662,7 +1662,7 @@ class _AirWorksParser(HTMLParser):
 def fetch_airworks(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
     """Fetch job listings from Air Works careers page (custom HTML site)."""
     base_url = src.get("url", "https://airworks.aero/careers/open-positions")
-    html_content = client.get(base_url)
+    html_content = client.get_text(base_url)
     if not html_content:
         return []
 

@@ -799,3 +799,34 @@ def test_hhru_connector():
     assert jobs[1]["location"] == "Санкт-Петербург"
     assert jobs[1]["employment_type"] == "part_time"
     assert jobs[1]["work_mode"] == "Remote"
+
+
+def test_airworks_connector():
+    """Air Works' careers page was failing with "'PoliteClient' object has no attribute 'get'" -
+    fetch_airworks() was calling client.get(), a method that doesn't exist (the real client only
+    has get_text(), get_json(), post_json()). Confirmed live via data/employer_status.json's
+    last_error for the air-works employer. Fixed by calling client.get_text() instead; this test
+    would have caught it, since FakeClient only implements the same methods the real client does."""
+    html = """
+    <html><body>
+      <region>
+        <h2>Line Maintenance Engineer</h2>
+        <ul>
+          <li>Mumbai, India</li>
+          <li>Full-time</li>
+          <li>Maintenance</li>
+        </ul>
+        <p>Posted 3 days ago</p>
+        <p>Job ID: AW12345</p>
+        <a href="/careers/jobs/aw12345">More Details</a>
+      </region>
+    </body></html>
+    """
+    client = FakeClient({"https://airworks.aero/careers/open-positions": html})
+    jobs = c.fetch_airworks(client, {"url": "https://airworks.aero/careers/open-positions"})
+    assert len(jobs) == 1
+    assert jobs[0]["title"] == "Line Maintenance Engineer"
+    assert jobs[0]["source_id"] == "AW12345"
+    assert jobs[0]["url"] == "https://airworks.aero/careers/jobs/aw12345"
+    assert jobs[0]["location"] == "Mumbai, India"
+    assert jobs[0]["employment_type"] == "Full-time"
