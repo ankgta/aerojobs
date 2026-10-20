@@ -616,6 +616,120 @@ def fetch_taleo(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[d
     return jobs[:max_jobs]
 
 
+# ------------------------------------------------------------------ Avature
+class _AvatureListingParser(HTMLParser):
+    """Extract jobs from Avature careers-site listing pages.
+
+    Each job is an <article id="article--N"> block. Inside it, an <h3> holds
+    the title link (href to the job detail page), and a few
+    <span class="paragraph paragraph--inline">LABEL: value</span> tags hold
+    the job ID, work location(s), posting date and closing date.
+    """
+    def __init__(self):
+        super().__init__()
+        self.jobs: list[dict] = []
+        self._in_article = False
+        self._href: str | None = None
+        self._title_buf: list[str] | None = None
+        self._in_title_link = False
+        self._in_span = False
+        self._span_buf: list[str] = []
+        self._fields: dict[str, str] = {}
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "article" and (a.get("id") or "").startswith("article--"):
+            self._in_article = True
+            self._href = None
+            self._title_buf = []
+            self._fields = {}
+        elif tag == "a" and self._in_article and self._title_buf == []:
+            self._href = a.get("href")
+            self._in_title_link = True
+        elif tag == "span" and self._in_article and "paragraph" in (a.get("class") or ""):
+            self._in_span = True
+            self._span_buf = []
+
+    def handle_data(self, data):
+        if self._in_title_link:
+            self._title_buf.append(data)
+        if self._in_span:
+            self._span_buf.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self._in_title_link:
+            self._in_title_link = False
+        elif tag == "span" and self._in_span:
+            self._in_span = False
+            text = " ".join("".join(self._span_buf).split())
+            if ":" in text:
+                label, _, value = text.partition(":")
+                self._fields[label.strip().lower()] = value.strip()
+        elif tag == "article" and self._in_article:
+            self._in_article = False
+            title = "".join(self._title_buf or []).strip() if self._title_buf else ""
+            title = " ".join(title.split())
+            if self._href and title:
+                self.jobs.append({
+                    "href": self._href,
+                    "title": title,
+                    "id": self._fields.get("id", ""),
+                    "location": self._fields.get("work locations", ""),
+                    "posted": self._fields.get("posting date", ""),
+                    "closing": self._fields.get("closing date", ""),
+                })
+
+
+def fetch_avature(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """Avature careers-site listing pages (e.g. careers.example.com/global/SearchJobs).
+
+    Source shape:
+        source: {ats: avature, url: "https://careers.example.com/global/SearchJobs", page_size: 6}
+    """
+    base = src["url"].rstrip("/")
+    page_size = int(src.get("page_size", 25))
+    jobs: list[dict] = []
+    offset = 0
+    while True:
+        url = f"{base}/?jobRecordsPerPage={page_size}&jobOffset={offset}"
+        try:
+            page_html = client.get_text(url)
+        except Exception as e:
+            print(f"  {base}: listing page failed at offset {offset}: {type(e).__name__}: {e}")
+            break
+        parser = _AvatureListingParser()
+        parser.feed(page_html)
+        parser.close()
+        if not parser.jobs:
+            break
+        for j in parser.jobs:
+            full_url = urllib.parse.urljoin(base + "/", j["href"])
+            m = re.search(r"/(\d+)/?$", j["href"])
+            source_id = m.group(1) if m else (j["id"] or j["href"])
+            # Avature gives "Country - City" (e.g. "Poland - Wroclaw"); store it the
+            # way the rest of the site does, "City, Country".
+            loc_parts = [p.strip() for p in j["location"].split(" - ", 1)] if j["location"] else []
+            location = ", ".join(reversed(loc_parts)) if len(loc_parts) == 2 else j["location"]
+            country_code = lookup_country(loc_parts[0]) if loc_parts else None
+            posted = parse_date(j["posted"])
+            jobs.append({
+                "source_id": source_id,
+                "title": j["title"],
+                "url": full_url,
+                "location": location,
+                "country_code": country_code,
+                "posted_date": posted,
+                "posted_estimated": posted is None,
+                "closing_date": parse_date(j["closing"]),
+            })
+        offset += page_size
+        if len(jobs) >= max_jobs:
+            break
+        if len(parser.jobs) < page_size:
+            break
+    return jobs[:max_jobs]
+
+
 # ------------------------------------------------------------------ iCIMS
 def fetch_icims(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
     """iCIMS job listings.
@@ -1557,6 +1671,7 @@ CONNECTORS = {
     "oracle": (fetch_oracle, None),
     "successfactors": (fetch_successfactors, None),
     "taleo": (fetch_taleo, None),
+    "avature": (fetch_avature, None),
     "icims": (fetch_icims, jsonld_detail),
     "phenom": (fetch_phenom, jsonld_detail),
     "breezy": (fetch_breezy, None),

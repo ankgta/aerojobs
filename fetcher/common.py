@@ -112,7 +112,7 @@ def parse_date(value) -> str | None:
             return dt.date(int(m[1]), int(m[2]), int(m[3])).isoformat()
         except ValueError:
             return None
-    for fmt in ("%d/%m/%Y", "%d.%m.%Y", "%B %d, %Y", "%d %B %Y", "%b %d, %Y", "%d %b %Y"):
+    for fmt in ("%d/%m/%Y", "%d.%m.%Y", "%d-%m-%Y", "%B %d, %Y", "%d %B %Y", "%b %d, %Y", "%d %b %Y"):
         try:
             return dt.datetime.strptime(text, fmt).date().isoformat()
         except ValueError:

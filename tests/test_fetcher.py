@@ -361,6 +361,58 @@ def test_taleo_connector():
     assert jobs[1]["source_id"] == "REQ002"
 
 
+def test_avature_connector():
+    """Avature listing pages: one <article> per job, fields as labelled spans."""
+    base = "https://careers.example-air.com/global/SearchJobs"
+
+    def card(article_num, href, title, job_id, location, posted, closing=None):
+        closing_span = (f'<span class="paragraph paragraph--inline">Closing date: {closing}</span>'
+                         if closing else "")
+        return f"""
+        <article id="article--{article_num}">
+          <div class="article__header"><div class="article__header__text">
+            <h3 class="article__header__text__title title title--h3">
+              <a class="link" href="{href}">{title}</a>
+            </h3>
+          </div></div>
+          <div class="article__content">
+            <span class="paragraph paragraph--inline">ID: {job_id}</span>
+            <span class="paragraph paragraph--inline">Work locations: {location}</span>
+            <span class="paragraph paragraph--inline">Posting date: {posted}</span>
+            {closing_span}
+          </div>
+        </article>"""
+
+    page0 = "<html><body>" + card(
+        1, f"{base}/JobDetail/Wroclaw-Poland-Agent/62533", "Wroclaw, Poland | Agent",
+        "2600008R", "Poland - Wroclaw", "03-07-2026", "31-12-2027",
+    ) + card(
+        2, f"{base}/JobDetail/Doha-Qatar-Cabin-Crew/70001", "Doha, Qatar | Cabin Crew",
+        "2700001Q", "Qatar - Doha", "01-01-2026",
+    ) + "</body></html>"
+    page1 = "<html><body>" + card(
+        1, f"{base}/JobDetail/London-UK-Pilot/80002", "London, UK | Pilot",
+        "2800002P", "United Kingdom - London", "05-05-2026",
+    ) + "</body></html>"  # fewer than page_size -> last page
+
+    def responder(url):
+        return page1 if "jobOffset=2" in url else page0
+
+    client = FakeClient({base: responder})
+    jobs = c.fetch_avature(client, {"url": base, "page_size": 2})
+    assert len(jobs) == 3
+    assert jobs[0]["source_id"] == "62533"
+    assert jobs[0]["title"] == "Wroclaw, Poland | Agent"
+    assert jobs[0]["location"] == "Wroclaw, Poland"
+    assert jobs[0]["posted_date"] == "2026-07-03"
+    assert jobs[0]["closing_date"] == "2027-12-31"
+    assert jobs[0]["posted_estimated"] is False
+    assert jobs[1]["source_id"] == "70001"
+    assert jobs[1]["closing_date"] is None
+    assert jobs[2]["source_id"] == "80002"
+    assert jobs[2]["location"] == "London, United Kingdom"
+
+
 def test_icims_connector_json_api():
     """iCIMS connector uses /api/jobs JSON when available."""
     base = "https://careers.alaskaair.com"
