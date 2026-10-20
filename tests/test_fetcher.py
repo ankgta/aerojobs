@@ -802,31 +802,82 @@ def test_hhru_connector():
 
 
 def test_airworks_connector():
-    """Air Works' careers page was failing with "'PoliteClient' object has no attribute 'get'" -
-    fetch_airworks() was calling client.get(), a method that doesn't exist (the real client only
-    has get_text(), get_json(), post_json()). Confirmed live via data/employer_status.json's
-    last_error for the air-works employer. Fixed by calling client.get_text() instead; this test
-    would have caught it, since FakeClient only implements the same methods the real client does."""
+    """Air Works' careers page had two separate bugs, both confirmed live on 20 Oct 2026.
+
+    (1) fetch_airworks() called client.get(), a method that doesn't exist (the real client
+    only has get_text(), get_json(), post_json()) - every run failed outright with
+    "'PoliteClient' object has no attribute 'get'" (data/employer_status.json's last_error).
+    Fixed by calling client.get_text().
+
+    (2) Once that was fixed, the connector ran but returned zero jobs: _AirWorksParser was
+    written around a <region> tag that never existed on the real page - confirmed by
+    inspecting the live DOM, which has no such tag anywhere. The real markup is a Bootstrap
+    div per job (div.row.border-bottom.pb-4), with two <small> tags (posted date, job ID),
+    an <h4> title, a <ul> of location/type/department, and an <a> link. Rewrote the parser
+    to match that real structure - this test's HTML is a direct copy of that structure.
+    """
     html = """
     <html><body>
-      <region>
-        <h2>Line Maintenance Engineer</h2>
-        <ul>
-          <li>Mumbai, India</li>
-          <li>Full-time</li>
-          <li>Maintenance</li>
-        </ul>
-        <p>Posted 3 days ago</p>
-        <p>Job ID: AW12345</p>
-        <a href="/careers/jobs/aw12345">More Details</a>
-      </region>
+      <div class="container jobs-listing">
+        <div class="row  py-4">
+          <div class="col-lg-9">
+            <div class="row border-bottom pb-4">
+              <div class="col-lg-9">
+                <small>Posted 03 May 2026</small>
+                <small class="border-left pl-2 ml-2">Job ID: 22425</small>
+                <h4 class="h4 m-0"><div class="badge"></div>Line Maintenance Engineer</h4>
+                <div class="entry-meta"><ul class="mt-1">
+                  <li class="no-separator">Mumbai, India</li>
+                  <li>Full Time</li>
+                  <li>Engineering & Maintenance</li>
+                </ul></div>
+                <a href="/careers/open-positions/line-maintenance-engineer">More Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </body></html>
     """
     client = FakeClient({"https://airworks.aero/careers/open-positions": html})
     jobs = c.fetch_airworks(client, {"url": "https://airworks.aero/careers/open-positions"})
     assert len(jobs) == 1
     assert jobs[0]["title"] == "Line Maintenance Engineer"
-    assert jobs[0]["source_id"] == "AW12345"
-    assert jobs[0]["url"] == "https://airworks.aero/careers/jobs/aw12345"
+    assert jobs[0]["source_id"] == "22425"
+    assert jobs[0]["url"] == "https://airworks.aero/careers/open-positions/line-maintenance-engineer"
     assert jobs[0]["location"] == "Mumbai, India"
-    assert jobs[0]["employment_type"] == "Full-time"
+    assert jobs[0]["employment_type"] == "Full Time"
+    assert jobs[0]["department"] == "Engineering & Maintenance"
+    assert jobs[0]["posted_date"] == "2026-05-03"
+
+
+def test_airworks_connector_multiple_jobs_and_last_card_without_border():
+    """The last job card on the real page has class "row  pb-4" (no border-bottom, since
+    there's no following sibling to divide from) - make sure the div-depth tracking that
+    finds each job block's real end tag doesn't get confused by that, or by two cards back
+    to back."""
+    def card(cls, title, job_id, location):
+        return f"""
+        <div class="{cls}">
+          <div class="col-lg-9">
+            <small>Posted 01 Jan 2026</small>
+            <small class="border-left pl-2 ml-2">Job ID: {job_id}</small>
+            <h4 class="h4 m-0"><div class="badge"></div>{title}</h4>
+            <div class="entry-meta"><ul class="mt-1">
+              <li class="no-separator">{location}</li>
+              <li>Full Time</li>
+              <li>Engineering</li>
+            </ul></div>
+            <a href="/careers/open-positions/{job_id}">More Details</a>
+          </div>
+        </div>
+        """
+    html = "<html><body><div class='container jobs-listing'>" + \
+           card("row border-bottom pb-4", "First Job", "111", "Delhi") + \
+           card("row  pb-4", "Second Job", "222", "Pune") + \
+           "</div></body></html>"
+    client = FakeClient({"https://airworks.aero/careers/open-positions": html})
+    jobs = c.fetch_airworks(client, {"url": "https://airworks.aero/careers/open-positions"})
+    assert len(jobs) == 2
+    assert jobs[0]["title"] == "First Job" and jobs[0]["source_id"] == "111"
+    assert jobs[1]["title"] == "Second Job" and jobs[1]["source_id"] == "222"
