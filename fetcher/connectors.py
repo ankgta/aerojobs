@@ -524,10 +524,16 @@ def _taleo_get_portal(client: PoliteClient, host: str, section: str = "2") -> st
     url = f"https://{host}/careersection/{section}/jobsearch.ftl"
     try:
         page = client.get_text(url)
-    except Exception:
+    except Exception as e:
+        print(f"  could not read {url}: {type(e).__name__}: {e}")
         return None
     p = _TaleoPortalParser()
     p.feed(page)
+    if not p.portal_id:
+        print(f"  fetched {url} ({len(page)} chars) but found no portal ID in any <script> tag "
+              "- the page content, or Taleo's script layout, may differ from what this reader "
+              "expects; a bot-detection page served instead of the real jobsearch.ftl page would "
+              "also look like this")
     return p.portal_id
 
 
@@ -543,6 +549,7 @@ def fetch_taleo(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[d
     # Step 1: get the portal ID from the search page
     portal_id = src.get("portal_id") or _taleo_get_portal(client, host, section)
     if not portal_id:
+        print(f"  {host}: no portal ID found, cannot search jobs")
         return []
 
     api = f"https://{host}/careersection/rest/jobboard/searchjobs"
@@ -554,7 +561,8 @@ def fetch_taleo(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[d
                 api,
                 params={"lang": "en", "portal": portal_id, "start": page_num * 25},
             )
-        except Exception:
+        except Exception as e:
+            print(f"  {host}: search API failed on page {page_num}: {type(e).__name__}: {e}")
             break
         req_list = data.get("reqList") or []
         columns = data.get("columnHeader") or []
