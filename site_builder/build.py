@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 from html import escape as html_escape
 import datetime as dt
+import hashlib
 import json
 import re
 import shutil
@@ -101,25 +102,94 @@ def article(word: str) -> str:
     return "an" if word[:1].lower() in "aeiou" else "a"
 
 
+# One-line editorial context per role group, used to give job pages genuinely distinct text
+# instead of restating the facts table. Never describes a specific employer's duties - stays
+# generic to the role group so it is true for every job in that group.
+ROLE_CONTEXT = {
+    "pilots": "Pilot roles in aviation generally involve flight operations, type ratings and "
+              "regulatory currency requirements that vary by aircraft and operator.",
+    "cabin-crew": "Cabin crew roles focus on passenger safety, service delivery and in-flight "
+                  "compliance with the operator's and the regulator's procedures.",
+    "engineering-maintenance": "Aircraft engineering and maintenance roles cover the inspection, "
+                               "repair and certification work that keeps aircraft airworthy.",
+    "ground-operations": "Ground operations and airport services roles keep aircraft turnaround, "
+                         "baggage, ramp and passenger handling running to schedule.",
+    "flight-operations": "Air traffic and flight operations roles support the planning, "
+                         "dispatch and in-flight coordination side of running a flight.",
+    "cargo-logistics": "Cargo and logistics roles move freight through an airline's or "
+                       "forwarder's network, from booking through to delivery.",
+    "customer-service-sales": "Customer service and sales roles cover the commercial and "
+                              "passenger-facing side of the aviation business.",
+    "corporate": "This is a corporate role: the day-to-day work sits in a function such as "
+                "IT, finance, HR, legal or operations support rather than on the flight line.",
+}
+
+# A few interchangeable phrasings per sentence, so pages don't all read as one template with
+# nouns swapped. Picked deterministically per job (stable across rebuilds) via a hash of the id.
+_OPEN_PHRASES = [
+    "{company} is hiring for {art} {role} position: {title}.",
+    "{company} has {art} {role} opening: {title}.",
+    "There is a {role} vacancy at {company}: {title}.",
+]
+_CLOSE_PHRASES = [
+    "Full details and the application form are on {company}'s own careers site.",
+    "Apply directly through {company}'s careers site, where the complete listing is published.",
+    "{company}'s careers site has the complete listing and the way to apply.",
+]
+
+
+# Common short forms that already name the country inside a location string, so we don't also
+# append the full country name and produce "USA, Miami, United States".
+_COUNTRY_ALIASES = {
+    "United States": ("usa", "u.s.", "us,", "united states"),
+    "United Kingdom": ("uk", "u.k.", "united kingdom", "england", "scotland", "wales"),
+    "United Arab Emirates": ("uae", "u.a.e.", "united arab emirates"),
+}
+
+
+def _location_names_country(location: str, country: str) -> bool:
+    low = location.lower()
+    if country.lower() in low:
+        return True
+    return any(alias in low for alias in _COUNTRY_ALIASES.get(country, ()))
+
+
 def job_summary(job: dict) -> str:
-    """A short description written by the site from the job's facts (never the employer's text)."""
-    role = ROLES.get(job.get("role"), "aviation").split(" (")[0].lower()
-    s = [f"{job['company']} has {article(role)} {role} vacancy open: {job['title']}."]
+    """A short description written by the site from the job's facts (never the employer's text).
+
+    Varies its phrasing and adds role/company-type context per job, rather than restating the
+    facts table in near-identical sentences for every listing - thin, templated job pages are
+    the main reason a large job board's pages get crawled but not indexed by search engines.
+    """
+    pick = int(hashlib.md5(job["id"].encode()).hexdigest(), 16)
+    role_key = job.get("role", "corporate")
+    role = ROLES.get(role_key, "aviation").split(" (")[0].lower()
+    company_type = COMPANY_TYPES.get(job.get("company_type"), "")
+
+    s = [_OPEN_PHRASES[pick % len(_OPEN_PHRASES)].format(
+        company=job["company"], art=article(role), role=role, title=job["title"])]
+
+    if company_type and company_type != "Other aviation":
+        s.append(f"{job['company']} is {article(company_type.lower())} {company_type.lower()} "
+                 f"in the aviation industry.")
+
     if job.get("location"):
-        s.append(f"The role is based in {job['location']}"
-                 + (f", {job['country']}." if job.get("country") and job["country"] not in job["location"] else "."))
-    else:
-        s.append("The employer's page gives the location details.")
+        loc = job["location"]
+        if job.get("country") and not _location_names_country(loc, job["country"]):
+            loc += f", {job['country']}"
+        s.append(f"This one is based in {loc}.")
+
     kind = ", ".join(x for x in (job.get("work_mode", "").lower(), (job.get("employment_type") or "").lower()) if x)
     if kind:
-        s.append(f"It is listed as {article(kind)} {kind} position.")
-    if job.get("posted_estimated"):
-        s.append(f"We first found it on {human_date(job['posted_date'])}.")
-    else:
-        s.append(f"It was posted on {human_date(job['posted_date'])}.")
-    if job.get("closing_date"):
-        s.append(f"Applications close on {human_date(job['closing_date'])}.")
-    s.append(f"You apply on {job['company']}'s own careers site, where the full job description is published.")
+        s.append(f"It's {article(kind)} {kind} role,"
+                 + (f" first listed {human_date(job['posted_date'])}" if job.get("posted_estimated")
+                    else f" posted {human_date(job['posted_date'])}")
+                 + (f", closing {human_date(job['closing_date'])}." if job.get("closing_date") else "."))
+
+    if role_key in ROLE_CONTEXT:
+        s.append(ROLE_CONTEXT[role_key])
+
+    s.append(_CLOSE_PHRASES[pick % len(_CLOSE_PHRASES)].format(company=job["company"]))
     return " ".join(s)
 
 

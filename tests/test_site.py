@@ -42,11 +42,39 @@ def test_build_with_no_jobs(tmp_path):
 
 
 def test_summary_is_our_own_words():
-    s = job_summary({"company": "Example Air", "title": "Ramp Agent", "role": "ground-operations",
-                     "location": "Doha", "country": "Qatar", "work_mode": "On-site",
-                     "employment_type": "Full-time", "posted_date": "2026-10-01", "posted_estimated": False})
-    assert s.startswith("Example Air has a ground operations and airport services vacancy open: Ramp Agent.")
-    assert "Doha, Qatar" in s and "an on-site, full-time position" in s
+    job = {"id": "example-air-1", "company": "Example Air", "title": "Ramp Agent",
+           "role": "ground-operations", "location": "Doha", "country": "Qatar",
+           "work_mode": "On-site", "employment_type": "Full-time", "posted_date": "2026-10-01",
+           "posted_estimated": False}
+    s = job_summary(job)
+    # Facts are present...
+    assert "Example Air" in s and "Ramp Agent" in s and "Doha, Qatar" in s
+    assert "on-site" in s.lower() and "full-time" in s.lower()
+    # ...but it's our own phrasing: the summary is built from our own sentence templates,
+    # never a block of employer-supplied text pasted in verbatim.
+    assert "careers site" in s.lower()
+    assert len(s.split(". ")) >= 3  # more than one templated fact sentence, not a single blob
+
+
+def test_summary_is_deterministic_and_varies_across_jobs():
+    # Same job always gets the same wording (stable across rebuilds)...
+    job = {"id": "fixed-id-1", "company": "Fixed Air", "title": "Engineer",
+           "role": "corporate", "location": "Remote", "country": None,
+           "work_mode": "Remote", "employment_type": "Full-time", "posted_date": "2026-10-01",
+           "posted_estimated": False}
+    assert job_summary(job) == job_summary(dict(job))
+
+    # ...but two jobs with different ids don't all collapse onto one template.
+    variants = {job_summary({**job, "id": f"id-{i}"}) for i in range(6)}
+    assert len(variants) > 1
+
+
+def test_summary_does_not_duplicate_country_already_named_in_location():
+    job = {"id": "us-job-1", "company": "Example Air", "title": "Agent", "role": "corporate",
+           "location": "USA, Miami", "country": "United States", "work_mode": "On-site",
+           "employment_type": "Full-time", "posted_date": "2026-10-01", "posted_estimated": False}
+    s = job_summary(job)
+    assert s.count("United States") == 0  # "USA" already named it; we shouldn't also append the full name
 
 
 def test_security_headers_on_live_build(tmp_path):
