@@ -1,5 +1,5 @@
 {
- "run": "2026-10-20T03:20:38+00:00",
+ "run": "2026-10-20T08:01:52+00:00",
  "results": [
   {
    "name": "Aeroflot",
@@ -81,53 +81,61 @@
    "error": "FetchError: HTTP 492 from https://www.elal.com/en/careers/job-search?page=0"
   },
   {
-   "name": "Qatar Airways",
-   "slug": "qatar-airways",
+   "name": "United Airlines",
+   "slug": "united-airlines",
    "source": {
-    "ats": "avature",
-    "url": "https://careers.qatarairways.com/global/SearchJobs",
-    "page_size": 25
+    "ats": "phenom",
+    "url": "https://careers.united.com",
+    "country": "US"
    },
    "ok": true,
-   "jobs_found": 6,
+   "jobs_found": 136,
    "sample": [
     {
-     "title": "Wroclaw, Poland | Airline Customer Contact Centre Agent",
-     "location": "Wroclaw, Poland",
-     "url": "https://careers.qatarairways.com/global/JobDetail/Wroclaw-Poland-Airline-Customer-Contact-Centre-Agent/62533",
-     "posted": "2026-07-03"
+     "title": "Senior Engineer – Identity & Access Management (Remote)",
+     "location": "Chicago, Illinois, United States",
+     "url": "https://careers.united.com/us/en/job/WHQ00026873/Senior-Engineer-Identity-Access-Management-Remote",
+     "posted": "2026-10-20"
     },
     {
-     "title": "Uniforms Technical Specialist",
-     "location": "Doha, Qatar",
-     "url": "https://careers.qatarairways.com/global/JobDetail/Uniforms-Technical-Specialist/68048",
-     "posted": "2026-10-17"
+     "title": "Sr. IT Manager - Supply Chain",
+     "location": "Chicago, Illinois, United States",
+     "url": "https://careers.united.com/us/en/job/WHQ00026344/Sr-IT-Manager-Supply-Chain",
+     "posted": "2026-10-19"
     },
     {
-     "title": "Type Rated First Officer Boeing",
-     "location": "Doha, Qatar",
-     "url": "https://careers.qatarairways.com/global/JobDetail/Type-Rated-First-Officer-Boeing/68123",
-     "posted": "2026-10-18"
+     "title": "Developer II",
+     "location": "Gurugram, Haryana, India",
+     "url": "https://careers.united.com/us/en/job/GGN00002691/Developer-II",
+     "posted": "2026-10-20"
     },
     {
-     "title": "Type Rated Captain - Qatar Executive - BD700",
-     "location": "Doha, Qatar",
-     "url": "https://careers.qatarairways.com/global/JobDetail/Type-Rated-Captain-Qatar-Executive-BD700/626",
-     "posted": "2026-04-07"
+     "title": "",
+     "location": null,
+     "url": "https://careers.united.com/us/en/job/GGN00002620/Analyst-Data-Scientist-Machine-Learning",
+     "posted": null
     },
     {
-     "title": "Turnaround Coordinator – Join Our Talent Pool",
-     "location": "Doha, Qatar",
-     "url": "https://careers.qatarairways.com/global/JobDetail/Turnaround-Coordinator-Join-Our-Talent-Pool/66175",
-     "posted": "2026-10-07"
+     "title": "",
+     "location": null,
+     "url": "https://careers.united.com/us/en/job/WHQ00026682/Sr-Conversation-Designer",
+     "posted": null
     },
     {
-     "title": "TS Controller (Messaging and Collaboration)",
-     "location": "Doha, Qatar",
-     "url": "https://careers.qatarairways.com/global/JobDetail/TS-Controller-Messaging-and-Collaboration/28733",
-     "posted": "2026-10-12"
+     "title": "",
+     "location": null,
+     "url": "https://careers.united.com/us/en/job/WHQ00026946/Director-Cargo-Sales-North-America",
+     "posted": null
     }
-   ]
+   ],
+   "detail_sample": {
+    "country_code": "US",
+    "posted_date": "2026-10-20",
+    "closing_date": null,
+    "work_mode": null,
+    "employment_type": "FULL_TIME",
+    "location": "Chicago, Illinois, United States"
+   }
   }
  ]
 }
