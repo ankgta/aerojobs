@@ -2,6 +2,24 @@
 
 What was done, newest first. For why, see `DECISIONS.md`.
 
+## 20 October 2026 (new Avature connector, Qatar Airways added)
+
+- **New connector: Avature** (`fetch_avature()` in `fetcher/connectors.py`) — careers.qatarairways.com
+  runs this hiring system, which had no reader before. Confirmed public, no login, robots.txt-allowed
+  via direct browser inspection before writing any code.
+- **Enabled: Qatar Airways** — 186 real jobs confirmed (Doha plus outstations like Wroclaw, Riyadh,
+  Mumbai). Checked candidate first via `verify.yml` (real titles/locations/dates came back) before
+  switching it on, per the never-guess-a-source rule.
+- **Bug found and fixed on the first live run:** only 6 of 186 jobs were saved. The site ignores the
+  `jobRecordsPerPage` request parameter and always serves its own fixed batch per page, so the connector's
+  "fewer jobs came back than requested → this is the last page" check tripped after page 1. Fixed to page
+  by jobs already seen instead of the requested page size, with a regression test reproducing the exact
+  failure. Re-ran after the fix: all 186 jobs now in `data/jobs.json`.
+- **Emirates also runs Avature** (`emiratesjobs.avature.net`) but its public careers flow
+  (careers.emiratesgroupcareers.com) redirects to a login page before showing any jobs — not added, no
+  account/session created to get around it.
+- Also taught the shared date parser (`fetcher/common.py`) the `DD-MM-YYYY` date format Avature uses.
+
 ## 14 October 2026 (onboarding skill created, batch 2 pushed live)
 
 - **New skill `aerojobs-onboard-and-report`**: a repeatable detect → verify → enable → fetch →
