@@ -85,3 +85,19 @@ employers:
     country: IL
     type: airline
     source: {ats: jsonld, listing_url: "https://www.elal.com/en/careers/job-search?page={page}", job_link_pattern: "/careers/job/", max_pages: 5, strip_query: true}
+
+  # ──────────────────────────────
+  # AVATURE (new connector, 20 Oct 2026)
+  # ──────────────────────────────
+  # Qatar Airways: careers.qatarairways.com/global/SearchJobs confirmed public,
+  # no login, robots.txt allows /global, 186 real open jobs seen live in browser.
+  # New fetch_avature() connector built for this (fetcher/connectors.py).
+  - name: Qatar Airways
+    slug: qatar-airways
+    country: QA
+    type: airline
+    source: {ats: avature, url: "https://careers.qatarairways.com/global/SearchJobs", page_size: 25}
+
+  # Emirates also runs Avature (emiratesjobs.avature.net) but its public-facing
+  # careers.emiratesgroupcareers.com flow redirects to a login page before showing
+  # any jobs — not a candidate, not included here. See docs/STATUS.md.
