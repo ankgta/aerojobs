@@ -1,5 +1,5 @@
 {
- "run": "2026-10-15T03:49:24+00:00",
+ "run": "2026-10-20T03:20:38+00:00",
  "results": [
   {
    "name": "Aeroflot",
@@ -79,6 +79,55 @@
    },
    "ok": false,
    "error": "FetchError: HTTP 492 from https://www.elal.com/en/careers/job-search?page=0"
+  },
+  {
+   "name": "Qatar Airways",
+   "slug": "qatar-airways",
+   "source": {
+    "ats": "avature",
+    "url": "https://careers.qatarairways.com/global/SearchJobs",
+    "page_size": 25
+   },
+   "ok": true,
+   "jobs_found": 6,
+   "sample": [
+    {
+     "title": "Wroclaw, Poland | Airline Customer Contact Centre Agent",
+     "location": "Wroclaw, Poland",
+     "url": "https://careers.qatarairways.com/global/JobDetail/Wroclaw-Poland-Airline-Customer-Contact-Centre-Agent/62533",
+     "posted": "2026-07-03"
+    },
+    {
+     "title": "Uniforms Technical Specialist",
+     "location": "Doha, Qatar",
+     "url": "https://careers.qatarairways.com/global/JobDetail/Uniforms-Technical-Specialist/68048",
+     "posted": "2026-10-17"
+    },
+    {
+     "title": "Type Rated First Officer Boeing",
+     "location": "Doha, Qatar",
+     "url": "https://careers.qatarairways.com/global/JobDetail/Type-Rated-First-Officer-Boeing/68123",
+     "posted": "2026-10-18"
+    },
+    {
+     "title": "Type Rated Captain - Qatar Executive - BD700",
+     "location": "Doha, Qatar",
+     "url": "https://careers.qatarairways.com/global/JobDetail/Type-Rated-Captain-Qatar-Executive-BD700/626",
+     "posted": "2026-04-07"
+    },
+    {
+     "title": "Turnaround Coordinator – Join Our Talent Pool",
+     "location": "Doha, Qatar",
+     "url": "https://careers.qatarairways.com/global/JobDetail/Turnaround-Coordinator-Join-Our-Talent-Pool/66175",
+     "posted": "2026-10-07"
+    },
+    {
+     "title": "TS Controller (Messaging and Collaboration)",
+     "location": "Doha, Qatar",
+     "url": "https://careers.qatarairways.com/global/JobDetail/TS-Controller-Messaging-and-Collaboration/28733",
+     "posted": "2026-10-12"
+    }
+   ]
   }
  ]
 }
