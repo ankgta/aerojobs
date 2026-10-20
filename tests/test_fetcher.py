@@ -3,7 +3,7 @@ import datetime as dt
 from fetcher import connectors as c
 from fetcher.geo import country_from_location, region_of
 from fetcher.roles import classify_title, detect_work_mode, is_aviation_job
-from fetcher.run import merge_employer_jobs, purge_expired, is_visible
+from fetcher.run import merge_employer_jobs, purge_expired, is_visible, fetch_pending_details
 
 
 class FakeClient:
@@ -163,6 +163,66 @@ def test_merge_expire_and_return():
     merge_employer_jobs(jobs, emp, [], "2026-10-06")
     assert all(r["status"] == "expired" for r in jobs.values())
     assert purge_expired(jobs, 30, "2026-11-30") == 2 and not jobs
+
+
+def test_pending_details_retry_instead_of_giving_up_once():
+    """A real bug: Cathay Pacific/Southwest/United/Air Canada were each missing titles
+    on roughly half their jobs. Root cause: a detail fetch that succeeded but came back
+    with no usable title (bot-mitigation page, cold CDN cache, etc. - confirmed live,
+    the real job pages DO have the title) permanently cleared detail_pending, so that
+    job's title was never tried again. fetch_pending_details() must instead keep a job
+    pending and retry it on later calls, giving up only after max_detail_attempts."""
+    emp = {"name": "Example Air", "slug": "example-air", "type": "airline", "country": "US"}
+    jobs = {}
+    merge_employer_jobs(jobs, emp, [{"source_id": "1", "title": "", "url": "https://careers.example.com/job/1",
+                                      "detail_url": "https://careers.example.com/job/1"}], "2026-10-01")
+    rec = next(iter(jobs.values()))
+    assert rec["detail_pending"] is True
+
+    attempts = {"n": 0}
+    def flaky_detail(client, r):
+        attempts["n"] += 1
+        if attempts["n"] < 3:
+            return {}  # looks like a successful fetch, but no usable title this time
+        return {"title": "First Officer", "location": "Doha, Qatar",
+                "posted_date": "2026-10-01", "posted_estimated": False}
+
+    for _ in range(2):  # two runs with an empty-but-successful fetch: stays pending
+        filled, empty, left = fetch_pending_details(FakeClient({}), jobs, emp, flaky_detail)
+        assert filled == 0 and empty == 1
+        assert rec.get("detail_pending") is True and not rec.get("title")
+
+    # third run: the detail page finally has a title -> filled in and no longer pending
+    filled, empty, left = fetch_pending_details(FakeClient({}), jobs, emp, flaky_detail)
+    assert filled == 1 and empty == 0
+    assert rec["title"] == "First Officer"
+    assert "detail_pending" not in rec and "detail_attempts" not in rec
+    assert is_visible(rec)
+
+
+def test_pending_details_give_up_after_max_attempts():
+    """A job whose detail page never has a title (genuinely gone, not a hiccup) must
+    stop being retried eventually, so a permanently-broken listing doesn't burn a fetch
+    on every single run forever."""
+    emp = {"name": "Example Air", "slug": "example-air", "type": "airline", "country": "US"}
+    jobs = {}
+    merge_employer_jobs(jobs, emp, [{"source_id": "1", "title": "", "url": "https://careers.example.com/job/1",
+                                      "detail_url": "https://careers.example.com/job/1"}], "2026-10-01")
+    rec = next(iter(jobs.values()))
+
+    calls = {"n": 0}
+    def always_empty(client, r):
+        calls["n"] += 1
+        return {}
+
+    for _ in range(3):
+        fetch_pending_details(FakeClient({}), jobs, emp, always_empty, max_detail_attempts=3)
+    assert "detail_pending" not in rec  # gave up after 3 attempts
+    assert calls["n"] == 3
+
+    # a later run must not fetch it again - it's no longer pending
+    fetch_pending_details(FakeClient({}), jobs, emp, always_empty, max_detail_attempts=3)
+    assert calls["n"] == 3
 
 
 def test_only_web_links_are_allowed():

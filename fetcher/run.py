@@ -119,6 +119,45 @@ def merge_employer_jobs(jobs: dict, employer: dict, raws: list[dict], run_date: 
     return new
 
 
+def fetch_pending_details(client, jobs: dict, emp: dict, detail_fn, limit: int = 250,
+                          max_detail_attempts: int = 5) -> tuple[int, int, int]:
+    """Visit each pending job's detail page and fill in its title/location/dates.
+
+    A detail fetch that raises (network error, bad status) leaves the job pending for
+    the next run, unchanged. One that succeeds but comes back with no usable title -
+    a bot-mitigation page, a cold CDN cache, or any other transient hiccup, not
+    necessarily that the job itself lacks a title - also stays pending and gets retried
+    on later runs, up to max_detail_attempts times, instead of being silently dropped
+    forever after a single bad fetch.
+
+    Returns (filled, empty, failed) counts.
+    """
+    pending = [r for r in jobs.values()
+               if r["employer"] == emp["slug"] and r.get("detail_pending") and r["status"] == "active"]
+    filled = empty = failures = 0
+    for rec in pending[:limit]:
+        try:
+            fields = detail_fn(client, rec)
+        except Exception:
+            failures += 1
+            if failures >= 5:
+                break
+            continue
+        rec["detail_attempts"] = rec.get("detail_attempts", 0) + 1
+        if fields.get("title"):
+            apply_fields(rec, fields, emp)
+            if not rec.get("slug"):
+                rec["slug"] = f"{slugify(rec['title'], 60)}-{emp['slug']}-{short_hash(rec['source_id'], 6)}"
+            rec.pop("detail_pending", None)
+            rec.pop("detail_attempts", None)
+            filled += 1
+        else:
+            empty += 1
+            if rec["detail_attempts"] >= max_detail_attempts:
+                rec.pop("detail_pending", None)  # genuinely never has a title; stop trying
+    return filled, empty, len(pending) - min(len(pending), limit)
+
+
 def purge_expired(jobs: dict, keep_days: int, run_date: str) -> int:
     cutoff = (dt.date.fromisoformat(run_date) - dt.timedelta(days=keep_days)).isoformat()
     old = [jid for jid, r in jobs.items() if r["status"] == "expired" and r.get("expired_on", run_date) < cutoff]
@@ -184,25 +223,13 @@ def main(argv: list[str] | None = None) -> int:
                            "problem": f"Job count fell from {prev['last_count']} to {len(raws)}. Worth a check."})
 
         if detail_fn:
-            pending = [r for r in jobs.values()
-                       if r["employer"] == emp["slug"] and r.get("detail_pending") and r["status"] == "active"]
             limit = int(fc.get("max_new_details_per_employer", 250))
-            failures = 0
-            for rec in pending[:limit]:
-                try:
-                    fields = detail_fn(client, rec)
-                except Exception as e:
-                    failures += 1
-                    if failures >= 5:
-                        print(f"  stopped reading job pages after repeated errors: {e}")
-                        break
-                    continue
-                apply_fields(rec, fields, emp)
-                if not rec.get("slug") and rec.get("title"):
-                    rec["slug"] = f"{slugify(rec['title'], 60)}-{emp['slug']}-{short_hash(rec['source_id'], 6)}"
-                rec.pop("detail_pending", None)
-            if len(pending) > limit:
-                print(f"  {len(pending) - limit} job pages left for the next run")
+            max_detail_attempts = int(fc.get("max_detail_attempts", 5))
+            filled, empty, left = fetch_pending_details(client, jobs, emp, detail_fn, limit, max_detail_attempts)
+            if empty:
+                print(f"  {empty} job pages fetched with no usable title - will retry on later runs")
+            if left:
+                print(f"  {left} job pages left for the next run")
 
         status[emp["slug"]] = {"last_run": now_iso(), "last_count": len(raws), "last_error": None}
 
