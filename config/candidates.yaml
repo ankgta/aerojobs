@@ -99,3 +99,33 @@ employers:
 
   # United Airlines: verify.yml confirmed 136 real jobs on 20 Oct 2026 (Phenom) —
   # now enabled directly in config/employers.yaml, removed from here.
+
+  # ──────────────────────────────
+  # BATCH 4 — 20 Oct 2026
+  # ──────────────────────────────
+  # New leads from web research and detect_report.txt cross-referencing.
+
+  # Volocopter: German eVTOL manufacturer. SmartRecruiters found via web search
+  # (detector missed it — main careers page loads dynamically).
+  - name: Volocopter
+    slug: volocopter
+    country: DE
+    type: manufacturer
+    source: {ats: smartrecruiters, company: "VolocopterGmbH"}
+
+  # Wheels Up: US business aviation company. iCIMS found via web search
+  # (detector only checked wheelsup.com/careers, missed the iCIMS subdomain).
+  # robots.txt on careers-wheelsup.icims.com allows /jobs/search.
+  - name: Wheels Up
+    slug: wheels-up
+    country: US
+    type: other
+    source: {ats: icims, url: "https://careers-wheelsup.icims.com"}
+
+  # AAR: US aviation MRO/services. Taleo detected on 14 Oct 2026 (detect_report.txt).
+  # Previously tried as Workday (HTTP 422). Retesting with Taleo source.
+  - name: AAR
+    slug: aar
+    country: US
+    type: mro
+    source: {ats: taleo, host: "aarcorp.taleo.net"}
