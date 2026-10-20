@@ -108,6 +108,24 @@ only by free word-matching rules in `fetcher/roles.py`.
 submitted (status: Success, 7,710+ pages discovered as of 19 Oct). Google Analytics
 (`google_analytics_id`) is set and confirmed wired into `base.html`.
 
+## .aero directory discovery blocked by the site, not a code bug (20 Oct 2026)
+
+`discover-aero.yml` had always returned 0 candidates since it was built; this was never actually
+run before 20 Oct despite earlier notes saying "tool ready, never run" (true) — running it revealed
+why nothing would have worked even after it was first run. First found and fixed a real parsing gap
+(`read_directory()` only matched one href shape; fixed and covered by new tests in
+`tests/test_discover_aero.py`), then re-ran it live and got a definitive answer from the run's own
+log: **`HTTP 403 from https://information.aero/directory`**. information.aero's own bot protection
+is rejecting requests from GitHub Actions' IP ranges — confirmed by fetching the same URL from a
+real browser (200 OK, full content) versus the GitHub Actions run (403). robots.txt itself does
+*not* disallow `/directory` (checked directly), so this is the site's WAF, not its stated crawling
+policy. Per the project's own robots.txt-and-site-rules policy, this is not something to work
+around (e.g. by spoofing a browser user agent) — it goes in the same "blocked" category as the
+other employers already recorded as unreachable from GitHub Actions. **The .aero directory is not
+a usable employer-discovery source right now.** Revisit only if information.aero's blocking
+changes, or a legitimate alternative (e.g. manually downloading the directory list and feeding
+URLs through `config/candidates.yaml` instead of the automated crawl) is wanted later.
+
 ## Indexing problem found and fixed (20 Oct 2026)
 
 Search Console's Pages report showed 476 of 477 crawled job pages stuck at "Crawled — currently
