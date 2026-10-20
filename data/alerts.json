@@ -38,7 +38,7 @@
   },
   {
    "employer": "Air Works",
-   "problem": "Could not read jobs: 'PoliteClient' object has no attribute 'get'"
+   "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
    "employer": "Joramco",
@@ -61,5 +61,5 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   }
  ],
- "run": "2026-10-20T11:25:48+00:00"
+ "run": "2026-10-20T15:37:56+00:00"
 }
