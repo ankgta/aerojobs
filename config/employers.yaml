@@ -10,11 +10,14 @@
 # country: two-letter country code of the head office (GB, US, AE, IN ...)
 #
 # Checked 8 Oct 2026 — robots.txt blocks (never attempt to work around these):
-#   Qatar Airways (Oracle Fusion API), Menzies Aviation (Oracle Fusion API), Singapore Airlines (SuccessFactors),
+#   Qatar Airways's Oracle Fusion API (blocked), Menzies Aviation (Oracle Fusion API), Singapore Airlines (SuccessFactors),
 #   ST Engineering (SuccessFactors), Lufthansa Group (SmartRecruiters API),
 #   flydubai (iCIMS), American Airlines, Delta, KLM, Qantas, IndiGo, AAR, Lufthansa Technik, LATAM,
 #   Ethiopian Airlines (careers sites blocked),
 #   SITA (iCIMS: careers-sita.icims.com — robots.txt blocks /api/jobs and /jobs/search).
+# Checked 20 Oct 2026 — Qatar Airways enabled via a different, public, robots.txt-allowed
+#   endpoint: careers.qatarairways.com/global/SearchJobs runs on Avature (new fetch_avature()
+#   connector), separate from the blocked Oracle Fusion API above.
 # Checked 12 Oct 2026 — robots.txt blocks (fresh scan):
 #   Delta Air Lines, Aeroméxico, Kenya Airways, South African Airways.
 # Checked 12 Oct 2026 — HTTP errors (403/401 suggest IP blocks or anti-scraping):
@@ -104,7 +107,7 @@ employers:
   - {name: Emirates, slug: emirates, type: airline, country: AE, enabled: false}
   - {name: Etihad Airways, slug: etihad, type: airline, country: AE, source: {ats: smartrecruiters, company: "my-applications"}, enabled: true}
   - {name: flydubai, slug: flydubai, type: airline, country: AE, enabled: false}
-  - {name: Qatar Airways, slug: qatar-airways, type: airline, country: QA, enabled: false}
+  - {name: Qatar Airways, slug: qatar-airways, type: airline, country: QA, source: {ats: avature, url: "https://careers.qatarairways.com/global/SearchJobs", page_size: 25}, enabled: true}
   - {name: Saudia, slug: saudia, type: airline, country: SA, source: {ats: taleo, host: "saudia.taleo.net", section: "sv_externalcareersection"}, enabled: true}
   - {name: Ethiopian Airlines, slug: ethiopian-airlines, type: airline, country: ET, enabled: false}
   - {name: Kenya Airways, slug: kenya-airways, type: airline, country: KE, enabled: false}

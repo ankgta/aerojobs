@@ -89,15 +89,10 @@ employers:
   # ──────────────────────────────
   # AVATURE (new connector, 20 Oct 2026)
   # ──────────────────────────────
-  # Qatar Airways: careers.qatarairways.com/global/SearchJobs confirmed public,
-  # no login, robots.txt allows /global, 186 real open jobs seen live in browser.
-  # New fetch_avature() connector built for this (fetcher/connectors.py).
-  - name: Qatar Airways
-    slug: qatar-airways
-    country: QA
-    type: airline
-    source: {ats: avature, url: "https://careers.qatarairways.com/global/SearchJobs", page_size: 25}
-
+  # Qatar Airways: verify.yml confirmed real jobs on 20 Oct 2026 (ok: true, 6 sampled,
+  # real titles/locations/dates) — now enabled directly in config/employers.yaml, so
+  # it's removed from here.
+  #
   # Emirates also runs Avature (emiratesjobs.avature.net) but its public-facing
   # careers.emiratesgroupcareers.com flow redirects to a login page before showing
   # any jobs — not a candidate, not included here. See docs/STATUS.md.
