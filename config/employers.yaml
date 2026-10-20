@@ -80,7 +80,7 @@ employers:
   # ---------- Airlines: Americas ----------
   - {name: American Airlines, slug: american-airlines, type: airline, country: US, enabled: false}
   - {name: Delta Air Lines, slug: delta, type: airline, country: US, enabled: false}
-  - {name: United Airlines, slug: united-airlines, type: airline, country: US, enabled: false}
+  - {name: United Airlines, slug: united-airlines, type: airline, country: US, source: {ats: phenom, url: "https://careers.united.com", country: "US"}, enabled: true}
   - {name: Southwest Airlines, slug: southwest-airlines, type: airline, country: US, source: {ats: phenom, url: "https://careers.southwestair.com", country: "US"}, enabled: true}
   - {name: Alaska Airlines, slug: alaska-airlines, type: airline, country: US, source: {ats: icims, url: "https://careers.alaskaair.com"}, enabled: true}
   - {name: JetBlue, slug: jetblue, type: airline, country: US, source: {ats: successfactors, url: "https://careers.jetblue.com"}, enabled: true}

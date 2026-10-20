@@ -97,15 +97,5 @@ employers:
   # careers.emiratesgroupcareers.com flow redirects to a login page before showing
   # any jobs — not a candidate, not included here. See docs/STATUS.md.
 
-  # ──────────────────────────────
-  # PHENOM (existing connector, United Airlines, 20 Oct 2026)
-  # ──────────────────────────────
-  # United Airlines: careers.united.com confirmed Phenom-based, robots.txt allows
-  # /us/en/search-results and /us/en/sitemap.xml (checked directly), sitemap has real
-  # job URLs (e.g. .../job/WHQ00026873/Senior-Engineer-Identity-Access-Management-Remote).
-  # Uses the existing fetch_phenom() connector - no new code needed.
-  - name: United Airlines
-    slug: united-airlines
-    country: US
-    type: airline
-    source: {ats: phenom, url: "https://careers.united.com", country: "US"}
+  # United Airlines: verify.yml confirmed 136 real jobs on 20 Oct 2026 (Phenom) —
+  # now enabled directly in config/employers.yaml, removed from here.
