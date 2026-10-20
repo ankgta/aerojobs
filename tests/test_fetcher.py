@@ -3,6 +3,7 @@ import datetime as dt
 from fetcher import connectors as c
 from fetcher.geo import country_from_location, region_of
 from fetcher.roles import classify_title, detect_work_mode, is_aviation_job
+from fetcher.common import today
 from fetcher.run import merge_employer_jobs, purge_expired, is_visible, fetch_pending_details
 
 
@@ -223,6 +224,54 @@ def test_pending_details_give_up_after_max_attempts():
     # a later run must not fetch it again - it's no longer pending
     fetch_pending_details(FakeClient({}), jobs, emp, always_empty, max_detail_attempts=3)
     assert calls["n"] == 3
+
+
+def test_closing_date_before_posted_date_is_dropped_not_shown():
+    """Two real bugs, found on live Workday listings. (1) Rolls-Royce: the site showed
+    'Closes 6 October' under 'Posted 19 October', while Rolls-Royce's own careers page
+    for the same job said the real closing date was 22 October - the live Workday API
+    had no endDate/closing-date field at all for that job, our stored value was a stale
+    leftover from an earlier fetch that never got cleared when a later fetch (e.g.
+    after a repost) stopped providing one. (2) Boeing: a stored closing date identical
+    to the posting date, while the live API already showed a later, real closing date -
+    Workday appears to start some requisitions with endDate == startDate as a
+    placeholder before HR sets a real deadline. Both cases must be dropped, not shown."""
+    emp = {"name": "Example Air", "slug": "example-air", "type": "manufacturer", "country": "US"}
+    d = today()
+    fmt = lambda delta: (d + dt.timedelta(days=delta)).isoformat()
+
+    jobs = {}
+    merge_employer_jobs(jobs, emp, [{"source_id": "1", "title": "Overhaul Engineer",
+                                      "url": "https://careers.example.com/job/1",
+                                      "posted_date": fmt(-20), "closing_date": fmt(-5)}], fmt(-20))
+    rec = next(iter(jobs.values()))
+    # repost: a new, later posted_date, and this time no closing_date at all
+    merge_employer_jobs(jobs, emp, [{"source_id": "1", "title": "Overhaul Engineer",
+                                      "url": "https://careers.example.com/job/1",
+                                      "posted_date": fmt(-1), "posted_estimated": False}], fmt(0))
+    assert rec["posted_date"] == fmt(-1)
+    assert rec.get("closing_date") is None, "stale closing_date from before the repost must be dropped"
+
+    # closing_date before posted_date in a single fetch is dropped outright
+    jobs2 = {}
+    merge_employer_jobs(jobs2, emp, [{"source_id": "2", "title": "Pilot",
+                                       "url": "https://careers.example.com/job/2",
+                                       "posted_date": fmt(-1), "closing_date": fmt(-15)}], fmt(0))
+    assert next(iter(jobs2.values())).get("closing_date") is None
+
+    # closing_date identical to posted_date (the Boeing placeholder pattern) is dropped
+    jobs4 = {}
+    merge_employer_jobs(jobs4, emp, [{"source_id": "4", "title": "RF Sensors Engineer",
+                                       "url": "https://careers.example.com/job/4",
+                                       "posted_date": fmt(-5), "closing_date": fmt(-5)}], fmt(0))
+    assert next(iter(jobs4.values())).get("closing_date") is None
+
+    # a sensible, future closing date after the posting date is kept
+    jobs3 = {}
+    merge_employer_jobs(jobs3, emp, [{"source_id": "3", "title": "Engineer",
+                                       "url": "https://careers.example.com/job/3",
+                                       "posted_date": fmt(-1), "closing_date": fmt(2)}], fmt(0))
+    assert next(iter(jobs3.values())).get("closing_date") == fmt(2)
 
 
 def test_only_web_links_are_allowed():

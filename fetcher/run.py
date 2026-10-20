@@ -52,6 +52,19 @@ def apply_fields(rec: dict, raw: dict, employer: dict) -> None:
                                         structured=raw.get("work_mode") or rec.get("work_mode_source"))
     if raw.get("work_mode"):
         rec["work_mode_source"] = raw["work_mode"]
+    # A closing date that's on or before the posting date, or that has already passed,
+    # is impossible or a known-unreliable placeholder - drop it rather than display it.
+    # Confirmed live on two real jobs: a Rolls-Royce (Workday) posting whose stored
+    # closing date was a stale leftover from before a repost (the live API had no
+    # closing date at all, the real one only existed as free text in the description),
+    # and a Boeing (Workday) posting whose stored closing date was identical to its
+    # posting date - a placeholder Workday starts a requisition with before HR sets a
+    # real deadline, while the live API already showed a later, real date. Since detail
+    # pages are only fetched once per job (not re-fetched while the job stays open), a
+    # value like this can go stale or never get corrected, so it's safer not to show it.
+    cd = rec.get("closing_date")
+    if cd and ((rec.get("posted_date") and cd <= rec["posted_date"]) or cd < today().isoformat()):
+        rec.pop("closing_date", None)
     if rec.get("title") and (rec.get("role_source") != "rules" or raw.get("title")):
         role = classify_title(rec["title"], employer.get("type"))
         if role:
