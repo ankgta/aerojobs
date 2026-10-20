@@ -101,10 +101,34 @@ only by free word-matching rules in `fetcher/roles.py`.
 
 ## Not set up yet
 
-- Google Search Console and sitemap submission
-- Google Analytics (`google_analytics_id` empty)
-- Email forwarding for hello@aerojobs.work (Cloudflare Email Routing)
+- Email forwarding for hello@aerojobs.work (Cloudflare Email Routing) — owner to confirm status
 - AdSense (apply 2–4 weeks after launch, once guides are published and pages show in Google)
+
+**Done since this list was last accurate:** Google Search Console is verified and the sitemap is
+submitted (status: Success, 7,710+ pages discovered as of 19 Oct). Google Analytics
+(`google_analytics_id`) is set and confirmed wired into `base.html`.
+
+## Indexing problem found and fixed (20 Oct 2026)
+
+Search Console's Pages report showed 476 of 477 crawled job pages stuck at "Crawled — currently
+not indexed" (only 1 actually indexed). Root cause: `job_summary()` in `site_builder/build.py`
+built every job page's only body text from one fixed sentence template (company/title/location
+swapped in), and that text duplicated what the facts table above it already showed — thousands of
+pages reading as one near-identical template, which is a known trigger for Google declining to
+index a page.
+
+**Fix (v1.1j):** `job_summary()` now varies its opening/closing phrasing per job (stable per job
+id, not random on rebuild), adds a role-group context sentence and a company-type sentence, and no
+longer restates the facts table. Also fixed a pre-existing cosmetic bug where a US location like
+"USA, Miami" also got ", United States" appended. Verified against all 8,020 currently-visible real
+jobs: 0 errors, 99.3% unique summary text (versus one shared template before), 0 remaining
+duplicate-country occurrences from the bug. Unit tests updated in `tests/test_site.py`.
+
+**Not yet done — still open:** this fixes *thin content*, which was the clearest, most fixable
+cause. It does not by itself guarantee re-indexing (that's on Google's schedule, typically weeks),
+and does not address the other likely contributor: thousands of individual job pages competing for
+authority instead of consolidating it onto employer/country/role hub pages. Worth revisiting after
+a few weeks of Search Console data once this fix has had time to take effect.
 
 ## Next steps, in order
 
@@ -190,4 +214,5 @@ Run `gh workflow run verify.yml` to test these candidates. If jobs are confirmed
 | 33% of jobs default to Corporate | Role filter less precise | Widen rules as needed |
 | 13 older RTX jobs still show coded locations | Cosmetic | None needed |
 | Air New Zealand blocked by SmartRecruiters robots.txt | Fetches 0 jobs | Parked in backlog |
-| GitHub Actions minutes | 2 runs/day ~1,500 min/month of 2,000 free | Monitor usage |
+| GitHub Actions minutes | 2 runs/day ~1,500 min/month of 2,000 free | Owner approved making the repo public (unlimited free Actions minutes), to be done before employer count grows further |
+| 476/477 crawled job pages not indexed by Google | Weak SEO despite sitemap being live | Thin-content fix shipped 20 Oct (v1.1j); monitor Search Console over the following weeks |
