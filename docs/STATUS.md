@@ -5,6 +5,15 @@ Last updated: 20 October 2026, 07:10 UTC (Qatar Airways added via new Avature co
 ## In one line
 
 AeroJobs is **live at https://aerojobs.work** with jobs from **45 employers that are actually fetching right now** (v1.1j), refreshed twice a day. This number is counted from the last completed fetch (`data/jobs.json`), not from how many are merely switched on in config.
+20 Oct 2026: Fixed a real bug affecting several employers (Cathay Pacific, Southwest, Air Canada, United
+Airlines and others using the same detail-page pattern): a job detail fetch that succeeded but came back
+with no usable title was permanently giving up on that job's title forever, instead of treating it as a
+possible one-off miss. Confirmed live that the real job pages do have the title, so this was wrongly
+discarding real jobs. Fixed to retry up to 5 times across future runs; backfilled the ~379 already-stuck
+jobs to get retried. First retry pass already recovered most of Cathay Pacific (0→63 visible), Southwest
+(31→112) and Air Canada (43→74); United Airlines's 56 still-missing jobs failed again on their first retry
+(attempt 1 of 5) — will keep retrying on the next scheduled runs, no action needed unless it's still stuck
+after all 5 attempts.
 20 Oct 2026: Checked the easyJet/Taleo 0-jobs question raised earlier — fetched the same Taleo search page
 from a different network path (not GitHub Actions) and got the identical "No jobs correspond to the
 specified criteria" result; Saudia (also Taleo, same connector) shows the same 0-jobs pattern. This matches
