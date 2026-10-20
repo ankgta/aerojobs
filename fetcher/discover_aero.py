@@ -124,7 +124,18 @@ def careers_link(home_url: str, html: str) -> str | None:
 
 
 def read_directory(client: PoliteClient) -> list[dict]:
-    """Read the .aero directory by crawling category and subcategory pages."""
+    """Read the .aero directory by crawling category and subcategory pages.
+
+    information.aero's /directory index page itself links to both top-level
+    category pages (one path segment after CATEGORY_BASE, e.g.
+    ".../airlines_and_commercial_operators") and subcategory pages (two
+    segments, e.g. ".../airlinesandcommercialoperators/cargo_carriers") - the
+    subcategory links we need are already there, confirmed by inspecting the
+    page directly. Only the subcategory pages list actual .aero organisation
+    websites, so this fetches the index once and visits each relevant
+    subcategory from it directly, with no extra hop through the top-level
+    category pages.
+    """
     sites: dict[str, dict] = {}
 
     # Step 1: fetch the main directory page to find all subcategory URLs
@@ -132,49 +143,29 @@ def read_directory(client: PoliteClient) -> list[dict]:
     try:
         index_html = client.get_text(DIRECTORY_URL)
     except Exception as e:
-        print(f"  could not read {DIRECTORY_URL}: {e}")
+        print(f"  could not read {DIRECTORY_URL}: {type(e).__name__}: {e}")
+        print("  (if this keeps failing, check whether information.aero is blocking this tool's "
+              "user agent even though its robots.txt allows /directory - the fetcher's own request "
+              "log, or a manual browser check of the same URL, would confirm that)")
         return []
 
-    # Collect all subcategory URLs from the directory index page
-    all_subcats = []
-    for href, _text in anchors(index_html):
-        if not href or not href.startswith(CATEGORY_BASE):
-            continue
-        rest = href[len(CATEGORY_BASE):]
-        parts = rest.strip("/").split("/")
-        # Top-level categories (1 part) — check if it's relevant
-        if len(parts) == 1:
-            continue  # we only want subcategories
-        # Subcategory (2 parts) — check if its parent category is relevant
-        if len(parts) >= 2:
-            # The parent category slug is encoded in the first part of the subcategory URL,
-            # but the subcategory URL uses a compressed form (e.g. "airlinesandcommercialoperators")
-            # while RELEVANT_CATEGORIES uses the top-level slug (e.g. "airlines_and_commercial_operators").
-            # We match by checking if the top-level category page URL is for a relevant category.
-            # Since the directory page lists both category and subcategory links, we check the
-            # subcategory's parent by looking at the URL pattern.
-            if href not in all_subcats:
-                all_subcats.append(href)
+    all_subcats = subcategory_urls(index_html)
+    if not all_subcats:
+        print(f"  fetched {DIRECTORY_URL} ({len(index_html)} chars) but found no "
+              f"'{CATEGORY_BASE}' subcategory links in it - the page content or structure "
+              "may have changed; the directory page itself did not have this problem when "
+              "last checked by hand", flush=True)
+        return []
 
     # Filter subcategories to only relevant parent categories
-    filtered_subcats = []
-    for url in all_subcats:
+    def _is_relevant(slug: str) -> bool:
         if not RELEVANT_CATEGORIES:
-            # Empty set means include everything
-            filtered_subcats.append(url)
-            continue
-        rest = url[len(CATEGORY_BASE):]
-        parent_slug = rest.strip("/").split("/")[0]
-        # Match compressed parent slug against relevant categories
-        parent_normalised = parent_slug.lower().replace("_", "")
-        relevant = False
-        for cat in RELEVANT_CATEGORIES:
-            if cat.replace("_", "") == parent_normalised:
-                relevant = True
-                break
-        if relevant:
-            filtered_subcats.append(url)
+            return True
+        normalised = slug.lower().replace("_", "")
+        return any(cat.replace("_", "") == normalised for cat in RELEVANT_CATEGORIES)
 
+    filtered_subcats = [u for u in all_subcats
+                         if _is_relevant(u[len(CATEGORY_BASE):].strip("/").split("/")[0])]
     print(f"  found {len(filtered_subcats)} relevant subcategories (of {len(all_subcats)} total)", flush=True)
 
     # Step 2: visit each subcategory to collect .aero organisation links
