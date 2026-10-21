@@ -27,8 +27,20 @@ class FakeClient:
         return self._get(url)
 
     def post_json(self, url, payload):
-        self.calls.append((url, payload["offset"]))
-        return self.responses[url][payload["offset"] // 20]
+        self.calls.append((url, payload))
+        # Strip query string for lookup so Taleo URLs (?lang=en&portal=...) match
+        base_url = url.split("?")[0]
+        responses = self.responses.get(url) or self.responses.get(base_url)
+        if responses is None:
+            raise AssertionError(f"unexpected url {url}")
+        # Oracle connector pages by offset; Taleo by pageNo (1-indexed)
+        if "offset" in payload:
+            idx = payload["offset"] // 20
+        elif "pageNo" in payload:
+            idx = payload["pageNo"] - 1
+        else:
+            idx = 0
+        return responses[idx] if isinstance(responses, list) else responses
 
 
 # ---------------------------------------------------------------- roles
