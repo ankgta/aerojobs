@@ -65,7 +65,7 @@
 #   see note above) enabled. Pilatus Aircraft (SF detection was a false positive, 404 on real fetch)
 #   and Textron (Taleo detected but returned 0 jobs) not added.
 #   Still no public ATS found: Dassault Aviation, Leonardo, Eurocontrol (robots.txt), DFS, ENAIRE,
-#   Airservices Australia, Airways NZ (HTTP 403), NetJets, Flexjet, Wheels Up, Diehl, Mitsubishi Heavy
+#   Airservices Australia, Airways NZ (HTTP 403), NetJets, Flexjet, Diehl, Mitsubishi Heavy
 #   Industries, Kawasaki Heavy Industries. These are likely JS-rendered portals or use systems without
 #   a public API; would need browser network inspection to find a real endpoint, if one exists.
 #
@@ -134,7 +134,9 @@ employers:
   - {name: StandardAero, slug: standardaero, type: mro, country: US, source: {ats: oracle, host: "cva.fa.us1.oraclecloud.com", site: "CX_3"}, enabled: true}
   - {name: Air Works, slug: air-works, type: mro, country: IN, source: {ats: airworks, url: "https://airworks.aero/careers/open-positions"}, enabled: true}
   - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, enabled: false}
-  - {name: AAR, slug: aar, type: mro, country: US, enabled: false}
+  # AAR: Taleo section 1 (198 jobs on site) — section 2 returns 0, section 1 fetcher also returns 0
+  # (GitHub Actions IPs likely get a bot-challenge page; portal ID needed). Pending portal ID fix.
+  - {name: AAR, slug: aar, type: mro, country: US, source: {ats: taleo, host: "aarcorp.taleo.net", section: "1"}, enabled: false}
   - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, enabled: false}
   - {name: Joramco, slug: joramco, type: mro, country: JO, source: {ats: workable, company: "joramco"}, enabled: true}
   - {name: Swissport, slug: swissport, type: ground_services, country: CH, source: {ats: successfactors, url: "https://jobs.swissport.com"}, enabled: true}
@@ -177,6 +179,9 @@ employers:
   - {name: Cirium, slug: cirium, type: other, country: GB, source: {ats: workday, url: "https://relx.wd3.myworkdayjobs.com/ciriumcareers"}, enabled: true}
   # Private aviation (added 8 Oct 2026 after iCIMS HTML connector fix + verify)
   - {name: VistaJet, slug: vistajet, type: other, country: CH, source: {ats: icims, url: "https://careers-vistaglobal.icims.com"}, enabled: true}
+  # Added 21 Oct 2026: Wheels Up verified (10 jobs: AOG Specialist, Flight Controller, Mobile Support
+  # Unit Aircraft Technician etc.) — iCIMS, robots.txt allows, 10 real aviation jobs confirmed.
+  - {name: Wheels Up, slug: wheels-up, type: other, country: US, source: {ats: icims, url: "https://careers-wheelsup.icims.com"}, enabled: true}
   # Training / simulation (added 12 Oct 2026 after Cornerstone connector verification)
   - {name: Flight Safety International, slug: flight-safety-international, type: other, country: US, source: {ats: cornerstone, url: "https://jobs.flightsafety.com"}, enabled: true}
   # Added 14 Oct 2026 after master-list detection sweep + verify (224-employer research)

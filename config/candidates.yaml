@@ -113,14 +113,7 @@ employers:
     type: manufacturer
     source: {ats: smartrecruiters, company: "VolocopterGmbH"}
 
-  # Wheels Up: US business aviation company. iCIMS found via web search
-  # (detector only checked wheelsup.com/careers, missed the iCIMS subdomain).
-  # robots.txt on careers-wheelsup.icims.com allows /jobs/search.
-  - name: Wheels Up
-    slug: wheels-up
-    country: US
-    type: other
-    source: {ats: icims, url: "https://careers-wheelsup.icims.com"}
+  # Wheels Up: verified 21 Oct 2026 (10 jobs) — moved to config/employers.yaml.
 
   # AAR: US aviation MRO/services. Taleo section 2 returned 0 jobs (20 Oct 2026).
   # Owner confirmed section 1 URL has 198 jobs: aarcorp.taleo.net/careersection/1/jobsearch.ftl
