@@ -37,6 +37,10 @@
    "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://careers.gmrgroup.in/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
   },
   {
+   "employer": "AAR",
+   "problem": "Returned zero jobs. Its careers page may have changed."
+  },
+  {
    "employer": "Joramco",
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
@@ -57,5 +61,5 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   }
  ],
- "run": "2026-10-21T04:06:22+00:00"
+ "run": "2026-10-21T04:42:14+00:00"
 }
