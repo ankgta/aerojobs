@@ -134,9 +134,9 @@ employers:
   - {name: StandardAero, slug: standardaero, type: mro, country: US, source: {ats: oracle, host: "cva.fa.us1.oraclecloud.com", site: "CX_3"}, enabled: true}
   - {name: Air Works, slug: air-works, type: mro, country: IN, source: {ats: airworks, url: "https://airworks.aero/careers/open-positions"}, enabled: true}
   - {name: ST Engineering, slug: st-engineering, type: mro, country: SG, enabled: false}
-  # AAR: Taleo section 1 (198 jobs on site) — section 2 returns 0, section 1 fetcher also returns 0
-  # (GitHub Actions IPs likely get a bot-challenge page; portal ID needed). Pending portal ID fix.
-  - {name: AAR, slug: aar, type: mro, country: US, source: {ats: taleo, host: "aarcorp.taleo.net", section: "1"}, enabled: false}
+  # AAR: Taleo section 1, portal 201430233 (confirmed from browser network tab 21 Oct 2026).
+  # Section 2 returns 0; portal ID hard-coded to bypass bot-challenge on jobsearch.ftl page.
+  - {name: AAR, slug: aar, type: mro, country: US, source: {ats: taleo, host: "aarcorp.taleo.net", section: "1", portal_id: "201430233"}, enabled: true}
   - {name: dnata, slug: dnata, type: ground_services, country: AE, source: {ats: icims, url: "https://careers-dnata.icims.com"}, enabled: false}
   - {name: Joramco, slug: joramco, type: mro, country: JO, source: {ats: workable, company: "joramco"}, enabled: true}
   - {name: Swissport, slug: swissport, type: ground_services, country: CH, source: {ats: successfactors, url: "https://jobs.swissport.com"}, enabled: true}
