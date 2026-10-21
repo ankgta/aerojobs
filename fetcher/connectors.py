@@ -557,10 +557,18 @@ def fetch_taleo(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[d
     page_num = 0
     while True:
         try:
-            data = client.get_json(
-                api,
-                params={"lang": "en", "portal": portal_id, "start": page_num * 25},
-            )
+            # Taleo searchjobs requires POST (not GET) with a JSON body.
+            # Query params (lang, portal) go in the URL; paging via pageNo (1-indexed).
+            payload = {
+                "multilineEnabled": False,
+                "advancedSearchFiltersSelectionParam": {"multiSelectionsItems": []},
+                "fieldData": {"fields": {"KEYWORD": "", "LOCATION": ""}, "valid": True},
+                "filterSelectionParam": {"selectedValues": {}},
+                "pageNo": page_num + 1,
+                "sortingSelection": {"sortBySelectionParam": "3", "ascendingOrderSort": "false"},
+            }
+            api_url = f"{api}?lang=en&portal={portal_id}"
+            data = client.post_json(api_url, payload)
         except Exception as e:
             print(f"  {host}: search API failed on page {page_num}: {type(e).__name__}: {e}")
             break
