@@ -53,53 +53,13 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
-   "employer": "GE Aerospace",
-   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://geaerospace.wd5.myworkdayjobs.com/wday/cxs/geaerospace/GE_ExternalSite/jobs"
-  },
-  {
-   "employer": "CAE",
-   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://cae.wd3.myworkdayjobs.com/wday/cxs/cae/career/jobs"
-  },
-  {
-   "employer": "RTX (Collins Aerospace, Pratt & Whitney)",
-   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://globalhr.wd5.myworkdayjobs.com/wday/cxs/globalhr/REC_RTX_Ext_Gateway/jobs"
-  },
-  {
    "employer": "ZeroAvia",
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
-   "employer": "gategroup",
-   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs"
-  },
-  {
-   "employer": "World Fuel Services",
-   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://wfscorp.wd5.myworkdayjobs.com/wday/cxs/wfscorp/wfscareers/jobs"
-  },
-  {
-   "employer": "Cirium",
-   "problem": "Could not read jobs: Expecting value: line 1 column 1 (char 0)"
-  },
-  {
    "employer": "Flight Safety International",
    "problem": "Returned zero jobs. Its careers page may have changed."
-  },
-  {
-   "employer": "Moog",
-   "problem": "Could not read jobs: Expecting value: line 1 column 1 (char 0)"
-  },
-  {
-   "employer": "Crane Aerospace",
-   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://cranecompany.wd5.myworkdayjobs.com/wday/cxs/cranecompany/Careers/jobs"
-  },
-  {
-   "employer": "Woodward",
-   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://woodward.wd5.myworkdayjobs.com/wday/cxs/woodward/woodward/jobs"
-  },
-  {
-   "employer": "Thales",
-   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs"
   }
  ],
- "run": "2026-10-24T06:09:51+00:00"
+ "run": "2026-10-24T18:17:06+00:00"
 }
