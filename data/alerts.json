@@ -33,10 +33,6 @@
    "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/airnewzealand/postings?limit=100&offset=0"
   },
   {
-   "employer": "GMR Group",
-   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://careers.gmrgroup.in/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
-  },
-  {
    "employer": "AAR",
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
@@ -61,5 +57,5 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   }
  ],
- "run": "2026-10-26T06:21:16+00:00"
+ "run": "2026-10-26T18:22:35+00:00"
 }

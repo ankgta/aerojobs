@@ -2,309 +2,309 @@
  "aar": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T05:56:30+00:00"
+  "last_run": "2026-10-26T17:57:18+00:00"
  },
  "accelya": {
   "last_count": 10,
   "last_error": null,
-  "last_run": "2026-10-26T06:14:41+00:00"
+  "last_run": "2026-10-26T18:15:46+00:00"
  },
  "air-canada": {
-  "last_count": 62,
+  "last_count": 61,
   "last_error": null,
-  "last_run": "2026-10-26T05:53:53+00:00"
+  "last_run": "2026-10-26T17:53:26+00:00"
  },
  "air-new-zealand": {
   "last_error": "robots.txt does not allow https://api.smartrecruiters.com/v1/companies/airnewzealand/postings?limit=100&offset=0",
-  "last_run": "2026-10-26T05:55:58+00:00"
+  "last_run": "2026-10-26T17:55:57+00:00"
  },
  "air-works": {
   "last_count": 5,
   "last_error": null,
-  "last_run": "2026-10-26T05:56:28+00:00"
+  "last_run": "2026-10-26T17:57:16+00:00"
  },
  "airbus": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-10-26T06:03:13+00:00"
+  "last_run": "2026-10-26T18:04:03+00:00"
  },
  "alaska-airlines": {
   "last_count": 42,
   "last_error": null,
-  "last_run": "2026-10-26T05:53:35+00:00"
+  "last_run": "2026-10-26T17:53:16+00:00"
  },
  "archer-aviation": {
-  "last_count": 104,
+  "last_count": 105,
   "last_error": null,
-  "last_run": "2026-10-26T05:58:38+00:00"
+  "last_run": "2026-10-26T17:59:27+00:00"
  },
  "azul": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T05:53:54+00:00"
+  "last_run": "2026-10-26T17:53:27+00:00"
  },
  "beta-technologies": {
   "last_count": 128,
   "last_error": null,
-  "last_run": "2026-10-26T06:13:16+00:00"
+  "last_run": "2026-10-26T18:14:13+00:00"
  },
  "boeing": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-10-26T06:04:41+00:00"
+  "last_run": "2026-10-26T18:05:30+00:00"
  },
  "british-airways": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T05:54:24+00:00"
+  "last_run": "2026-10-26T17:53:58+00:00"
  },
  "cae": {
-  "last_count": 381,
+  "last_count": 385,
   "last_error": null,
-  "last_run": "2026-10-26T06:08:28+00:00"
+  "last_run": "2026-10-26T18:09:41+00:00"
  },
  "cathay-pacific": {
-  "last_count": 204,
+  "last_count": 216,
   "last_error": null,
-  "last_run": "2026-10-26T05:55:58+00:00"
+  "last_run": "2026-10-26T17:55:57+00:00"
  },
  "changi-airport-group": {
   "last_count": 83,
   "last_error": null,
-  "last_run": "2026-10-26T05:56:08+00:00"
+  "last_run": "2026-10-26T17:56:07+00:00"
  },
  "cirium": {
   "last_count": 8,
   "last_error": null,
-  "last_run": "2026-10-26T06:14:18+00:00"
+  "last_run": "2026-10-26T18:15:15+00:00"
  },
  "cirrus-aircraft": {
-  "last_count": 72,
+  "last_count": 75,
   "last_error": null,
-  "last_run": "2026-10-26T06:16:28+00:00"
+  "last_run": "2026-10-26T18:17:31+00:00"
  },
  "crane-aerospace": {
-  "last_count": 310,
+  "last_count": 308,
   "last_error": null,
-  "last_run": "2026-10-26T06:16:21+00:00"
+  "last_run": "2026-10-26T18:17:16+00:00"
  },
  "dfw-airport": {
-  "last_count": 92,
+  "last_count": 91,
   "last_error": null,
-  "last_run": "2026-10-26T05:56:10+00:00"
+  "last_run": "2026-10-26T17:56:11+00:00"
  },
  "easyjet": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T05:54:30+00:00"
+  "last_run": "2026-10-26T17:54:03+00:00"
  },
  "embraer": {
-  "last_count": 62,
+  "last_count": 63,
   "last_error": null,
-  "last_run": "2026-10-26T06:04:46+00:00"
+  "last_run": "2026-10-26T18:05:35+00:00"
  },
  "etihad": {
   "last_error": "robots.txt does not allow https://api.smartrecruiters.com/v1/companies/my-applications/postings?limit=100&offset=0",
-  "last_run": "2026-10-26T05:54:38+00:00"
+  "last_run": "2026-10-26T17:54:11+00:00"
  },
  "flight-safety-international": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T06:14:36+00:00"
+  "last_run": "2026-10-26T18:15:39+00:00"
  },
  "gategroup": {
-  "last_count": 194,
+  "last_count": 190,
   "last_error": null,
-  "last_run": "2026-10-26T06:14:08+00:00"
+  "last_run": "2026-10-26T18:14:58+00:00"
  },
  "ge-aerospace": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-10-26T06:07:51+00:00"
+  "last_run": "2026-10-26T18:08:57+00:00"
  },
  "gmr-group": {
   "last_count": 600,
-  "last_error": "robots.txt does not allow https://careers.gmrgroup.in/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0",
-  "last_run": "2026-10-26T05:56:10+00:00"
+  "last_error": null,
+  "last_run": "2026-10-26T17:56:59+00:00"
  },
  "gogo-business-aviation": {
   "last_count": 25,
   "last_error": null,
-  "last_run": "2026-10-26T06:14:45+00:00"
+  "last_run": "2026-10-26T18:15:50+00:00"
  },
  "heart-aerospace": {
-  "last_count": 6,
+  "last_count": 5,
   "last_error": null,
-  "last_run": "2026-10-26T06:04:41+00:00"
+  "last_run": "2026-10-26T18:05:30+00:00"
  },
  "heathrow": {
   "last_count": 23,
   "last_error": null,
-  "last_run": "2026-10-26T05:56:00+00:00"
+  "last_run": "2026-10-26T17:55:59+00:00"
  },
  "hermeus": {
-  "last_count": 78,
+  "last_count": 79,
   "last_error": null,
-  "last_run": "2026-10-26T06:13:33+00:00"
+  "last_run": "2026-10-26T18:14:17+00:00"
  },
  "honeywell": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-10-26T05:58:37+00:00"
+  "last_run": "2026-10-26T17:59:25+00:00"
  },
  "icao": {
   "last_count": 111,
   "last_error": null,
-  "last_run": "2026-10-26T06:13:51+00:00"
+  "last_run": "2026-10-26T18:14:42+00:00"
  },
  "jetblue": {
-  "last_count": 58,
+  "last_count": 62,
   "last_error": null,
-  "last_run": "2026-10-26T05:53:42+00:00"
+  "last_run": "2026-10-26T17:53:22+00:00"
  },
  "jetzero": {
-  "last_count": 20,
+  "last_count": 21,
   "last_error": null,
-  "last_run": "2026-10-26T06:13:17+00:00"
+  "last_run": "2026-10-26T18:14:15+00:00"
  },
  "joby-aviation": {
   "last_count": 174,
   "last_error": null,
-  "last_run": "2026-10-26T06:13:16+00:00"
+  "last_run": "2026-10-26T18:14:13+00:00"
  },
  "joramco": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T05:56:30+00:00"
+  "last_run": "2026-10-26T17:57:18+00:00"
  },
  "moog": {
-  "last_count": 442,
+  "last_count": 440,
   "last_error": null,
-  "last_run": "2026-10-26T06:15:50+00:00"
+  "last_run": "2026-10-26T18:16:47+00:00"
  },
  "nav-canada": {
-  "last_count": 24,
+  "last_count": 27,
   "last_error": null,
-  "last_run": "2026-10-26T06:13:39+00:00"
+  "last_run": "2026-10-26T18:14:29+00:00"
  },
  "pivotal": {
-  "last_count": 23,
+  "last_count": 26,
   "last_error": null,
-  "last_run": "2026-10-26T06:13:34+00:00"
+  "last_run": "2026-10-26T18:14:21+00:00"
  },
  "qatar-airways": {
-  "last_count": 177,
+  "last_count": 188,
   "last_error": null,
-  "last_run": "2026-10-26T05:55:25+00:00"
+  "last_run": "2026-10-26T17:55:01+00:00"
  },
  "rolls-royce": {
-  "last_count": 547,
+  "last_count": 555,
   "last_error": null,
-  "last_run": "2026-10-26T06:06:20+00:00"
+  "last_run": "2026-10-26T18:06:48+00:00"
  },
  "rtx": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-10-26T06:12:59+00:00"
+  "last_run": "2026-10-26T18:13:48+00:00"
  },
  "ryanair": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T05:54:38+00:00"
+  "last_run": "2026-10-26T17:54:11+00:00"
  },
  "saudia": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T05:55:55+00:00"
+  "last_run": "2026-10-26T17:55:31+00:00"
  },
  "skyryse": {
   "last_count": 19,
   "last_error": null,
-  "last_run": "2026-10-26T05:58:40+00:00"
+  "last_run": "2026-10-26T17:59:28+00:00"
  },
  "southwest-airlines": {
-  "last_count": 22,
+  "last_count": 20,
   "last_error": null,
-  "last_run": "2026-10-26T05:53:23+00:00"
+  "last_run": "2026-10-26T17:53:04+00:00"
  },
  "standardaero": {
-  "last_count": 237,
+  "last_count": 239,
   "last_error": null,
-  "last_run": "2026-10-26T05:56:26+00:00"
+  "last_run": "2026-10-26T17:57:15+00:00"
  },
  "supernal": {
   "last_count": 0,
   "last_error": "HTTP 404 from https://boards-api.greenhouse.io/v1/boards/supernal/jobs",
-  "last_run": "2026-10-26T06:04:42+00:00"
+  "last_run": "2026-10-26T18:05:32+00:00"
  },
  "swissport": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-10-26T05:58:00+00:00"
+  "last_run": "2026-10-26T17:58:48+00:00"
  },
  "thales": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-10-26T06:21:15+00:00"
+  "last_run": "2026-10-26T18:22:34+00:00"
  },
  "travelport": {
   "last_count": 17,
   "last_error": null,
-  "last_run": "2026-10-26T06:14:38+00:00"
+  "last_run": "2026-10-26T18:15:41+00:00"
  },
  "united-airlines": {
-  "last_count": 138,
+  "last_count": 129,
   "last_error": null,
-  "last_run": "2026-10-26T05:53:17+00:00"
+  "last_run": "2026-10-26T17:52:59+00:00"
  },
  "virgin-atlantic": {
-  "last_count": 5,
+  "last_count": 6,
   "last_error": null,
-  "last_run": "2026-10-26T05:54:27+00:00"
+  "last_run": "2026-10-26T17:54:00+00:00"
  },
  "virgin-australia": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T05:55:58+00:00"
+  "last_run": "2026-10-26T17:55:57+00:00"
  },
  "vistajet": {
   "last_count": 47,
   "last_error": null,
-  "last_run": "2026-10-26T06:14:26+00:00"
+  "last_run": "2026-10-26T18:15:23+00:00"
  },
  "wheels-up": {
   "last_count": 10,
   "last_error": null,
-  "last_run": "2026-10-26T06:14:31+00:00"
+  "last_run": "2026-10-26T18:15:35+00:00"
  },
  "wisk-aero": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T06:04:44+00:00"
+  "last_run": "2026-10-26T18:05:34+00:00"
  },
  "wizz-air": {
-  "last_count": 67,
+  "last_count": 64,
   "last_error": null,
-  "last_run": "2026-10-26T05:54:36+00:00"
+  "last_run": "2026-10-26T17:54:09+00:00"
  },
  "woodward": {
-  "last_count": 176,
+  "last_count": 186,
   "last_error": null,
-  "last_run": "2026-10-26T06:16:45+00:00"
+  "last_run": "2026-10-26T18:18:03+00:00"
  },
  "world-fuel-services": {
-  "last_count": 43,
+  "last_count": 44,
   "last_error": null,
-  "last_run": "2026-10-26T06:14:16+00:00"
+  "last_run": "2026-10-26T18:15:12+00:00"
  },
  "zeroavia": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-10-26T06:13:34+00:00"
+  "last_run": "2026-10-26T18:14:22+00:00"
  },
  "zipline": {
-  "last_count": 349,
+  "last_count": 348,
   "last_error": null,
-  "last_run": "2026-10-26T06:13:34+00:00"
+  "last_run": "2026-10-26T18:14:21+00:00"
  }
 }
