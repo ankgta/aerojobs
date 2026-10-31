@@ -41,6 +41,10 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
+   "employer": "Boeing",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://boeing.wd1.myworkdayjobs.com/wday/cxs/boeing/EXTERNAL_CAREERS/jobs"
+  },
+  {
    "employer": "Supernal",
    "problem": "Could not read jobs: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/supernal/jobs"
   },
@@ -49,13 +53,57 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
+   "employer": "Rolls-Royce",
+   "problem": "Could not read jobs: Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "employer": "GE Aerospace",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://geaerospace.wd5.myworkdayjobs.com/wday/cxs/geaerospace/GE_ExternalSite/jobs"
+  },
+  {
+   "employer": "CAE",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://cae.wd3.myworkdayjobs.com/wday/cxs/cae/career/jobs"
+  },
+  {
+   "employer": "RTX (Collins Aerospace, Pratt & Whitney)",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://globalhr.wd5.myworkdayjobs.com/wday/cxs/globalhr/REC_RTX_Ext_Gateway/jobs"
+  },
+  {
    "employer": "ZeroAvia",
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
+   "employer": "gategroup",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs"
+  },
+  {
+   "employer": "World Fuel Services",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://wfscorp.wd5.myworkdayjobs.com/wday/cxs/wfscorp/wfscareers/jobs"
+  },
+  {
+   "employer": "Cirium",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://relx.wd3.myworkdayjobs.com/wday/cxs/relx/ciriumcareers/jobs"
+  },
+  {
    "employer": "Flight Safety International",
    "problem": "Returned zero jobs. Its careers page may have changed."
+  },
+  {
+   "employer": "Moog",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://moog.wd5.myworkdayjobs.com/wday/cxs/moog/MOOG_External_Career_Site/jobs"
+  },
+  {
+   "employer": "Crane Aerospace",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://cranecompany.wd5.myworkdayjobs.com/wday/cxs/cranecompany/Careers/jobs"
+  },
+  {
+   "employer": "Woodward",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://woodward.wd5.myworkdayjobs.com/wday/cxs/woodward/woodward/jobs"
+  },
+  {
+   "employer": "Thales",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs"
   }
  ],
- "run": "2026-10-30T18:31:14+00:00"
+ "run": "2026-10-31T06:08:44+00:00"
 }
