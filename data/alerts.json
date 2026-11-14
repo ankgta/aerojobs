@@ -13,10 +13,6 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
-   "employer": "Wizz Air",
-   "problem": "Could not read jobs: HTTP 404 from https://careers.wizzair.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
-  },
-  {
    "employer": "Ryanair",
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
@@ -37,10 +33,6 @@
    "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/airnewzealand/postings?limit=100&offset=0"
   },
   {
-   "employer": "GMR Group",
-   "problem": "Could not read jobs: HTTP 404 from https://careers.gmrgroup.in/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
-  },
-  {
    "employer": "AAR",
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
@@ -49,8 +41,8 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
-   "employer": "Swissport",
-   "problem": "Could not read jobs: HTTP 404 from https://jobs.swissport.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
+   "employer": "Boeing",
+   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://boeing.wd1.myworkdayjobs.com/wday/cxs/boeing/EXTERNAL_CAREERS/jobs"
   },
   {
    "employer": "Supernal",
@@ -86,7 +78,7 @@
   },
   {
    "employer": "Moog",
-   "problem": "Could not read jobs: HTTP 521 from https://moog.wd5.myworkdayjobs.com/wday/cxs/moog/MOOG_External_Career_Site/jobs"
+   "problem": "Could not read jobs: Expecting value: line 1 column 1 (char 0)"
   },
   {
    "employer": "Crane Aerospace",
@@ -94,8 +86,8 @@
   },
   {
    "employer": "Woodward",
-   "problem": "Site's robots.txt does not allow reading it: robots.txt does not allow https://woodward.wd5.myworkdayjobs.com/wday/cxs/woodward/woodward/jobs"
+   "problem": "Could not read jobs: Expecting value: line 1 column 1 (char 0)"
   }
  ],
- "run": "2026-11-13T23:03:54+00:00"
+ "run": "2026-11-14T12:35:05+00:00"
 }
