@@ -85,8 +85,12 @@
    "problem": "Could not read jobs: Gave up on https://navcanada.wd10.myworkdayjobs.com/wday/cxs/navcanada/NAV_Careers/jobs: HTTP 429 from https://navcanada.wd10.myworkdayjobs.com/wday/cxs/navcanada/NAV_Careers/jobs"
   },
   {
-   "employer": "World Fuel Services",
-   "problem": "Could not read jobs: Gave up on https://wfscorp.wd5.myworkdayjobs.com/wday/cxs/wfscorp/wfscareers/jobs: HTTP 429 from https://wfscorp.wd5.myworkdayjobs.com/wday/cxs/wfscorp/wfscareers/jobs"
+   "employer": "gategroup",
+   "problem": "Could not read jobs: Gave up on https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs: HTTP 429 from https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs"
+  },
+  {
+   "employer": "Cirium",
+   "problem": "Could not read jobs: Gave up on https://relx.wd3.myworkdayjobs.com/wday/cxs/relx/ciriumcareers/jobs: HTTP 429 from https://relx.wd3.myworkdayjobs.com/wday/cxs/relx/ciriumcareers/jobs"
   },
   {
    "employer": "Flight Safety International",
@@ -113,5 +117,5 @@
    "problem": "Could not read jobs: Gave up on https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs: HTTP 429 from https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs"
   }
  ],
- "run": "2026-11-18T00:19:18+00:00"
+ "run": "2026-11-18T14:37:01+00:00"
 }
