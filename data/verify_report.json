@@ -1,5 +1,5 @@
 {
- "run": "2026-10-20T18:18:39+00:00",
+ "run": "2026-11-21T05:33:04+00:00",
  "results": [
   {
    "name": "Aeroflot",
@@ -91,68 +91,55 @@
    "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/VolocopterGmbH/postings?limit=100&offset=0"
   },
   {
-   "name": "Wheels Up",
-   "slug": "wheels-up",
+   "name": "Arup",
+   "slug": "arup",
    "source": {
-    "ats": "icims",
-    "url": "https://careers-wheelsup.icims.com"
+    "ats": "cornerstone",
+    "url": "https://jobs.arup.com"
    },
-   "ok": true,
-   "jobs_found": 10,
-   "sample": [
-    {
-     "title": "AOG Specialist",
-     "location": "Chamblee, GA, US",
-     "url": "https://careers-wheelsup.icims.com/jobs/3679/aog-specialist/job",
-     "posted": "2024-10-20"
-    },
-    {
-     "title": "Business Development Director - Americas",
-     "location": "UNAVAILABLE, UNAVAILABLE, US",
-     "url": "https://careers-wheelsup.icims.com/jobs/3676/business-development-director---americas/job",
-     "posted": "2024-10-20"
-    },
-    {
-     "title": "Fleet Quoting Associate",
-     "location": "UNAVAILABLE, UNAVAILABLE, US",
-     "url": "https://careers-wheelsup.icims.com/jobs/3675/fleet-quoting-associate/job",
-     "posted": "2024-10-20"
-    },
-    {
-     "title": "Flight Controller",
-     "location": "",
-     "url": "https://careers-wheelsup.icims.com/jobs/3673/flight-controller/job",
-     "posted": null
-    },
-    {
-     "title": "Mobile Support Unit Aircraft Technician - ATL",
-     "location": "",
-     "url": "https://careers-wheelsup.icims.com/jobs/3671/mobile-support-unit-aircraft-technician---atl/job",
-     "posted": null
-    },
-    {
-     "title": "Mobile Support Unit Aircraft Technician - CVG",
-     "location": "",
-     "url": "https://careers-wheelsup.icims.com/jobs/3670/mobile-support-unit-aircraft-technician---cvg/job",
-     "posted": null
-    }
-   ],
-   "detail_sample": {
-    "country_code": "US",
-    "posted_date": "2024-10-20",
-    "closing_date": "2027-10-20",
-    "work_mode": null,
-    "employment_type": "FULL_TIME",
-    "location": "Chamblee, GA, US"
-   }
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
   },
   {
-   "name": "AAR",
-   "slug": "aar",
+   "name": "ExxonMobil Aviation",
+   "slug": "exxonmobil-aviation",
    "source": {
-    "ats": "taleo",
-    "host": "aarcorp.taleo.net",
-    "section": "1"
+    "ats": "cornerstone",
+    "url": "https://jobs.exxonmobil.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Jet Aviation",
+   "slug": "jet-aviation",
+   "source": {
+    "ats": "cornerstone",
+    "url": "https://jobs.jetaviation.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "Neste",
+   "slug": "neste",
+   "source": {
+    "ats": "cornerstone",
+    "url": "https://jobs.neste.com"
+   },
+   "ok": false,
+   "jobs_found": 0,
+   "sample": []
+  },
+  {
+   "name": "TotalEnergies Aviation",
+   "slug": "totalenergies-aviation",
+   "source": {
+    "ats": "cornerstone",
+    "url": "https://jobs.totalenergies.com"
    },
    "ok": false,
    "jobs_found": 0,
