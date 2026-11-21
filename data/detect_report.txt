@@ -292,7 +292,7 @@ https://www.apgdat.com/careers
   could not open: robots.txt does not allow https://www.apgdat.com/careers
 
 https://www.flysatcom.com/careers
-  could not open: robots.txt does not allow https://www.flysatcom.com/careers
+  could not open: HTTP 403 from https://www.flysatcom.com/careers
 
 https://www.flyht.com/careers
   no known hiring system found on www.flyht.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
@@ -397,7 +397,7 @@ https://www.jetaviation.com/careers
   source: {ats: cornerstone, url: "https://jobs.jetaviation.com"}
 
 https://www.luxaviation.com/careers
-  could not open: HTTP 403 from https://www.luxaviation.com/careers
+  no known hiring system found on www.luxaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.jbtaerotech.com/careers
   could not open: robots.txt does not allow https://www.jbtaerotech.com/careers
