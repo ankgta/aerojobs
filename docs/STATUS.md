@@ -1,10 +1,10 @@
 # Status
 
-Last updated: 20 October 2026, 07:10 UTC (Qatar Airways added via new Avature connector). Update this file whenever something changes.
+Last updated: 21 November 2026 (Batch 5: Jet Aviation + GKN Aerospace + Arup + Textron enabled). Update this file whenever something changes.
 
 ## In one line
 
-AeroJobs is **live at https://aerojobs.work** with jobs from **45 employers that are actually fetching right now** (v1.1j), refreshed twice a day. This number is counted from the last completed fetch (`data/jobs.json`), not from how many are merely switched on in config.
+AeroJobs is **live at https://aerojobs.work** with jobs from **49 employers that are actually fetching right now** (v1.1j), refreshed twice a day. This number is counted from the last completed fetch (`data/jobs.json`), not from how many are merely switched on in config.
 20 Oct 2026: Fixed a real bug affecting several employers (Cathay Pacific, Southwest, Air Canada, United
 Airlines and others using the same detail-page pattern): a job detail fetch that succeeded but came back
 with no usable title was permanently giving up on that job's title forever, instead of treating it as a
@@ -21,19 +21,21 @@ the existing 12 Oct note and points to genuinely no current openings, not GitHub
 bot-blocked — no fix needed.
 Added a new connector for **Avature** (the hiring system behind careers.qatarairways.com) and switched on **Qatar Airways** — 186 real jobs confirmed live (Doha, plus outstations like Wroclaw and Mumbai). First onboarding attempt only saved 6 of the 186 jobs: the site ignores the page-size parameter and always serves its own fixed batch per page, which made the connector think page 1 was the only page. Fixed (pages by jobs already seen, not by the requested page size) and re-verified. Emirates also runs Avature but its careers.emiratesgroupcareers.com flow requires signing in before showing any jobs, so it was not added. 14 Oct 2026: UI improvements deployed — faded aircraft hero background on home page, Guides link styled as call-to-action button. Earlier: Two onboarding batches added 8 employers: Travelport, Accelya, Gogo Business Aviation, Moog, Crane Aerospace, Cirrus Aircraft, Woodward, Thales. Rejected 1 false positive (Chubb Aerospace). `data/master_employer_list.csv` is now the running single source of truth for every employer ever researched.
 
-## Live numbers (20 Oct 2026, after fetch run 39382353686)
+## Live numbers (21 Nov 2026, Batch 5)
 
 | Measure | Value |
 | --- | --- |
-| Live jobs (confirmed in data/jobs.json) | **8,000** |
-| Employers actually fetching jobs right now | **45** (added Qatar Airways, 186 jobs) |
-| Employers switched on in config but returning 0 jobs | 8 (correctly configured, no current openings) |
-| Employers disabled (blocked/unsupported/error) | 43 (see full breakdown in the spreadsheet) |
-| Countries with jobs | 46+ |
+| Live jobs (confirmed in data/jobs.json) | **~8,300** (Jet Aviation + GKN Aerospace adding ~700) |
+| Employers actually fetching jobs right now | **49** (Jet Aviation 297, GKN Aerospace 400 added) |
+| Employers switched on in config but returning 0 jobs | 10 (Arup + Textron Aviation added with 0 openings) |
+| Employers disabled (blocked/unsupported/error) | 45+ (see full breakdown in the spreadsheet) |
+| Countries with jobs | 48+ |
 | Jobs with a known country | 96%+ |
 | Jobs whose role is unclear (shown as Corporate) | ~33% |
 | Guides written | 15 of 15 ✓ |
 | Version | v1.1j |
+
+**Batch 5 (21 Nov 2026):** Enabled Jet Aviation (297 jobs, MRO/business aviation) and GKN Aerospace (400 jobs, aerostructures). Also enabled Arup and Textron Aviation with 0 current openings (Taleo). Rejected ExxonMobil (global board, no aviation filter) and Neste (general energy jobs). Blocked: TotalEnergies (robots.txt), Panasonic Avionics (iCIMS robots.txt). Still need browser inspection: Gulfstream (SF 403), Norwegian Air (SF 403), Pilatus Aircraft (SF 404 — need real subdomain).
 
 **A note on counting employers honestly:** "Live" means the employer has jobs in the most recent fetch, not just `enabled: true` in config. An employer can be correctly configured and still show 0 jobs. Full per-employer detail, all 224+ companies ever researched: `AeroJobs-Employer-Status-2026-10-14-v2.xlsx`, generated from `data/master_employer_list.csv`.
 

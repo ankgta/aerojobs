@@ -119,48 +119,16 @@ employers:
   # Moved to config/employers.yaml with enabled: true.
 
   # ──────────────────────────────
-  # BATCH 5 — 21 Nov 2026 (second verify pass)
-  # Jet Aviation (297 jobs) and GKN Aerospace (400 jobs) → moved to employers.yaml enabled.
-  # ExxonMobil (400 jobs) → rejected: jobs.exxonmobil.com is ExxonMobil global (polymer/audit/data
-  #   science jobs), not aviation-specific. No filter available.
-  # Neste (30 jobs) → rejected: SAF company but jobs are general refinery/energy operations.
-  # TotalEnergies → robots.txt blocks jobs.totalenergies.com.
-  # Panasonic Avionics → iCIMS robots.txt blocks fremployees-napanasonic.icims.com.
-  # Remaining candidates needing URL/section fixes:
+  # BATCH 5 — 21 Nov 2026 (resolved)
+  # Jet Aviation (297 jobs) → employers.yaml enabled (SuccessFactors jobs.jetaviation.com)
+  # GKN Aerospace (400 jobs) → employers.yaml enabled (SuccessFactors careers.gknaerospace.com)
+  # Arup → employers.yaml enabled with 0 jobs (Taleo arupjobs.taleo.net section 1)
+  # Textron Aviation → employers.yaml enabled with 0 jobs (Taleo textron.taleo.net section 1)
+  # ExxonMobil → REJECTED: global board, no aviation filter
+  # Neste → REJECTED: general refinery/energy jobs, not aviation-specific
+  # TotalEnergies → BLOCKED: robots.txt blocks jobs.totalenergies.com
+  # Panasonic Avionics → BLOCKED: iCIMS robots.txt blocks their subdomain
+  # Gulfstream → NEEDS BROWSER: SF HTTP 403 (IP block) — needs correct endpoint
+  # Norwegian Air Shuttle → NEEDS BROWSER: SF HTTP 403 (IP block) — needs correct endpoint
+  # Pilatus Aircraft → NEEDS BROWSER: SF 404 on /search/, need real SF host from browser inspector
   # ──────────────────────────────
-
-  # Arup: Taleo (arupjobs.taleo.net) — section 2 returned 0 jobs. Try section 1.
-  - name: Arup
-    slug: arup
-    country: GB
-    type: other
-    source: {ats: taleo, host: "arupjobs.taleo.net", section: "1"}
-
-  # Textron Aviation: Taleo (textron.taleo.net) — section 2 returned 0 jobs. Try section 1.
-  - name: Textron Aviation
-    slug: textron-aviation
-    country: US
-    type: manufacturer
-    source: {ats: taleo, host: "textron.taleo.net", section: "1"}
-
-  # Gulfstream Aerospace: SuccessFactors — HTTP 403 on /search/ page. Try alternate URL pattern.
-  - name: Gulfstream Aerospace
-    slug: gulfstream-aerospace
-    country: US
-    type: manufacturer
-    source: {ats: successfactors, url: "https://careers.gulfstream.com"}
-
-  # Norwegian Air Shuttle: SuccessFactors — HTTP 403 on /search/ page. Try alternate URL.
-  - name: Norwegian Air Shuttle
-    slug: norwegian-air-shuttle
-    country: NO
-    type: airline
-    source: {ats: successfactors, url: "https://careers.norwegian.com"}
-
-  # Pilatus Aircraft: SuccessFactors — 404 on /search/ — the portal may be at a subdirectory.
-  # Trying the detected URL with the SAP careers path.
-  - name: Pilatus Aircraft
-    slug: pilatus-aircraft
-    country: CH
-    type: manufacturer
-    source: {ats: successfactors, url: "https://www.pilatus-aircraft.com/en"}

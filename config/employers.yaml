@@ -206,3 +206,13 @@ employers:
   # 400 jobs verified: Research Engineer, Manufacturing Engineer Tooling, Vliegtuigbouwer (aircraft builder),
   # Technology Project Manager. Pure aerospace manufacturer.
   - {name: GKN Aerospace, slug: gkn-aerospace, type: manufacturer, country: GB, source: {ats: successfactors, url: "https://careers.gknaerospace.com"}, enabled: true}
+  # Arup: Global engineering consultancy, major aviation infrastructure division.
+  # Taleo arupjobs.taleo.net — 0 jobs across section 1 and 2 (no current openings). Enabled.
+  - {name: Arup, slug: arup, type: other, country: GB, source: {ats: taleo, host: "arupjobs.taleo.net", section: "1"}, enabled: true}
+  # Textron Aviation: Cessna + Beechcraft manufacturer. Taleo textron.taleo.net — 0 jobs section 1.
+  # Enabled; will pick up jobs when postings go live.
+  - {name: Textron Aviation, slug: textron-aviation, type: manufacturer, country: US, source: {ats: taleo, host: "textron.taleo.net", section: "1"}, enabled: true}
+  # Not yet solvable — need browser inspection to find correct endpoint:
+  # Gulfstream Aerospace: SF careers.gulfstream.com — HTTP 403 (IP block)
+  # Norwegian Air Shuttle: SF careers.norwegian.com — HTTP 403 (IP block)
+  # Pilatus Aircraft: SF embedded in pilatus-aircraft.com — /search/ 404 (need real SF subdomain)
