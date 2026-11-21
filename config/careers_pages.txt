@@ -302,3 +302,29 @@ https://www.domodedovo.ru/en/company/career/
 https://www.vnukovo.ru/en/about/career/
 https://www.pulkovoavia.ru/en/career
 https://www.koltsovo.ru/en/about/career/
+
+# ----- Batch 5: New candidates (21 Nov 2026) -----
+# Cornerstone-detected (confirmed in detect_report.txt) — verify ATS
+https://jobs.arup.com
+https://jobs.exxonmobil.com
+https://jobs.jetaviation.com
+https://jobs.neste.com
+https://jobs.totalenergies.com
+# GKN Aerospace — Phenom-style portal
+https://careers.gknaerospace.com
+# Gulfstream Aerospace — custom Phenom portal
+https://careers.gulfstream.com
+# Panasonic Avionics — iCIMS portal
+https://careers.na.panasonic.com/avionics
+# Norwegian Air Shuttle — Phenom-style portal
+https://careers.norwegian.com
+# Air Arabia — custom portal
+https://careers.airarabia.com
+# Textron Aviation (Cessna, Beechcraft)
+https://txtav.com/en/careers/search
+# Pilatus Aircraft — SuccessFactors
+https://www.pilatus-aircraft.com/en/jobs
+# Leonardo UK — aerospace/defence
+https://careers.uk.leonardo.com
+# Fraport Frankfurt Airport — SuccessFactors
+https://www.fraport.com/en/career.html

@@ -117,3 +117,48 @@ employers:
 
   # AAR: verified 21 Oct 2026 — portal_id 201430233 confirmed from browser network tab.
   # Moved to config/employers.yaml with enabled: true.
+
+  # ──────────────────────────────
+  # BATCH 5 — 21 Nov 2026
+  # Cornerstone-detected candidates (from detect_report.txt, confirmed ATS type)
+  # ──────────────────────────────
+
+  # Arup: Global engineering consultancy with large aviation infrastructure practice.
+  # Cornerstone at jobs.arup.com confirmed by detector.
+  - name: Arup
+    slug: arup
+    country: GB
+    type: other
+    source: {ats: cornerstone, url: "https://jobs.arup.com"}
+
+  # ExxonMobil Aviation: Major jet fuel supplier (ExxonMobil Aviation subsidiary).
+  # Cornerstone at jobs.exxonmobil.com confirmed by detector.
+  - name: ExxonMobil Aviation
+    slug: exxonmobil-aviation
+    country: US
+    type: other
+    source: {ats: cornerstone, url: "https://jobs.exxonmobil.com"}
+
+  # Jet Aviation: Business aviation MRO, handling, charter. Part of General Dynamics.
+  # Cornerstone at jobs.jetaviation.com confirmed by detector.
+  - name: Jet Aviation
+    slug: jet-aviation
+    country: CH
+    type: mro
+    source: {ats: cornerstone, url: "https://jobs.jetaviation.com"}
+
+  # Neste: Aviation sustainable fuel (SAF) leader — major aviation-adjacent company.
+  # Cornerstone at jobs.neste.com confirmed by detector.
+  - name: Neste
+    slug: neste
+    country: FI
+    type: other
+    source: {ats: cornerstone, url: "https://jobs.neste.com"}
+
+  # TotalEnergies Aviation: Jet fuel and SAF division of TotalEnergies.
+  # Cornerstone at jobs.totalenergies.com confirmed by detector.
+  - name: TotalEnergies Aviation
+    slug: totalenergies-aviation
+    country: FR
+    type: other
+    source: {ats: cornerstone, url: "https://jobs.totalenergies.com"}
