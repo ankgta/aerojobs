@@ -1,5 +1,5 @@
 {
- "run": "2026-11-21T05:33:04+00:00",
+ "run": "2026-11-21T05:51:57+00:00",
  "results": [
   {
    "name": "Aeroflot",
@@ -94,8 +94,8 @@
    "name": "Arup",
    "slug": "arup",
    "source": {
-    "ats": "cornerstone",
-    "url": "https://jobs.arup.com"
+    "ats": "taleo",
+    "host": "arupjobs.taleo.net"
    },
    "ok": false,
    "jobs_found": 0,
@@ -105,41 +105,240 @@
    "name": "ExxonMobil Aviation",
    "slug": "exxonmobil-aviation",
    "source": {
-    "ats": "cornerstone",
+    "ats": "successfactors",
     "url": "https://jobs.exxonmobil.com"
    },
-   "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "ok": true,
+   "jobs_found": 400,
+   "sample": [
+    {
+     "title": "Analytical Testing & Application Scientist, Polymer Rheology",
+     "location": "Baytown, TX, US, 77520",
+     "url": "https://jobs.exxonmobil.com/ExxonMobil/job/Baytown-Analytical-Testing-&-Application-Scientist%2C-Polymer-Rheology-TX-77520/1442750000/",
+     "posted": null
+    },
+    {
+     "title": "2026INH-Audit Digital Solutions Advisor",
+     "location": "Bangalore, KA, IN, 560066",
+     "url": "https://jobs.exxonmobil.com/ExxonMobil/job/Bangalore-2026INH-Audit-Digital-Solutions-Advisor-KA-560066/1422860500/",
+     "posted": null
+    },
+    {
+     "title": "Product Lifecycle Manager",
+     "location": "Bangalore, KA, IN, 560066",
+     "url": "https://jobs.exxonmobil.com/ExxonMobil/job/Bangalore-Product-Lifecycle-Manager-KA-560066/1402335200/",
+     "posted": null
+    },
+    {
+     "title": "Capital Projects Investment Advisor",
+     "location": "Baton Rouge, LA, US, 70807",
+     "url": "https://jobs.exxonmobil.com/ExxonMobil/job/Baton-Rouge-Capital-Projects-Investment-Advisor-LA-70807/1402491900/",
+     "posted": null
+    },
+    {
+     "title": "Lead Data Steward",
+     "location": "Bangalore, KA, IN, 560066",
+     "url": "https://jobs.exxonmobil.com/ExxonMobil/job/Bangalore-Lead-Data-Steward-KA-560066/1401905600/",
+     "posted": null
+    },
+    {
+     "title": "Geoscientist - Reservoir Modelling",
+     "location": "Bangalore, KA, IN, 560066",
+     "url": "https://jobs.exxonmobil.com/ExxonMobil/job/Bangalore-Geoscientist-Reservoir-Modelling-KA-560066/1412699600/",
+     "posted": null
+    }
+   ]
   },
   {
    "name": "Jet Aviation",
    "slug": "jet-aviation",
    "source": {
-    "ats": "cornerstone",
+    "ats": "successfactors",
     "url": "https://jobs.jetaviation.com"
    },
-   "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "ok": true,
+   "jobs_found": 297,
+   "sample": [
+    {
+     "title": "Acoustic Engineer",
+     "location": "Madrid, ES, 28033",
+     "url": "https://jobs.jetaviation.com/job/Madrid-Acoustic-Engineer-28033/1375733957/",
+     "posted": null
+    },
+    {
+     "title": "Internship - Customer Service - 6 months",
+     "location": "Basel, BS, CH, 4030",
+     "url": "https://jobs.jetaviation.com/job/Basel-Internship-Customer-Service-6-months-BS-4030/1375738557/",
+     "posted": null
+    },
+    {
+     "title": "Flight Line Technician",
+     "location": "Bullsbrook, WA, AU, 6084",
+     "url": "https://jobs.jetaviation.com/job/Bullsbrook-Flight-Line-Technician-WA-6084/1373032557/",
+     "posted": null
+    },
+    {
+     "title": "Ground Support Agent",
+     "location": "Teterboro, NJ, US, 07608",
+     "url": "https://jobs.jetaviation.com/job/Teterboro-Ground-Support-Agent-NJ-07608/1378108657/",
+     "posted": null
+    },
+    {
+     "title": "Operations Manager, MRO/MRT Services",
+     "location": "Santa Ana, CA, US",
+     "url": "https://jobs.jetaviation.com/job/Santa-Ana-Operations-Manager%2C-MROMRT-Services-CA-92701/1378095557/",
+     "posted": null
+    },
+    {
+     "title": "Intern Electrical Engineering",
+     "location": "Madrid, ES, 28033",
+     "url": "https://jobs.jetaviation.com/job/Madrid-Intern-Electrical-Engineering-28033/1378112457/",
+     "posted": null
+    }
+   ]
   },
   {
    "name": "Neste",
    "slug": "neste",
    "source": {
-    "ats": "cornerstone",
+    "ats": "successfactors",
     "url": "https://jobs.neste.com"
    },
-   "ok": false,
-   "jobs_found": 0,
-   "sample": []
+   "ok": true,
+   "jobs_found": 30,
+   "sample": [
+    {
+     "title": "Researcher, Techno-Economic Analysis",
+     "location": "Espoo, FI",
+     "url": "https://jobs.neste.com/job/Espoo-Researcher%2C-Techno-Economic-Analysis/1452506900/",
+     "posted": null
+    },
+    {
+     "title": "Assistant Plant Manager",
+     "location": "MN, US",
+     "url": "https://jobs.neste.com/job/Assistant-Plant-Manager-MN/1452614600/",
+     "posted": null
+    },
+    {
+     "title": "Customer Onboarding Specialist",
+     "location": "Tallinn, EE",
+     "url": "https://jobs.neste.com/job/Tallinn-Customer-Onboarding-Specialist/1452112700/",
+     "posted": null
+    },
+    {
+     "title": "Head of Legal & Compliance",
+     "location": "Houston, US",
+     "url": "https://jobs.neste.com/job/Houston-Head-of-Legal-&-Compliance-TX-77001/1452251100/",
+     "posted": null
+    },
+    {
+     "title": "Senior project manager",
+     "location": "Rotterdam, NL",
+     "url": "https://jobs.neste.com/job/Rotterdam-Senior-project-manager/1451719200/",
+     "posted": null
+    },
+    {
+     "title": "Logistiikkaoperaattori",
+     "location": "Naantali, FI",
+     "url": "https://jobs.neste.com/job/Naantali-Logistiikkaoperaattori/1451687300/",
+     "posted": null
+    }
+   ]
   },
   {
-   "name": "TotalEnergies Aviation",
-   "slug": "totalenergies-aviation",
+   "name": "GKN Aerospace",
+   "slug": "gkn-aerospace",
    "source": {
-    "ats": "cornerstone",
-    "url": "https://jobs.totalenergies.com"
+    "ats": "successfactors",
+    "url": "https://careers.gknaerospace.com"
+   },
+   "ok": true,
+   "jobs_found": 400,
+   "sample": [
+    {
+     "title": "Team Leader",
+     "location": "Chihuahua, MX",
+     "url": "https://careers.gknaerospace.com/job/Chihuahua-Team-Leader/1450915133/",
+     "posted": null
+    },
+    {
+     "title": "Technology Project Manager",
+     "location": "Westlake, TX, US",
+     "url": "https://careers.gknaerospace.com/job/Westlake-Technology-Project-Manager-TX/1450891633/",
+     "posted": null
+    },
+    {
+     "title": "Research Engineer - Electrical",
+     "location": "Bristol, GB",
+     "url": "https://careers.gknaerospace.com/job/Bristol-Research-Engineer-Electrical/1440939933/",
+     "posted": null
+    },
+    {
+     "title": "Research Engineer - Data Analytics",
+     "location": "Papendrecht, NL",
+     "url": "https://careers.gknaerospace.com/job/Papendrecht-Research-Engineer-Data-Analytics/1440990033/",
+     "posted": null
+    },
+    {
+     "title": "BBL traject - Vliegtuigbouwer",
+     "location": "Hoogeveen, NL",
+     "url": "https://careers.gknaerospace.com/job/Hoogeveen-BBL-traject-Vliegtuigbouwer/1441004333/",
+     "posted": null
+    },
+    {
+     "title": "Manufacturing Engineer - Tooling",
+     "location": "El Cajon, CA, US",
+     "url": "https://careers.gknaerospace.com/job/El-Cajon-Manufacturing-Engineer-Tooling-CA-92019/1430565733/",
+     "posted": null
+    }
+   ]
+  },
+  {
+   "name": "Gulfstream Aerospace",
+   "slug": "gulfstream-aerospace",
+   "source": {
+    "ats": "successfactors",
+    "url": "https://careers.gulfstream.com"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 403 from https://careers.gulfstream.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
+  },
+  {
+   "name": "Norwegian Air Shuttle",
+   "slug": "norwegian-air-shuttle",
+   "source": {
+    "ats": "successfactors",
+    "url": "https://careers.norwegian.com"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 403 from https://careers.norwegian.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
+  },
+  {
+   "name": "Pilatus Aircraft",
+   "slug": "pilatus-aircraft",
+   "source": {
+    "ats": "successfactors",
+    "url": "https://www.pilatus-aircraft.com"
+   },
+   "ok": false,
+   "error": "FetchError: HTTP 404 from https://www.pilatus-aircraft.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
+  },
+  {
+   "name": "Panasonic Avionics",
+   "slug": "panasonic-avionics",
+   "source": {
+    "ats": "icims",
+    "url": "https://fremployees-napanasonic.icims.com"
+   },
+   "ok": false,
+   "error": "Exception: api/jobs: robots.txt does not allow https://fremployees-napanasonic.icims.com/api/jobs; html_search: robots.txt does not allow https://fremployees-napanasonic.icims.com/jobs/search?ss=1&in_iframe=1; s"
+  },
+  {
+   "name": "Textron Aviation",
+   "slug": "textron-aviation",
+   "source": {
+    "ats": "taleo",
+    "host": "textron.taleo.net"
    },
    "ok": false,
    "jobs_found": 0,
