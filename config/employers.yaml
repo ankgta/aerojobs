@@ -196,3 +196,13 @@ employers:
   # Thales posts a mixed group-wide feed (aerospace, defense, security, transport); kept per the
   # owner's existing precedent with Honeywell/RTX (large diversified industrials, filter titles not employer)
   - {name: Thales, slug: thales, type: manufacturer, country: FR, source: {ats: workday, url: "https://thales.wd3.myworkdayjobs.com/Careers"}, enabled: true}
+
+  # ---------- Added 21 Nov 2026 — Batch 5 (verified via verify.yml run) ----------
+  # Jet Aviation: Business aviation MRO + handling + completions. Part of General Dynamics.
+  # 297 jobs verified: Flight Line Technician, MRO/MRT Operations Manager, Ground Support Agent,
+  # Acoustic Engineer, Customer Service. Pure business aviation employer.
+  - {name: Jet Aviation, slug: jet-aviation, type: mro, country: CH, source: {ats: successfactors, url: "https://jobs.jetaviation.com"}, enabled: true}
+  # GKN Aerospace: Tier-1 aerostructures manufacturer (wings, nacelles, engine components).
+  # 400 jobs verified: Research Engineer, Manufacturing Engineer Tooling, Vliegtuigbouwer (aircraft builder),
+  # Technology Project Manager. Pure aerospace manufacturer.
+  - {name: GKN Aerospace, slug: gkn-aerospace, type: manufacturer, country: GB, source: {ats: successfactors, url: "https://careers.gknaerospace.com"}, enabled: true}

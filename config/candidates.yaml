@@ -119,89 +119,48 @@ employers:
   # Moved to config/employers.yaml with enabled: true.
 
   # ──────────────────────────────
-  # BATCH 5 — 21 Nov 2026
-  # Corrected ATS sources from detect_report.txt (detector initially guessed Cornerstone
-  # but SuccessFactors/Taleo are the real systems on these jobs.X.com portals).
-  # TotalEnergies: robots.txt blocks jobs.totalenergies.com — removed from candidates.
+  # BATCH 5 — 21 Nov 2026 (second verify pass)
+  # Jet Aviation (297 jobs) and GKN Aerospace (400 jobs) → moved to employers.yaml enabled.
+  # ExxonMobil (400 jobs) → rejected: jobs.exxonmobil.com is ExxonMobil global (polymer/audit/data
+  #   science jobs), not aviation-specific. No filter available.
+  # Neste (30 jobs) → rejected: SAF company but jobs are general refinery/energy operations.
+  # TotalEnergies → robots.txt blocks jobs.totalenergies.com.
+  # Panasonic Avionics → iCIMS robots.txt blocks fremployees-napanasonic.icims.com.
+  # Remaining candidates needing URL/section fixes:
   # ──────────────────────────────
 
-  # Arup: Global engineering consultancy with large aviation infrastructure practice.
-  # detect_report.txt shows two signals: Taleo (arupjobs.taleo.net) and Cornerstone.
-  # Trying Taleo first — it's the clearer signal.
+  # Arup: Taleo (arupjobs.taleo.net) — section 2 returned 0 jobs. Try section 1.
   - name: Arup
     slug: arup
     country: GB
     type: other
-    source: {ats: taleo, host: "arupjobs.taleo.net"}
+    source: {ats: taleo, host: "arupjobs.taleo.net", section: "1"}
 
-  # ExxonMobil Aviation: Major jet fuel supplier (ExxonMobil Aviation subsidiary).
-  # detect_report.txt: successfactors at jobs.exxonmobil.com (Cornerstone was secondary guess).
-  - name: ExxonMobil Aviation
-    slug: exxonmobil-aviation
+  # Textron Aviation: Taleo (textron.taleo.net) — section 2 returned 0 jobs. Try section 1.
+  - name: Textron Aviation
+    slug: textron-aviation
     country: US
-    type: other
-    source: {ats: successfactors, url: "https://jobs.exxonmobil.com"}
-
-  # Jet Aviation: Business aviation MRO, handling, charter. Part of General Dynamics.
-  # detect_report.txt: successfactors at jobs.jetaviation.com (Cornerstone was secondary guess).
-  - name: Jet Aviation
-    slug: jet-aviation
-    country: CH
-    type: mro
-    source: {ats: successfactors, url: "https://jobs.jetaviation.com"}
-
-  # Neste: Aviation sustainable fuel (SAF) leader — major aviation-adjacent company.
-  # detect_report.txt: successfactors at jobs.neste.com (Cornerstone was secondary guess).
-  - name: Neste
-    slug: neste
-    country: FI
-    type: other
-    source: {ats: successfactors, url: "https://jobs.neste.com"}
-
-  # GKN Aerospace: Major aerostructures manufacturer. SuccessFactors at careers.gknaerospace.com.
-  # detect_report.txt: source: {ats: successfactors, url: "https://careers.gknaerospace.com"}
-  - name: GKN Aerospace
-    slug: gkn-aerospace
-    country: GB
     type: manufacturer
-    source: {ats: successfactors, url: "https://careers.gknaerospace.com"}
+    source: {ats: taleo, host: "textron.taleo.net", section: "1"}
 
-  # Gulfstream Aerospace: Business jet manufacturer (General Dynamics subsidiary).
-  # detect_report.txt: source: {ats: successfactors, url: "https://careers.gulfstream.com"}
+  # Gulfstream Aerospace: SuccessFactors — HTTP 403 on /search/ page. Try alternate URL pattern.
   - name: Gulfstream Aerospace
     slug: gulfstream-aerospace
     country: US
     type: manufacturer
     source: {ats: successfactors, url: "https://careers.gulfstream.com"}
 
-  # Norwegian Air Shuttle: Norwegian low-cost carrier, major European airline.
-  # detect_report.txt: source: {ats: successfactors, url: "https://careers.norwegian.com"}
+  # Norwegian Air Shuttle: SuccessFactors — HTTP 403 on /search/ page. Try alternate URL.
   - name: Norwegian Air Shuttle
     slug: norwegian-air-shuttle
     country: NO
     type: airline
     source: {ats: successfactors, url: "https://careers.norwegian.com"}
 
-  # Pilatus Aircraft: Swiss turboprop manufacturer (PC-12, PC-24).
-  # detect_report.txt: source: {ats: successfactors, url: "https://www.pilatus-aircraft.com"}
+  # Pilatus Aircraft: SuccessFactors — 404 on /search/ — the portal may be at a subdirectory.
+  # Trying the detected URL with the SAP careers path.
   - name: Pilatus Aircraft
     slug: pilatus-aircraft
     country: CH
     type: manufacturer
-    source: {ats: successfactors, url: "https://www.pilatus-aircraft.com"}
-
-  # Panasonic Avionics: In-flight entertainment systems leader.
-  # detect_report.txt: source: {ats: icims, url: "https://fremployees-napanasonic.icims.com"}
-  - name: Panasonic Avionics
-    slug: panasonic-avionics
-    country: US
-    type: manufacturer
-    source: {ats: icims, url: "https://fremployees-napanasonic.icims.com"}
-
-  # Textron Aviation: Cessna + Beechcraft manufacturer. Taleo via textron.taleo.net.
-  # detect_report.txt: source: {ats: taleo, host: "textron.taleo.net"}
-  - name: Textron Aviation
-    slug: textron-aviation
-    country: US
-    type: manufacturer
-    source: {ats: taleo, host: "textron.taleo.net"}
+    source: {ats: successfactors, url: "https://www.pilatus-aircraft.com/en"}
