@@ -21,6 +21,7 @@ PATTERNS = [
     ("icims", re.compile(r"([a-z0-9-]+\.icims\.com)")),
     ("oracle", re.compile(r"([a-z0-9-]+\.fa\.[a-z0-9-]+\.oraclecloud\.com)(?:/hcmUI/CandidateExperience/[a-z]{2}/sites/([A-Za-z0-9_]+))?")),
     ("breezy", re.compile(r"([a-z0-9-]+)\.breezy\.hr")),
+    ("teamtailor", re.compile(r"([a-z0-9-]+)\.teamtailor\.com")),
     ("gupy", re.compile(r"([a-z0-9-]+)\.gupy\.io")),
     ("workable", re.compile(r"(?:jobs\.|apply\.|careers\.)?([a-z0-9-]+)\.workable\.com")),
     ("cornerstone", re.compile(r"(https://jobs\.[a-z0-9-]+\.com)")),
@@ -57,6 +58,8 @@ def suggest(url: str, page: str) -> list[str]:
             found.append(f'source: {{ats: icims, url: "https://{m[1]}"}}')
         elif name == "breezy":
             found.append(f'source: {{ats: breezy, company: "{m[1]}"}}')
+        elif name == "teamtailor":
+            found.append(f'source: {{ats: teamtailor, subdomain: "{m[1]}"}}')
         elif name == "gupy":
             found.append(f'source: {{ats: gupy, company_id: "{m[1]}"}}   # check company ID at portal.api.gupy.io')
         elif name == "workable":

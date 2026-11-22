@@ -1698,6 +1698,131 @@ def fetch_airworks(client: PoliteClient, src: dict, max_jobs: int = 3000) -> lis
     return parser.jobs[:max_jobs]
 
 
+# ------------------------------------------------------------------ Teamtailor
+def fetch_teamtailor(client: PoliteClient, src: dict, max_jobs: int = 3000) -> list[dict]:
+    """Teamtailor ATS via public /jobs.json feed.
+
+    Source shape:
+        source: {ats: teamtailor, subdomain: "swissas"}
+        # for custom-domain career sites:
+        source: {ats: teamtailor, subdomain: "swissas", domain: "careers.company.com"}
+
+    Teamtailor exposes a public JSON feed at https://<subdomain>.teamtailor.com/jobs.json
+    (or https://<domain>/jobs.json for custom domains). No API key required.
+
+    The feed returns a JSON array where each job has:
+      - title (string)
+      - url (string — absolute URL to the job posting)
+      - locations (list of location objects with city/country fields)
+      - published-at (ISO date string, may be null)
+      - employment-type (string, may be null)
+    """
+    subdomain = src.get("subdomain", "")
+    domain = src.get("domain", "")
+    if domain:
+        feed_url = f"https://{domain}/jobs.json"
+    elif subdomain:
+        feed_url = f"https://{subdomain}.teamtailor.com/jobs.json"
+    else:
+        return []
+
+    try:
+        data = client.get_json(feed_url)
+    except Exception:
+        return []
+
+    # Teamtailor returns either a list directly or {"data": [...]} structure
+    if isinstance(data, dict):
+        data = data.get("data") or data.get("jobs") or []
+    if not isinstance(data, list):
+        return []
+
+    jobs: list[dict] = []
+    for item in data:
+        if not isinstance(item, dict):
+            continue
+
+        # Support both flat format and JSON:API format with attributes
+        attrs = item.get("attributes") or item
+        title = attrs.get("title") or attrs.get("name") or ""
+        if not title:
+            continue
+
+        # Job URL — may be in item or attributes
+        job_url = attrs.get("url") or item.get("links", {}).get("careersite-job-url", "") or ""
+        # Fallback: build from subdomain + id
+        if not job_url and subdomain:
+            job_id = str(item.get("id", ""))
+            if job_id:
+                slug = attrs.get("slug") or ""
+                job_url = f"https://{subdomain}.teamtailor.com/jobs/{job_id}" + (f"-{slug}" if slug else "")
+
+        if not job_url or not job_url.startswith("http"):
+            continue
+
+        # Location parsing — Teamtailor nests location in "locations" list or inline
+        location = ""
+        country_code = None
+        raw_locations = attrs.get("locations") or []
+        if isinstance(raw_locations, list) and raw_locations:
+            loc = raw_locations[0]
+            if isinstance(loc, dict):
+                city = loc.get("city") or loc.get("name") or ""
+                country_raw = loc.get("country") or loc.get("country_code") or ""
+                location = city
+                if isinstance(country_raw, dict):
+                    country_code = (country_raw.get("code") or country_raw.get("id") or "").upper()[:2] or None
+                elif isinstance(country_raw, str) and len(country_raw) >= 2:
+                    country_code = country_raw.upper()[:2]
+        # Fallback to flat location string
+        if not location:
+            location = attrs.get("location") or attrs.get("city") or ""
+
+        # Date
+        posted_raw = attrs.get("published-at") or attrs.get("published_at") or attrs.get("postedAt") or ""
+        posted_date = posted_raw[:10] if posted_raw and len(posted_raw) >= 10 else None
+
+        # Employment type
+        emp_raw = (attrs.get("employment-type") or attrs.get("employment_type") or attrs.get("commitment") or "").lower()
+        employment_type = None
+        if "full" in emp_raw:
+            employment_type = "full_time"
+        elif "part" in emp_raw:
+            employment_type = "part_time"
+        elif "contract" in emp_raw or "freelance" in emp_raw:
+            employment_type = "contract"
+        elif "intern" in emp_raw:
+            employment_type = "internship"
+
+        # Work mode
+        remote_raw = (attrs.get("remote-status") or attrs.get("remote_status") or attrs.get("workplace_type") or "").lower()
+        work_mode = None
+        if "remote" in remote_raw:
+            work_mode = "remote" if "hybrid" not in remote_raw else "hybrid"
+        elif "hybrid" in remote_raw:
+            work_mode = "hybrid"
+
+        # Source ID
+        source_id = str(item.get("id") or attrs.get("id") or "")
+
+        jobs.append({
+            "source_id": source_id,
+            "title": title,
+            "url": job_url,
+            "location": location,
+            "country_code": country_code,
+            "posted_date": posted_date,
+            "posted_estimated": posted_date is None,
+            "closing_date": None,
+            "work_mode": work_mode,
+            "employment_type": employment_type,
+        })
+        if len(jobs) >= max_jobs:
+            break
+
+    return jobs[:max_jobs]
+
+
 CONNECTORS = {
     "workday": (fetch_workday, workday_detail),
     "greenhouse": (fetch_greenhouse, None),
@@ -1716,4 +1841,5 @@ CONNECTORS = {
     "cornerstone": (fetch_cornerstone, None),
     "airworks": (fetch_airworks, None),  # Custom HTML parser for Air Works MRO
     "hhru": (fetch_hhru, None),          # HeadHunter (hh.ru) — Russian national job board
+    "teamtailor": (fetch_teamtailor, None),  # Teamtailor ATS (popular in Europe/Nordic)
 }

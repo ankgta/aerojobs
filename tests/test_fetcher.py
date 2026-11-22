@@ -893,3 +893,49 @@ def test_airworks_connector_multiple_jobs_and_last_card_without_border():
     assert len(jobs) == 2
     assert jobs[0]["title"] == "First Job" and jobs[0]["source_id"] == "111"
     assert jobs[1]["title"] == "Second Job" and jobs[1]["source_id"] == "222"
+
+
+def test_teamtailor_connector():
+    """Teamtailor connector fetches from public /jobs.json endpoint."""
+    subdomain = "swissas"
+    # Teamtailor returns a flat list of job dicts with an 'attributes' sub-dict (JSON:API format)
+    api_data = [
+        {
+            "id": "8699674",
+            "type": "jobs",
+            "attributes": {
+                "title": "Software Test Engineer",
+                "url": "https://swissas.teamtailor.com/jobs/8699674-software-test-engineer",
+                "published-at": "2026-11-10T15:59:53+01:00",
+                "locations": [{"city": "Basel", "country_code": "CH"}],
+                "employment-type": "Full-time",
+                "remote-status": "on-site",
+            },
+        },
+        {
+            "id": "8700000",
+            "type": "jobs",
+            "attributes": {
+                "title": "Business Consultant MRO",
+                "url": "https://swissas.teamtailor.com/jobs/8700000-business-consultant-mro",
+                "published-at": "2026-11-01T10:00:00+01:00",
+                "locations": [{"city": "Dubai", "country_code": "AE"}],
+                "employment-type": None,
+                "remote-status": "hybrid",
+            },
+        },
+    ]
+    client = FakeClient({f"https://{subdomain}.teamtailor.com/jobs.json": api_data})
+    jobs = c.fetch_teamtailor(client, {"subdomain": subdomain})
+    assert len(jobs) == 2
+    assert jobs[0]["source_id"] == "8699674"
+    assert jobs[0]["title"] == "Software Test Engineer"
+    assert jobs[0]["url"] == "https://swissas.teamtailor.com/jobs/8699674-software-test-engineer"
+    assert jobs[0]["location"] == "Basel"
+    assert jobs[0]["country_code"] == "CH"
+    assert jobs[0]["posted_date"] == "2026-11-10"
+    assert jobs[0]["employment_type"] == "full_time"
+    assert jobs[0]["work_mode"] is None
+    assert jobs[1]["location"] == "Dubai"
+    assert jobs[1]["country_code"] == "AE"
+    assert jobs[1]["work_mode"] == "hybrid"

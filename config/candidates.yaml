@@ -119,6 +119,16 @@ employers:
   # Moved to config/employers.yaml with enabled: true.
 
   # ──────────────────────────────
+  # BATCH 6 — 22 Nov 2026
+  # Swiss AviationSoftware: AMOS MRO software company, 13 confirmed aviation jobs on Teamtailor.
+  # Requires new Teamtailor connector (fetch_teamtailor added to connectors.py).
+  - name: Swiss AviationSoftware
+    slug: swiss-aviationsoftware
+    country: CH
+    type: software
+    source: {ats: teamtailor, subdomain: "swissas"}
+
+  # ──────────────────────────────
   # BATCH 5 — 21 Nov 2026 (resolved)
   # Jet Aviation (297 jobs) → employers.yaml enabled (SuccessFactors jobs.jetaviation.com)
   # GKN Aerospace (400 jobs) → employers.yaml enabled (SuccessFactors careers.gknaerospace.com)
