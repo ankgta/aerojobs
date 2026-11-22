@@ -129,6 +129,70 @@ employers:
     source: {ats: teamtailor, subdomain: "swissas"}
 
   # ──────────────────────────────
+  # BATCH 7 — 23 Nov 2026
+  # Research into "careers page error" batch from master_employer_list.csv.
+  #
+  # ACTIONABLE (confirmed ATS):
+  #   IBS Software (IN)  — Oracle fa-etbm-saasfaprod1.fa.ocs.oraclecloud.com, CX_1
+  #   WSP (CA)           — Oracle emit.fa.ca3.oraclecloud.com, CX_2001 (jobs need aviation spot-check)
+  #   Do & Co (AT)       — SmartRecruiters DOCO1 (271 jobs, airline catering)
+  #   IFS (SE)           — SmartRecruiters IFS1 (aerospace & defense division)
+  #
+  # NOT ACTIONABLE (unsupported ATS or no ATS found):
+  #   Fraport (DE)       — Custom (Stepstone-sourced); no clean API endpoint found
+  #   ENAIRE (ES)        — Spanish government portal, no standard ATS
+  #   Kawasaki (JP)      — Own portal, no standard ATS
+  #   Mitsubishi (JP)    — HRMOS (Japanese ATS, not supported)
+  #   DFS (DE)           — Custom PHP jobs.dfs.de
+  #   Parker Aerospace   — TTC Portals (not supported)
+  #   Emirates Flight Catering — Avature (not supported, requires login)
+  #   Diehl Aerospace    — SAP SF (career.diehl.com/SelfService) — needs browser for host
+  #   Airways NZ (NZ)    — CareerCentre.net.nz (not supported)
+  #   ANA Portugal (PT)  — Jobs2Web (not supported)
+  #   Newrest (FR)       — Cegid HR (not supported)
+  #   Oshkosh Airport    — Phenom (not supported)
+  #   ATP Flight School  — Breezy HR + Jobvite (not supported)
+  #   Avinode (SE)       — Teamtailor (blocked from GitHub Actions, same as hh.ru/Swiss AS)
+  #   Diamond Aircraft   — Dayforce (not supported)
+  #   Jeppesen (Boeing)  — Phenom jobs.boeing.com (Boeing already live)
+  #   Avation PLC, BP Air, Hitit, Marsh JLT, PROS, Smart4Aviation, SmartKargo, Steer, To70, Willis — no actionable ATS found
+
+  # IBS Software: Aviation IT company (India). Oracle confirmed at careers.ibsplc.com.
+  # Oracle host fa-etbm-saasfaprod1.fa.ocs.oraclecloud.com, site CX_1 found via browser
+  # inspection of the careers.ibsplc.com Oracle redirect.
+  - name: IBS Software
+    slug: ibs-software
+    country: IN
+    type: software
+    source: {ats: oracle, host: "fa-etbm-saasfaprod1.fa.ocs.oraclecloud.com", site: "CX_1"}
+
+  # WSP: Engineering consultancy (Canada). Oracle confirmed at wsp.com/en-us/careers.
+  # Oracle host emit.fa.ca3.oraclecloud.com, site CX_2001 found via careers page.
+  # NOTE: WSP is multi-sector (not aviation-only). Check sample titles before enabling.
+  - name: WSP
+    slug: wsp
+    country: CA
+    type: other
+    source: {ats: oracle, host: "emit.fa.ca3.oraclecloud.com", site: "CX_2001"}
+
+  # Do & Co: Premium airline catering (Austria). SmartRecruiters confirmed via
+  # jobs.smartrecruiters.com/DOCO1/ — 271 jobs on careers.doco.com.
+  # Genuine airline catering company: caterers for F1, airlines, sports events.
+  - name: Do & Co
+    slug: do-and-co
+    country: AT
+    type: ground_services
+    source: {ats: smartrecruiters, company: "DOCO1"}
+
+  # IFS: Enterprise software for Aerospace & Defense (Sweden). SmartRecruiters confirmed
+  # via careers.smartrecruiters.com/IFS1. Has specific A&D division with real aviation jobs.
+  - name: IFS
+    slug: ifs
+    country: SE
+    type: software
+    source: {ats: smartrecruiters, company: "IFS1"}
+
+  # ──────────────────────────────
   # BATCH 5 — 21 Nov 2026 (resolved)
   # Jet Aviation (297 jobs) → employers.yaml enabled (SuccessFactors jobs.jetaviation.com)
   # GKN Aerospace (400 jobs) → employers.yaml enabled (SuccessFactors careers.gknaerospace.com)
