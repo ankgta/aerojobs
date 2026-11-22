@@ -154,7 +154,7 @@ https://careers.flysaa.com
   could not open: robots.txt does not allow https://careers.flysaa.com
 
 https://careers.bombardier.com
-  no known hiring system found on careers.bombardier.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+  could not open: robots.txt does not allow https://careers.bombardier.com
 
 https://www.flyfrontier.com/careers
   no known hiring system found on www.flyfrontier.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
@@ -235,7 +235,7 @@ https://www.griffinasset.com/careers
   no known hiring system found on www.griffinasset.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.avation.net/careers
-  could not open: HTTP 404 from https://www.avation.net/careers
+  no known hiring system found on www.avation.net. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.novus.aero/careers
   no known hiring system found on www.novus.aero. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
@@ -292,7 +292,7 @@ https://www.apgdat.com/careers
   could not open: robots.txt does not allow https://www.apgdat.com/careers
 
 https://www.flysatcom.com/careers
-  could not open: HTTP 403 from https://www.flysatcom.com/careers
+  could not open: robots.txt does not allow https://www.flysatcom.com/careers
 
 https://www.flyht.com/careers
   no known hiring system found on www.flyht.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
@@ -334,7 +334,7 @@ https://www.icfaviation.com/careers
   could not open: robots.txt does not allow https://www.icfaviation.com/careers
 
 https://to70.com/careers
-  could not open: HTTP 404 from https://to70.com/careers
+  no known hiring system found on to70.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.intervistas.com/careers
   no known hiring system found on www.intervistas.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
@@ -388,7 +388,7 @@ https://www.sats.com.sg/careers
   no known hiring system found on www.sats.com.sg. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.celebiaviation.com/careers
-  no known hiring system found on www.celebiaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+  could not open: robots.txt does not allow https://www.celebiaviation.com/careers
 
 https://www.havas.net/careers
   could not open: HTTP 404 from https://www.havas.net/careers
@@ -397,7 +397,7 @@ https://www.jetaviation.com/careers
   source: {ats: cornerstone, url: "https://jobs.jetaviation.com"}
 
 https://www.luxaviation.com/careers
-  no known hiring system found on www.luxaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+  could not open: HTTP 403 from https://www.luxaviation.com/careers
 
 https://www.jbtaerotech.com/careers
   could not open: robots.txt does not allow https://www.jbtaerotech.com/careers
@@ -427,7 +427,7 @@ https://www.doco.com/careers
   could not open: HTTP 404 from https://www.doco.com/careers
 
 https://www.emirates-catering.com/careers
-  could not open: HTTP 404 from https://www.emirates-catering.com/careers
+  no known hiring system found on www.emirates-catering.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://www.flyingfoodgroup.com/careers
   could not open: robots.txt does not allow https://www.flyingfoodgroup.com/careers
@@ -608,7 +608,7 @@ https://www.aiasl.in/careers
   could not open: robots.txt does not allow https://www.aiasl.in/careers
 
 https://celebiaviation.com/india/careers
-  no known hiring system found on celebiaviation.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
+  could not open: robots.txt does not allow https://celebiaviation.com/india/careers
 
 https://careers.ihcltata.com/TajSATS
   no known hiring system found on careers.ihcltata.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
@@ -735,7 +735,7 @@ https://jobs.totalenergies.com
   could not open: robots.txt does not allow https://jobs.totalenergies.com
 
 https://careers.gknaerospace.com
-  source: {ats: successfactors, url: "https://careers.gknaerospace.com"}   # check /search/ page loads jobs
+  could not open: robots.txt does not allow https://careers.gknaerospace.com
 
 https://careers.gulfstream.com
   could not open: HTTP 403 from https://careers.gulfstream.com
@@ -750,10 +750,10 @@ https://careers.airarabia.com
   no known hiring system found on careers.airarabia.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.
 
 https://txtav.com/en/careers/search
-  source: {ats: taleo, host: "textron.taleo.net"}   # section defaults to "2"; set section: "1" if needed
+  could not open: Gave up on https://txtav.com/en/careers/search: HTTP 500 from https://txtav.com/en/careers/search
 
 https://www.pilatus-aircraft.com/en/jobs
-  source: {ats: successfactors, url: "https://www.pilatus-aircraft.com"}   # check /search/ page loads jobs
+  could not open: Gave up on https://www.pilatus-aircraft.com/en/jobs: HTTPSConnectionPool(host='www.pilatus-aircraft.com', port=443): Read timed out. (read timeout=30)
 
 https://careers.uk.leonardo.com
   no known hiring system found on careers.uk.leonardo.com. The jobs may load later via script; open the page in a browser and look where the 'Apply' links go.

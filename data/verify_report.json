@@ -1,5 +1,5 @@
 {
- "run": "2026-11-21T06:08:05+00:00",
+ "run": "2026-11-22T18:14:46+00:00",
  "results": [
   {
    "name": "Aeroflot",
@@ -91,58 +91,15 @@
    "error": "robots.txt blocks it: robots.txt does not allow https://api.smartrecruiters.com/v1/companies/VolocopterGmbH/postings?limit=100&offset=0"
   },
   {
-   "name": "Arup",
-   "slug": "arup",
+   "name": "Swiss AviationSoftware",
+   "slug": "swiss-aviationsoftware",
    "source": {
-    "ats": "taleo",
-    "host": "arupjobs.taleo.net",
-    "section": "1"
+    "ats": "teamtailor",
+    "subdomain": "swissas"
    },
    "ok": false,
    "jobs_found": 0,
    "sample": []
-  },
-  {
-   "name": "Textron Aviation",
-   "slug": "textron-aviation",
-   "source": {
-    "ats": "taleo",
-    "host": "textron.taleo.net",
-    "section": "1"
-   },
-   "ok": false,
-   "jobs_found": 0,
-   "sample": []
-  },
-  {
-   "name": "Gulfstream Aerospace",
-   "slug": "gulfstream-aerospace",
-   "source": {
-    "ats": "successfactors",
-    "url": "https://careers.gulfstream.com"
-   },
-   "ok": false,
-   "error": "FetchError: HTTP 403 from https://careers.gulfstream.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
-  },
-  {
-   "name": "Norwegian Air Shuttle",
-   "slug": "norwegian-air-shuttle",
-   "source": {
-    "ats": "successfactors",
-    "url": "https://careers.norwegian.com"
-   },
-   "ok": false,
-   "error": "FetchError: HTTP 403 from https://careers.norwegian.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
-  },
-  {
-   "name": "Pilatus Aircraft",
-   "slug": "pilatus-aircraft",
-   "source": {
-    "ats": "successfactors",
-    "url": "https://www.pilatus-aircraft.com/en"
-   },
-   "ok": false,
-   "error": "FetchError: HTTP 404 from https://www.pilatus-aircraft.com/en/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=0"
   }
  ]
 }
