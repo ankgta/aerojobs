@@ -41,36 +41,12 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
-   "employer": "Airbus",
-   "problem": "Could not read jobs: Gave up on https://ag.wd3.myworkdayjobs.com/wday/cxs/ag/Airbus/jobs: HTTP 429 from https://ag.wd3.myworkdayjobs.com/wday/cxs/ag/Airbus/jobs"
-  },
-  {
-   "employer": "Boeing",
-   "problem": "Could not read jobs: Gave up on https://boeing.wd1.myworkdayjobs.com/wday/cxs/boeing/EXTERNAL_CAREERS/jobs: HTTP 429 from https://boeing.wd1.myworkdayjobs.com/wday/cxs/boeing/EXTERNAL_CAREERS/jobs"
-  },
-  {
    "employer": "Supernal",
    "problem": "Could not read jobs: HTTP 404 from https://boards-api.greenhouse.io/v1/boards/supernal/jobs"
   },
   {
    "employer": "Wisk Aero",
-   "problem": "Could not read jobs: Gave up on https://wisk.wd108.myworkdayjobs.com/wday/cxs/wisk/Wisk_Careers/jobs: HTTP 429 from https://wisk.wd108.myworkdayjobs.com/wday/cxs/wisk/Wisk_Careers/jobs"
-  },
-  {
-   "employer": "Rolls-Royce",
-   "problem": "Could not read jobs: Gave up on https://rollsroyce.wd3.myworkdayjobs.com/wday/cxs/rollsroyce/professional/jobs: HTTP 429 from https://rollsroyce.wd3.myworkdayjobs.com/wday/cxs/rollsroyce/professional/jobs"
-  },
-  {
-   "employer": "GE Aerospace",
-   "problem": "Could not read jobs: Gave up on https://geaerospace.wd5.myworkdayjobs.com/wday/cxs/geaerospace/GE_ExternalSite/jobs: HTTP 429 from https://geaerospace.wd5.myworkdayjobs.com/wday/cxs/geaerospace/GE_ExternalSite/jobs"
-  },
-  {
-   "employer": "CAE",
-   "problem": "Could not read jobs: Gave up on https://cae.wd3.myworkdayjobs.com/wday/cxs/cae/career/jobs: HTTP 429 from https://cae.wd3.myworkdayjobs.com/wday/cxs/cae/career/jobs"
-  },
-  {
-   "employer": "RTX (Collins Aerospace, Pratt & Whitney)",
-   "problem": "Could not read jobs: Gave up on https://globalhr.wd5.myworkdayjobs.com/wday/cxs/globalhr/REC_RTX_Ext_Gateway/jobs: HTTP 429 from https://globalhr.wd5.myworkdayjobs.com/wday/cxs/globalhr/REC_RTX_Ext_Gateway/jobs"
+   "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
    "employer": "JetZero",
@@ -81,40 +57,8 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   },
   {
-   "employer": "gategroup",
-   "problem": "Could not read jobs: Gave up on https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs: HTTP 429 from https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs"
-  },
-  {
-   "employer": "World Fuel Services",
-   "problem": "Could not read jobs: Gave up on https://wfscorp.wd5.myworkdayjobs.com/wday/cxs/wfscorp/wfscareers/jobs: HTTP 429 from https://wfscorp.wd5.myworkdayjobs.com/wday/cxs/wfscorp/wfscareers/jobs"
-  },
-  {
-   "employer": "Cirium",
-   "problem": "Could not read jobs: Gave up on https://relx.wd3.myworkdayjobs.com/wday/cxs/relx/ciriumcareers/jobs: HTTP 429 from https://relx.wd3.myworkdayjobs.com/wday/cxs/relx/ciriumcareers/jobs"
-  },
-  {
    "employer": "Flight Safety International",
    "problem": "Returned zero jobs. Its careers page may have changed."
-  },
-  {
-   "employer": "Accelya",
-   "problem": "Could not read jobs: Gave up on https://accelya.wd103.myworkdayjobs.com/wday/cxs/accelya/Careers/jobs: HTTP 429 from https://accelya.wd103.myworkdayjobs.com/wday/cxs/accelya/Careers/jobs"
-  },
-  {
-   "employer": "Moog",
-   "problem": "Could not read jobs: Gave up on https://moog.wd5.myworkdayjobs.com/wday/cxs/moog/MOOG_External_Career_Site/jobs: HTTP 429 from https://moog.wd5.myworkdayjobs.com/wday/cxs/moog/MOOG_External_Career_Site/jobs"
-  },
-  {
-   "employer": "Crane Aerospace",
-   "problem": "Could not read jobs: Gave up on https://cranecompany.wd5.myworkdayjobs.com/wday/cxs/cranecompany/Careers/jobs: HTTP 429 from https://cranecompany.wd5.myworkdayjobs.com/wday/cxs/cranecompany/Careers/jobs"
-  },
-  {
-   "employer": "Woodward",
-   "problem": "Could not read jobs: Gave up on https://woodward.wd5.myworkdayjobs.com/wday/cxs/woodward/woodward/jobs: HTTP 429 from https://woodward.wd5.myworkdayjobs.com/wday/cxs/woodward/woodward/jobs"
-  },
-  {
-   "employer": "Thales",
-   "problem": "Could not read jobs: Gave up on https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs: HTTP 429 from https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs"
   },
   {
    "employer": "Arup",
@@ -125,5 +69,5 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   }
  ],
- "run": "2026-11-22T13:49:15+00:00"
+ "run": "2026-11-22T23:04:40+00:00"
 }
