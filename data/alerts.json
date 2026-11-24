@@ -85,16 +85,16 @@
    "problem": "Could not read jobs: Gave up on https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs: HTTP 429 from https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs"
   },
   {
-   "employer": "World Fuel Services",
-   "problem": "Could not read jobs: Gave up on https://wfscorp.wd5.myworkdayjobs.com/wday/cxs/wfscorp/wfscareers/jobs: HTTP 429 from https://wfscorp.wd5.myworkdayjobs.com/wday/cxs/wfscorp/wfscareers/jobs"
-  },
-  {
-   "employer": "Cirium",
-   "problem": "Could not read jobs: Gave up on https://relx.wd3.myworkdayjobs.com/wday/cxs/relx/ciriumcareers/jobs: HTTP 429 from https://relx.wd3.myworkdayjobs.com/wday/cxs/relx/ciriumcareers/jobs"
-  },
-  {
    "employer": "Flight Safety International",
    "problem": "Returned zero jobs. Its careers page may have changed."
+  },
+  {
+   "employer": "Accelya",
+   "problem": "Could not read jobs: Gave up on https://accelya.wd103.myworkdayjobs.com/wday/cxs/accelya/Careers/jobs: HTTP 429 from https://accelya.wd103.myworkdayjobs.com/wday/cxs/accelya/Careers/jobs"
+  },
+  {
+   "employer": "Gogo Business Aviation",
+   "problem": "Could not read jobs: Gave up on https://gogo.wd503.myworkdayjobs.com/wday/cxs/gogo/careers/jobs: HTTP 429 from https://gogo.wd503.myworkdayjobs.com/wday/cxs/gogo/careers/jobs"
   },
   {
    "employer": "Moog",
@@ -121,5 +121,5 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   }
  ],
- "run": "2026-11-24T03:47:31+00:00"
+ "run": "2026-11-24T16:24:33+00:00"
 }
