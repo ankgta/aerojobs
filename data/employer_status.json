@@ -2,329 +2,329 @@
  "aar": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T16:02:04+00:00"
+  "last_run": "2026-11-25T01:32:26+00:00"
  },
  "accelya": {
-  "last_count": 15,
-  "last_error": "Gave up on https://accelya.wd103.myworkdayjobs.com/wday/cxs/accelya/Careers/jobs: HTTP 429 from https://accelya.wd103.myworkdayjobs.com/wday/cxs/accelya/Careers/jobs",
-  "last_run": "2026-11-24T16:18:27+00:00"
+  "last_count": 16,
+  "last_error": null,
+  "last_run": "2026-11-25T01:49:32+00:00"
  },
  "air-canada": {
-  "last_count": 49,
+  "last_count": 51,
   "last_error": null,
-  "last_run": "2026-11-24T15:58:02+00:00"
+  "last_run": "2026-11-25T01:28:15+00:00"
  },
  "air-new-zealand": {
   "last_error": "robots.txt does not allow https://api.smartrecruiters.com/v1/companies/airnewzealand/postings?limit=100&offset=0",
-  "last_run": "2026-11-24T16:00:42+00:00"
+  "last_run": "2026-11-25T01:31:03+00:00"
  },
  "air-works": {
   "last_count": 5,
   "last_error": null,
-  "last_run": "2026-11-24T16:02:03+00:00"
+  "last_run": "2026-11-25T01:32:24+00:00"
  },
  "airbus": {
   "last_count": 600,
-  "last_error": "Gave up on https://ag.wd3.myworkdayjobs.com/wday/cxs/ag/Airbus/jobs: HTTP 429 from https://ag.wd3.myworkdayjobs.com/wday/cxs/ag/Airbus/jobs",
-  "last_run": "2026-11-24T16:05:29+00:00"
+  "last_error": null,
+  "last_run": "2026-11-25T01:37:35+00:00"
  },
  "alaska-airlines": {
   "last_count": 50,
   "last_error": null,
-  "last_run": "2026-11-24T15:57:52+00:00"
+  "last_run": "2026-11-25T01:28:04+00:00"
  },
  "archer-aviation": {
-  "last_count": 78,
+  "last_count": 79,
   "last_error": null,
-  "last_run": "2026-11-24T16:04:24+00:00"
+  "last_run": "2026-11-25T01:34:46+00:00"
  },
  "arup": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T16:24:31+00:00"
+  "last_run": "2026-11-25T01:58:13+00:00"
  },
  "azul": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T15:58:04+00:00"
+  "last_run": "2026-11-25T01:28:17+00:00"
  },
  "beta-technologies": {
-  "last_count": 133,
+  "last_count": 132,
   "last_error": null,
-  "last_run": "2026-11-24T16:13:00+00:00"
+  "last_run": "2026-11-25T01:47:45+00:00"
  },
  "boeing": {
   "last_count": 600,
-  "last_error": "Gave up on https://boeing.wd1.myworkdayjobs.com/wday/cxs/boeing/EXTERNAL_CAREERS/jobs: HTTP 429 from https://boeing.wd1.myworkdayjobs.com/wday/cxs/boeing/EXTERNAL_CAREERS/jobs",
-  "last_run": "2026-11-24T16:06:30+00:00"
+  "last_error": null,
+  "last_run": "2026-11-25T01:39:49+00:00"
  },
  "british-airways": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T15:58:34+00:00"
+  "last_run": "2026-11-25T01:28:47+00:00"
  },
  "cae": {
-  "last_count": 341,
-  "last_error": "Gave up on https://cae.wd3.myworkdayjobs.com/wday/cxs/cae/career/jobs: HTTP 429 from https://cae.wd3.myworkdayjobs.com/wday/cxs/cae/career/jobs",
-  "last_run": "2026-11-24T16:11:37+00:00"
+  "last_count": 332,
+  "last_error": null,
+  "last_run": "2026-11-25T01:45:22+00:00"
  },
  "cathay-pacific": {
-  "last_count": 237,
+  "last_count": 225,
   "last_error": null,
-  "last_run": "2026-11-24T16:00:42+00:00"
+  "last_run": "2026-11-25T01:31:03+00:00"
  },
  "changi-airport-group": {
-  "last_count": 81,
+  "last_count": 82,
   "last_error": null,
-  "last_run": "2026-11-24T16:00:52+00:00"
+  "last_run": "2026-11-25T01:31:14+00:00"
  },
  "cirium": {
   "last_count": 15,
   "last_error": null,
-  "last_run": "2026-11-24T16:17:00+00:00"
+  "last_run": "2026-11-25T01:49:06+00:00"
  },
  "cirrus-aircraft": {
   "last_count": 90,
   "last_error": null,
-  "last_run": "2026-11-24T16:21:42+00:00"
+  "last_run": "2026-11-25T01:52:05+00:00"
  },
  "crane-aerospace": {
-  "last_count": 294,
-  "last_error": "Gave up on https://cranecompany.wd5.myworkdayjobs.com/wday/cxs/cranecompany/Careers/jobs: HTTP 429 from https://cranecompany.wd5.myworkdayjobs.com/wday/cxs/cranecompany/Careers/jobs",
-  "last_run": "2026-11-24T16:21:35+00:00"
+  "last_count": 290,
+  "last_error": null,
+  "last_run": "2026-11-25T01:51:56+00:00"
  },
  "dfw-airport": {
   "last_count": 88,
   "last_error": null,
-  "last_run": "2026-11-24T16:00:54+00:00"
+  "last_run": "2026-11-25T01:31:15+00:00"
  },
  "easyjet": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T15:58:40+00:00"
+  "last_run": "2026-11-25T01:28:52+00:00"
  },
  "embraer": {
-  "last_count": 53,
+  "last_count": 52,
   "last_error": null,
-  "last_run": "2026-11-24T16:07:35+00:00"
+  "last_run": "2026-11-25T01:39:54+00:00"
  },
  "etihad": {
   "last_error": "robots.txt does not allow https://api.smartrecruiters.com/v1/companies/my-applications/postings?limit=100&offset=0",
-  "last_run": "2026-11-24T15:58:49+00:00"
+  "last_run": "2026-11-25T01:29:00+00:00"
  },
  "flight-safety-international": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T16:17:21+00:00"
+  "last_run": "2026-11-25T01:49:27+00:00"
  },
  "gategroup": {
-  "last_count": 140,
-  "last_error": "Gave up on https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs: HTTP 429 from https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs",
-  "last_run": "2026-11-24T16:14:31+00:00"
+  "last_count": 145,
+  "last_error": null,
+  "last_run": "2026-11-25T01:48:44+00:00"
  },
  "ge-aerospace": {
   "last_count": 600,
-  "last_error": "Gave up on https://geaerospace.wd5.myworkdayjobs.com/wday/cxs/geaerospace/GE_ExternalSite/jobs: HTTP 429 from https://geaerospace.wd5.myworkdayjobs.com/wday/cxs/geaerospace/GE_ExternalSite/jobs",
-  "last_run": "2026-11-24T16:10:34+00:00"
+  "last_error": null,
+  "last_run": "2026-11-25T01:44:40+00:00"
  },
  "gkn-aerospace": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-11-24T16:24:29+00:00"
+  "last_run": "2026-11-25T01:58:11+00:00"
  },
  "gmr-group": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-11-24T16:01:42+00:00"
+  "last_run": "2026-11-25T01:32:04+00:00"
  },
  "gogo-business-aviation": {
-  "last_count": 15,
-  "last_error": "Gave up on https://gogo.wd503.myworkdayjobs.com/wday/cxs/gogo/careers/jobs: HTTP 429 from https://gogo.wd503.myworkdayjobs.com/wday/cxs/gogo/careers/jobs",
-  "last_run": "2026-11-24T16:19:29+00:00"
+  "last_count": 14,
+  "last_error": null,
+  "last_run": "2026-11-25T01:49:34+00:00"
  },
  "heart-aerospace": {
   "last_count": 1,
   "last_error": null,
-  "last_run": "2026-11-24T16:06:30+00:00"
+  "last_run": "2026-11-25T01:39:49+00:00"
  },
  "heathrow": {
-  "last_count": 15,
+  "last_count": 14,
   "last_error": null,
-  "last_run": "2026-11-24T16:00:44+00:00"
+  "last_run": "2026-11-25T01:31:05+00:00"
  },
  "hermeus": {
   "last_count": 81,
   "last_error": null,
-  "last_run": "2026-11-24T16:13:03+00:00"
+  "last_run": "2026-11-25T01:47:48+00:00"
  },
  "honeywell": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-11-24T16:04:22+00:00"
+  "last_run": "2026-11-25T01:34:44+00:00"
  },
  "icao": {
-  "last_count": 109,
+  "last_count": 108,
   "last_error": null,
-  "last_run": "2026-11-24T16:13:28+00:00"
+  "last_run": "2026-11-25T01:48:12+00:00"
  },
  "jet-aviation": {
-  "last_count": 303,
+  "last_count": 301,
   "last_error": null,
-  "last_run": "2026-11-24T16:24:08+00:00"
+  "last_run": "2026-11-25T01:57:48+00:00"
  },
  "jetblue": {
   "last_count": 50,
   "last_error": null,
-  "last_run": "2026-11-24T15:57:57+00:00"
+  "last_run": "2026-11-25T01:28:09+00:00"
  },
  "jetzero": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T16:13:02+00:00"
+  "last_run": "2026-11-25T01:47:46+00:00"
  },
  "joby-aviation": {
   "last_count": 150,
   "last_error": null,
-  "last_run": "2026-11-24T16:13:00+00:00"
+  "last_run": "2026-11-25T01:47:45+00:00"
  },
  "joramco": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T16:02:04+00:00"
+  "last_run": "2026-11-25T01:32:26+00:00"
  },
  "moog": {
-  "last_count": 509,
-  "last_error": "Gave up on https://moog.wd5.myworkdayjobs.com/wday/cxs/moog/MOOG_External_Career_Site/jobs: HTTP 429 from https://moog.wd5.myworkdayjobs.com/wday/cxs/moog/MOOG_External_Career_Site/jobs",
-  "last_run": "2026-11-24T16:20:34+00:00"
+  "last_count": 516,
+  "last_error": null,
+  "last_run": "2026-11-25T01:51:15+00:00"
  },
  "nav-canada": {
   "last_count": 26,
   "last_error": null,
-  "last_run": "2026-11-24T16:13:12+00:00"
+  "last_run": "2026-11-25T01:47:56+00:00"
  },
  "pivotal": {
   "last_count": 41,
   "last_error": null,
-  "last_run": "2026-11-24T16:13:05+00:00"
+  "last_run": "2026-11-25T01:47:50+00:00"
  },
  "qatar-airways": {
-  "last_count": 166,
+  "last_count": 170,
   "last_error": null,
-  "last_run": "2026-11-24T15:59:33+00:00"
+  "last_run": "2026-11-25T01:29:46+00:00"
  },
  "rolls-royce": {
-  "last_count": 569,
-  "last_error": "Gave up on https://rollsroyce.wd3.myworkdayjobs.com/wday/cxs/rollsroyce/professional/jobs: HTTP 429 from https://rollsroyce.wd3.myworkdayjobs.com/wday/cxs/rollsroyce/professional/jobs",
-  "last_run": "2026-11-24T16:08:38+00:00"
+  "last_count": 572,
+  "last_error": null,
+  "last_run": "2026-11-25T01:41:51+00:00"
  },
  "rtx": {
   "last_count": 600,
-  "last_error": "Gave up on https://globalhr.wd5.myworkdayjobs.com/wday/cxs/globalhr/REC_RTX_Ext_Gateway/jobs: HTTP 429 from https://globalhr.wd5.myworkdayjobs.com/wday/cxs/globalhr/REC_RTX_Ext_Gateway/jobs",
-  "last_run": "2026-11-24T16:12:45+00:00"
+  "last_error": null,
+  "last_run": "2026-11-25T01:47:28+00:00"
  },
  "ryanair": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T15:58:49+00:00"
+  "last_run": "2026-11-25T01:29:00+00:00"
  },
  "saudia": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T16:00:03+00:00"
+  "last_run": "2026-11-25T01:30:16+00:00"
  },
  "skyryse": {
   "last_count": 21,
   "last_error": null,
-  "last_run": "2026-11-24T16:04:25+00:00"
+  "last_run": "2026-11-25T01:34:47+00:00"
  },
  "southwest-airlines": {
-  "last_count": 26,
+  "last_count": 27,
   "last_error": null,
-  "last_run": "2026-11-24T15:57:38+00:00"
+  "last_run": "2026-11-25T01:27:55+00:00"
  },
  "standardaero": {
-  "last_count": 276,
+  "last_count": 279,
   "last_error": null,
-  "last_run": "2026-11-24T16:02:01+00:00"
+  "last_run": "2026-11-25T01:32:22+00:00"
  },
  "supernal": {
   "last_count": 0,
   "last_error": "HTTP 404 from https://boards-api.greenhouse.io/v1/boards/supernal/jobs",
-  "last_run": "2026-11-24T16:06:32+00:00"
+  "last_run": "2026-11-25T01:39:50+00:00"
  },
  "swissport": {
   "last_count": 600,
   "last_error": null,
-  "last_run": "2026-11-24T16:03:45+00:00"
+  "last_run": "2026-11-25T01:34:07+00:00"
  },
  "textron-aviation": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T16:24:33+00:00"
+  "last_run": "2026-11-25T01:58:14+00:00"
  },
  "thales": {
   "last_count": 600,
-  "last_error": "Gave up on https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs: HTTP 429 from https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs",
-  "last_run": "2026-11-24T16:23:56+00:00"
+  "last_error": null,
+  "last_run": "2026-11-25T01:57:36+00:00"
  },
  "travelport": {
   "last_count": 18,
   "last_error": null,
-  "last_run": "2026-11-24T16:17:24+00:00"
+  "last_run": "2026-11-25T01:49:29+00:00"
  },
  "united-airlines": {
-  "last_count": 124,
+  "last_count": 131,
   "last_error": null,
-  "last_run": "2026-11-24T15:57:37+00:00"
+  "last_run": "2026-11-25T01:27:53+00:00"
  },
  "virgin-atlantic": {
   "last_count": 8,
   "last_error": null,
-  "last_run": "2026-11-24T15:58:37+00:00"
+  "last_run": "2026-11-25T01:28:49+00:00"
  },
  "virgin-australia": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T16:00:42+00:00"
+  "last_run": "2026-11-25T01:31:03+00:00"
  },
  "vistajet": {
   "last_count": 41,
   "last_error": null,
-  "last_run": "2026-11-24T16:17:11+00:00"
+  "last_run": "2026-11-25T01:49:17+00:00"
  },
  "wheels-up": {
-  "last_count": 12,
+  "last_count": 11,
   "last_error": null,
-  "last_run": "2026-11-24T16:17:16+00:00"
+  "last_run": "2026-11-25T01:49:22+00:00"
  },
  "wisk-aero": {
   "last_count": 0,
-  "last_error": "Gave up on https://wisk.wd108.myworkdayjobs.com/wday/cxs/wisk/Wisk_Careers/jobs: HTTP 429 from https://wisk.wd108.myworkdayjobs.com/wday/cxs/wisk/Wisk_Careers/jobs",
-  "last_run": "2026-11-24T16:07:34+00:00"
+  "last_error": null,
+  "last_run": "2026-11-25T01:39:52+00:00"
  },
  "wizz-air": {
   "last_count": 69,
   "last_error": null,
-  "last_run": "2026-11-24T15:58:47+00:00"
+  "last_run": "2026-11-25T01:28:58+00:00"
  },
  "woodward": {
-  "last_count": 174,
-  "last_error": "Gave up on https://woodward.wd5.myworkdayjobs.com/wday/cxs/woodward/woodward/jobs: HTTP 429 from https://woodward.wd5.myworkdayjobs.com/wday/cxs/woodward/woodward/jobs",
-  "last_run": "2026-11-24T16:22:52+00:00"
+  "last_count": 176,
+  "last_error": null,
+  "last_run": "2026-11-25T01:53:05+00:00"
  },
  "world-fuel-services": {
   "last_count": 43,
   "last_error": null,
-  "last_run": "2026-11-24T16:15:45+00:00"
+  "last_run": "2026-11-25T01:49:03+00:00"
  },
  "zeroavia": {
   "last_count": 0,
   "last_error": null,
-  "last_run": "2026-11-24T16:13:05+00:00"
+  "last_run": "2026-11-25T01:47:50+00:00"
  },
  "zipline": {
-  "last_count": 317,
+  "last_count": 313,
   "last_error": null,
-  "last_run": "2026-11-24T16:13:05+00:00"
+  "last_run": "2026-11-25T01:47:50+00:00"
  }
 }
