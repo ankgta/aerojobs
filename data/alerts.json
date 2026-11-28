@@ -89,6 +89,10 @@
    "problem": "Could not read jobs: Gave up on https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs: HTTP 429 from https://gategroup.wd3.myworkdayjobs.com/wday/cxs/gategroup/GateGroup_External_Careers/jobs"
   },
   {
+   "employer": "World Fuel Services",
+   "problem": "Could not read jobs: Gave up on https://wfscorp.wd5.myworkdayjobs.com/wday/cxs/wfscorp/wfscareers/jobs: HTTP 429 from https://wfscorp.wd5.myworkdayjobs.com/wday/cxs/wfscorp/wfscareers/jobs"
+  },
+  {
    "employer": "Cirium",
    "problem": "Could not read jobs: Gave up on https://relx.wd3.myworkdayjobs.com/wday/cxs/relx/ciriumcareers/jobs: HTTP 429 from https://relx.wd3.myworkdayjobs.com/wday/cxs/relx/ciriumcareers/jobs"
   },
@@ -109,6 +113,10 @@
    "problem": "Could not read jobs: Gave up on https://cranecompany.wd5.myworkdayjobs.com/wday/cxs/cranecompany/Careers/jobs: HTTP 429 from https://cranecompany.wd5.myworkdayjobs.com/wday/cxs/cranecompany/Careers/jobs"
   },
   {
+   "employer": "Woodward",
+   "problem": "Could not read jobs: Gave up on https://woodward.wd5.myworkdayjobs.com/wday/cxs/woodward/woodward/jobs: HTTP 429 from https://woodward.wd5.myworkdayjobs.com/wday/cxs/woodward/woodward/jobs"
+  },
+  {
    "employer": "Thales",
    "problem": "Could not read jobs: Gave up on https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs: HTTP 429 from https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs"
   },
@@ -121,5 +129,5 @@
    "problem": "Returned zero jobs. Its careers page may have changed."
   }
  ],
- "run": "2026-11-27T15:41:09+00:00"
+ "run": "2026-11-28T00:59:53+00:00"
 }
